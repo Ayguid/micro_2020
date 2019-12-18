@@ -11,17 +11,35 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
+Route::get('/', 'LandingController@index')->name('landing');
 
 
 Auth::routes();
 
+//grl stuff
+Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
+
+
+
+
 /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+  //user
+  Route::get('/country/{country_shortcode}', 'LandingController@setCountry')->name('setCountry');
+  Route::get('/cats', 'LandingController@countryLanding')->name('countryLanding');
+  Route::get('/cat/{id?}', 'LandingController@getCategoryData')->name('getCategoryData');
+  Route::get('/prod/{id}', 'LandingController@showProduct')->name('showProduct');
+
   Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
   //admin sections
   Route::prefix('admin')->group(function(){
 

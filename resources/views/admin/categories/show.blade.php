@@ -190,6 +190,7 @@
                       @endrole
 
                       @if ($prod->has_image)
+                        {{-- {{dd($prod->orderedFiles('img'))}} --}}
                         @foreach ($prod->orderedFiles('img') as $img)
                           <img class="productPic" width="100%" src="{{asset('storage/product_images/'.$img->file_path)}}" alt="">
                         @endforeach

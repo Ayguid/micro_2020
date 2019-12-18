@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//filter api
+Route::get('/getProducts/{ctyId}/{catId}/{filterAtts?}', 'FilterController@findProducts');
+
+
+
+//media manager
+Route::post('/files/upload', 'Admin\FileController@upload');
+Route::post('/files/destroy/{string?}', 'Admin\FileController@destroy');
