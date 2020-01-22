@@ -38,7 +38,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   Route::get('/home', 'HomeController@index')->name('home');
 
 
-
+  //search prod
+  Route::get('/find/{q?}','LandingController@findProduct')->name('findProduct');
 
   //admin sections
   Route::prefix('admin')->group(function(){

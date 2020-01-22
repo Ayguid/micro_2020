@@ -63,9 +63,10 @@ class LandingController extends Controller
 
 
 
-  public function find(Request $request, $country, $query=null)
+  public function findProduct($query=null)
   {
     $ctyId=session('country')->id;
+    // return response($ctyId, 200);
     $this->data['products'] = Product::join('products_in_countries', 'products.id', '=', 'products_in_countries.product_id')
     ->where('product_code', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
     ->orWhere('title_es', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
@@ -76,7 +77,7 @@ class LandingController extends Controller
       return response('Not found', 200);
     }
     else {
-      return view('search_results')->with('data', $this->data);
+      return view('country_landing')->with('data', $this->data);
     }
   }
 

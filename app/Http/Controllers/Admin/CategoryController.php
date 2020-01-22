@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
     $data = [
       'category'=>$category,
-      'products' => $category->products()->paginate(3)
+      'products' => $category->products()->with('files', 'attributes.attribute')->paginate(3)
     ];
 
     return view('admin.categories.show')->with('data', $data);

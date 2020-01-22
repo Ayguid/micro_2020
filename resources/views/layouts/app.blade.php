@@ -88,7 +88,7 @@
         <!-- Right Side Of Navbar -->
 
         {{--visible en vista con nav completo--}}
-        {{-- <search-component class="d-none d-md-block " :consulturl='{{json_encode(route('userFindProduct', session('country')->country_shortcode))}}'></search-component> --}}
+        <search-component class="d-none d-md-block " :consulturl='{{json_encode(route('findProduct'))}}'></search-component>
 
         <ul class="navbar-nav ml-auto">
           <!-- Authentication Links -->

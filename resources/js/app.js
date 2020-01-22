@@ -47,30 +47,30 @@ var translations;
 // import { translations } from './lang/translations.js';
 // import translations from './lang/messages.json';
 const lang = (document.documentElement.lang=='pt-BR')?'pt':document.documentElement.lang;
-import VueInternationalization from 'vue-i18n';
-switch (lang) {
-  case 'en':
-  translations = require('./lang/translations_en.json')
-    break;
-  case 'pt':
-  translations = require('./lang/translations_pt.json')
-    break;
-  default:
-}
-Vue.use(VueInternationalization);
-const i18n = new VueInternationalization({
-    locale: lang,
-    messages: translations,
-    objectNotation: true,
-    keySeparator:true,
-    silentTranslationWarn: true
-});
+// import VueInternationalization from 'vue-i18n';
+// switch (lang) {
+//   case 'en':
+//   translations = require('./lang/translations_en.json')
+//     break;
+//   case 'pt':
+//   translations = require('./lang/translations_pt.json')
+//     break;
+//   default:
+// }
+// Vue.use(VueInternationalization);
+// const i18n = new VueInternationalization({
+//     locale: lang,
+//     messages: translations,
+//     objectNotation: true,
+//     keySeparator:true,
+//     silentTranslationWarn: true
+// });
 // console.log(translations[`${lang}`+'.values']);
 //
 
 const app = new Vue({
     el: '#app',
-    i18n,
+    // i18n,
     data(){
   return  {
     local:lang,

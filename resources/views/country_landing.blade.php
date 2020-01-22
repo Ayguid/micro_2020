@@ -3,15 +3,15 @@
   <div class="container">
 
     {{-- <h3>{{session('country.country_desc')}}</h3> --}}
-    @if (!isset($data['category']))
-          {{-- <h6 class="p-2">{{Lang::get('messages.welcome')}}</h6> --}}
-    @endif
+    {{-- @if (!isset($data['category']))
+          <h6 class="p-2">{{Lang::get('messages.welcome')}}</h6>
+    @endif --}}
 
     @php
     $lang=App::getLocale();
-    // if ($lang== 'pt-BR') {
-    //   $lang='pt';
-    // }
+    if ($lang== 'pt-BR') {
+      $lang='pt';
+    }
     @endphp
 
     @isset($data['categories'])
@@ -31,22 +31,16 @@
 
 
     @isset($data['products'])
-      @php
-      $admin=Auth::guard('admin')->check();
-      @endphp
       <div class="row">
-        @foreach ($data['products'] as $product)
-          @include('components.product-preview')
+        @foreach ($data['products'] as $prod)
+          <product-component class="col-12 col-md-4 col-lg-3"
+          :product='{!! json_encode($prod) !!}'
+          :product_route_view='{!! json_encode(route('showProduct', $prod->id)) !!}'
+          :cat_route='{!! json_encode(route('getCategoryData', $prod->category)) !!}'>
+        </product-component>
         @endforeach
       </div>
-      <div class="d-flex justify-content-around">
-        {{ $data['products']->appends(request()->except('page'))->links() }}
-      </div>
 
-      @if ($data['products']->count()==0)
-        <p>No se encontraron productos</p>
-        <a class="btn btn-primary" href="{{url()->previous()}}">Back</a>
-      @endif
     @endisset
 
 

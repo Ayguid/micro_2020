@@ -6,7 +6,7 @@
 <template>
   <div class="">
     <!-- <h1>{{ $t('Resultado') }}</h1> -->
-
+    
     <p class="mt-2 mb-2">
       {{(category.get_top_categories['title_'+$root.local])?category.get_top_categories['title_'+$root.local]:category.get_top_categories['title_es']}} -->
       {{(category['title_'+$root.local])?category['title_'+$root.local]:category['title_es']}}</p>
@@ -17,14 +17,13 @@
       :country="this.country"
       :category="this.category"
       :menudata="this.menuData"
-      :filterAtts="this.filterAtts"
-      ></filter-menu>
+      :filterAtts="this.filterAtts">
+      </filter-menu>
 
       <div class="row">
         <product-component class="col-12 col-md-4 col-lg-3"  v-for="product in products"
         :product='product' :key='product.id'
-        :user_route_view="user_route_view + product.id"
-        :admin_route_view="admin_route_view + product.id">
+        :product_route_view="product_route_view + product.id">
         </product-component>
       </div>
 
@@ -82,8 +81,7 @@
         isLoading: true,
         fullPage: true,
         currentProduct:'',
-        user_route_view:this.$root.baseUrl + '/prod/',
-        admin_route_view:this.$root.baseUrl+'/admin/editProduct/'
+        product_route_view:this.$root.baseUrl + '/prod/',
       }
     },
     components: {

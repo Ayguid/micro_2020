@@ -3,17 +3,15 @@
   <div class="">
 
     <transition name="fade"appear >
-      <div class="card mb-4" @click="emitProduct">
-        <a v-if="$root.authadmin" :href="admin_route_view">EDITAR</a>
-
-         <h6 v-if="product.category" class="p-2"><span>Categoria: </span> <a :href="cat_route">{{product.category.title_es}}</a> </h6>
-
-         <a :href="user_route_view">
+      <div class="card mb-4">
+        <!-- <a v-if="$root.authadmin" :href="admin_route_view">EDITAR</a> -->
+        <h6 v-if="product.category" class="p-2"><span>Categoria: </span> <a :href="cat_route">{{product.category.title_es}}</a> </h6>
+         <a :href="product_route_view">
 
         <div class="card-header">{{(product['title_'+$root.local])?product['title_'+$root.local]:product['title_es']}}</div>
       </a>
         <div class="card-body p-0">
-       <a :href="$root.baseUrl+'/showProduct/'+product.id">
+       <a :href="product_route_view">
         <div v-if="product.has_image" class="">
           <img v-for="image in images" width="100%"  :src="$root.baseUrl+'/storage/product_images/'+image.file_path" alt="">
         </div>
@@ -33,7 +31,7 @@
         <div class="p-2">
           <div v-for="att in product.attributes" v-if="att.attribute.filterable"  class="">
             <h6>  <strong> {{(att.attribute['name_'+$root.local])?att.attribute['name_'+$root.local]:att.attribute['name_es']}}</strong>  </h6>
-            <h6>{{$t(att.value)}}</h6>
+            <h6>{{(att['value_'+$root.local])?att['value_'+$root.local]:att['value_es']}}</h6>
           </div>
         </div>
       </div>
@@ -48,7 +46,7 @@
 <script>
 
 export default {
-  props:['product', 'user_route_view', 'admin_route_view', 'cat_route'],
+  props:['product', 'product_route_view', 'admin_route_view', 'cat_route'],
   data(){
     return  {
       images:this.$sortFilesByType(this.product.files).images
@@ -56,9 +54,9 @@ export default {
   },
   components: {},
   methods: {
-    emitProduct:function(){
-      this.$emit('product-emit');
-    }
+    // emitProduct:function(){
+    //   this.$emit('product-emit');
+    // }
   },
 
   mounted() {

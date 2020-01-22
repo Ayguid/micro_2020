@@ -197,14 +197,14 @@ class ProductController extends Controller
           foreach ($request['attributes'] as $keyAtt => $valueAtt) {
             if ($valueAtt) {
               if ($pa = $prod->attributeValue($keyAtt)) {
-                $pa->value = $valueAtt;
+                $pa->value_es = $valueAtt;
                 $save = $pa->save();
               }
               else {
                 $prodAttr= new Product_Attribute;
                 $prodAttr->attribute_id=$keyAtt;
                 $prodAttr->product_id=$prod->id;
-                $prodAttr->value=$valueAtt;
+                $prodAttr->value_es=$valueAtt;
                 $save = $prodAttr->save();
               }
             }

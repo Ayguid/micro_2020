@@ -52,7 +52,7 @@
 
       },
       mounted() {
-        // console.log(this.$root.local);
+        console.log(this.consulturl);
       }
     }
 </script>

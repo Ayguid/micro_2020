@@ -108,7 +108,7 @@
                       <div class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
 
                         @php
-                        $value = $data['product']->attributeValue($attr->id)?$data['product']->attributeValue($attr->id)->value:'';
+                        $value = $data['product']->attributeValue($attr->id)?$data['product']->attributeValue($attr->id)->value_es:'';
                         @endphp
                         <label for="">{{$attr->name_es}}</label>
                         @if ($attr->type=="textarea" || $attr->type=="string")

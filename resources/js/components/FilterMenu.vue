@@ -18,10 +18,11 @@
           </div>
           <select class="custom-select" :name="catAtt.id" >
             <option value="null" class="" >--</option>
-            <option v-for="catVal in catAtt.uniqueValues"  :value="catVal.value" class="" :disabled="catVal.disabled">
+            <option v-for="catVal in catAtt.uniqueValues"  :value="catVal.value_es" class="" :disabled="catVal.disabled">
               <!-- {{catVal.value}} -->
               <!-- {{ $t(catVal.value) }} -->
-              {{ $t(catVal.value) }}
+              <!-- {{ catVal.value }} -->
+              {{(catVal['value_'+$root.local])?catVal['value_'+$root.local]:catVal['value_es']}}
               <!-- {{(catVal['value_'+$root.local])?catVal['value_'+$root.local]:catVal['value_es']}} -->
             </option>
           </select>

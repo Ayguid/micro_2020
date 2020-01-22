@@ -66,72 +66,7 @@ class Product extends Model
   }
 
 
-  public function orderedFiles($type)
-  {
-    $ext='';
-    $ext2='';
-    switch ($type) {
-      case 'img':
-        $ext = 'jpg';
-        $ext2 = 'png';
-        break;
-      case 'pdf':
-        $ext = 'pdf';
-        break;
-      case 'stl':
-        $ext = 'stl';
-        break;
-      case 'zip':
-        $ext = 'zip';
-        break;
-      default:
-        return;
-        break;
-    }
-    return $this->files->filter(function ($file)use($ext, $ext2) {
-      return $file->extension() == $ext || $file->extension() == $ext2;
-    });
 
-    // return File::where()
-
-  }
-
-
-  public function getFiles()
-{
-    $files = [
-      'images'=>[],
-      'pdfs'=>[],
-      'stls'=>[],
-      'dxfs'=>[],
-      'zips'=>[],
-    ];
-
-    foreach ($this->files as $file) {
-      switch ($file->extension()) {
-        case 'jpg':
-        case 'png':
-          array_push($files['images'], $file);
-          break;
-        case 'pdf':
-          array_push($files['pdfs'], $file);
-          break;
-        case 'stl':
-          array_push($files['stls'], $file);
-          break;
-        case 'dxf':
-          array_push($files['dxfs'], $file);
-          break;
-        case 'zip':
-          array_push($files['zips'], $file);
-          break;
-        default:
-          // code...
-          break;
-      }
-    }
-    return $files;
-}
 
 
 }

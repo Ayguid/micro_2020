@@ -18,6 +18,7 @@
 
             @php
             $category = $data['category'];
+            $lang=App::getLocale();
             @endphp
 
             @isset($category)
@@ -47,14 +48,14 @@
                 <h4 class="mt-2 text-center">Atributos</h4>
                 <div class="p-3 mb-2 bg-secondary rounded">
                   <div class="row">
+
                     @foreach ($category->attributes as $attr)
                       <div class="col-6 col-md-4 col-lg-3 p-2">
                         {{-- <a class="text-white" href="#">{{$attr->name_es}}</a> --}}
                         @if (auth()->user()->hasRole('superadmin'))
-                          <a class="text-white" href="{{route('admin.atts.edit',$attr->id)}}">{{$attr->name_es}}</a>
+                          <a class="text-white" href="{{route('admin.atts.edit',$attr->id)}}">{{$attr-> {'name_' . $lang} ?? $attr->name_es}}</a>
                         @else
-                          <span class="text-white">{{$attr->name_es}}</span>
-
+                         <span class="text-white">  {{$attr-> {'name_' . $lang} ?? $attr->name_es}}</span>
                         @endif
                         @if ($attr->filterable)
                           <img src="{{asset('icons/lens_icon.svg')}}" alt="">
@@ -178,19 +179,19 @@
               @endif
               @endrole
 
-              <div class="">
 
+
+                <div class="row">
                 @foreach ($data['products'] as $prod)
-                  <div class="row">
 
-                    <div class="col-3">
+                  {{-- @role('superadmin')
+                  <a href="{{route('admin.prods.edit', $prod->id)}}">Edit</a>
+                  @endrole --}}
 
-                      @role('superadmin')
-                      <a href="{{route('admin.prods.edit', $prod->id)}}">Edit</a>
-                      @endrole
+                    {{-- <div class="col-3">
+
 
                       @if ($prod->has_image)
-                        {{-- {{dd($prod->orderedFiles('img'))}} --}}
                         @foreach ($prod->orderedFiles('img') as $img)
                           <img class="productPic" width="100%" src="{{asset('storage/product_images/'.$img->file_path)}}" alt="">
                         @endforeach
@@ -203,17 +204,21 @@
                     <div class="col-9">
                       <h3>{{$prod->product_code}}</h3>
                       <h4>{{$prod->title_es}}</h4>
-                    </div>
+                    </div> --}}
 
-                  </div>
+                    <product-component class="col-6"
+                    :product='{!! json_encode($prod) !!}'
+                    :product_route_view='{!! json_encode(route('admin.prods.edit', $prod->id)) !!}'
+                    :cat_route='{!! json_encode(route('getCategoryData', $prod->category)) !!}'>
+                    </product-component>
+
 
 
 
                 @endforeach
 
-                {{$data['products']->links() }}
-
               </div>
+                {{$data['products']->links() }}
 
 
 

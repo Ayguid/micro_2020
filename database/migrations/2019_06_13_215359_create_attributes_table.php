@@ -20,6 +20,7 @@ class CreateAttributesTable extends Migration
             $table->string('name_en');
             $table->string('name_pt');
             $table->boolean('filterable')->nullable();
+            $table->boolean('translatable')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });
