@@ -19,7 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //filter api
-Route::get('/getProducts/{ctyId}/{catId}/{filterAtts?}', 'FilterController@findProducts');
+// Route::get('/getProducts/{ctyId}/{catId}/{filterAtts?}', 'FilterController@findProducts');
+Route::get('/getProducts/{params?}', 'FilterController@findProducts');
 
 
 

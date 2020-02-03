@@ -12,14 +12,12 @@ class FilterController extends Controller
 
   //de valor siempre se usa value_es!!!!
 
-  public function findProducts(Request $request)
+  public function findProducts($ctyId, $catId, $filterAtts=false)
   {
-    // return response()->json([
-    //   'mandaste'=>$request->filterAtts
-    // ]);
+    
     //Info principal - Products en country y category
-    $cat=Category::find($request->category);
-    $prods = $cat->productsInCountry($request->country);
+    $cat=Category::find($catId);
+    $prods = $cat->productsInCountry($ctyId);
     // return response()->json([
     //   'products'=>$prods->with('files', 'attributes.attribute')->get()
     // ]);
@@ -27,8 +25,8 @@ class FilterController extends Controller
     //Arma data para menu builder ORIGINAL
     $productAtts=$this->plucker($prods);
     // Hace el query para buscar productos que cumplan con attributes
-    if ($request->filterAtts) {
-      foreach (json_decode($request->filterAtts, TRUE) as $key => $value) {
+    if ($filterAtts) {
+      foreach (json_decode($filterAtts, TRUE) as $key => $value) {
         if ($value != 'null') {
           $prods = $prods->whereHas('attributes', function($q) use($key, $value){
             $q->where('attribute_id', '=', $key)->where('value_es', '=', $value);

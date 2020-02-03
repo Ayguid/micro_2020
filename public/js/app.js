@@ -2595,14 +2595,27 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.isLoading = true;
-      axios.get('api/getProducts/' + this.country.id + '/' + this.category.id + '/' + this.filterAtts + '/' + '?page=' + this.currentPage).then(function (response) {
+      axios.get('api/getProducts', {
+        params: {
+          country: this.country.id,
+          category: this.category.id,
+          filterAtts: this.filterAtts
+        }
+      }).then(function (response) {
         console.log(response);
         _this.menuData = response.data.menuData;
         _this.products = response.data.products.data;
         _this.perPage = response.data.products.per_page;
         _this.totalRows = response.data.products.total;
         _this.isLoading = false;
-      });
+      }); // axios.get('api/getProducts/'+this.country.id+'/'+this.category.id+'/'+this.filterAtts+'/'+'?page='+this.currentPage).then((response) => {
+      //   console.log(response);
+      //   this.menuData=response.data.menuData;
+      //   this.products = response.data.products.data;
+      //   this.perPage = response.data.products.per_page;
+      //   this.totalRows = response.data.products.total;
+      //   this.isLoading = false;
+      // });
     },
     changePage: function changePage(value) {
       this.currentPage = value;
@@ -72583,13 +72596,13 @@ var render = function() {
     [
       _c("p", { staticClass: "mt-2 mb-2" }, [
         _vm._v(
-          "\n    " +
+          "\n      " +
             _vm._s(
               _vm.category.get_top_categories["title_" + _vm.$root.local]
                 ? _vm.category.get_top_categories["title_" + _vm.$root.local]
                 : _vm.category.get_top_categories["title_es"]
             ) +
-            " -->\n    " +
+            " -->\n      " +
             _vm._s(
               _vm.category["title_" + _vm.$root.local]
                 ? _vm.category["title_" + _vm.$root.local]
