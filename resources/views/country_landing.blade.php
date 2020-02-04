@@ -40,7 +40,9 @@
         </product-component>
         @endforeach
       </div>
-
+      <div class="d-flex justify-content-around">
+        {{ $data['products']->appends(request()->except('page'))->links() }}
+      </div>
     @endisset
 
 

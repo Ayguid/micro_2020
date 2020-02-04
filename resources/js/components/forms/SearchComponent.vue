@@ -52,7 +52,7 @@
 
       },
       mounted() {
-        console.log(this.consulturl);
+        // console.log(this.consulturl);
       }
     }
 </script>

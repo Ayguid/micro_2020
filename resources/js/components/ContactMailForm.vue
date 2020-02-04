@@ -4,7 +4,7 @@
 
 <!-- {{data}} -->
     <form class="" action="index.html" method="post" @submit="sendMail">
-      <p>{{this.title}}</p>
+      <p>{{$t(this.title)}}</p>
 
     <div class="row">
         <div class="col-6">
@@ -36,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <label for="email">Consultas adicionales</label><br>
+        <label for="email">{{$t('Consultas adicionales')}}</label><br>
         <textarea name="textArea" rows="6" ></textarea>
       </div>
       <input type="submit" class="btn btn-primary" name="Enviar" value="Enviar" >
