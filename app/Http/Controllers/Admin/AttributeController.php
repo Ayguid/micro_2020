@@ -19,14 +19,14 @@ class AttributeController extends Controller
   }
 
 
-  // public function addAttribute(Request $request)
-  // {
-  // return DB::transaction(function () use ($request) {
-  //   $att= new Attribute($request->all());
-  //   $att->save();
-  //   return redirect()->back();
-  //   });
-  // }
+  public function addAttribute(Request $request)
+  {
+  return DB::transaction(function () use ($request) {
+    $att= new Attribute($request->all());
+    $att->save();
+    return redirect()->back();
+    });
+  }
 
 
 

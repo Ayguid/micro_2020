@@ -2545,8 +2545,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['product'],
+  props: ['product', 'can_edit', 'can_edit_route'],
   data: function data() {
     return {
       files: this.$sortFilesByType(this.product.files)
@@ -2557,8 +2558,7 @@ __webpack_require__.r(__webpack_exports__);
     if (this.product.has_cad_3d) {
       // window.location.hash=this.$root.baseUrl+'/storage/stls/'+this.files.stls[0].file_path;
       window.hash = this.$root.baseUrl + '/storage/stls/' + this.files.stls[0].file_path;
-    } // console.log(this.product);
-
+    }
   }
 });
 
@@ -78743,6 +78743,17 @@ var render = function() {
     "div",
     {},
     [
+      _vm.can_edit
+        ? _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: _vm.can_edit_route }
+            },
+            [_vm._v("Edit product")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
         "b-tabs",
         { attrs: { "content-class": "mt-3" } },
@@ -79069,7 +79080,7 @@ var render = function() {
                       )
                     : _c("div", {}, [
                         _vm._v(
-                          "\n            Por Favor Login/Registrate para poder descargar los archivos.\n          "
+                          "\n              Por Favor Login/Registrate para poder descargar los archivos.\n            "
                         )
                       ])
                 ])
@@ -91584,7 +91595,7 @@ var app = new Vue({
     };
   },
   mounted: function mounted() {
-    console.log("Welcome tu MICRO, curious you!");
+    console.log("Welcome tu MICRO, curious you!"); // console.log(this.authuser);
   }
 });
 

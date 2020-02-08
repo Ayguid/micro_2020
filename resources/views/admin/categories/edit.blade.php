@@ -4,8 +4,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
+
+        <a class="btn btn-primary" href="{{route('admin.cats.show', $category->id)}}">{{$category->title_es}}</a>
         <div class="card">
-          <div class="card-header">User: </div>
+          <div class="card-header">Categoria: </div>
 
           <div class="card-body">
             @if (session('status'))

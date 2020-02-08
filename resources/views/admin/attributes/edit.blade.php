@@ -52,9 +52,7 @@
                   <label for="">Filterable</label>
                   <input  hidden value="" name="filterable">
                   <input  class="form-control" type="checkbox" {{($data['attribute']->filterable)? 'checked':''}} value="1" name="filterable">
-                  <label for="">Translatable</label>
-                  <input  hidden value="" name="translatable">
-                  <input  class="form-control" type="checkbox" {{($data['attribute']->translatable)? 'checked':''}} value="1" name="translatable">
+
 
                   <input class="form-control" type="number" name="category_id" value="{{$data['attribute']->category_id}}" hidden>
                   <input class="form-control" type="number" name="attribute_id" value="{{$data['attribute']->id}}" hidden>

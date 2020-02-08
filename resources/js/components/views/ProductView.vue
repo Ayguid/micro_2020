@@ -1,6 +1,7 @@
 <template>
   <div class="">
 
+    <a v-if="can_edit" :href='can_edit_route' class="btn btn-primary">Edit product</a>
     <!-- {{product.files}} -->
 
     <b-tabs content-class="mt-3">
@@ -108,14 +109,14 @@
           <h4 class="pt-3">Zips's</h4>
           <div v-if="product.has_zip" class="">
             <div v-if="$root.authuser" class="">
-            <div v-for="zip in files.zips" class="">
-              <a target="_blank" class="btn" role="button" :href="$root.baseUrl+'/storage/zips/'+zip.file_path" >
-                <i class="far fa-file-archive bigIcon"></i>{{zip.file_path}}</a>
+              <div v-for="zip in files.zips" class="">
+                <a target="_blank" class="btn" role="button" :href="$root.baseUrl+'/storage/zips/'+zip.file_path" >
+                  <i class="far fa-file-archive bigIcon"></i>{{zip.file_path}}</a>
+                </div>
               </div>
-            </div>
-            <div v-else class="">
-              Por Favor Login/Registrate para poder descargar los archivos.
-            </div>
+              <div v-else class="">
+                Por Favor Login/Registrate para poder descargar los archivos.
+              </div>
             </div>
             <div v-else class="">
               <p>  No Contiene archivos Zip.</p>
@@ -142,7 +143,7 @@
 
     <script>
     export default {
-      props:['product'],
+      props:['product', 'can_edit', 'can_edit_route'],
       data(){
         return  {
           files:this.$sortFilesByType(this.product.files)
@@ -156,7 +157,6 @@
           // window.location.hash=this.$root.baseUrl+'/storage/stls/'+this.files.stls[0].file_path;
           window.hash=this.$root.baseUrl+'/storage/stls/'+this.files.stls[0].file_path;
         }
-        // console.log(this.product);
       }
     }
     </script>

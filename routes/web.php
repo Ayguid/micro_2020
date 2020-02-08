@@ -66,9 +66,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::post('/cats/update/{id}', 'Admin\CategoryController@update')->name('admin.cats.update');
     Route::post('/cats/store', 'Admin\CategoryController@store')->name('admin.cats.store');
 
-
+    Route::post('/atts/add', 'Admin\AttributeController@addAttribute')->name('addAttribute');
     Route::get('/atts/edit/{id}', 'Admin\AttributeController@edit')->name('admin.atts.edit');
     Route::post('/atts/update/', 'Admin\AttributeController@update')->name('admin.atts.update');
+    Route::delete('/atts/delete/{att}', 'Admin\AttributeController@destroy')->name('deleteAttribute');
     });
 
 

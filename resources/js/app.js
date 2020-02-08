@@ -77,5 +77,6 @@ const app = new Vue({
   },
   mounted(){
     console.log("Welcome tu MICRO, curious you!");
+    // console.log(this.authuser);
   }
 });

@@ -80,7 +80,7 @@ class ProductController extends Controller
               $prodAtt= new Product_Attribute();
               $prodAtt->product_id = $prod->id;
               $prodAtt->attribute_id = $keyAtt;
-              $prodAtt->value = $valueAtt;
+              $prodAtt->value_es = $valueAtt;
               $save = $prodAtt->save();
             }
           }
@@ -131,6 +131,7 @@ class ProductController extends Controller
     $original_cat= $parents[$parents->count()-1];
     $data = [
       'product'=>$product,
+      'category'=>$cat,
       'original_cat'=>$original_cat
     ];
     return view('admin.products.edit')->with('data', $data);

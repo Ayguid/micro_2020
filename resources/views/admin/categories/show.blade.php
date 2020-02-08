@@ -1,12 +1,33 @@
 @extends('layouts.app')
 
+@php
+$category = $data['category'];
+$lang=App::getLocale();
+@endphp
 @section('content')
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
+
+        @if (!$category->parent_id)
+          <a href="{{route('admin.cats')}}" class="btn btn-primary col-2">Categories</a>
+        @else
+          <a class="btn btn-primary col-2" href="{{route('admin.cats.show', $category->parent_id)}}">{{$category->father()->first()->title_es}}</a>
+        @endif
+
         <div class="card">
 
-          <div class="card-header">Cat</div>
+          <div class="card-header">Categoria :
+
+            <h3>
+              {{$category->title_es}}
+              @role('superadmin')
+              <a href="{{route('admin.cats.edit', $category->id)}}" class=""><img src="{{asset('/icons/edit_icon.svg')}}" alt="" width="30px"></a>
+              @endrole
+            </h3>
+
+
+          </div>
 
           <div class="card-body">
             @if (session('status'))
@@ -16,33 +37,8 @@
             @endif
 
 
-            @php
-            $category = $data['category'];
-            $lang=App::getLocale();
-            @endphp
 
             @isset($category)
-              @if ($category->parent_id)
-                <a class="" href="{{route('admin.cats.show', $category->parent_id)}}">{{$category->father()->first()->title_es}}</a>
-              @endif
-
-
-
-              <div class="row">
-                <div class="col-4 mt-2">
-                  <div class="d-flex justify-content-start">
-
-                    <h3 >{{$category->title_es}}</h3>
-                    @role('superadmin')
-                    <a href="{{route('admin.cats.edit', $category->id)}}" class=""><img src="{{asset('/icons/edit_icon.svg')}}" alt="" width="30px"></a>
-                    {{-- <a href="#" class=""><img src="{{asset('/icons/edit_icon.svg')}}" alt="" width="30px"></a> --}}
-                    @endrole
-                  </div>
-                </div>
-
-              </div>
-
-
 
               @if (!$category->parent_id)
                 <h4 class="mt-2 text-center">Atributos</h4>
@@ -55,7 +51,7 @@
                         @if (auth()->user()->hasRole('superadmin'))
                           <a class="text-white" href="{{route('admin.atts.edit',$attr->id)}}">{{$attr-> {'name_' . $lang} ?? $attr->name_es}}</a>
                         @else
-                         <span class="text-white">  {{$attr-> {'name_' . $lang} ?? $attr->name_es}}</span>
+                          <span class="text-white">  {{$attr-> {'name_' . $lang} ?? $attr->name_es}}</span>
                         @endif
                         @if ($attr->filterable)
                           <img src="{{asset('icons/lens_icon.svg')}}" alt="">
@@ -149,7 +145,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse "aria-labelledby="headingTwo" data-parent="#accordion2">
                       <div class="card-body">
-                        {{-- @include('admin.forms.add-attribute-form') --}}
+                        @include('admin.forms.add-attribute-form')
                       </div>
                     </div>
                   </div>
@@ -181,62 +177,62 @@
 
 
 
-                <div class="row">
+              <div class="row">
                 @foreach ($data['products'] as $prod)
 
                   {{-- @role('superadmin')
                   <a href="{{route('admin.prods.edit', $prod->id)}}">Edit</a>
                   @endrole --}}
 
-                    {{-- <div class="col-3">
+                  {{-- <div class="col-3">
 
 
-                      @if ($prod->has_image)
-                        @foreach ($prod->orderedFiles('img') as $img)
-                          <img class="productPic" width="100%" src="{{asset('storage/product_images/'.$img->file_path)}}" alt="">
-                        @endforeach
-
-                      @else
-                        <img class="productPic" width="100%" src="{{asset('images/default.jpeg')}}" alt="">
-                      @endif
-                    </div>
-
-                    <div class="col-9">
-                      <h3>{{$prod->product_code}}</h3>
-                      <h4>{{$prod->title_es}}</h4>
-                    </div> --}}
-
-                    <product-component class="col-6"
-                    :product='{!! json_encode($prod) !!}'
-                    :product_route_view='{!! json_encode(route('admin.prods.edit', $prod->id)) !!}'
-                    :cat_route='{!! json_encode(route('getCategoryData', $prod->category)) !!}'>
-                    </product-component>
-
-
-
-
+                  @if ($prod->has_image)
+                  @foreach ($prod->orderedFiles('img') as $img)
+                  <img class="productPic" width="100%" src="{{asset('storage/product_images/'.$img->file_path)}}" alt="">
                 @endforeach
 
-              </div>
-                {{$data['products']->links() }}
-
-
-
-
-
-
-
-
-
-
-            @endisset
-
-
-
-
+              @else
+              <img class="productPic" width="100%" src="{{asset('images/default.jpeg')}}" alt="">
+            @endif
           </div>
-        </div>
-      </div>
-    </div>
+
+          <div class="col-9">
+          <h3>{{$prod->product_code}}</h3>
+          <h4>{{$prod->title_es}}</h4>
+        </div> --}}
+
+        <product-component class="col-6"
+        :product='{!! json_encode($prod) !!}'
+        :product_route_view='{!! json_encode(route('showProduct', $prod->id)) !!}'
+        :cat_route='{!! json_encode(route('getCategoryData', $prod->category)) !!}'>
+      </product-component>
+
+
+
+
+    @endforeach
+
   </div>
+  {{$data['products']->links() }}
+
+
+
+
+
+
+
+
+
+
+@endisset
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
