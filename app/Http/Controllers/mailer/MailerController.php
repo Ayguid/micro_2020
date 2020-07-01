@@ -27,31 +27,31 @@ class MailerController extends Controller
     $product = $request->product;
     $text = $request->textArea;
     $defaultEmail = 'microSA@micro.com';
-
+    //return $request;
     $validator = Validator::make($request->all(), [
       'from' => 'required',
     ]);
-
+    //
     switch ($to) {
       case 'Comercial':
-        $admins = Admin::where('country_id', $country->id)->where('contactable', '1')->where('job_title', $to)
-        ->select('email')->get();
+        // $admins = Admin::where('country_id', $country->id)->where('contactable', '1')->where('job_title', $to)
+        // ->select('email')->get();
         break;
       case 'Ingenieria':
-      $admins = Admin::where('country_id', '1')->where('job_title', $to)
-      ->select('email')->get();
+      // $admins = Admin::where('country_id', '1')->where('job_title', $to)
+      // ->select('email')->get();
         break;
       default:
         break;
     }
-
-
+    //
+    //
     if (!$validator->fails()) {
-      Mail::to($admins)
-      ->send(new MailConsulta($admins, $from, $product, $text, 'micro'));//para micro
-
-      Mail::to($from)
-      ->send(new MailConsulta($from, $defaultEmail, $product, $text, 'user'));//para usuario
+      // Mail::to($admins)
+      // ->send(new MailConsulta($admins, $from, $product, $text, 'micro'));//para micro
+      //
+      // Mail::to($from)
+      // ->send(new MailConsulta($from, $defaultEmail, $product, $text, 'user'));//para usuario
 
       return response()->json([
         'status' => 'ok',

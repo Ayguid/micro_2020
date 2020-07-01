@@ -71,29 +71,38 @@
                     </div>
 
 
+                    <br>
 
+                    <div class="form-group row">
+                      <label for="role" class="col-md-4 col-form-label text-md-right"></label>
 
-                    {{-- <div class="form-group row">
-                      <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                      <div class="col-md-6 ">
+                        <table class="table">
+                          <tr>
+                            <th scope="col">Country</th>
+                              @foreach ($data['job_titles'] as $title)
+                                <th scope="col">{{$title->name}}</th>
+                              @endforeach
+                          </tr>
 
-                      <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                          @error('password')
-                            <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                            </span>
-                          @enderror
+                            @foreach ($data['countries'] as $country)
+                              <tr>
+                              {{-- <input  type="checkbox" class="m-2 form-control @error('country') is-invalid @enderror" name="country[]" value="{{$country->id}}" >{{$country->country_desc}}<br> --}}
+                              <th scope="row">{{$country->country_desc}}</th>
+                                @foreach ($data['job_titles'] as $title)
+                                  {{-- {{$data['user']->hasTitle($country->id, $title->id)}} --}}
+                                  <td><input  {{$data['user']->hasTitle($country->id, $title->id)?'checked':''}}  type="checkbox" class="m-2 form-control @error('job_title') is-invalid @enderror" name="job_title[]" value='{{$country->id.','.$title->id}}' ></td>
+                                @endforeach
+                              </tr>
+                              @endforeach
+                        </table>
                         </div>
+
                       </div>
 
-                      <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                        <div class="col-md-6">
-                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                      </div> --}}
+
+                      <br>
 
                       <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">

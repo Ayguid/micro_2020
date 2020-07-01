@@ -36,12 +36,12 @@
             @endrole
             <br>
 
-            <h3>Users</h3>
+            {{-- <h3>Users</h3>
             @foreach ($data['users'] as $user)
               name:
               <a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a>
               <br>
-            @endforeach
+            @endforeach --}}
 
           </div>
         </div>

@@ -53,10 +53,10 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                    <label for="role" class="col-md-4 col-form-label text-md-right"> <strong>{{ __('Role') }}</strong> </label>
 
                     <div class="col-md-6 ">
-                        
+
                         @foreach ($data['roles'] as $role)
                           <input  type="checkbox" class="m-2 form-control @error('role') is-invalid @enderror" name="role[]" value="{{$role->name}}" >{{$role->name}}<br>
                           @endforeach
@@ -70,7 +70,36 @@
                       </div>
                     </div>
 
+                    <br>
 
+                    <div class="form-group row">
+                      <label for="role" class="col-md-4 col-form-label text-md-right"></label>
+
+                      <div class="col-md-6 ">
+                        <table class="table">
+                          <tr>
+                            <th scope="col">Country</th>
+                              @foreach ($data['job_titles'] as $title)
+                                <th scope="col">{{$title->name}}</th>
+                              @endforeach
+                          </tr>
+
+                            @foreach ($data['countries'] as $country)
+                              <tr>
+                              {{-- <input  type="checkbox" class="m-2 form-control @error('country') is-invalid @enderror" name="country[]" value="{{$country->id}}" >{{$country->country_desc}}<br> --}}
+                              <th scope="row">{{$country->country_desc}}</th>
+                                @foreach ($data['job_titles'] as $title)
+                                  <td><input  type="checkbox" class="m-2 form-control @error('job_title') is-invalid @enderror" name="job_title[]" value='{{$country->id.','.$title->id}}' ></td>
+                                @endforeach
+                              </tr>
+                              @endforeach
+                        </table>
+                        </div>
+                      </div>
+
+
+
+                      <br>
 
 
                     <div class="form-group row">

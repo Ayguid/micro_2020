@@ -84,7 +84,7 @@ export default {
   props: ['product', 'to', 'images', 'title', 'modal'],
   data(){
     return  {
-      contactUrl:this.$root.local+'/send-mail',
+      contactUrl:'/send-mail',
       isLoading: false,
       fullPage: true,
       user:this.$root.authuser
