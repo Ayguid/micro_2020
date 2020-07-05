@@ -22,6 +22,7 @@ Auth::routes();
 
 //grl stuff
 Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
+// Route::get('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
 
 
 

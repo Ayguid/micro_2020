@@ -20,20 +20,31 @@
               <div class="alert alert-danger"><i class="fa fa-times" aria-hidden="true"></i> <strong>{!! session('alert-danger') !!}</strong></div>
             @endif
 
-            
+
             <h2>{{$data['role']->name}}</h2>
-            <form >
+            <form method="POST" action="{{route('admin.roles.update', $data['role']->id)}}">
+              @csrf
               <div class="form-group form-check">
                 @foreach ($data['permissions'] as $permission)
-                  <input disabled {{$data['role']->hasPermissionTo($permission->name)?'checked':''}} name="permissions[]" type="checkbox" class="form-check-input" id="exampleCheck1" value="{{$permission->id}}">
+                  <input {{!$data['edit']?'disabled':''}} {{$data['role']->hasPermissionTo($permission->name)?'checked':''}} name="permissions[]" type="checkbox" class="form-check-input" id="exampleCheck1" value="{{$permission->id}}">
                   <label class="form-check-label" for="permissions">  {{$permission->name}}</label><br>
                 @endforeach
               </div>
+              
+              @if ($data['edit'])
+              <div class="form-group row mb-0">
+                <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary">
+                    {{ __('Save') }}
+                  </button>
+                </div>
+              </div>
+            @endif
             </form>
 
-
+            @if (!$data['edit'])
             <a class="btn btn-primary" href="{{route('admin.roles.edit', $data['role']->id)}}">Edit</a>
-
+          @endif
           </div>
         </div>
       </div>

@@ -66,11 +66,6 @@ class UserController extends Controller
   public function store(Request $request)
   {
 
-
-    // var_dump(json_decode($request['job_title'], true));
-    //dd($request['job_title']);
-
-    //
     return DB::transaction(function () use ($request) {
 
       $validator =  Validator::make($request->all(), [
@@ -107,14 +102,9 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function show($id)
-  {
-    //
-    $data = [
-      'roles'=> Role::all(),
-      'user'=>User::find($id),
-      'job_titles'=>Job_Title::all(),
-      'countries' =>Country::all()
-    ];
+  { //se repite con edit por mambos de middleware, revisar podria ser el mismo metodo
+    $data = $this->buildData($id);
+    $data['edit'] = false;
     return view('admin.users.show')->with('data', $data);
   }
 
@@ -125,14 +115,10 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function edit($id)
-  {
-    $data = [
-      'roles'=> Role::all(),
-      'user'=>User::find($id),
-      'job_titles'=>Job_Title::all(),
-      'countries' =>Country::all()
-    ];
-    return view('admin.users.edit')->with('data', $data);
+  { //se repite con show por mambos de middleware, revisar podria ser el mismo metodo
+    $data = $this->buildData($id);
+    $data['edit'] = true;
+    return view('admin.users.show')->with('data', $data);
   }
 
   /**
@@ -153,14 +139,14 @@ class UserController extends Controller
 
     if (!$validator->fails()) {
       return DB::transaction(function () use ($request, $user) {
-      $user->update($request->all());
-      if ($user) {
-        $this->buildTitles($request['job_title'], $user);
-        $user->syncRoles([$request['role']]);
-        $request->session()->flash('alert-success', 'Agregaste con exito!');
-        return redirect()->back();//en vez de back deberia ir al recurso agregado
-      }
-    });
+        $user->update($request->all());
+        if ($user) {
+          $this->buildTitles($request['job_title'], $user);
+          $user->syncRoles([$request['role']]);
+          $request->session()->flash('alert-success', 'Agregaste con exito!');
+          return redirect()->back();//en vez de back deberia ir al recurso agregado
+        }
+      });
     }else {
       $request->session()->flash('alert-danger', $validator->errors());
       return redirect()->back()->withInput($request->all())->withErrors($validator);
@@ -188,15 +174,28 @@ class UserController extends Controller
   public function buildTitles($titlesArray, &$user)
   { //ayuda a asignarle job titles al user
     if($user->titles())$user->titles->each->delete();//emprolijar, validar mejor
-    foreach ($titlesArray as $key=> $userTitle) {
-      $t = explode(",", $userTitle);
-      $userJobTitle = new User_Title();
-      $userJobTitle->user_id = $user->id;
-      $userJobTitle->country_id = $t[0];
-      $userJobTitle->title_id = $t[1];
-      $userJobTitle->contactable = false;
-      $userJobTitle->save();
+    if ($titlesArray) {
+      foreach ($titlesArray as $key=> $userTitle) {
+        $t = explode(",", $userTitle);
+        $userJobTitle = new User_Title();
+        $userJobTitle->user_id = $user->id;
+        $userJobTitle->country_id = $t[0];
+        $userJobTitle->title_id = $t[1];
+        $userJobTitle->contactable = false;
+        $userJobTitle->save();
+      }
     }
+  }
+
+
+  public function buildData($id)
+  {
+    return [
+      'roles' => Role::all(),
+      'user' => User::find($id),
+      'job_titles' => Job_Title::all(),
+      'countries' => Country::all(),
+    ];
   }
 
 }

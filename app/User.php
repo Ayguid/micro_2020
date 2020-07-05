@@ -49,4 +49,5 @@ class User extends Authenticatable
     {
       return $this->titles->where('country_id', $ctyId)->where('title_id', $titleId)->count()>0;
     }
+    
 }

@@ -19,7 +19,7 @@ class RoleController extends Controller
       // $permission = Permission::create(['name' => 'create users']);
       // $permission = Permission::create(['name' => 'edit users']);
       // $permissions = Permission::create(['name' => 'delete users']);
-      
+
         $data =[
             'roles'=> Role::all(),
         ];
@@ -57,13 +57,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::find($id);
-        $permissions = Permission::all();
-        // dd($role->getAllPermissions());
-        $data = [
-          'role'=>$role,
-          'permissions'=>$permissions
-        ];
+        $data = $this->buildData($id);
+        $data['edit'] = false;
         return view('admin.roles.show')->with('data', $data);
     }
 
@@ -75,14 +70,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-      $role = Role::find($id);
-      $permissions = Permission::all();
-      // dd($role->getAllPermissions());
-      $data = [
-        'role'=>$role,
-        'permissions'=>$permissions
-      ];
-      return view('admin.roles.edit')->with('data', $data);
+      //se repite con el de arriba por mambos de middleware, revisar podria ser el mismo metodo
+      $data = $this->buildData($id);
+      $data['edit'] = true;
+      return view('admin.roles.show')->with('data', $data);
     }
 
     /**
@@ -113,4 +104,15 @@ class RoleController extends Controller
     {
         //
     }
+
+
+    //helpers
+    public function buildData($id)
+    {
+      return [
+        'role'=>Role::find($id),
+        'permissions'=>Permission::all()
+      ];
+    }
+
 }

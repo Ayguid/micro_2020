@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Admin;
+//use App\Admin;
 use Illuminate\Support\Facades\Validator;
-
+use App\User;
+use App\Models440\User_Title;
+use DB;
 
 class MailerController extends Controller
 {
@@ -27,34 +29,35 @@ class MailerController extends Controller
     $product = $request->product;
     $text = $request->textArea;
     $defaultEmail = 'microSA@micro.com';
-    //return $request;
-    $validator = Validator::make($request->all(), [
-      'from' => 'required',
-    ]);
-    //
-    switch ($to) {
-      case 'Comercial':
-        // $admins = Admin::where('country_id', $country->id)->where('contactable', '1')->where('job_title', $to)
-        // ->select('email')->get();
-        break;
+    $title=0;
+
+    switch ($to) {//titles
       case 'Ingenieria':
-      // $admins = Admin::where('country_id', '1')->where('job_title', $to)
-      // ->select('email')->get();
+        $title = 1;
+        break;
+      case 'Comercial':
+        $title = 2;
         break;
       default:
         break;
     }
-    //
-    //
+
+    $titles = User_Title::where('country_id', "=", $country->id)->where('title_id', '=', $title)->pluck('user_id');
+    $users = DB::table('users')->whereIn('id', $titles)->get();
+
+    $validator = Validator::make($request->all(), [
+      'from' => 'required',
+    ]);
+
     if (!$validator->fails()) {
-      // Mail::to($admins)
-      // ->send(new MailConsulta($admins, $from, $product, $text, 'micro'));//para micro
-      //
-      // Mail::to($from)
-      // ->send(new MailConsulta($from, $defaultEmail, $product, $text, 'user'));//para usuario
+      Mail::to($users)
+      ->send(new MailConsulta($users, $from, $product, $text, 'micro'));//para micro
+
+      Mail::to($from)
+      ->send(new MailConsulta($from, $defaultEmail, $product, $text, 'user'));//para usuario
 
       return response()->json([
-        'status' => 'ok',
+        'status' => $request,
         'message'=>\Lang::get('messages.email_sent')
       ]);
     }

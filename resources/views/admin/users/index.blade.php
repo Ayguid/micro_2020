@@ -16,10 +16,9 @@
 
 
             @role('superadmin')
-            <a href="{{route('admin.users.create')}}">Add User</a>
+            <a class="btn btn-primary mb-2" href="{{route('admin.users.create')}}">Add User</a>
             <h3>Super Admins</h3>
             @foreach ($data['superadmins'] as $user)
-              name:
               <a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a>
               <br>
             @endforeach
@@ -29,19 +28,17 @@
             @role('superadmin|admin')
             <h3>Admins</h3>
             @foreach ($data['admins'] as $user)
-              name:
               <a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a>
               <br>
             @endforeach
             @endrole
             <br>
 
-            {{-- <h3>Users</h3>
+            <h3>Users</h3>
             @foreach ($data['users'] as $user)
-              name:
               <a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a>
               <br>
-            @endforeach --}}
+            @endforeach
 
           </div>
         </div>
