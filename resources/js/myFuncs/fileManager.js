@@ -31,7 +31,13 @@ export default {
         }
         return files;
       },
-
+      $fileExists : function (file_url){
+      var http = new XMLHttpRequest();
+      http.open('HEAD', file_url, false);
+      http.send();
+      console.log(http.status);
+      return http.status != 404;
+      }
 
 
     },

@@ -31,7 +31,8 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">
-     <a class="navbar-brand" href="{{ route('countryLanding', session('country')->country_shortcode)}}">
+
+     <a class="navbar-brand" href="{{ route('countryLanding')}}">
         {{-- {{ config('app.name', 'Laravel') }} --}}
         @switch(config('app.locale'))
           @case('pt')

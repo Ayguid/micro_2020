@@ -2023,7 +2023,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
 
-        if (response.data.status == "ok") {
+        if (response.statusText == "OK") {
           _this.$swal(response.data.message);
 
           _this.$bvModal.hide(_this.modal);
@@ -2318,19 +2318,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product', 'product_route_view', 'admin_route_view', 'cat_route'],
   data: function data() {
     return {
-      images: this.$sortFilesByType(this.product.files).images
+      files: this.$sortFilesByType(this.product.files)
     };
   },
   components: {},
   methods: {// emitProduct:function(){
     //   this.$emit('product-emit');
+    // },
+    // imageExists : function (image_url){
+    // var http = new XMLHttpRequest();
+    // http.open('HEAD', image_url, false);
+    // http.send();
+    // console.log(http.status);
+    // return http.status != 404;
     // }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {//console.log(this.files);
+  }
 });
 
 /***/ }),
@@ -2404,6 +2419,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2658,7 +2674,7 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: true,
       fullPage: true,
       currentProduct: '',
-      product_route_view: this.$root.baseUrl + '/prod/'
+      product_route_view: this.$root.baseUrl + '/' + this.$root.local + '/prod/'
     };
   },
   components: {
@@ -76114,6 +76130,3196 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+* sweetalert2 v9.17.0
+* Released under the MIT License.
+*/
+(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+}(this, function () { 'use strict';
+
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+  }
+
+  function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+      return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
+
+  function _isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function _construct(Parent, args, Class) {
+    if (_isNativeReflectConstruct()) {
+      _construct = Reflect.construct;
+    } else {
+      _construct = function _construct(Parent, args, Class) {
+        var a = [null];
+        a.push.apply(a, args);
+        var Constructor = Function.bind.apply(Parent, a);
+        var instance = new Constructor();
+        if (Class) _setPrototypeOf(instance, Class.prototype);
+        return instance;
+      };
+    }
+
+    return _construct.apply(null, arguments);
+  }
+
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return self;
+  }
+
+  function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) {
+      return call;
+    }
+
+    return _assertThisInitialized(self);
+  }
+
+  function _createSuper(Derived) {
+    var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+    return function _createSuperInternal() {
+      var Super = _getPrototypeOf(Derived),
+          result;
+
+      if (hasNativeReflectConstruct) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+
+      return _possibleConstructorReturn(this, result);
+    };
+  }
+
+  function _superPropBase(object, property) {
+    while (!Object.prototype.hasOwnProperty.call(object, property)) {
+      object = _getPrototypeOf(object);
+      if (object === null) break;
+    }
+
+    return object;
+  }
+
+  function _get(target, property, receiver) {
+    if (typeof Reflect !== "undefined" && Reflect.get) {
+      _get = Reflect.get;
+    } else {
+      _get = function _get(target, property, receiver) {
+        var base = _superPropBase(target, property);
+
+        if (!base) return;
+        var desc = Object.getOwnPropertyDescriptor(base, property);
+
+        if (desc.get) {
+          return desc.get.call(receiver);
+        }
+
+        return desc.value;
+      };
+    }
+
+    return _get(target, property, receiver || target);
+  }
+
+  var consolePrefix = 'SweetAlert2:';
+  /**
+   * Filter the unique values into a new array
+   * @param arr
+   */
+
+  var uniqueArray = function uniqueArray(arr) {
+    var result = [];
+
+    for (var i = 0; i < arr.length; i++) {
+      if (result.indexOf(arr[i]) === -1) {
+        result.push(arr[i]);
+      }
+    }
+
+    return result;
+  };
+  /**
+   * Capitalize the first letter of a string
+   * @param str
+   */
+
+  var capitalizeFirstLetter = function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+  /**
+   * Returns the array of object values (Object.values isn't supported in IE11)
+   * @param obj
+   */
+
+  var objectValues = function objectValues(obj) {
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
+  };
+  /**
+   * Convert NodeList to Array
+   * @param nodeList
+   */
+
+  var toArray = function toArray(nodeList) {
+    return Array.prototype.slice.call(nodeList);
+  };
+  /**
+   * Standardise console warnings
+   * @param message
+   */
+
+  var warn = function warn(message) {
+    console.warn("".concat(consolePrefix, " ").concat(message));
+  };
+  /**
+   * Standardise console errors
+   * @param message
+   */
+
+  var error = function error(message) {
+    console.error("".concat(consolePrefix, " ").concat(message));
+  };
+  /**
+   * Private global state for `warnOnce`
+   * @type {Array}
+   * @private
+   */
+
+  var previousWarnOnceMessages = [];
+  /**
+   * Show a console warning, but only if it hasn't already been shown
+   * @param message
+   */
+
+  var warnOnce = function warnOnce(message) {
+    if (!(previousWarnOnceMessages.indexOf(message) !== -1)) {
+      previousWarnOnceMessages.push(message);
+      warn(message);
+    }
+  };
+  /**
+   * Show a one-time console warning about deprecated params/methods
+   */
+
+  var warnAboutDepreation = function warnAboutDepreation(deprecatedParam, useInstead) {
+    warnOnce("\"".concat(deprecatedParam, "\" is deprecated and will be removed in the next major release. Please use \"").concat(useInstead, "\" instead."));
+  };
+  /**
+   * If `arg` is a function, call it (with no arguments or context) and return the result.
+   * Otherwise, just pass the value through
+   * @param arg
+   */
+
+  var callIfFunction = function callIfFunction(arg) {
+    return typeof arg === 'function' ? arg() : arg;
+  };
+  var hasToPromiseFn = function hasToPromiseFn(arg) {
+    return arg && typeof arg.toPromise === 'function';
+  };
+  var asPromise = function asPromise(arg) {
+    return hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg);
+  };
+  var isPromise = function isPromise(arg) {
+    return arg && Promise.resolve(arg) === arg;
+  };
+
+  var DismissReason = Object.freeze({
+    cancel: 'cancel',
+    backdrop: 'backdrop',
+    close: 'close',
+    esc: 'esc',
+    timer: 'timer'
+  });
+
+  var isJqueryElement = function isJqueryElement(elem) {
+    return _typeof(elem) === 'object' && elem.jquery;
+  };
+
+  var isElement = function isElement(elem) {
+    return elem instanceof Element || isJqueryElement(elem);
+  };
+
+  var argsToParams = function argsToParams(args) {
+    var params = {};
+
+    if (_typeof(args[0]) === 'object' && !isElement(args[0])) {
+      _extends(params, args[0]);
+    } else {
+      ['title', 'html', 'icon'].forEach(function (name, index) {
+        var arg = args[index];
+
+        if (typeof arg === 'string' || isElement(arg)) {
+          params[name] = arg;
+        } else if (arg !== undefined) {
+          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(_typeof(arg)));
+        }
+      });
+    }
+
+    return params;
+  };
+
+  var swalPrefix = 'swal2-';
+  var prefix = function prefix(items) {
+    var result = {};
+
+    for (var i in items) {
+      result[items[i]] = swalPrefix + items[i];
+    }
+
+    return result;
+  };
+  var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'toast-column', 'show', 'hide', 'close', 'title', 'header', 'content', 'html-container', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error']);
+  var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+
+  var getContainer = function getContainer() {
+    return document.body.querySelector(".".concat(swalClasses.container));
+  };
+  var elementBySelector = function elementBySelector(selectorString) {
+    var container = getContainer();
+    return container ? container.querySelector(selectorString) : null;
+  };
+
+  var elementByClass = function elementByClass(className) {
+    return elementBySelector(".".concat(className));
+  };
+
+  var getPopup = function getPopup() {
+    return elementByClass(swalClasses.popup);
+  };
+  var getIcons = function getIcons() {
+    var popup = getPopup();
+    return toArray(popup.querySelectorAll(".".concat(swalClasses.icon)));
+  };
+  var getIcon = function getIcon() {
+    var visibleIcon = getIcons().filter(function (icon) {
+      return isVisible(icon);
+    });
+    return visibleIcon.length ? visibleIcon[0] : null;
+  };
+  var getTitle = function getTitle() {
+    return elementByClass(swalClasses.title);
+  };
+  var getContent = function getContent() {
+    return elementByClass(swalClasses.content);
+  };
+  var getHtmlContainer = function getHtmlContainer() {
+    return elementByClass(swalClasses['html-container']);
+  };
+  var getImage = function getImage() {
+    return elementByClass(swalClasses.image);
+  };
+  var getProgressSteps = function getProgressSteps() {
+    return elementByClass(swalClasses['progress-steps']);
+  };
+  var getValidationMessage = function getValidationMessage() {
+    return elementByClass(swalClasses['validation-message']);
+  };
+  var getConfirmButton = function getConfirmButton() {
+    return elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm));
+  };
+  var getCancelButton = function getCancelButton() {
+    return elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel));
+  };
+  var getActions = function getActions() {
+    return elementByClass(swalClasses.actions);
+  };
+  var getHeader = function getHeader() {
+    return elementByClass(swalClasses.header);
+  };
+  var getFooter = function getFooter() {
+    return elementByClass(swalClasses.footer);
+  };
+  var getTimerProgressBar = function getTimerProgressBar() {
+    return elementByClass(swalClasses['timer-progress-bar']);
+  };
+  var getCloseButton = function getCloseButton() {
+    return elementByClass(swalClasses.close);
+  }; // https://github.com/jkup/focusable/blob/master/index.js
+
+  var focusable = "\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex=\"0\"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n";
+  var getFocusableElements = function getFocusableElements() {
+    var focusableElementsWithTabindex = toArray(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')) // sort according to tabindex
+    .sort(function (a, b) {
+      a = parseInt(a.getAttribute('tabindex'));
+      b = parseInt(b.getAttribute('tabindex'));
+
+      if (a > b) {
+        return 1;
+      } else if (a < b) {
+        return -1;
+      }
+
+      return 0;
+    });
+    var otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(function (el) {
+      return el.getAttribute('tabindex') !== '-1';
+    });
+    return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(function (el) {
+      return isVisible(el);
+    });
+  };
+  var isModal = function isModal() {
+    return !isToast() && !document.body.classList.contains(swalClasses['no-backdrop']);
+  };
+  var isToast = function isToast() {
+    return document.body.classList.contains(swalClasses['toast-shown']);
+  };
+  var isLoading = function isLoading() {
+    return getPopup().hasAttribute('data-loading');
+  };
+
+  var states = {
+    previousBodyPadding: null
+  };
+  var setInnerHtml = function setInnerHtml(elem, html) {
+    // #1926
+    elem.textContent = '';
+
+    if (html) {
+      var parser = new DOMParser();
+      var parsed = parser.parseFromString(html, "text/html");
+      toArray(parsed.querySelector('head').childNodes).forEach(function (child) {
+        elem.appendChild(child);
+      });
+      toArray(parsed.querySelector('body').childNodes).forEach(function (child) {
+        elem.appendChild(child);
+      });
+    }
+  };
+  var hasClass = function hasClass(elem, className) {
+    if (!className) {
+      return false;
+    }
+
+    var classList = className.split(/\s+/);
+
+    for (var i = 0; i < classList.length; i++) {
+      if (!elem.classList.contains(classList[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  var removeCustomClasses = function removeCustomClasses(elem, params) {
+    toArray(elem.classList).forEach(function (className) {
+      if (!(objectValues(swalClasses).indexOf(className) !== -1) && !(objectValues(iconTypes).indexOf(className) !== -1) && !(objectValues(params.showClass).indexOf(className) !== -1)) {
+        elem.classList.remove(className);
+      }
+    });
+  };
+
+  var applyCustomClass = function applyCustomClass(elem, params, className) {
+    removeCustomClasses(elem, params);
+
+    if (params.customClass && params.customClass[className]) {
+      if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
+        return warn("Invalid type of customClass.".concat(className, "! Expected string or iterable object, got \"").concat(_typeof(params.customClass[className]), "\""));
+      }
+
+      addClass(elem, params.customClass[className]);
+    }
+  };
+  function getInput(content, inputType) {
+    if (!inputType) {
+      return null;
+    }
+
+    switch (inputType) {
+      case 'select':
+      case 'textarea':
+      case 'file':
+        return getChildByClass(content, swalClasses[inputType]);
+
+      case 'checkbox':
+        return content.querySelector(".".concat(swalClasses.checkbox, " input"));
+
+      case 'radio':
+        return content.querySelector(".".concat(swalClasses.radio, " input:checked")) || content.querySelector(".".concat(swalClasses.radio, " input:first-child"));
+
+      case 'range':
+        return content.querySelector(".".concat(swalClasses.range, " input"));
+
+      default:
+        return getChildByClass(content, swalClasses.input);
+    }
+  }
+  var focusInput = function focusInput(input) {
+    input.focus(); // place cursor at end of text in text input
+
+    if (input.type !== 'file') {
+      // http://stackoverflow.com/a/2345915
+      var val = input.value;
+      input.value = '';
+      input.value = val;
+    }
+  };
+  var toggleClass = function toggleClass(target, classList, condition) {
+    if (!target || !classList) {
+      return;
+    }
+
+    if (typeof classList === 'string') {
+      classList = classList.split(/\s+/).filter(Boolean);
+    }
+
+    classList.forEach(function (className) {
+      if (target.forEach) {
+        target.forEach(function (elem) {
+          condition ? elem.classList.add(className) : elem.classList.remove(className);
+        });
+      } else {
+        condition ? target.classList.add(className) : target.classList.remove(className);
+      }
+    });
+  };
+  var addClass = function addClass(target, classList) {
+    toggleClass(target, classList, true);
+  };
+  var removeClass = function removeClass(target, classList) {
+    toggleClass(target, classList, false);
+  };
+  var getChildByClass = function getChildByClass(elem, className) {
+    for (var i = 0; i < elem.childNodes.length; i++) {
+      if (hasClass(elem.childNodes[i], className)) {
+        return elem.childNodes[i];
+      }
+    }
+  };
+  var applyNumericalStyle = function applyNumericalStyle(elem, property, value) {
+    if (value || parseInt(value) === 0) {
+      elem.style[property] = typeof value === 'number' ? "".concat(value, "px") : value;
+    } else {
+      elem.style.removeProperty(property);
+    }
+  };
+  var show = function show(elem) {
+    var display = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'flex';
+    elem.style.opacity = '';
+    elem.style.display = display;
+  };
+  var hide = function hide(elem) {
+    elem.style.opacity = '';
+    elem.style.display = 'none';
+  };
+  var toggle = function toggle(elem, condition, display) {
+    condition ? show(elem, display) : hide(elem);
+  }; // borrowed from jquery $(elem).is(':visible') implementation
+
+  var isVisible = function isVisible(elem) {
+    return !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length));
+  };
+  /* istanbul ignore next */
+
+  var isScrollable = function isScrollable(elem) {
+    return !!(elem.scrollHeight > elem.clientHeight);
+  }; // borrowed from https://stackoverflow.com/a/46352119
+
+  var hasCssAnimation = function hasCssAnimation(elem) {
+    var style = window.getComputedStyle(elem);
+    var animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0');
+    var transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0');
+    return animDuration > 0 || transDuration > 0;
+  };
+  var contains = function contains(haystack, needle) {
+    if (typeof haystack.contains === 'function') {
+      return haystack.contains(needle);
+    }
+  };
+  var animateTimerProgressBar = function animateTimerProgressBar(timer) {
+    var reset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var timerProgressBar = getTimerProgressBar();
+
+    if (isVisible(timerProgressBar)) {
+      if (reset) {
+        timerProgressBar.style.transition = 'none';
+        timerProgressBar.style.width = '100%';
+      }
+
+      setTimeout(function () {
+        timerProgressBar.style.transition = "width ".concat(timer / 1000, "s linear");
+        timerProgressBar.style.width = '0%';
+      }, 10);
+    }
+  };
+  var stopTimerProgressBar = function stopTimerProgressBar() {
+    var timerProgressBar = getTimerProgressBar();
+    var timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    timerProgressBar.style.removeProperty('transition');
+    timerProgressBar.style.width = '100%';
+    var timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    var timerProgressBarPercent = parseInt(timerProgressBarWidth / timerProgressBarFullWidth * 100);
+    timerProgressBar.style.removeProperty('transition');
+    timerProgressBar.style.width = "".concat(timerProgressBarPercent, "%");
+  };
+
+  // Detect Node env
+  var isNodeEnv = function isNodeEnv() {
+    return typeof window === 'undefined' || typeof document === 'undefined';
+  };
+
+  var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\"></div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses['html-container'], "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\"></div>\n   <div class=\"").concat(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").concat(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
+
+  var resetOldContainer = function resetOldContainer() {
+    var oldContainer = getContainer();
+
+    if (!oldContainer) {
+      return false;
+    }
+
+    oldContainer.parentNode.removeChild(oldContainer);
+    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]);
+    return true;
+  };
+
+  var oldInputVal; // IE11 workaround, see #1109 for details
+
+  var resetValidationMessage = function resetValidationMessage(e) {
+    if (Swal.isVisible() && oldInputVal !== e.target.value) {
+      Swal.resetValidationMessage();
+    }
+
+    oldInputVal = e.target.value;
+  };
+
+  var addInputChangeListeners = function addInputChangeListeners() {
+    var content = getContent();
+    var input = getChildByClass(content, swalClasses.input);
+    var file = getChildByClass(content, swalClasses.file);
+    var range = content.querySelector(".".concat(swalClasses.range, " input"));
+    var rangeOutput = content.querySelector(".".concat(swalClasses.range, " output"));
+    var select = getChildByClass(content, swalClasses.select);
+    var checkbox = content.querySelector(".".concat(swalClasses.checkbox, " input"));
+    var textarea = getChildByClass(content, swalClasses.textarea);
+    input.oninput = resetValidationMessage;
+    file.onchange = resetValidationMessage;
+    select.onchange = resetValidationMessage;
+    checkbox.onchange = resetValidationMessage;
+    textarea.oninput = resetValidationMessage;
+
+    range.oninput = function (e) {
+      resetValidationMessage(e);
+      rangeOutput.value = range.value;
+    };
+
+    range.onchange = function (e) {
+      resetValidationMessage(e);
+      range.nextSibling.value = range.value;
+    };
+  };
+
+  var getTarget = function getTarget(target) {
+    return typeof target === 'string' ? document.querySelector(target) : target;
+  };
+
+  var setupAccessibility = function setupAccessibility(params) {
+    var popup = getPopup();
+    popup.setAttribute('role', params.toast ? 'alert' : 'dialog');
+    popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
+
+    if (!params.toast) {
+      popup.setAttribute('aria-modal', 'true');
+    }
+  };
+
+  var setupRTL = function setupRTL(targetElement) {
+    if (window.getComputedStyle(targetElement).direction === 'rtl') {
+      addClass(getContainer(), swalClasses.rtl);
+    }
+  };
+  /*
+   * Add modal + backdrop to DOM
+   */
+
+
+  var init = function init(params) {
+    // Clean up the old popup container if it exists
+    var oldContainerExisted = resetOldContainer();
+    /* istanbul ignore if */
+
+    if (isNodeEnv()) {
+      error('SweetAlert2 requires document to initialize');
+      return;
+    }
+
+    var container = document.createElement('div');
+    container.className = swalClasses.container;
+
+    if (oldContainerExisted) {
+      addClass(container, swalClasses['no-transition']);
+    }
+
+    setInnerHtml(container, sweetHTML);
+    var targetElement = getTarget(params.target);
+    targetElement.appendChild(container);
+    setupAccessibility(params);
+    setupRTL(targetElement);
+    addInputChangeListeners();
+  };
+
+  var parseHtmlToContainer = function parseHtmlToContainer(param, target) {
+    // DOM element
+    if (param instanceof HTMLElement) {
+      target.appendChild(param); // Object
+    } else if (_typeof(param) === 'object') {
+      handleObject(param, target); // Plain string
+    } else if (param) {
+      setInnerHtml(target, param);
+    }
+  };
+
+  var handleObject = function handleObject(param, target) {
+    // JQuery element(s)
+    if (param.jquery) {
+      handleJqueryElem(target, param); // For other objects use their string representation
+    } else {
+      setInnerHtml(target, param.toString());
+    }
+  };
+
+  var handleJqueryElem = function handleJqueryElem(target, elem) {
+    target.textContent = '';
+
+    if (0 in elem) {
+      for (var i = 0; (i in elem); i++) {
+        target.appendChild(elem[i].cloneNode(true));
+      }
+    } else {
+      target.appendChild(elem.cloneNode(true));
+    }
+  };
+
+  var animationEndEvent = function () {
+    // Prevent run in Node env
+
+    /* istanbul ignore if */
+    if (isNodeEnv()) {
+      return false;
+    }
+
+    var testEl = document.createElement('div');
+    var transEndEventNames = {
+      WebkitAnimation: 'webkitAnimationEnd',
+      OAnimation: 'oAnimationEnd oanimationend',
+      animation: 'animationend'
+    };
+
+    for (var i in transEndEventNames) {
+      if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {
+        return transEndEventNames[i];
+      }
+    }
+
+    return false;
+  }();
+
+  // https://github.com/twbs/bootstrap/blob/master/js/src/modal.js
+
+  var measureScrollbar = function measureScrollbar() {
+    var scrollDiv = document.createElement('div');
+    scrollDiv.className = swalClasses['scrollbar-measure'];
+    document.body.appendChild(scrollDiv);
+    var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
+  };
+
+  var renderActions = function renderActions(instance, params) {
+    var actions = getActions();
+    var confirmButton = getConfirmButton();
+    var cancelButton = getCancelButton(); // Actions (buttons) wrapper
+
+    if (!params.showConfirmButton && !params.showCancelButton) {
+      hide(actions);
+    } // Custom class
+
+
+    applyCustomClass(actions, params, 'actions'); // Render confirm button
+
+    renderButton(confirmButton, 'confirm', params); // render Cancel Button
+
+    renderButton(cancelButton, 'cancel', params);
+
+    if (params.buttonsStyling) {
+      handleButtonsStyling(confirmButton, cancelButton, params);
+    } else {
+      removeClass([confirmButton, cancelButton], swalClasses.styled);
+      confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = '';
+      cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = '';
+    }
+
+    if (params.reverseButtons) {
+      confirmButton.parentNode.insertBefore(cancelButton, confirmButton);
+    }
+  };
+
+  function handleButtonsStyling(confirmButton, cancelButton, params) {
+    addClass([confirmButton, cancelButton], swalClasses.styled); // Buttons background colors
+
+    if (params.confirmButtonColor) {
+      confirmButton.style.backgroundColor = params.confirmButtonColor;
+    }
+
+    if (params.cancelButtonColor) {
+      cancelButton.style.backgroundColor = params.cancelButtonColor;
+    } // Loading state
+
+
+    if (!isLoading()) {
+      var confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color');
+      confirmButton.style.borderLeftColor = confirmButtonBackgroundColor;
+      confirmButton.style.borderRightColor = confirmButtonBackgroundColor;
+    }
+  }
+
+  function renderButton(button, buttonType, params) {
+    toggle(button, params["show".concat(capitalizeFirstLetter(buttonType), "Button")], 'inline-block');
+    setInnerHtml(button, params["".concat(buttonType, "ButtonText")]); // Set caption text
+
+    button.setAttribute('aria-label', params["".concat(buttonType, "ButtonAriaLabel")]); // ARIA label
+    // Add buttons custom classes
+
+    button.className = swalClasses[buttonType];
+    applyCustomClass(button, params, "".concat(buttonType, "Button"));
+    addClass(button, params["".concat(buttonType, "ButtonClass")]);
+  }
+
+  function handleBackdropParam(container, backdrop) {
+    if (typeof backdrop === 'string') {
+      container.style.background = backdrop;
+    } else if (!backdrop) {
+      addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
+    }
+  }
+
+  function handlePositionParam(container, position) {
+    if (position in swalClasses) {
+      addClass(container, swalClasses[position]);
+    } else {
+      warn('The "position" parameter is not valid, defaulting to "center"');
+      addClass(container, swalClasses.center);
+    }
+  }
+
+  function handleGrowParam(container, grow) {
+    if (grow && typeof grow === 'string') {
+      var growClass = "grow-".concat(grow);
+
+      if (growClass in swalClasses) {
+        addClass(container, swalClasses[growClass]);
+      }
+    }
+  }
+
+  var renderContainer = function renderContainer(instance, params) {
+    var container = getContainer();
+
+    if (!container) {
+      return;
+    }
+
+    handleBackdropParam(container, params.backdrop);
+
+    if (!params.backdrop && params.allowOutsideClick) {
+      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
+    }
+
+    handlePositionParam(container, params.position);
+    handleGrowParam(container, params.grow); // Custom class
+
+    applyCustomClass(container, params, 'container'); // Set queue step attribute for getQueueStep() method
+
+    var queueStep = document.body.getAttribute('data-swal2-queue-step');
+
+    if (queueStep) {
+      container.setAttribute('data-queue-step', queueStep);
+      document.body.removeAttribute('data-swal2-queue-step');
+    }
+  };
+
+  /**
+   * This module containts `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateProps = {
+    promise: new WeakMap(),
+    innerParams: new WeakMap(),
+    domCache: new WeakMap()
+  };
+
+  var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+  var renderInput = function renderInput(instance, params) {
+    var content = getContent();
+    var innerParams = privateProps.innerParams.get(instance);
+    var rerender = !innerParams || params.input !== innerParams.input;
+    inputTypes.forEach(function (inputType) {
+      var inputClass = swalClasses[inputType];
+      var inputContainer = getChildByClass(content, inputClass); // set attributes
+
+      setAttributes(inputType, params.inputAttributes); // set class
+
+      inputContainer.className = inputClass;
+
+      if (rerender) {
+        hide(inputContainer);
+      }
+    });
+
+    if (params.input) {
+      if (rerender) {
+        showInput(params);
+      } // set custom class
+
+
+      setCustomClass(params);
+    }
+  };
+
+  var showInput = function showInput(params) {
+    if (!renderInputType[params.input]) {
+      return error("Unexpected type of input! Expected \"text\", \"email\", \"password\", \"number\", \"tel\", \"select\", \"radio\", \"checkbox\", \"textarea\", \"file\" or \"url\", got \"".concat(params.input, "\""));
+    }
+
+    var inputContainer = getInputContainer(params.input);
+    var input = renderInputType[params.input](inputContainer, params);
+    show(input); // input autofocus
+
+    setTimeout(function () {
+      focusInput(input);
+    });
+  };
+
+  var removeAttributes = function removeAttributes(input) {
+    for (var i = 0; i < input.attributes.length; i++) {
+      var attrName = input.attributes[i].name;
+
+      if (!(['type', 'value', 'style'].indexOf(attrName) !== -1)) {
+        input.removeAttribute(attrName);
+      }
+    }
+  };
+
+  var setAttributes = function setAttributes(inputType, inputAttributes) {
+    var input = getInput(getContent(), inputType);
+
+    if (!input) {
+      return;
+    }
+
+    removeAttributes(input);
+
+    for (var attr in inputAttributes) {
+      // Do not set a placeholder for <input type="range">
+      // it'll crash Edge, #1298
+      if (inputType === 'range' && attr === 'placeholder') {
+        continue;
+      }
+
+      input.setAttribute(attr, inputAttributes[attr]);
+    }
+  };
+
+  var setCustomClass = function setCustomClass(params) {
+    var inputContainer = getInputContainer(params.input);
+
+    if (params.customClass) {
+      addClass(inputContainer, params.customClass.input);
+    }
+  };
+
+  var setInputPlaceholder = function setInputPlaceholder(input, params) {
+    if (!input.placeholder || params.inputPlaceholder) {
+      input.placeholder = params.inputPlaceholder;
+    }
+  };
+
+  var getInputContainer = function getInputContainer(inputType) {
+    var inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input;
+    return getChildByClass(getContent(), inputClass);
+  };
+
+  var renderInputType = {};
+
+  renderInputType.text = renderInputType.email = renderInputType.password = renderInputType.number = renderInputType.tel = renderInputType.url = function (input, params) {
+    if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
+      input.value = params.inputValue;
+    } else if (!isPromise(params.inputValue)) {
+      warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".concat(_typeof(params.inputValue), "\""));
+    }
+
+    setInputPlaceholder(input, params);
+    input.type = params.input;
+    return input;
+  };
+
+  renderInputType.file = function (input, params) {
+    setInputPlaceholder(input, params);
+    return input;
+  };
+
+  renderInputType.range = function (range, params) {
+    var rangeInput = range.querySelector('input');
+    var rangeOutput = range.querySelector('output');
+    rangeInput.value = params.inputValue;
+    rangeInput.type = params.input;
+    rangeOutput.value = params.inputValue;
+    return range;
+  };
+
+  renderInputType.select = function (select, params) {
+    select.textContent = '';
+
+    if (params.inputPlaceholder) {
+      var placeholder = document.createElement('option');
+      setInnerHtml(placeholder, params.inputPlaceholder);
+      placeholder.value = '';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+    }
+
+    return select;
+  };
+
+  renderInputType.radio = function (radio) {
+    radio.textContent = '';
+    return radio;
+  };
+
+  renderInputType.checkbox = function (checkboxContainer, params) {
+    var checkbox = getInput(getContent(), 'checkbox');
+    checkbox.value = 1;
+    checkbox.id = swalClasses.checkbox;
+    checkbox.checked = Boolean(params.inputValue);
+    var label = checkboxContainer.querySelector('span');
+    setInnerHtml(label, params.inputPlaceholder);
+    return checkboxContainer;
+  };
+
+  renderInputType.textarea = function (textarea, params) {
+    textarea.value = params.inputValue;
+    setInputPlaceholder(textarea, params);
+
+    if ('MutationObserver' in window) {
+      // #1699
+      var initialPopupWidth = parseInt(window.getComputedStyle(getPopup()).width);
+      var popupPadding = parseInt(window.getComputedStyle(getPopup()).paddingLeft) + parseInt(window.getComputedStyle(getPopup()).paddingRight);
+
+      var outputsize = function outputsize() {
+        var contentWidth = textarea.offsetWidth + popupPadding;
+
+        if (contentWidth > initialPopupWidth) {
+          getPopup().style.width = "".concat(contentWidth, "px");
+        } else {
+          getPopup().style.width = null;
+        }
+      };
+
+      new MutationObserver(outputsize).observe(textarea, {
+        attributes: true,
+        attributeFilter: ['style']
+      });
+    }
+
+    return textarea;
+  };
+
+  var renderContent = function renderContent(instance, params) {
+    var content = getContent().querySelector("#".concat(swalClasses.content)); // Content as HTML
+
+    if (params.html) {
+      parseHtmlToContainer(params.html, content);
+      show(content, 'block'); // Content as plain text
+    } else if (params.text) {
+      content.textContent = params.text;
+      show(content, 'block'); // No content
+    } else {
+      hide(content);
+    }
+
+    renderInput(instance, params); // Custom class
+
+    applyCustomClass(getContent(), params, 'content');
+  };
+
+  var renderFooter = function renderFooter(instance, params) {
+    var footer = getFooter();
+    toggle(footer, params.footer);
+
+    if (params.footer) {
+      parseHtmlToContainer(params.footer, footer);
+    } // Custom class
+
+
+    applyCustomClass(footer, params, 'footer');
+  };
+
+  var renderCloseButton = function renderCloseButton(instance, params) {
+    var closeButton = getCloseButton();
+    setInnerHtml(closeButton, params.closeButtonHtml); // Custom class
+
+    applyCustomClass(closeButton, params, 'closeButton');
+    toggle(closeButton, params.showCloseButton);
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
+  };
+
+  var renderIcon = function renderIcon(instance, params) {
+    var innerParams = privateProps.innerParams.get(instance); // if the give icon already rendered, apply the custom class without re-rendering the icon
+
+    if (innerParams && params.icon === innerParams.icon && getIcon()) {
+      applyCustomClass(getIcon(), params, 'icon');
+      return;
+    }
+
+    hideAllIcons();
+
+    if (!params.icon) {
+      return;
+    }
+
+    if (Object.keys(iconTypes).indexOf(params.icon) !== -1) {
+      var icon = elementBySelector(".".concat(swalClasses.icon, ".").concat(iconTypes[params.icon]));
+      show(icon); // Custom or default content
+
+      setContent(icon, params);
+      adjustSuccessIconBackgoundColor(); // Custom class
+
+      applyCustomClass(icon, params, 'icon'); // Animate icon
+
+      addClass(icon, params.showClass.icon);
+    } else {
+      error("Unknown icon! Expected \"success\", \"error\", \"warning\", \"info\" or \"question\", got \"".concat(params.icon, "\""));
+    }
+  };
+
+  var hideAllIcons = function hideAllIcons() {
+    var icons = getIcons();
+
+    for (var i = 0; i < icons.length; i++) {
+      hide(icons[i]);
+    }
+  }; // Adjust success icon background color to match the popup background color
+
+
+  var adjustSuccessIconBackgoundColor = function adjustSuccessIconBackgoundColor() {
+    var popup = getPopup();
+    var popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color');
+    var successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix');
+
+    for (var i = 0; i < successIconParts.length; i++) {
+      successIconParts[i].style.backgroundColor = popupBackgroundColor;
+    }
+  };
+
+  var setContent = function setContent(icon, params) {
+    icon.textContent = '';
+
+    if (params.iconHtml) {
+      setInnerHtml(icon, iconContent(params.iconHtml));
+    } else if (params.icon === 'success') {
+      setInnerHtml(icon, "\n      <div class=\"swal2-success-circular-line-left\"></div>\n      <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n      <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n      <div class=\"swal2-success-circular-line-right\"></div>\n    ");
+    } else if (params.icon === 'error') {
+      setInnerHtml(icon, "\n      <span class=\"swal2-x-mark\">\n        <span class=\"swal2-x-mark-line-left\"></span>\n        <span class=\"swal2-x-mark-line-right\"></span>\n      </span>\n    ");
+    } else {
+      var defaultIconHtml = {
+        question: '?',
+        warning: '!',
+        info: 'i'
+      };
+      setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]));
+    }
+  };
+
+  var iconContent = function iconContent(content) {
+    return "<div class=\"".concat(swalClasses['icon-content'], "\">").concat(content, "</div>");
+  };
+
+  var renderImage = function renderImage(instance, params) {
+    var image = getImage();
+
+    if (!params.imageUrl) {
+      return hide(image);
+    }
+
+    show(image, ''); // Src, alt
+
+    image.setAttribute('src', params.imageUrl);
+    image.setAttribute('alt', params.imageAlt); // Width, height
+
+    applyNumericalStyle(image, 'width', params.imageWidth);
+    applyNumericalStyle(image, 'height', params.imageHeight); // Class
+
+    image.className = swalClasses.image;
+    applyCustomClass(image, params, 'image');
+  };
+
+  var currentSteps = [];
+  /*
+   * Global function for chaining sweetAlert popups
+   */
+
+  var queue = function queue(steps) {
+    var Swal = this;
+    currentSteps = steps;
+
+    var resetAndResolve = function resetAndResolve(resolve, value) {
+      currentSteps = [];
+      resolve(value);
+    };
+
+    var queueResult = [];
+    return new Promise(function (resolve) {
+      (function step(i, callback) {
+        if (i < currentSteps.length) {
+          document.body.setAttribute('data-swal2-queue-step', i);
+          Swal.fire(currentSteps[i]).then(function (result) {
+            if (typeof result.value !== 'undefined') {
+              queueResult.push(result.value);
+              step(i + 1, callback);
+            } else {
+              resetAndResolve(resolve, {
+                dismiss: result.dismiss
+              });
+            }
+          });
+        } else {
+          resetAndResolve(resolve, {
+            value: queueResult
+          });
+        }
+      })(0);
+    });
+  };
+  /*
+   * Global function for getting the index of current popup in queue
+   */
+
+  var getQueueStep = function getQueueStep() {
+    return getContainer() && getContainer().getAttribute('data-queue-step');
+  };
+  /*
+   * Global function for inserting a popup to the queue
+   */
+
+  var insertQueueStep = function insertQueueStep(step, index) {
+    if (index && index < currentSteps.length) {
+      return currentSteps.splice(index, 0, step);
+    }
+
+    return currentSteps.push(step);
+  };
+  /*
+   * Global function for deleting a popup from the queue
+   */
+
+  var deleteQueueStep = function deleteQueueStep(index) {
+    if (typeof currentSteps[index] !== 'undefined') {
+      currentSteps.splice(index, 1);
+    }
+  };
+
+  var createStepElement = function createStepElement(step) {
+    var stepEl = document.createElement('li');
+    addClass(stepEl, swalClasses['progress-step']);
+    setInnerHtml(stepEl, step);
+    return stepEl;
+  };
+
+  var createLineElement = function createLineElement(params) {
+    var lineEl = document.createElement('li');
+    addClass(lineEl, swalClasses['progress-step-line']);
+
+    if (params.progressStepsDistance) {
+      lineEl.style.width = params.progressStepsDistance;
+    }
+
+    return lineEl;
+  };
+
+  var renderProgressSteps = function renderProgressSteps(instance, params) {
+    var progressStepsContainer = getProgressSteps();
+
+    if (!params.progressSteps || params.progressSteps.length === 0) {
+      return hide(progressStepsContainer);
+    }
+
+    show(progressStepsContainer);
+    progressStepsContainer.textContent = '';
+    var currentProgressStep = parseInt(params.currentProgressStep === undefined ? getQueueStep() : params.currentProgressStep);
+
+    if (currentProgressStep >= params.progressSteps.length) {
+      warn('Invalid currentProgressStep parameter, it should be less than progressSteps.length ' + '(currentProgressStep like JS arrays starts from 0)');
+    }
+
+    params.progressSteps.forEach(function (step, index) {
+      var stepEl = createStepElement(step);
+      progressStepsContainer.appendChild(stepEl);
+
+      if (index === currentProgressStep) {
+        addClass(stepEl, swalClasses['active-progress-step']);
+      }
+
+      if (index !== params.progressSteps.length - 1) {
+        var lineEl = createLineElement(params);
+        progressStepsContainer.appendChild(lineEl);
+      }
+    });
+  };
+
+  var renderTitle = function renderTitle(instance, params) {
+    var title = getTitle();
+    toggle(title, params.title || params.titleText);
+
+    if (params.title) {
+      parseHtmlToContainer(params.title, title);
+    }
+
+    if (params.titleText) {
+      title.innerText = params.titleText;
+    } // Custom class
+
+
+    applyCustomClass(title, params, 'title');
+  };
+
+  var renderHeader = function renderHeader(instance, params) {
+    var header = getHeader(); // Custom class
+
+    applyCustomClass(header, params, 'header'); // Progress steps
+
+    renderProgressSteps(instance, params); // Icon
+
+    renderIcon(instance, params); // Image
+
+    renderImage(instance, params); // Title
+
+    renderTitle(instance, params); // Close button
+
+    renderCloseButton(instance, params);
+  };
+
+  var renderPopup = function renderPopup(instance, params) {
+    var popup = getPopup(); // Width
+
+    applyNumericalStyle(popup, 'width', params.width); // Padding
+
+    applyNumericalStyle(popup, 'padding', params.padding); // Background
+
+    if (params.background) {
+      popup.style.background = params.background;
+    } // Classes
+
+
+    addClasses(popup, params);
+  };
+
+  var addClasses = function addClasses(popup, params) {
+    // Default Class + showClass when updating Swal.update({})
+    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
+
+    if (params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
+      addClass(popup, swalClasses.toast);
+    } else {
+      addClass(popup, swalClasses.modal);
+    } // Custom class
+
+
+    applyCustomClass(popup, params, 'popup');
+
+    if (typeof params.customClass === 'string') {
+      addClass(popup, params.customClass);
+    } // Icon class (#1842)
+
+
+    if (params.icon) {
+      addClass(popup, swalClasses["icon-".concat(params.icon)]);
+    }
+  };
+
+  var render = function render(instance, params) {
+    renderPopup(instance, params);
+    renderContainer(instance, params);
+    renderHeader(instance, params);
+    renderContent(instance, params);
+    renderActions(instance, params);
+    renderFooter(instance, params);
+
+    if (typeof params.onRender === 'function') {
+      params.onRender(getPopup());
+    }
+  };
+
+  /*
+   * Global function to determine if SweetAlert2 popup is shown
+   */
+
+  var isVisible$1 = function isVisible$$1() {
+    return isVisible(getPopup());
+  };
+  /*
+   * Global function to click 'Confirm' button
+   */
+
+  var clickConfirm = function clickConfirm() {
+    return getConfirmButton() && getConfirmButton().click();
+  };
+  /*
+   * Global function to click 'Cancel' button
+   */
+
+  var clickCancel = function clickCancel() {
+    return getCancelButton() && getCancelButton().click();
+  };
+
+  function fire() {
+    var Swal = this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _construct(Swal, args);
+  }
+
+  /**
+   * Returns an extended version of `Swal` containing `params` as defaults.
+   * Useful for reusing Swal configuration.
+   *
+   * For example:
+   *
+   * Before:
+   * const textPromptOptions = { input: 'text', showCancelButton: true }
+   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
+   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
+   *
+   * After:
+   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+   * const {value: firstName} = await TextPrompt('What is your first name?')
+   * const {value: lastName} = await TextPrompt('What is your last name?')
+   *
+   * @param mixinParams
+   */
+  function mixin(mixinParams) {
+    var MixinSwal = /*#__PURE__*/function (_this) {
+      _inherits(MixinSwal, _this);
+
+      var _super = _createSuper(MixinSwal);
+
+      function MixinSwal() {
+        _classCallCheck(this, MixinSwal);
+
+        return _super.apply(this, arguments);
+      }
+
+      _createClass(MixinSwal, [{
+        key: "_main",
+        value: function _main(params) {
+          return _get(_getPrototypeOf(MixinSwal.prototype), "_main", this).call(this, _extends({}, mixinParams, params));
+        }
+      }]);
+
+      return MixinSwal;
+    }(this);
+
+    return MixinSwal;
+  }
+
+  /**
+   * Show spinner instead of Confirm button
+   */
+
+  var showLoading = function showLoading() {
+    var popup = getPopup();
+
+    if (!popup) {
+      Swal.fire();
+    }
+
+    popup = getPopup();
+    var actions = getActions();
+    var confirmButton = getConfirmButton();
+    show(actions);
+    show(confirmButton, 'inline-block');
+    addClass([popup, actions], swalClasses.loading);
+    confirmButton.disabled = true;
+    popup.setAttribute('data-loading', true);
+    popup.setAttribute('aria-busy', true);
+    popup.focus();
+  };
+
+  var RESTORE_FOCUS_TIMEOUT = 100;
+
+  var globalState = {};
+
+  var focusPreviousActiveElement = function focusPreviousActiveElement() {
+    if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
+      globalState.previousActiveElement.focus();
+      globalState.previousActiveElement = null;
+    } else if (document.body) {
+      document.body.focus();
+    }
+  }; // Restore previous active (focused) element
+
+
+  var restoreActiveElement = function restoreActiveElement() {
+    return new Promise(function (resolve) {
+      var x = window.scrollX;
+      var y = window.scrollY;
+      globalState.restoreFocusTimeout = setTimeout(function () {
+        focusPreviousActiveElement();
+        resolve();
+      }, RESTORE_FOCUS_TIMEOUT); // issues/900
+
+      /* istanbul ignore if */
+
+      if (typeof x !== 'undefined' && typeof y !== 'undefined') {
+        // IE doesn't have scrollX/scrollY support
+        window.scrollTo(x, y);
+      }
+    });
+  };
+
+  /**
+   * If `timer` parameter is set, returns number of milliseconds of timer remained.
+   * Otherwise, returns undefined.
+   */
+
+  var getTimerLeft = function getTimerLeft() {
+    return globalState.timeout && globalState.timeout.getTimerLeft();
+  };
+  /**
+   * Stop timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  var stopTimer = function stopTimer() {
+    if (globalState.timeout) {
+      stopTimerProgressBar();
+      return globalState.timeout.stop();
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  var resumeTimer = function resumeTimer() {
+    if (globalState.timeout) {
+      var remaining = globalState.timeout.start();
+      animateTimerProgressBar(remaining);
+      return remaining;
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  var toggleTimer = function toggleTimer() {
+    var timer = globalState.timeout;
+    return timer && (timer.running ? stopTimer() : resumeTimer());
+  };
+  /**
+   * Increase timer. Returns number of milliseconds of an updated timer.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  var increaseTimer = function increaseTimer(n) {
+    if (globalState.timeout) {
+      var remaining = globalState.timeout.increase(n);
+      animateTimerProgressBar(remaining, true);
+      return remaining;
+    }
+  };
+  /**
+   * Check if timer is running. Returns true if timer is running
+   * or false if timer is paused or stopped.
+   * If `timer` parameter isn't set, returns undefined
+   */
+
+  var isTimerRunning = function isTimerRunning() {
+    return globalState.timeout && globalState.timeout.isRunning();
+  };
+
+  var defaultParams = {
+    title: '',
+    titleText: '',
+    text: '',
+    html: '',
+    footer: '',
+    icon: undefined,
+    iconHtml: undefined,
+    toast: false,
+    animation: true,
+    showClass: {
+      popup: 'swal2-show',
+      backdrop: 'swal2-backdrop-show',
+      icon: 'swal2-icon-show'
+    },
+    hideClass: {
+      popup: 'swal2-hide',
+      backdrop: 'swal2-backdrop-hide',
+      icon: 'swal2-icon-hide'
+    },
+    customClass: undefined,
+    target: 'body',
+    backdrop: true,
+    heightAuto: true,
+    allowOutsideClick: true,
+    allowEscapeKey: true,
+    allowEnterKey: true,
+    stopKeydownPropagation: true,
+    keydownListenerCapture: false,
+    showConfirmButton: true,
+    showCancelButton: false,
+    preConfirm: undefined,
+    confirmButtonText: 'OK',
+    confirmButtonAriaLabel: '',
+    confirmButtonColor: undefined,
+    cancelButtonText: 'Cancel',
+    cancelButtonAriaLabel: '',
+    cancelButtonColor: undefined,
+    buttonsStyling: true,
+    reverseButtons: false,
+    focusConfirm: true,
+    focusCancel: false,
+    showCloseButton: false,
+    closeButtonHtml: '&times;',
+    closeButtonAriaLabel: 'Close this dialog',
+    showLoaderOnConfirm: false,
+    imageUrl: undefined,
+    imageWidth: undefined,
+    imageHeight: undefined,
+    imageAlt: '',
+    timer: undefined,
+    timerProgressBar: false,
+    width: undefined,
+    padding: undefined,
+    background: undefined,
+    input: undefined,
+    inputPlaceholder: '',
+    inputValue: '',
+    inputOptions: {},
+    inputAutoTrim: true,
+    inputAttributes: {},
+    inputValidator: undefined,
+    validationMessage: undefined,
+    grow: false,
+    position: 'center',
+    progressSteps: [],
+    currentProgressStep: undefined,
+    progressStepsDistance: undefined,
+    onBeforeOpen: undefined,
+    onOpen: undefined,
+    onRender: undefined,
+    onClose: undefined,
+    onAfterClose: undefined,
+    onDestroy: undefined,
+    scrollbarPadding: true
+  };
+  var updatableParams = ['title', 'titleText', 'text', 'html', 'footer', 'icon', 'hideClass', 'customClass', 'allowOutsideClick', 'allowEscapeKey', 'showConfirmButton', 'showCancelButton', 'confirmButtonText', 'confirmButtonAriaLabel', 'confirmButtonColor', 'cancelButtonText', 'cancelButtonAriaLabel', 'cancelButtonColor', 'buttonsStyling', 'reverseButtons', 'showCloseButton', 'closeButtonHtml', 'closeButtonAriaLabel', 'imageUrl', 'imageWidth', 'imageHeight', 'imageAlt', 'progressSteps', 'currentProgressStep', 'onClose', 'onAfterClose', 'onDestroy'];
+  var deprecatedParams = {
+    animation: 'showClass" and "hideClass'
+  };
+  var toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusCancel', 'heightAuto', 'keydownListenerCapture'];
+  /**
+   * Is valid parameter
+   * @param {String} paramName
+   */
+
+  var isValidParameter = function isValidParameter(paramName) {
+    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
+  };
+  /**
+   * Is valid parameter for Swal.update() method
+   * @param {String} paramName
+   */
+
+  var isUpdatableParameter = function isUpdatableParameter(paramName) {
+    return updatableParams.indexOf(paramName) !== -1;
+  };
+  /**
+   * Is deprecated parameter
+   * @param {String} paramName
+   */
+
+  var isDeprecatedParameter = function isDeprecatedParameter(paramName) {
+    return deprecatedParams[paramName];
+  };
+
+  var checkIfParamIsValid = function checkIfParamIsValid(param) {
+    if (!isValidParameter(param)) {
+      warn("Unknown parameter \"".concat(param, "\""));
+    }
+  };
+
+  var checkIfToastParamIsValid = function checkIfToastParamIsValid(param) {
+    if (toastIncompatibleParams.indexOf(param) !== -1) {
+      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
+    }
+  };
+
+  var checkIfParamIsDeprecated = function checkIfParamIsDeprecated(param) {
+    if (isDeprecatedParameter(param)) {
+      warnAboutDepreation(param, isDeprecatedParameter(param));
+    }
+  };
+  /**
+   * Show relevant warnings for given params
+   *
+   * @param params
+   */
+
+
+  var showWarningsForParams = function showWarningsForParams(params) {
+    for (var param in params) {
+      checkIfParamIsValid(param);
+
+      if (params.toast) {
+        checkIfToastParamIsValid(param);
+      }
+
+      checkIfParamIsDeprecated(param);
+    }
+  };
+
+
+
+  var staticMethods = /*#__PURE__*/Object.freeze({
+    isValidParameter: isValidParameter,
+    isUpdatableParameter: isUpdatableParameter,
+    isDeprecatedParameter: isDeprecatedParameter,
+    argsToParams: argsToParams,
+    isVisible: isVisible$1,
+    clickConfirm: clickConfirm,
+    clickCancel: clickCancel,
+    getContainer: getContainer,
+    getPopup: getPopup,
+    getTitle: getTitle,
+    getContent: getContent,
+    getHtmlContainer: getHtmlContainer,
+    getImage: getImage,
+    getIcon: getIcon,
+    getIcons: getIcons,
+    getCloseButton: getCloseButton,
+    getActions: getActions,
+    getConfirmButton: getConfirmButton,
+    getCancelButton: getCancelButton,
+    getHeader: getHeader,
+    getFooter: getFooter,
+    getTimerProgressBar: getTimerProgressBar,
+    getFocusableElements: getFocusableElements,
+    getValidationMessage: getValidationMessage,
+    isLoading: isLoading,
+    fire: fire,
+    mixin: mixin,
+    queue: queue,
+    getQueueStep: getQueueStep,
+    insertQueueStep: insertQueueStep,
+    deleteQueueStep: deleteQueueStep,
+    showLoading: showLoading,
+    enableLoading: showLoading,
+    getTimerLeft: getTimerLeft,
+    stopTimer: stopTimer,
+    resumeTimer: resumeTimer,
+    toggleTimer: toggleTimer,
+    increaseTimer: increaseTimer,
+    isTimerRunning: isTimerRunning
+  });
+
+  /**
+   * Enables buttons and hide loader.
+   */
+
+  function hideLoading() {
+    // do nothing if popup is closed
+    var innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      return;
+    }
+
+    var domCache = privateProps.domCache.get(this);
+
+    if (!innerParams.showConfirmButton) {
+      hide(domCache.confirmButton);
+
+      if (!innerParams.showCancelButton) {
+        hide(domCache.actions);
+      }
+    }
+
+    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+    domCache.popup.removeAttribute('aria-busy');
+    domCache.popup.removeAttribute('data-loading');
+    domCache.confirmButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+
+  function getInput$1(instance) {
+    var innerParams = privateProps.innerParams.get(instance || this);
+    var domCache = privateProps.domCache.get(instance || this);
+
+    if (!domCache) {
+      return null;
+    }
+
+    return getInput(domCache.content, innerParams.input);
+  }
+
+  var fixScrollbar = function fixScrollbar() {
+    // for queues, do not do this more than once
+    if (states.previousBodyPadding !== null) {
+      return;
+    } // if the body has overflow
+
+
+    if (document.body.scrollHeight > window.innerHeight) {
+      // add padding so the content doesn't shift after removal of scrollbar
+      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
+    }
+  };
+  var undoScrollbar = function undoScrollbar() {
+    if (states.previousBodyPadding !== null) {
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
+      states.previousBodyPadding = null;
+    }
+  };
+
+  /* istanbul ignore file */
+
+  var iOSfix = function iOSfix() {
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+    if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+      var offset = document.body.scrollTop;
+      document.body.style.top = "".concat(offset * -1, "px");
+      addClass(document.body, swalClasses.iosfix);
+      lockBodyScroll();
+      addBottomPaddingForTallPopups(); // #1948
+    }
+  };
+
+  var addBottomPaddingForTallPopups = function addBottomPaddingForTallPopups() {
+    var safari = !navigator.userAgent.match(/(CriOS|FxiOS|EdgiOS|YaBrowser|UCBrowser)/i);
+
+    if (safari) {
+      var bottomPanelHeight = 44;
+
+      if (getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
+        getContainer().style.paddingBottom = "".concat(bottomPanelHeight, "px");
+      }
+    }
+  };
+
+  var lockBodyScroll = function lockBodyScroll() {
+    // #1246
+    var container = getContainer();
+    var preventTouchMove;
+
+    container.ontouchstart = function (e) {
+      preventTouchMove = shouldPreventTouchMove(e.target);
+    };
+
+    container.ontouchmove = function (e) {
+      if (preventTouchMove) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+  };
+
+  var shouldPreventTouchMove = function shouldPreventTouchMove(target) {
+    var container = getContainer();
+
+    if (target === container) {
+      return true;
+    }
+
+    if (!isScrollable(container) && target.tagName !== 'INPUT' && // #1603
+    !(isScrollable(getContent()) && // #1944
+    getContent().contains(target))) {
+      return true;
+    }
+
+    return false;
+  };
+
+  var undoIOSfix = function undoIOSfix() {
+    if (hasClass(document.body, swalClasses.iosfix)) {
+      var offset = parseInt(document.body.style.top, 10);
+      removeClass(document.body, swalClasses.iosfix);
+      document.body.style.top = '';
+      document.body.scrollTop = offset * -1;
+    }
+  };
+
+  /* istanbul ignore file */
+
+  var isIE11 = function isIE11() {
+    return !!window.MSInputMethodContext && !!document.documentMode;
+  }; // Fix IE11 centering sweetalert2/issues/933
+
+
+  var fixVerticalPositionIE = function fixVerticalPositionIE() {
+    var container = getContainer();
+    var popup = getPopup();
+    container.style.removeProperty('align-items');
+
+    if (popup.offsetTop < 0) {
+      container.style.alignItems = 'flex-start';
+    }
+  };
+
+  var IEfix = function IEfix() {
+    if (typeof window !== 'undefined' && isIE11()) {
+      fixVerticalPositionIE();
+      window.addEventListener('resize', fixVerticalPositionIE);
+    }
+  };
+  var undoIEfix = function undoIEfix() {
+    if (typeof window !== 'undefined' && isIE11()) {
+      window.removeEventListener('resize', fixVerticalPositionIE);
+    }
+  };
+
+  // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
+  // elements not within the active modal dialog will not be surfaced if a user opens a screen
+  // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
+
+  var setAriaHidden = function setAriaHidden() {
+    var bodyChildren = toArray(document.body.children);
+    bodyChildren.forEach(function (el) {
+      if (el === getContainer() || contains(el, getContainer())) {
+        return;
+      }
+
+      if (el.hasAttribute('aria-hidden')) {
+        el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
+      }
+
+      el.setAttribute('aria-hidden', 'true');
+    });
+  };
+  var unsetAriaHidden = function unsetAriaHidden() {
+    var bodyChildren = toArray(document.body.children);
+    bodyChildren.forEach(function (el) {
+      if (el.hasAttribute('data-previous-aria-hidden')) {
+        el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'));
+        el.removeAttribute('data-previous-aria-hidden');
+      } else {
+        el.removeAttribute('aria-hidden');
+      }
+    });
+  };
+
+  /**
+   * This module containts `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateMethods = {
+    swalPromiseResolve: new WeakMap()
+  };
+
+  /*
+   * Instance method to close sweetAlert
+   */
+
+  function removePopupAndResetState(instance, container, isToast$$1, onAfterClose) {
+    if (isToast$$1) {
+      triggerOnAfterCloseAndDispose(instance, onAfterClose);
+    } else {
+      restoreActiveElement().then(function () {
+        return triggerOnAfterCloseAndDispose(instance, onAfterClose);
+      });
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+
+    if (container.parentNode && !document.body.getAttribute('data-swal2-queue-step')) {
+      container.parentNode.removeChild(container);
+    }
+
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+      undoIEfix();
+      unsetAriaHidden();
+    }
+
+    removeBodyClasses();
+  }
+
+  function removeBodyClasses() {
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['toast-column']]);
+  }
+
+  function close(resolveValue) {
+    var popup = getPopup();
+
+    if (!popup) {
+      return;
+    }
+
+    var innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
+      return;
+    }
+
+    var swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
+    removeClass(popup, innerParams.showClass.popup);
+    addClass(popup, innerParams.hideClass.popup);
+    var backdrop = getContainer();
+    removeClass(backdrop, innerParams.showClass.backdrop);
+    addClass(backdrop, innerParams.hideClass.backdrop);
+    handlePopupAnimation(this, popup, innerParams);
+
+    if (typeof resolveValue !== 'undefined') {
+      resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined';
+      resolveValue.isConfirmed = typeof resolveValue.dismiss === 'undefined';
+    } else {
+      resolveValue = {
+        isDismissed: true,
+        isConfirmed: false
+      };
+    } // Resolve Swal promise
+
+
+    swalPromiseResolve(resolveValue || {});
+  }
+
+  var handlePopupAnimation = function handlePopupAnimation(instance, popup, innerParams) {
+    var container = getContainer(); // If animation is supported, animate
+
+    var animationIsSupported = animationEndEvent && hasCssAnimation(popup);
+    var onClose = innerParams.onClose,
+        onAfterClose = innerParams.onAfterClose;
+
+    if (onClose !== null && typeof onClose === 'function') {
+      onClose(popup);
+    }
+
+    if (animationIsSupported) {
+      animatePopup(instance, popup, container, onAfterClose);
+    } else {
+      // Otherwise, remove immediately
+      removePopupAndResetState(instance, container, isToast(), onAfterClose);
+    }
+  };
+
+  var animatePopup = function animatePopup(instance, popup, container, onAfterClose) {
+    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, isToast(), onAfterClose);
+    popup.addEventListener(animationEndEvent, function (e) {
+      if (e.target === popup) {
+        globalState.swalCloseEventFinishedCallback();
+        delete globalState.swalCloseEventFinishedCallback;
+      }
+    });
+  };
+
+  var triggerOnAfterCloseAndDispose = function triggerOnAfterCloseAndDispose(instance, onAfterClose) {
+    setTimeout(function () {
+      if (typeof onAfterClose === 'function') {
+        onAfterClose();
+      }
+
+      instance._destroy();
+    });
+  };
+
+  function setButtonsDisabled(instance, buttons, disabled) {
+    var domCache = privateProps.domCache.get(instance);
+    buttons.forEach(function (button) {
+      domCache[button].disabled = disabled;
+    });
+  }
+
+  function setInputDisabled(input, disabled) {
+    if (!input) {
+      return false;
+    }
+
+    if (input.type === 'radio') {
+      var radiosContainer = input.parentNode.parentNode;
+      var radios = radiosContainer.querySelectorAll('input');
+
+      for (var i = 0; i < radios.length; i++) {
+        radios[i].disabled = disabled;
+      }
+    } else {
+      input.disabled = disabled;
+    }
+  }
+
+  function enableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'cancelButton'], false);
+  }
+  function disableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'cancelButton'], true);
+  }
+  function enableInput() {
+    return setInputDisabled(this.getInput(), false);
+  }
+  function disableInput() {
+    return setInputDisabled(this.getInput(), true);
+  }
+
+  function showValidationMessage(error) {
+    var domCache = privateProps.domCache.get(this);
+    setInnerHtml(domCache.validationMessage, error);
+    var popupComputedStyle = window.getComputedStyle(domCache.popup);
+    domCache.validationMessage.style.marginLeft = "-".concat(popupComputedStyle.getPropertyValue('padding-left'));
+    domCache.validationMessage.style.marginRight = "-".concat(popupComputedStyle.getPropertyValue('padding-right'));
+    show(domCache.validationMessage);
+    var input = this.getInput();
+
+    if (input) {
+      input.setAttribute('aria-invalid', true);
+      input.setAttribute('aria-describedBy', swalClasses['validation-message']);
+      focusInput(input);
+      addClass(input, swalClasses.inputerror);
+    }
+  } // Hide block with validation message
+
+  function resetValidationMessage$1() {
+    var domCache = privateProps.domCache.get(this);
+
+    if (domCache.validationMessage) {
+      hide(domCache.validationMessage);
+    }
+
+    var input = this.getInput();
+
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedBy');
+      removeClass(input, swalClasses.inputerror);
+    }
+  }
+
+  function getProgressSteps$1() {
+    var domCache = privateProps.domCache.get(this);
+    return domCache.progressSteps;
+  }
+
+  var Timer = /*#__PURE__*/function () {
+    function Timer(callback, delay) {
+      _classCallCheck(this, Timer);
+
+      this.callback = callback;
+      this.remaining = delay;
+      this.running = false;
+      this.start();
+    }
+
+    _createClass(Timer, [{
+      key: "start",
+      value: function start() {
+        if (!this.running) {
+          this.running = true;
+          this.started = new Date();
+          this.id = setTimeout(this.callback, this.remaining);
+        }
+
+        return this.remaining;
+      }
+    }, {
+      key: "stop",
+      value: function stop() {
+        if (this.running) {
+          this.running = false;
+          clearTimeout(this.id);
+          this.remaining -= new Date() - this.started;
+        }
+
+        return this.remaining;
+      }
+    }, {
+      key: "increase",
+      value: function increase(n) {
+        var running = this.running;
+
+        if (running) {
+          this.stop();
+        }
+
+        this.remaining += n;
+
+        if (running) {
+          this.start();
+        }
+
+        return this.remaining;
+      }
+    }, {
+      key: "getTimerLeft",
+      value: function getTimerLeft() {
+        if (this.running) {
+          this.stop();
+          this.start();
+        }
+
+        return this.remaining;
+      }
+    }, {
+      key: "isRunning",
+      value: function isRunning() {
+        return this.running;
+      }
+    }]);
+
+    return Timer;
+  }();
+
+  var defaultInputValidators = {
+    email: function email(string, validationMessage) {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
+    },
+    url: function url(string, validationMessage) {
+      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
+    }
+  };
+
+  function setDefaultInputValidators(params) {
+    // Use default `inputValidator` for supported input types if not provided
+    if (!params.inputValidator) {
+      Object.keys(defaultInputValidators).forEach(function (key) {
+        if (params.input === key) {
+          params.inputValidator = defaultInputValidators[key];
+        }
+      });
+    }
+  }
+
+  function validateCustomTargetElement(params) {
+    // Determine if the custom target element is valid
+    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
+      warn('Target parameter is not valid, defaulting to "body"');
+      params.target = 'body';
+    }
+  }
+  /**
+   * Set type, text and actions on popup
+   *
+   * @param params
+   * @returns {boolean}
+   */
+
+
+  function setParameters(params) {
+    setDefaultInputValidators(params); // showLoaderOnConfirm && preConfirm
+
+    if (params.showLoaderOnConfirm && !params.preConfirm) {
+      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
+    } // params.animation will be actually used in renderPopup.js
+    // but in case when params.animation is a function, we need to call that function
+    // before popup (re)initialization, so it'll be possible to check Swal.isVisible()
+    // inside the params.animation function
+
+
+    params.animation = callIfFunction(params.animation);
+    validateCustomTargetElement(params); // Replace newlines with <br> in title
+
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />');
+    }
+
+    init(params);
+  }
+
+  /**
+   * Open popup, add necessary classes and styles, fix scrollbar
+   *
+   * @param {Array} params
+   */
+
+  var openPopup = function openPopup(params) {
+    var container = getContainer();
+    var popup = getPopup();
+
+    if (typeof params.onBeforeOpen === 'function') {
+      params.onBeforeOpen(popup);
+    }
+
+    var bodyStyles = window.getComputedStyle(document.body);
+    var initialBodyOverflow = bodyStyles.overflowY;
+    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
+
+    setScrollingVisibility(container, popup);
+
+    if (isModal()) {
+      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
+      setAriaHidden();
+    }
+
+    if (!isToast() && !globalState.previousActiveElement) {
+      globalState.previousActiveElement = document.activeElement;
+    }
+
+    if (typeof params.onOpen === 'function') {
+      setTimeout(function () {
+        return params.onOpen(popup);
+      });
+    }
+
+    removeClass(container, swalClasses['no-transition']);
+  };
+
+  function swalOpenAnimationFinished(event) {
+    var popup = getPopup();
+
+    if (event.target !== popup) {
+      return;
+    }
+
+    var container = getContainer();
+    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
+    container.style.overflowY = 'auto';
+  }
+
+  var setScrollingVisibility = function setScrollingVisibility(container, popup) {
+    if (animationEndEvent && hasCssAnimation(popup)) {
+      container.style.overflowY = 'hidden';
+      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
+    } else {
+      container.style.overflowY = 'auto';
+    }
+  };
+
+  var fixScrollContainer = function fixScrollContainer(container, scrollbarPadding, initialBodyOverflow) {
+    iOSfix();
+    IEfix();
+
+    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
+      fixScrollbar();
+    } // sweetalert2/issues/1247
+
+
+    setTimeout(function () {
+      container.scrollTop = 0;
+    });
+  };
+
+  var addClasses$1 = function addClasses(container, popup, params) {
+    addClass(container, params.showClass.backdrop);
+    show(popup); // Animate popup right after showing it
+
+    addClass(popup, params.showClass.popup);
+    addClass([document.documentElement, document.body], swalClasses.shown);
+
+    if (params.heightAuto && params.backdrop && !params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['height-auto']);
+    }
+  };
+
+  var handleInputOptionsAndValue = function handleInputOptionsAndValue(instance, params) {
+    if (params.input === 'select' || params.input === 'radio') {
+      handleInputOptions(instance, params);
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(params.input) !== -1 && (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
+      handleInputValue(instance, params);
+    }
+  };
+  var getInputValue = function getInputValue(instance, innerParams) {
+    var input = instance.getInput();
+
+    if (!input) {
+      return null;
+    }
+
+    switch (innerParams.input) {
+      case 'checkbox':
+        return getCheckboxValue(input);
+
+      case 'radio':
+        return getRadioValue(input);
+
+      case 'file':
+        return getFileValue(input);
+
+      default:
+        return innerParams.inputAutoTrim ? input.value.trim() : input.value;
+    }
+  };
+
+  var getCheckboxValue = function getCheckboxValue(input) {
+    return input.checked ? 1 : 0;
+  };
+
+  var getRadioValue = function getRadioValue(input) {
+    return input.checked ? input.value : null;
+  };
+
+  var getFileValue = function getFileValue(input) {
+    return input.files.length ? input.getAttribute('multiple') !== null ? input.files : input.files[0] : null;
+  };
+
+  var handleInputOptions = function handleInputOptions(instance, params) {
+    var content = getContent();
+
+    var processInputOptions = function processInputOptions(inputOptions) {
+      return populateInputOptions[params.input](content, formatInputOptions(inputOptions), params);
+    };
+
+    if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
+      showLoading();
+      asPromise(params.inputOptions).then(function (inputOptions) {
+        instance.hideLoading();
+        processInputOptions(inputOptions);
+      });
+    } else if (_typeof(params.inputOptions) === 'object') {
+      processInputOptions(params.inputOptions);
+    } else {
+      error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(_typeof(params.inputOptions)));
+    }
+  };
+
+  var handleInputValue = function handleInputValue(instance, params) {
+    var input = instance.getInput();
+    hide(input);
+    asPromise(params.inputValue).then(function (inputValue) {
+      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : "".concat(inputValue);
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    })["catch"](function (err) {
+      error("Error in inputValue promise: ".concat(err));
+      input.value = '';
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    });
+  };
+
+  var populateInputOptions = {
+    select: function select(content, inputOptions, params) {
+      var select = getChildByClass(content, swalClasses.select);
+
+      var renderOption = function renderOption(parent, optionLabel, optionValue) {
+        var option = document.createElement('option');
+        option.value = optionValue;
+        setInnerHtml(option, optionLabel);
+
+        if (params.inputValue.toString() === optionValue.toString()) {
+          option.selected = true;
+        }
+
+        parent.appendChild(option);
+      };
+
+      inputOptions.forEach(function (inputOption) {
+        var optionValue = inputOption[0];
+        var optionLabel = inputOption[1]; // <optgroup> spec:
+        // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
+        // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
+        // check whether this is a <optgroup>
+
+        if (Array.isArray(optionLabel)) {
+          // if it is an array, then it is an <optgroup>
+          var optgroup = document.createElement('optgroup');
+          optgroup.label = optionValue;
+          optgroup.disabled = false; // not configurable for now
+
+          select.appendChild(optgroup);
+          optionLabel.forEach(function (o) {
+            return renderOption(optgroup, o[1], o[0]);
+          });
+        } else {
+          // case of <option>
+          renderOption(select, optionLabel, optionValue);
+        }
+      });
+      select.focus();
+    },
+    radio: function radio(content, inputOptions, params) {
+      var radio = getChildByClass(content, swalClasses.radio);
+      inputOptions.forEach(function (inputOption) {
+        var radioValue = inputOption[0];
+        var radioLabel = inputOption[1];
+        var radioInput = document.createElement('input');
+        var radioLabelElement = document.createElement('label');
+        radioInput.type = 'radio';
+        radioInput.name = swalClasses.radio;
+        radioInput.value = radioValue;
+
+        if (params.inputValue.toString() === radioValue.toString()) {
+          radioInput.checked = true;
+        }
+
+        var label = document.createElement('span');
+        setInnerHtml(label, radioLabel);
+        label.className = swalClasses.label;
+        radioLabelElement.appendChild(radioInput);
+        radioLabelElement.appendChild(label);
+        radio.appendChild(radioLabelElement);
+      });
+      var radios = radio.querySelectorAll('input');
+
+      if (radios.length) {
+        radios[0].focus();
+      }
+    }
+  };
+  /**
+   * Converts `inputOptions` into an array of `[value, label]`s
+   * @param inputOptions
+   */
+
+  var formatInputOptions = function formatInputOptions(inputOptions) {
+    var result = [];
+
+    if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
+      inputOptions.forEach(function (value, key) {
+        var valueFormatted = value;
+
+        if (_typeof(valueFormatted) === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+
+        result.push([key, valueFormatted]);
+      });
+    } else {
+      Object.keys(inputOptions).forEach(function (key) {
+        var valueFormatted = inputOptions[key];
+
+        if (_typeof(valueFormatted) === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+
+        result.push([key, valueFormatted]);
+      });
+    }
+
+    return result;
+  };
+
+  var handleConfirmButtonClick = function handleConfirmButtonClick(instance, innerParams) {
+    instance.disableButtons();
+
+    if (innerParams.input) {
+      handleConfirmWithInput(instance, innerParams);
+    } else {
+      confirm(instance, innerParams, true);
+    }
+  };
+  var handleCancelButtonClick = function handleCancelButtonClick(instance, dismissWith) {
+    instance.disableButtons();
+    dismissWith(DismissReason.cancel);
+  };
+
+  var handleConfirmWithInput = function handleConfirmWithInput(instance, innerParams) {
+    var inputValue = getInputValue(instance, innerParams);
+
+    if (innerParams.inputValidator) {
+      instance.disableInput();
+      var validationPromise = Promise.resolve().then(function () {
+        return asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage));
+      });
+      validationPromise.then(function (validationMessage) {
+        instance.enableButtons();
+        instance.enableInput();
+
+        if (validationMessage) {
+          instance.showValidationMessage(validationMessage);
+        } else {
+          confirm(instance, innerParams, inputValue);
+        }
+      });
+    } else if (!instance.getInput().checkValidity()) {
+      instance.enableButtons();
+      instance.showValidationMessage(innerParams.validationMessage);
+    } else {
+      confirm(instance, innerParams, inputValue);
+    }
+  };
+
+  var succeedWith = function succeedWith(instance, value) {
+    instance.closePopup({
+      value: value
+    });
+  };
+
+  var confirm = function confirm(instance, innerParams, value) {
+    if (innerParams.showLoaderOnConfirm) {
+      showLoading(); // TODO: make showLoading an *instance* method
+    }
+
+    if (innerParams.preConfirm) {
+      instance.resetValidationMessage();
+      var preConfirmPromise = Promise.resolve().then(function () {
+        return asPromise(innerParams.preConfirm(value, innerParams.validationMessage));
+      });
+      preConfirmPromise.then(function (preConfirmValue) {
+        if (isVisible(getValidationMessage()) || preConfirmValue === false) {
+          instance.hideLoading();
+        } else {
+          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
+        }
+      });
+    } else {
+      succeedWith(instance, value);
+    }
+  };
+
+  var addKeydownHandler = function addKeydownHandler(instance, globalState, innerParams, dismissWith) {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+
+    if (!innerParams.toast) {
+      globalState.keydownHandler = function (e) {
+        return keydownHandler(instance, e, dismissWith);
+      };
+
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = true;
+    }
+  }; // Focus handling
+
+  var setFocus = function setFocus(innerParams, index, increment) {
+    var focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
+
+    for (var i = 0; i < focusableElements.length; i++) {
+      index = index + increment; // rollover to first item
+
+      if (index === focusableElements.length) {
+        index = 0; // go to last item
+      } else if (index === -1) {
+        index = focusableElements.length - 1;
+      }
+
+      return focusableElements[index].focus();
+    } // no visible focusable elements, focus the popup
+
+
+    getPopup().focus();
+  };
+  var arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Left', 'Right', 'Up', 'Down' // IE11
+  ];
+  var escKeys = ['Escape', 'Esc' // IE11
+  ];
+
+  var keydownHandler = function keydownHandler(instance, e, dismissWith) {
+    var innerParams = privateProps.innerParams.get(instance);
+
+    if (innerParams.stopKeydownPropagation) {
+      e.stopPropagation();
+    } // ENTER
+
+
+    if (e.key === 'Enter') {
+      handleEnter(instance, e, innerParams); // TAB
+    } else if (e.key === 'Tab') {
+      handleTab(e, innerParams); // ARROWS - switch focus between buttons
+    } else if (arrowKeys.indexOf(e.key) !== -1) {
+      handleArrows(); // ESC
+    } else if (escKeys.indexOf(e.key) !== -1) {
+      handleEsc(e, innerParams, dismissWith);
+    }
+  };
+
+  var handleEnter = function handleEnter(instance, e, innerParams) {
+    // #720 #721
+    if (e.isComposing) {
+      return;
+    }
+
+    if (e.target && instance.getInput() && e.target.outerHTML === instance.getInput().outerHTML) {
+      if (['textarea', 'file'].indexOf(innerParams.input) !== -1) {
+        return; // do not submit
+      }
+
+      clickConfirm();
+      e.preventDefault();
+    }
+  };
+
+  var handleTab = function handleTab(e, innerParams) {
+    var targetElement = e.target;
+    var focusableElements = getFocusableElements();
+    var btnIndex = -1;
+
+    for (var i = 0; i < focusableElements.length; i++) {
+      if (targetElement === focusableElements[i]) {
+        btnIndex = i;
+        break;
+      }
+    }
+
+    if (!e.shiftKey) {
+      // Cycle to the next button
+      setFocus(innerParams, btnIndex, 1);
+    } else {
+      // Cycle to the prev button
+      setFocus(innerParams, btnIndex, -1);
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
+  var handleArrows = function handleArrows() {
+    var confirmButton = getConfirmButton();
+    var cancelButton = getCancelButton(); // focus Cancel button if Confirm button is currently focused
+
+    if (document.activeElement === confirmButton && isVisible(cancelButton)) {
+      cancelButton.focus(); // and vice versa
+    } else if (document.activeElement === cancelButton && isVisible(confirmButton)) {
+      confirmButton.focus();
+    }
+  };
+
+  var handleEsc = function handleEsc(e, innerParams, dismissWith) {
+    if (callIfFunction(innerParams.allowEscapeKey)) {
+      e.preventDefault();
+      dismissWith(DismissReason.esc);
+    }
+  };
+
+  var handlePopupClick = function handlePopupClick(instance, domCache, dismissWith) {
+    var innerParams = privateProps.innerParams.get(instance);
+
+    if (innerParams.toast) {
+      handleToastClick(instance, domCache, dismissWith);
+    } else {
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
+
+      handleContainerMousedown(domCache);
+      handleModalClick(instance, domCache, dismissWith);
+    }
+  };
+
+  var handleToastClick = function handleToastClick(instance, domCache, dismissWith) {
+    // Closing toast by internal click
+    domCache.popup.onclick = function () {
+      var innerParams = privateProps.innerParams.get(instance);
+
+      if (innerParams.showConfirmButton || innerParams.showCancelButton || innerParams.showCloseButton || innerParams.input) {
+        return;
+      }
+
+      dismissWith(DismissReason.close);
+    };
+  };
+
+  var ignoreOutsideClick = false;
+
+  var handleModalMousedown = function handleModalMousedown(domCache) {
+    domCache.popup.onmousedown = function () {
+      domCache.container.onmouseup = function (e) {
+        domCache.container.onmouseup = undefined; // We only check if the mouseup target is the container because usually it doesn't
+        // have any other direct children aside of the popup
+
+        if (e.target === domCache.container) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  var handleContainerMousedown = function handleContainerMousedown(domCache) {
+    domCache.container.onmousedown = function () {
+      domCache.popup.onmouseup = function (e) {
+        domCache.popup.onmouseup = undefined; // We also need to check if the mouseup target is a child of the popup
+
+        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  var handleModalClick = function handleModalClick(instance, domCache, dismissWith) {
+    domCache.container.onclick = function (e) {
+      var innerParams = privateProps.innerParams.get(instance);
+
+      if (ignoreOutsideClick) {
+        ignoreOutsideClick = false;
+        return;
+      }
+
+      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
+        dismissWith(DismissReason.backdrop);
+      }
+    };
+  };
+
+  function _main(userParams) {
+    showWarningsForParams(userParams);
+
+    if (globalState.currentInstance) {
+      globalState.currentInstance._destroy();
+    }
+
+    globalState.currentInstance = this;
+    var innerParams = prepareParams(userParams);
+    setParameters(innerParams);
+    Object.freeze(innerParams); // clear the previous timer
+
+    if (globalState.timeout) {
+      globalState.timeout.stop();
+      delete globalState.timeout;
+    } // clear the restore focus timeout
+
+
+    clearTimeout(globalState.restoreFocusTimeout);
+    var domCache = populateDomCache(this);
+    render(this, innerParams);
+    privateProps.innerParams.set(this, innerParams);
+    return swalPromise(this, domCache, innerParams);
+  }
+
+  var prepareParams = function prepareParams(userParams) {
+    var showClass = _extends({}, defaultParams.showClass, userParams.showClass);
+
+    var hideClass = _extends({}, defaultParams.hideClass, userParams.hideClass);
+
+    var params = _extends({}, defaultParams, userParams);
+
+    params.showClass = showClass;
+    params.hideClass = hideClass; // @deprecated
+
+    if (userParams.animation === false) {
+      params.showClass = {
+        popup: 'swal2-noanimation',
+        backdrop: 'swal2-noanimation'
+      };
+      params.hideClass = {};
+    }
+
+    return params;
+  };
+
+  var swalPromise = function swalPromise(instance, domCache, innerParams) {
+    return new Promise(function (resolve) {
+      // functions to handle all closings/dismissals
+      var dismissWith = function dismissWith(dismiss) {
+        instance.closePopup({
+          dismiss: dismiss
+        });
+      };
+
+      privateMethods.swalPromiseResolve.set(instance, resolve);
+
+      domCache.confirmButton.onclick = function () {
+        return handleConfirmButtonClick(instance, innerParams);
+      };
+
+      domCache.cancelButton.onclick = function () {
+        return handleCancelButtonClick(instance, dismissWith);
+      };
+
+      domCache.closeButton.onclick = function () {
+        return dismissWith(DismissReason.close);
+      };
+
+      handlePopupClick(instance, domCache, dismissWith);
+      addKeydownHandler(instance, globalState, innerParams, dismissWith);
+
+      if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
+        addClass(document.body, swalClasses['toast-column']);
+      } else {
+        removeClass(document.body, swalClasses['toast-column']);
+      }
+
+      handleInputOptionsAndValue(instance, innerParams);
+      openPopup(innerParams);
+      setupTimer(globalState, innerParams, dismissWith);
+      initFocus(domCache, innerParams); // Scroll container to top on open (#1247, #1946)
+
+      setTimeout(function () {
+        domCache.container.scrollTop = 0;
+      });
+    });
+  };
+
+  var populateDomCache = function populateDomCache(instance) {
+    var domCache = {
+      popup: getPopup(),
+      container: getContainer(),
+      content: getContent(),
+      actions: getActions(),
+      confirmButton: getConfirmButton(),
+      cancelButton: getCancelButton(),
+      closeButton: getCloseButton(),
+      validationMessage: getValidationMessage(),
+      progressSteps: getProgressSteps()
+    };
+    privateProps.domCache.set(instance, domCache);
+    return domCache;
+  };
+
+  var setupTimer = function setupTimer(globalState$$1, innerParams, dismissWith) {
+    var timerProgressBar = getTimerProgressBar();
+    hide(timerProgressBar);
+
+    if (innerParams.timer) {
+      globalState$$1.timeout = new Timer(function () {
+        dismissWith('timer');
+        delete globalState$$1.timeout;
+      }, innerParams.timer);
+
+      if (innerParams.timerProgressBar) {
+        show(timerProgressBar);
+        setTimeout(function () {
+          if (globalState$$1.timeout.running) {
+            // timer can be already stopped at this point
+            animateTimerProgressBar(innerParams.timer);
+          }
+        });
+      }
+    }
+  };
+
+  var initFocus = function initFocus(domCache, innerParams) {
+    if (innerParams.toast) {
+      return;
+    }
+
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return blurActiveElement();
+    }
+
+    if (innerParams.focusCancel && isVisible(domCache.cancelButton)) {
+      return domCache.cancelButton.focus();
+    }
+
+    if (innerParams.focusConfirm && isVisible(domCache.confirmButton)) {
+      return domCache.confirmButton.focus();
+    }
+
+    setFocus(innerParams, -1, 1);
+  };
+
+  var blurActiveElement = function blurActiveElement() {
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
+  };
+
+  /**
+   * Updates popup parameters.
+   */
+
+  function update(params) {
+    var popup = getPopup();
+    var innerParams = privateProps.innerParams.get(this);
+
+    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
+      return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
+    }
+
+    var validUpdatableParams = {}; // assign valid params from `params` to `defaults`
+
+    Object.keys(params).forEach(function (param) {
+      if (Swal.isUpdatableParameter(param)) {
+        validUpdatableParams[param] = params[param];
+      } else {
+        warn("Invalid parameter to update: \"".concat(param, "\". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js"));
+      }
+    });
+
+    var updatedParams = _extends({}, innerParams, validUpdatableParams);
+
+    render(this, updatedParams);
+    privateProps.innerParams.set(this, updatedParams);
+    Object.defineProperties(this, {
+      params: {
+        value: _extends({}, this.params, params),
+        writable: false,
+        enumerable: true
+      }
+    });
+  }
+
+  function _destroy() {
+    var domCache = privateProps.domCache.get(this);
+    var innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      return; // This instance has already been destroyed
+    } // Check if there is another Swal closing
+
+
+    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
+      globalState.swalCloseEventFinishedCallback();
+      delete globalState.swalCloseEventFinishedCallback;
+    } // Check if there is a swal disposal defer timer
+
+
+    if (globalState.deferDisposalTimer) {
+      clearTimeout(globalState.deferDisposalTimer);
+      delete globalState.deferDisposalTimer;
+    }
+
+    if (typeof innerParams.onDestroy === 'function') {
+      innerParams.onDestroy();
+    }
+
+    disposeSwal(this);
+  }
+
+  var disposeSwal = function disposeSwal(instance) {
+    // Unset this.params so GC will dispose it (#1569)
+    delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
+
+    delete globalState.keydownHandler;
+    delete globalState.keydownTarget; // Unset WeakMaps so GC will be able to dispose them (#1569)
+
+    unsetWeakMaps(privateProps);
+    unsetWeakMaps(privateMethods);
+  };
+
+  var unsetWeakMaps = function unsetWeakMaps(obj) {
+    for (var i in obj) {
+      obj[i] = new WeakMap();
+    }
+  };
+
+
+
+  var instanceMethods = /*#__PURE__*/Object.freeze({
+    hideLoading: hideLoading,
+    disableLoading: hideLoading,
+    getInput: getInput$1,
+    close: close,
+    closePopup: close,
+    closeModal: close,
+    closeToast: close,
+    enableButtons: enableButtons,
+    disableButtons: disableButtons,
+    enableInput: enableInput,
+    disableInput: disableInput,
+    showValidationMessage: showValidationMessage,
+    resetValidationMessage: resetValidationMessage$1,
+    getProgressSteps: getProgressSteps$1,
+    _main: _main,
+    update: update,
+    _destroy: _destroy
+  });
+
+  var currentInstance;
+
+  var SweetAlert = /*#__PURE__*/function () {
+    function SweetAlert() {
+      _classCallCheck(this, SweetAlert);
+
+      // Prevent run in Node env
+      if (typeof window === 'undefined') {
+        return;
+      } // Check for the existence of Promise
+
+
+      if (typeof Promise === 'undefined') {
+        error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
+      }
+
+      currentInstance = this;
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var outerParams = Object.freeze(this.constructor.argsToParams(args));
+      Object.defineProperties(this, {
+        params: {
+          value: outerParams,
+          writable: false,
+          enumerable: true,
+          configurable: true
+        }
+      });
+
+      var promise = this._main(this.params);
+
+      privateProps.promise.set(this, promise);
+    } // `catch` cannot be the name of a module export, so we define our thenable methods here instead
+
+
+    _createClass(SweetAlert, [{
+      key: "then",
+      value: function then(onFulfilled) {
+        var promise = privateProps.promise.get(this);
+        return promise.then(onFulfilled);
+      }
+    }, {
+      key: "finally",
+      value: function _finally(onFinally) {
+        var promise = privateProps.promise.get(this);
+        return promise["finally"](onFinally);
+      }
+    }]);
+
+    return SweetAlert;
+  }(); // Assign instance methods from src/instanceMethods/*.js to prototype
+
+
+  _extends(SweetAlert.prototype, instanceMethods); // Assign static methods from src/staticMethods/*.js to constructor
+
+
+  _extends(SweetAlert, staticMethods); // Proxy to instance methods to constructor, for now, for backwards compatibility
+
+
+  Object.keys(instanceMethods).forEach(function (key) {
+    SweetAlert[key] = function () {
+      if (currentInstance) {
+        var _currentInstance;
+
+        return (_currentInstance = currentInstance)[key].apply(_currentInstance, arguments);
+      }
+    };
+  });
+  SweetAlert.DismissReason = DismissReason;
+  SweetAlert.version = '9.17.0';
+
+  var Swal = SweetAlert;
+  Swal["default"] = Swal;
+
+  return Swal;
+
+}));
+if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
+
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;background:#fff;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row;padding:0}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;padding:0;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;width:auto;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-no-transition{transition:none!important}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center;padding:0 1.8em}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent!important;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;height:.25em;overflow:hidden;border-bottom-right-radius:.3125em;border-bottom-left-radius:.3125em}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;align-items:center;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close::-moz-focus-inner{border:0}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0 1.6em;color:#545454;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent!important}body.swal2-no-backdrop .swal2-container>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-container.swal2-top{top:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-top-left,body.swal2-no-backdrop .swal2-container.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-top-end,body.swal2-no-backdrop .swal2-container.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-container.swal2-center{top:50%;left:50%;transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-left,body.swal2-no-backdrop .swal2-container.swal2-center-start{top:50%;left:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-end,body.swal2-no-backdrop .swal2-container.swal2-center-right{top:50%;right:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom{bottom:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom-left,body.swal2-no-backdrop .swal2-container.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-bottom-end,body.swal2-no-backdrop .swal2-container.swal2-bottom-right{right:0;bottom:0}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}");
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -78534,10 +81740,18 @@ var render = function() {
         _c("div", { staticClass: "card mb-4" }, [
           _vm.product.category
             ? _c("h6", { staticClass: "p-2" }, [
-                _c("span", [_vm._v("Categoria: ")]),
+                _c("span", [_vm._v(_vm._s(_vm.$t("Categoria")) + ":")]),
                 _vm._v(" "),
                 _c("a", { attrs: { href: _vm.cat_route } }, [
-                  _vm._v(_vm._s(_vm.product.category.title_es))
+                  _vm._v(
+                    "\n        " +
+                      _vm._s(
+                        _vm.product.category["title_" + _vm.$root.local]
+                          ? _vm.product.category["title_" + _vm.$root.local]
+                          : _vm.product.category["title_es"]
+                      ) +
+                      "\n      "
+                  )
                 ])
               ])
             : _vm._e(),
@@ -78556,12 +81770,12 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body p-0" }, [
             _c("a", { attrs: { href: _vm.product_route_view } }, [
-              _vm.product.has_image
-                ? _c(
-                    "div",
-                    {},
-                    _vm._l(_vm.images, function(image) {
-                      return _c("img", {
+              _c(
+                "div",
+                {},
+                _vm._l(_vm.files["images"], function(image) {
+                  return _vm.files["images"].length > 0
+                    ? _c("img", {
                         attrs: {
                           width: "100%",
                           src:
@@ -78571,25 +81785,23 @@ var render = function() {
                           alt: ""
                         }
                       })
-                    }),
-                    0
-                  )
-                : _c("div", {}, [
-                    _c("img", {
-                      attrs: {
-                        width: "100%",
-                        src: _vm.$root.baseUrl + "/images/default.jpeg",
-                        alt: ""
-                      }
-                    })
-                  ])
+                    : _c("img", {
+                        attrs: {
+                          width: "100%",
+                          src: _vm.$root.baseUrl + "/images/default.jpeg",
+                          alt: ""
+                        }
+                      })
+                }),
+                0
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "p-2" }, [
               _c("h6", [_vm._v("Code:   " + _vm._s(_vm.product.product_code))]),
               _vm._v(" "),
               _c("div", {}, [
-                _vm.product.has_pdf
+                _vm.files["pdfs"].length > 0
                   ? _c("img", {
                       attrs: {
                         width: "15%",
@@ -78599,7 +81811,7 @@ var render = function() {
                     })
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.product.has_cad_2d
+                _vm.files["dxfs"].length > 0
                   ? _c("img", {
                       attrs: {
                         width: "15%",
@@ -78609,7 +81821,7 @@ var render = function() {
                     })
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.product.has_zip
+                _vm.files["zips"].length > 0
                   ? _c("img", {
                       attrs: {
                         width: "15%",
@@ -78779,12 +81991,12 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 col-md-4 col-lg-4" }, [
-                  _vm.files.images.length > 0
-                    ? _c(
-                        "div",
-                        {},
-                        _vm._l(_vm.files.images, function(img) {
-                          return _c("img", {
+                  _c(
+                    "div",
+                    {},
+                    _vm._l(_vm.files.images, function(img) {
+                      return _vm.files.images.length > 0
+                        ? _c("img", {
                             attrs: {
                               width: "100%",
                               src:
@@ -78794,19 +82006,17 @@ var render = function() {
                               alt: ""
                             }
                           })
-                        }),
-                        0
-                      )
-                    : _c("div", {}, [
-                        _c("img", {
-                          staticClass: "productPic",
-                          attrs: {
-                            width: "100%",
-                            src: _vm.$root.baseUrl + "/images/default.jpeg",
-                            alt: ""
-                          }
-                        })
-                      ])
+                        : _c("img", {
+                            staticClass: "productPic",
+                            attrs: {
+                              width: "100%",
+                              src: _vm.$root.baseUrl + "/images/default.jpeg",
+                              alt: ""
+                            }
+                          })
+                    }),
+                    0
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12 col-md-8 col-lg-8" }, [
@@ -78952,7 +82162,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("b-tab", { attrs: { title: "Visualizador" } }, [
-            _vm.product.has_cad_3d
+            _vm.product.has_cad_3d && _vm.files.stls[0]
               ? _c("div", {}, [
                   _c("iframe", {
                     staticClass: "mb-3",
@@ -78978,7 +82188,7 @@ var render = function() {
                   [_c("p", [_vm._v("Visualizador 3D no disponible.")])]
                 ),
             _vm._v(" "),
-            _vm.product.has_cad_2d
+            _vm.product.has_cad_2d && _vm.files.dxfs[0]
               ? _c("div", { attrs: { id: "d_container" } }, [
                   _c("div", { attrs: { id: "tapador" } }, [_vm._v("MICRO SA")]),
                   _vm._v(" "),
@@ -79454,6 +82664,57 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){ true?module.exports=e():undefined}("undefined"!=typeof self?self:this,function(){return function(t){var e={};function i(n){if(e[n])return e[n].exports;var r=e[n]={i:n,l:!1,exports:{}};return t[n].call(r.exports,r,r.exports,i),r.l=!0,r.exports}return i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)i.d(n,r,function(e){return t[e]}.bind(null,r));return n},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e,i){},function(t,e,i){"use strict";i.r(e);var n="undefined"!=typeof window?window.HTMLElement:Object,r={mounted:function(){document.addEventListener("focusin",this.focusIn)},methods:{focusIn:function(t){if(this.isActive&&t.target!==this.$el&&!this.$el.contains(t.target)){var e=this.container?this.container:this.isFullPage?null:this.$el.parentElement;(this.isFullPage||e&&e.contains(t.target))&&(t.preventDefault(),this.$el.focus())}}},beforeDestroy:function(){document.removeEventListener("focusin",this.focusIn)}};function a(t,e,i,n,r,a,o,s){var u,l="function"==typeof t?t.options:t;if(e&&(l.render=e,l.staticRenderFns=i,l._compiled=!0),n&&(l.functional=!0),a&&(l._scopeId="data-v-"+a),o?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},l._ssrRegister=u):r&&(u=s?function(){r.call(this,this.$root.$options.shadowRoot)}:r),u)if(l.functional){l._injectStyles=u;var c=l.render;l.render=function(t,e){return u.call(e),c(t,e)}}else{var d=l.beforeCreate;l.beforeCreate=d?[].concat(d,u):[u]}return{exports:t,options:l}}var o=a({name:"spinner",props:{color:{type:String,default:"#000"},height:{type:Number,default:64},width:{type:Number,default:64}}},function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 38 38",xmlns:"http://www.w3.org/2000/svg",width:this.width,height:this.height,stroke:this.color}},[e("g",{attrs:{fill:"none","fill-rule":"evenodd"}},[e("g",{attrs:{transform:"translate(1 1)","stroke-width":"2"}},[e("circle",{attrs:{"stroke-opacity":".25",cx:"18",cy:"18",r:"18"}}),e("path",{attrs:{d:"M36 18c0-9.94-8.06-18-18-18"}},[e("animateTransform",{attrs:{attributeName:"transform",type:"rotate",from:"0 18 18",to:"360 18 18",dur:"0.8s",repeatCount:"indefinite"}})],1)])])])},[],!1,null,null,null).exports,s=a({name:"dots",props:{color:{type:String,default:"#000"},height:{type:Number,default:240},width:{type:Number,default:60}}},function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 120 30",xmlns:"http://www.w3.org/2000/svg",fill:this.color,width:this.width,height:this.height}},[e("circle",{attrs:{cx:"15",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"60",cy:"15",r:"9","fill-opacity":"0.3"}},[e("animate",{attrs:{attributeName:"r",from:"9",to:"9",begin:"0s",dur:"0.8s",values:"9;15;9",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"0.5",to:"0.5",begin:"0s",dur:"0.8s",values:".5;1;.5",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"105",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})])])},[],!1,null,null,null).exports,u=a({name:"bars",props:{color:{type:String,default:"#000"},height:{type:Number,default:40},width:{type:Number,default:40}}},function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 30 30",height:this.height,width:this.width,fill:this.color}},[e("rect",{attrs:{x:"0",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"10",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"20",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}})])])},[],!1,null,null,null).exports,l=a({name:"vue-loading",mixins:[r],props:{active:Boolean,programmatic:Boolean,container:[Object,Function,n],isFullPage:{type:Boolean,default:!0},transition:{type:String,default:"fade"},canCancel:Boolean,onCancel:{type:Function,default:function(){}},color:String,backgroundColor:String,opacity:Number,width:Number,height:Number,zIndex:Number,loader:{type:String,default:"spinner"}},data:function(){return{isActive:this.active}},components:{Spinner:o,Dots:s,Bars:u},beforeMount:function(){this.programmatic&&(this.container?(this.isFullPage=!1,this.container.appendChild(this.$el)):document.body.appendChild(this.$el))},mounted:function(){this.programmatic&&(this.isActive=!0),document.addEventListener("keyup",this.keyPress)},methods:{cancel:function(){this.canCancel&&this.isActive&&(this.hide(),this.onCancel.apply(null,arguments))},hide:function(){var t=this;this.$emit("hide"),this.$emit("update:active",!1),this.programmatic&&(this.isActive=!1,setTimeout(function(){var e;t.$destroy(),void 0!==(e=t.$el).remove?e.remove():e.parentNode.removeChild(e)},150))},keyPress:function(t){27===t.keyCode&&this.cancel()}},watch:{active:function(t){this.isActive=t}},beforeDestroy:function(){document.removeEventListener("keyup",this.keyPress)}},function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("transition",{attrs:{name:t.transition}},[i("div",{directives:[{name:"show",rawName:"v-show",value:t.isActive,expression:"isActive"}],staticClass:"vld-overlay is-active",class:{"is-full-page":t.isFullPage},style:{zIndex:this.zIndex},attrs:{tabindex:"0","aria-busy":t.isActive,"aria-label":"Loading"}},[i("div",{staticClass:"vld-background",style:{background:this.backgroundColor,opacity:this.opacity},on:{click:function(e){return e.preventDefault(),t.cancel(e)}}}),i("div",{staticClass:"vld-icon"},[t._t("before"),t._t("default",[i(t.loader,{tag:"component",attrs:{color:t.color,width:t.width,height:t.height}})]),t._t("after")],2)])])},[],!1,null,null,null).exports,c=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return{show:function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:e,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:i,a=Object.assign({},e,n,{programmatic:!0}),o=new(t.extend(l))({el:document.createElement("div"),propsData:a}),s=Object.assign({},i,r);return Object.keys(s).map(function(t){o.$slots[t]=s[t]}),o}}};i(0);l.install=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},n=c(t,e,i);t.$loading=n,t.prototype.$loading=n};e.default=l}]).default});
+
+/***/ }),
+
+/***/ "./node_modules/vue-sweetalert2/dist/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-sweetalert2/dist/index.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+
+var VueSweetalert2 = (function () {
+    function VueSweetalert2() {
+    }
+    VueSweetalert2.install = function (vue, options) {
+        var swalLocalInstance = options ? sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.mixin(options) : sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a;
+        var swalFunction = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            return swalLocalInstance.fire.apply(swalLocalInstance, args);
+        };
+        var methodName;
+        for (methodName in swalLocalInstance) {
+            if (Object.prototype.hasOwnProperty.call(swalLocalInstance, methodName) &&
+                typeof swalLocalInstance[methodName] === 'function') {
+                swalFunction[methodName] = (function (method) {
+                    return function () {
+                        var args = [];
+                        for (var _i = 0; _i < arguments.length; _i++) {
+                            args[_i] = arguments[_i];
+                        }
+                        return swalLocalInstance[method].apply(swalLocalInstance, args);
+                    };
+                })(methodName);
+            }
+        }
+        vue['swal'] = swalFunction;
+        if (!vue.prototype.hasOwnProperty('$swal')) {
+            vue.prototype.$swal = swalFunction;
+        }
+    };
+    return VueSweetalert2;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (VueSweetalert2);
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -91517,8 +94778,9 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _myFuncs_fileManager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./myFuncs/fileManager */ "./resources/js/myFuncs/fileManager.js");
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
 /**
 * First we will load all of this project's JavaScript dependencies which
 * includes Vue and other libraries. It is a great starting point when
@@ -91539,6 +94801,12 @@ Vue.mixin(_myFuncs_fileManager__WEBPACK_IMPORTED_MODULE_0__["default"]);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
+var options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674'
+};
+Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('drop-zone', __webpack_require__(/*! ./components/DropZone.vue */ "./resources/js/components/DropZone.vue")["default"]);
 Vue.component('contact-mail-form', __webpack_require__(/*! ./components/ContactMailForm.vue */ "./resources/js/components/ContactMailForm.vue")["default"]);
@@ -91548,7 +94816,7 @@ Vue.component('filter-menu', __webpack_require__(/*! ./components/FilterMenu.vue
 Vue.component('search-component', __webpack_require__(/*! ./components/forms/SearchComponent.vue */ "./resources/js/components/forms/SearchComponent.vue")["default"]);
 Vue.component('product-component', __webpack_require__(/*! ./components/ProductComponent.vue */ "./resources/js/components/ProductComponent.vue")["default"]);
 
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]); // import 'bootstrap-vue/dist/bootstrap-vue.css';
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]); // import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -91575,8 +94843,8 @@ switch (lang) {
   default:
 }
 
-Vue.use(vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]({
+Vue.use(vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
   locale: lang,
   messages: translations,
   objectNotation: true,
@@ -92243,7 +95511,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: en, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"en\":{\"Hello world\":\"Hola Mundo\",\"Next\":\"Next\",\"Resultado\":\"Result\",\"No encontrado\":\"Not found\",\"Productos Encontrados\":\"Products found\",\"Consultar por otros productos\":\"Ask for other products\",\"Consultas adicionales\":\"Additional queries\",\"Serie CN10 - Actuadores rotantes\":\"CN10 Series - Rotary actuators\",\"Serie TECH 21\":\"TECH 21 Series\",\"Serie ECO OEM\":\"ECO OEM Series\",\"Serie C16 - Vástago simple\":\"C16 Series - Single rod\",\"Serie C16 - Doble vástago\":\"C16 Series - Double ended\",\"Serie C16 - Montajes y accesorios\":\"C16 Series - Mountings and accessories\",\"Serie CC10 - Vástago simple\":\"CC10 Series - Single rod\",\"Serie CP10 - Vástago simple\":\"CP10 Series - Single rod\",\"Serie CP10 - Doble vástago\":\"CP10 Series - Double ended\",\"Serie CP10 - Con guía antigiro\":\"CP10 Series - Non rotating guide\",\"Serie CP10 - Tándem\":\"CP10 Series - Tandem\",\"Serie CP10 - Vástago reforzado\":\"CP10 Series - Reinforced rod\",\"Serie CP10 - Doble efecto de tres posiciones\":\"Serie CP10 - Double acting with 3 positions\",\"Serie CP10 - Con alimentación trasera\":\"CP10 Series - Rear air supply\",\"Serie CP10 - Montajes y accesorios\":\"CP10 Series - Mountings and accessories\",\"Serie CPL10 - Con entre centros de montaje ISO 21287\":\"CPL10 Series - Mounting dimmensions according to ISO 21287\",\"Serie CADP - Doble pistón y antigiro\":\"CADP Series - Non rotating dual piston\",\"Serie CASP - Simple pistón y antigiro\":\"CASP Series - Non rotating single piston\",\"Serie CN10 - Cilindros de impacto\":\"CN10 Series - Impact cylinders\",\"Serie CN10 - Vástago simple\":\"CN10 Series - Single rod\",\"Serie CN10 - Doble vástago\":\"CN10 Series - Double ended\",\"Serie CN10 - Con doble pistón\":\"CN10 Series - Tandem\",\"Serie CN10 - Acoplados de acción independiente\":\"CN10 Series - Duplex\",\"Serie CN10 - Montajes y accesorios\":\"CN10 Series - Mountings and accessories\",\"Serie CN10 - Bloqueo de vástago\":\"CN10 Series - Piston rod lock\",\"Serie CN10 - Guías H tipo JB\":\"CN10 Series - H guides JB type\",\"Serie Micro Origa OSP-P\":\"Micro Origa OSP-P Series\",\"Serie Micro Origa OSP-P Slideline\":\"Micro Origa OSP-P Slideline Series\",\"Serie Micro Origa OSP-P Proline\":\"Micro Origa OSP-P Proline Series\",\"Serie Micro Origa OSP-P - Accesorios\":\"Micro Origa OSP-P Series - Accessories\",\"Serie ADA\":\"ADA Series\",\"Serie DMR\":\"DMR Series\",\"Serie DSL\":\"DSL Series\",\"Serie RCE\":\"RCE Series\",\"Serie RPE\":\"RPE Series\",\"Serie RT\":\"RT Series\",\"Serie RTP\":\"RTP Series\",\"Serie MD8 SSL - Ejecución S\":\"MD8 SSL Series - S execution\",\"Serie MD8 SSL - Ejecución U (ISO 6432)\":\"MD8 SSL Series - U execution (ISO 6432)\",\"Serie MD8 SSL - Doble vástago\":\"MD8 SSL Series - Double ended\",\"Serie MD8 SSL - Vástago hueco\":\"MD8 SSL Series - Hollow rod\",\"Serie MD8 SL - Tubo aluminio Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution Aluminium tube (ISO 6432)\",\"Serie MD8 SL - Tubo Ac.Inox. Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution Stainless steel tube (ISO 6432)\",\"Serie MD8 SL - Para ambiente corrosivo Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution for corrosive environments (ISO 6432)\",\"Serie MD8 SSL - Full inox para ambiente corrosivo Ejecución U (ISO 6432)\":\"MD8 SSL Series - U execution Full Stainless steel for corrosive environment (ISO 6432)\",\"Serie MD8 - Montajes y accesorios\":\"MD8 Series - Mountings and accessories\",\"Serie MD8 - Guías H tipo JB\":\"MD8 Series - H guides JB type\",\"Serie a cartucho\":\"Cartridge series\",\"TK 21-1M\":\"TK 21-1M\",\"TK 21-2M\":\"TK 21-2M\",\"TK 21-3M\":\"TK 21-3M\",\"ECO OEM 0.25M\":\"ECO OEM 0.25M\",\"ECO OEM 0.5M\":\"ECO OEM 0.5M\",\"ECO OEM 1.0MF\":\"ECO OEM 1.0MF\",\"ECO OEM 1.25Mx1\":\"ECO OEM 1.25Mx1\",\"ECO OEM 1.25Mx2\":\"ECO OEM 1.25Mx2\",\"OEM XT 1.5Mx1\":\"OEM XT 1.5Mx1\",\"OEM XT 1.5Mx2\":\"OEM XT 1.5Mx2\",\"Montaje con pies (par)\":\"Foot mounting (couple)\",\"Horquilla para vástago\":\"Rod clevis with pin\",\"Montaje basculante trasero\":\"Clevis foot mounting\",\"Montaje con placa delantera (o trasera)\":\"Front (or rear) flange mounting\",\"Accesorio para cilindros acoplados\":\"Accessory for duplex cylinders\",\"Montaje basculante trasero macho\":\"Rear male clevis\",\"Montaje basculante trasero hembra\":\"Rear female clevis\",\"Soporte lateral para basculantes\":\"Clevis foot mounting\",\"Soporte basculante trasero macho\":\"Rear male clevis\",\"Perno para basculantes\":\"Pivot pin for clevises\",\"Rótula para vástago\":\"Self aligning rod coupler\",\"Tuerca \":\"Hexagon rod nut\",\"Tuerca\":\"Hexagon rod nut\",\"Acople roscas\":\"Threaded coupler\",\"Montaje con pies externos (par)\":\"External foot mounting (couple)\",\"Montaje con pies internos (par)\":\"Internal foot mounting (couple)\",\"Soporte lateral para basculante hembra\":\"Clevis foot mounting\",\"Montaje basculante intermedio perfilado\":\"Profiled intermediate trunnion\",\"Montaje basculante intermedio\":\"Intermediate trunnion\",\"Montaje basculante frontal (o trasero)\":\"Front or rear trunnion\",\"Soporte para basculantes intermedio, delantero y trasero (par)\":\"Intermediate, front and rear trunnion mounting (couple)\",\"Montaje basculante trasero hembra angosto\":\"Narrow rear female clevis\",\"Montaje basculante macho con rótula angosto\":\"Narrow male clevis with spherical bearing\",\"Soporte lateral con rótula para basculante hembra angosto\":\"Clevis foot mounting with spherical bearing\",\"Perno para basculantes angostos\":\"Narrow pivot pin\",\"Soporte lateral para basculante intermedio\":\"Trunnion mounting\",\"Acople para horquilla\":\"Coupler for rod clevis with pin or rod eye\",\"Horquilla con rótula para vástago\":\"Rod eye\",\"Tuerca para vástago\":\"Hexagon rod nut\",\"Soporte para interruptor magnético serie DMR, tubo perfilado\":\"Bracket for DMR proximity switch, profiled tube\",\"Soporte para interruptor magnético serie DMR, tubo cilíndrico\":\"Bracket for DMR proximity switch, round tube\",\"Guía H con bujes de material sintético tipo JB-I\":\"H guide JB-I type with self lubricating composite bushings\",\"Guía H con rodamientos de bolas recirculantes tipo JB-R\":\"H guide JB-R type with linear ball bearings\",\"Soporte intermedio E-1\":\"E-1 Intermediate mounting\",\"Soporte basculante\":\"Clevis mounting\",\"Soporte para interruptor magnético - DSL (6-7-8-9)\":\"Bracket for proximity switch - DSL (6-7-8-9)\",\"Con regulación de tracción y compresión\":\"Adjustable in tension and compresion directions.\",\"Con regulación solo tracción\":\"Adjustable only in tension direction\",\"Con regulación solo compresión\":\"Adjustable only in compresion direction\",\"DMR\":\"DMR\",\"DMRC\":\"DMRC\",\"Cable de 2m con conector hembra de M8x1\":\"2m cable with M8x1 female connector\",\"DSL1 Reed-Switch\":\"DSL1 Reed-Switch\",\"DSL2 Reed-Switch, con conector M8x1\":\"DSL2 Reed-Switch, with M8x1 connector\",\"DSL4 Efecto Hall PNP\":\"DSL4 Hall effect PNP\",\"DSL3 Efecto Hall PNP, con conector M8x1\":\"DSL3 Hall effect PNP, with M8x1 connector\",\"DSL6 Reed-Switch\":\"DSL6 Reed-Switch\",\"DSL7 Reed-Switch, con conector M8x1\":\"DSL7 Reed-Switch, with M8x1 connector\",\"DSL8 Efecto Hall PNP\":\"DSL8 Hall effect PNP\",\"DSL9 Efecto Hall PNP, con conector M8x1\":\"DSL9 Hall effect PNP, with M8x1 conector\",\"Reed-Switch\":\"Reed-Switch\",\"Reed-Switch, con conector M8x1\":\"Reed-Switch, with M8x1 connector\",\"Efecto Hall PNP\":\"Hall effect PNP\",\"Efecto Hall PNP,con conector M8x1\":\"Hall effect PNP, with M8x1 connector\",\"Montaje pie\":\"Foot mounting\",\"Montaje placa\":\"Flange mounting\",\"Tuerca para tapa\":\"Hexagon cap nut\",\"Soporte para interruptor magnético - DMR\":\"Bracket for proximity switch - DMR\",\"Soporte para interruptor magnético - DSL (1-2-3-4)\":\"Bracket for proximity switch - DSL (1-2-3-4)\",\"Aire comprimido filtrado con o sin lubricación\":\"Filtered compressed air, with or without lubrication\",\"Aire comprimido filtrado y lubricado\":\"Filtered and lubricated compressed air\",\"Tapas y pistón inyectado en aluminio, piñon y cremallera de acero SAE4140 bonificado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and piston, SAE4140 quenched and tempered steel rack and pinion, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero inoxidable AISI304, sellos de NBR\":\"Aluminium caps, stainless steel tube, AISI304 stainless steel rod, NBR seals\",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero cromado, sellos de NBR\":\"Aluminium caps, stainless steel tube, chromed plated steel rod, NBR seals\",\"Tapas de aluminio, tubo de acero SAE1040, vástago de acero cromado, sellos de NBR\":\"Aluminium caps, SAE 1040 steel tube, chromed plated steel rod, NBR seals\",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, stainless steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, stainless steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero cromado duro, sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated steel rod, hard anodized profiled aluminium tube, hard chromed plated steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano.\":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, PU seals.\",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR y poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, NBR and PU seals. \",\"Aluminio, guías de acero inox. con guarniciones de NBR \":\"Aluminium, stainless steel guides, with NBR seals \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cementado y templado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and pistons, SAE 1040 carburized quenched and tempered steel rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, PU seals\",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, NBR seals.\",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized round aluminium tube with tie rods, NBR seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, NBR seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized round aluminium tube with tie rods, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de NBR. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, antifriction synthetic plastic guides, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de FKM. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, antifriction synthetic plastic guides, FKM seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de NBR. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, hardened and ground steel guides, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de FKM.\":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, hardened and ground steel guides, FKM seals.\",\"Tapas de aluminio, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Aluminium caps, AISI304 stainless steel tube and rod, PU seals\",\"Tapas de plástico de ingeniería, tubo de aluminio y vástago de acero inoxidable AISI304, sellos de PU\":\"Engineering plastic caps, aluminium tube and AISI304 stainless steel rod, PU seals\",\"Tapas de plástico de ingeniería, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Engineering plastic caps, AISI304 stainless steel tube and rod, PU seals\",\"Tapas de plástico de ingeniería, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Engineering plastic caps, AISI304 stainless steel tube, rod and nut, FKM seals (flurocarbon)\",\"Tapas, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"AISI304 stainless steel caps, tube, rod and nuts, FKM seals (flurocarbon)\",\"Ac. Cincado\":\"Zinc plated steel\",\"Ac. Inox. AISI304\":\"AISI304 stainless steel\",\"Aluminio, guías de acero cromado.\":\"Aluminium, chromed plated steel guides.\",\"Aluminio, guías de acero templado.\":\"Aluminium, hardened steel guides.\",\"Cuerpo de latón niquelado, vástago y resorte de acero inoxidable, sellos de NBR\":\"Nickel plated brass body, stainless steel rod and spring, NBR seals\",\"doble efecto con amortiguación\":\"double acting with cushioning\",\"doble efecto con amortiguación, con ajuste fino\":\"double acting with cushioning, with fine angle adjustment\",\"simple efecto resorte delantero\":\"single acting front spring\",\"simple efecto, doble salida de vástago\":\"single acting, double ended\",\"doble efecto\":\"double acting\",\"doble efecto, doble salida de vástago\":\"double acting, double ended\",\"simple efecto resorte trasero\":\"single acting rear spring\",\"simple efecto, doble salida de vástago hueco\":\"single acting, double ended hollow rod\",\"doble efecto con guías antigiro\":\"double acting with non rotating guides\",\"doble efecto con guías antigiro, con alimentación trasera\":\"double acting with non rotating guides, rear air supply\",\"doble efecto, tándem 2 etapas\":\"double acting, 2 stage tandem execution\",\"doble efecto, tándem 3 etapas\":\"double acting, 3 stage tandem execution\",\"doble efecto, tándem 4 etapas\":\"double acting, 4 stage tandem execution\",\"doble efecto, vástago reforzado\":\"double acting, reinforced rod\",\"doble efecto de tres posiciones\":\"double acting with 3 positions\",\"simple efecto resorte delantero con alimentación trasera\":\"single acting front spring with rear air supply\",\"simple efecto resorte trasero con alimentación trasera\":\"single acting rear spring with rear air supply\",\"doble efecto con alimentación trasera\":\"double acting with rear air supply\",\"doble efecto, doble pistón con guías antigiro\":\"double acting, dual piston with non rotating guides\",\"doble efecto, impacto energía 24Nm\":\"double acting, impact energy 24Nm\",\"doble efecto, impacto energía 78Nm\":\"double acting, impact energy 78Nm\",\"doble efecto, impacto energía 112Nm\":\"double acting, impact energy 112Nm\",\"doble efecto con amortiguación, doble salida de vástago\":\"double acting with cushioning, double ended\",\"doble efecto, doble pistón\":\"double acting, tandem\",\"doble efecto con amortiguación, doble pistón\":\"double acting with cushioning, tandem\",\"accesorio para cilindros acoplados de acción independiente\":\"accessory for independent action duplex cylinders\",\"doble efecto, acoplados de acción independiente\":\"double acting, duplex with independent action\",\"doble efecto con amortiguación, acoplados de acción independiente\":\"double acting with cushioning, duplex with independent action\",\"doble efecto con amortiguación, con sellos de FKM\":\"double acting with cushioning, FKM seals\",\"doble efecto, doble salida de vástago con amortiguación\":\"double acting, double ended with cushioning\",\"doble efecto, doble salida de vástago hueco\":\"double acting, double ended hollow rod\",\"doble efecto, doble salida de vástago hueco con amortiguación\":\"double acting, double ended hollow rod with cushioning\",\"sin imán\":\"without magnetic piston\",\"con imán\":\"with magnetic piston\",\"vástago hembra\":\"female rod end\",\"vástago macho\":\"male rod end\",\"vástago hembra hueco\":\"female hollow rod end\",\"vástago macho hueco\":\"male hollow rod end\",\"Electroválvulas con modo de protección de seguridad intrínseca\":\"Ex-ia Intrinsically safe explosion proof solenoid valves\",\"Electroválvulas con modo de protección encapsulado \\\"m\\\"\":\"Ex-m Encapsulated explosion proof solenoid valves\",\"Serie pesada a membrana 1/2\\\" - Electroválvulas 2/2\":\"1/2\\\" Diaphragm Heavy Series - 2/2 Solenoid valves\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 2/2\":\"AZ Series from 1/2\\\" to 1 1/2\\\" - 2/2 Valves and solenoid valves\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 3/2\":\"AZ Series from 1/2\\\" to 1 1/2\\\" - 3/2 Valves and solenoid valves\",\"Serie 15\":\"15 Series\",\"Serie 22\":\"22 Series\",\"Serie 22 Global Class\":\"22 Global Class Series\",\"Serie 32\":\"32 Series\",\"Serie 15 - Solenoides antiexplosivos\":\"15 Series - Solenoid coil explosion proof\",\"Serie 22 - Solenoides antiexplosivos\":\"22 Series - Solenoid coil explosion proof\",\"Serie MEP-A\":\"MEP-A Series\",\"Serie Minielectroválvulas 15mm - 3/2 \":\"Pilot solenoid valves 15mm Series - 3/2 \",\"Serie Minielectroválvulas 15mm - 3/2\":\"Pilot solenoid valves 15mm Series - 3/2\",\"Serie 211 1/8\\\" - Electroválvulas 3/2\":\"211 Series 1/8\\\" size - 3/2 Solenoid valves\",\"Serie 213 - 1/8\\\" - Electroválvulas 2/2 y 3/2\":\"213 Series - 1/8\\\" size - 2/2 and 3/2 Solenoid valves\",\"Serie SB0 ND -1/8\\\" - Válvulas direccionales 5/2\":\"SB0 ND Series -1/8\\\" Size - 5/2 Directional control valves\",\"Serie VM15 GM -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"VM15 GM Series -1/8\\\" size - 5/2, 5/3 and 2x3/2 Directional control valves\",\"Serie VM15 BSL -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"VM15 BSL Series -1/8\\\" size - 5/2, 5/3 and 2x3/2 Sub-base valves\",\"Serie SB1 -1/4\\\" - Válvulas direccionales 5/2\":\"SB1 Series -1/4\\\" size - 5/2 Directional control valves\",\"Serie EN1 y SB1 NAMUR -1/4\\\" - Válvulas direccionales 3/2 y 5/2\":\"EN1 Series and SB1 NAMUR Series -1/4\\\" size - 3/2 and 5/2 Directional control valves\",\"Serie CH1 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 3/2\":\"CH1 GM Series -1/4\\\" size - 5/2, 5/3 and 3/2 Directional control valves\",\"Serie VM18 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"VM18 GM Series -1/4\\\" size - 5/2, 5/3 and 2x3/2 Directional control valves\",\"Serie VM18-BSL -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"VM18-BSL Series -1/4\\\" size - 5/2, 5/3 and 2x3/2 Sub-base valves\",\"Serie CH3 GM -1/2\\\" - Válvulas direccionales 5/2 y 5/3\":\"CH3 GM Series -1/2\\\" size - 5/2 and 5/3 Directional control valves\",\"Serie VS1 con monitoreo de actuación\":\"VS1 Series with switching position sensing\",\"Serie VS2 con monitoreo de actuación\":\"VS2 Series with switching position sensing\",\"Serie VS3 con monitoreo de actuación\":\"VS3 Series with switching position sensing\",\"Serie VS1 con monitoreo de actuación y comando redundante\":\"VS1 Series with switching position sensing and redundant operation\",\"Serie VS2 con monitoreo de actuación y comando redundante\":\"VS2 Series with switching position sensing and redundant operation\",\"Serie VS3 con monitoreo de actuación y comando redundante\":\"VS3 Series with switching position sensing and redundant operation\",\"Serie VS1 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS1 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Serie VS2 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS2 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Serie VS3 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS3 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Base de conexionado ISO5599/1-VDMA 24345\":\"ISO5599/1-VDMA 24345 Subplate\",\"Terminales ISO-VDMA 24345 (par)\":\"ISO-VDMA 24345 End plates (pair)\",\"Base de conexionado múltiple ISO 5599/1\":\"ISO 5599/1 Multiple subplate\",\"Terminal ISO 5599/1\":\"ISO 5599/1 End plate\",\"Interfaz adaptación ISO 5599/1\":\"ISO 5599/1 Conversion plate\",\"Serie MT-M5 - Válvulas 3/2 para tablero \":\"MT-M5 Series - 3/2 Panel mounting valves\",\"Serie MM-M5 - Válvulas 3/2 manuales y mecánicas\":\"MM-M5 Series - 3/2 Manually and mechanically operated valves\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"MV ND Series -1/8\\\" size - 3/2 and 5/2 Manually operated valves\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos mecánicos\":\"MV ND Series -1/8\\\" size - 3/2 and 5/2 Mechanically operated valves\",\"Serie SB1 servo -1/4\\\" - Válvulas 5/2 manuales y mecánicas\":\"SB1 servo Series-1/4\\\" size - 5/2 Manually and mechanically servoassisted valves\",\"Serie CH1 -1/4\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"CH1 Series -1/4\\\" size - 3/2 and 5/2 Manually operated valves\",\"Serie CH1 GM a palanca -1/4\\\" - Válvulas 3/2, 5/2 y 5/3 mandos manuales\":\"Lever operated CH1 GM Series -1/4\\\" size - 3/2, 5/2 and 5/3 Manually operated valves\",\"Serie CH3 GM a palanca -1/2\\\" - Válvulas 5/2 y 5/3 mandos manuales\":\"Lever operated CH3 GM series -1/2\\\" size - 5/2 and 5/3 Manually operated valves\",\"Válvulas colizantes - Válvulas 3/2 mandos manuales\":\"Hand slide valves - 3/2 Manually operated valves\",\"Válvulas rotantes Serie AR - Válvulas 4/2 mandos manuales\":\"Hand rotating valve AR series - 4/2 Manually operated valves\",\"Válvulas 5/2 a pedal\":\"5/2 Foot operated valves\",\"Electroválvula 2/2 a membrana, normal cerrada\":\"2/2 Diaphragm Solenoid valve, normally closed\",\"AZ5 G1/2\\\", mando neumático\":\"AZ5 G1/2\\\", pneumatically operated\",\"AZ5 G3/4\\\", mando neumático\":\"AZ5 G3/4\\\", pneumatically operated\",\"AZ7 G1\\\", mando neumático\":\"AZ7 G1\\\", pneumatically operated\",\"AZ7 G1 1/4\\\", mando neumático\":\"AZ7 G1 1/4\\\", pneumatically operated\",\"AZ7 G1 1/2\\\", mando neumático\":\"AZ7 G1 1/2\\\", pneumatically operated\",\"AZ5 G1/2\\\", mando eléctrico\":\"AZ5 G1/2\\\", electrically operated\",\"AZ5 G3/4\\\", mando eléctrico\":\"AZ5 G3/4\\\", electrically operated\",\"AZ7 G1\\\", mando eléctrico\":\"AZ7 G1\\\", electrically operated\",\"AZ7 G1 1/4\\\", mando eléctrico\":\"AZ7 G1 1/4\\\", electrically operated\",\"AZ7 G1 1/2\\\", mando eléctrico\":\"AZ7 G1 1/2\\\", electrically operated\",\"AZ5 G1/2\\\", mando eléctrico con alimentación independiente\":\"AZ5 G1/2\\\", electrically operated with external pilot\",\"AZ5 G3/4\\\", mando eléctrico con alimentación independiente\":\"AZ5 G3/4\\\", electrically operated with external pilot\",\"AZ7 G1\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1\\\", electrically operated with external pilot\",\"AZ7 G1 1/4\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/4\\\", electrically operated with external pilot\",\"AZ7 G1 1/2\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/2\\\", electrically operated with external pilot\",\"Cabeza de mando electroneumático 3/2 normal cerrada\":\"3/2 Solenoid coil normally closed\",\"Ficha de conexión 15 con indicador luminoso\":\"15 Socket plug with LED\",\"Placa de adaptación a base norma CNOMO\":\"Adapting plate to CNOMO Standard Base\",\"Solenoide para electroválvulas, ancho 22mm\":\"Coil for solenoid valves, 22mm width\",\"Ficha de conexión 22 con indicador luminoso\":\"22 Socket plug with LED\",\"Ficha de conexión 22 sin indicador - 2 contactos + tierra\":\"22 Socket plug without LED - 2 contacts + earth\",\"Tubo guía completo\":\"Complete armature tube\",\"Conexión de escape\":\"Exhaust connection\",\"Solenoide para electroválvulas, ancho 32mm\":\"Coil for solenoid valves, 32mm width\",\"Ficha de conexión 32 - 2 contactos + tierra\":\"32 Socket plug, 2 contacts + earth\",\"Ficha de conexión 32 - 3 contactos + tierra\":\"32 Socket plug, 3 contacts + earth\",\"Tubo guía completo 3/2NC 10bar\":\"3/2NC 10bar Complete armature tube\",\"Tubo guía completo 3/2NC 2,5bar\":\"3/2NC 2,5bar Complete armature tube\",\"Tubo guía completo 3/2NC 16bar\":\"3/2NC 16bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 2,5bar\":\"2/2 and 3/2NO 2,5bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 10bar\":\"2/2 and 3/2NO 10bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 16bar\":\"2/2 and 3/2NO 16bar Complete armature tube\",\"Tubo guía completo 2/2NC\":\"2/2NC Complete armature tube\",\"Tubo guía completo 2/2NC HP\":\"2/2NC HP Complete armature tube\",\"Tubo guía completo 2/2NC HD\":\"2/2NC HD Complete armature tube\",\"Conexión de escape G1/8\\\"\":\"G1/8\\\" Exhaust connection\",\"Ficha de conexión 15 - 2 contactos + tierra\":\"15 Socket plug - 2 contacts + earth\",\"Solenoide antiexplosivo encapsulado según Directiva ATEX94/9/CE\":\"Ex-m encapsulated explosion proof solenoid coil according to ATEX 94/9/CE directive\",\"314 MEP-A\":\"314 MEP-A\",\"316 MEP-A\":\"316 MEP-A\",\"Minielectroválvula unitaria\":\"Pilot solenoid valve single mounting\",\"Minielectroválvulas en manifold 2 posiciones\":\"2 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 3 posiciones\":\"3 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 4 posiciones\":\"4 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 5 posiciones\":\"5 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 6 posiciones\":\"6 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 7 posiciones\":\"7 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 8 posiciones\":\"8 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 9 posiciones\":\"9 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 10 posiciones\":\"10 valve manifold pilot solenoid valve\",\"Electroválvula para montaje unitario\":\"Solenoid valve for single mounting\",\"Electroválvula para manifold\":\"Solenoid valve for manifold mounting\",\"Kit manifold para 2 válvulas\":\"Manifold kit for 2 valves \",\"Kit manifold para 3 válvulas\":\"Manifold kit for 3 valves \",\"Kit manifold para 4 válvulas\":\"Manifold kit for 4 valves \",\"Kit manifold para 5 válvulas\":\"Manifold kit for 5 valves \",\"Kit manifold para 6 válvulas\":\"Manifold kit for 6 valves \",\"Kit manifold para 7 válvulas\":\"Manifold kit for 7 valves \",\"Kit manifold para 8 válvulas\":\"Manifold kit for 8 valves \",\"Kit manifold para 9 válvulas\":\"Manifold kit for 9 valves \",\"Kit manifold para 10 válvulas\":\"Manifold kit for 10 valves \",\"Electroválvula 2/2 normal cerrada, conexión lateral\":\"2/2 Solenoid valve, normally closed, side connection body\",\"Electroválvula 2/2 normal cerrada, conexión inferior\":\"2/2 Solenoid valve, normally closed, back connection body\",\"Electroválvula 2/2 normal cerrada, conexión múltiple\":\"2/2 Solenoid valve, normally closed, multiple connection body\",\"Electroválvula 2/2 normal abierta, conexión lateral\":\"2/2 Solenoid valve, normally open, side connection body\",\"Electroválvula 2/2 normal abierta, conexión inferior\":\"2/2 Solenoid valve, normally open, back connection body\",\"Electroválvula 3/2 normal cerrada, conexión lateral\":\"3/2 Solenoid valve, normally closed, side connection body\",\"Electroválvula 3/2 normal cerrada, conexión inferior\":\"3/2 Solenoid valve, normally closed, back connection body\",\"Electroválvula 3/2 normal cerrada, conexión múltiple\":\"2/2 Solenoid valve, normally closed, multiple connection body\",\"Electroválvula 3/2 normal abierta, conexión lateral\":\"3/2 Solenoid valve, normally open, side connection body\",\"Electroválvula 3/2 normal abierta, conexión inferior\":\"3/2 Solenoid valve, normally open, back connection body\",\"Kit manifold alimentación inferior para 2 válvulas\":\"Manifold kit for 2 valves with back supply\",\"Kit manifold alimentación inferior para 3 válvulas\":\"Manifold kit for 3 valves with back supply\",\"Kit manifold alimentación inferior para 4 válvulas\":\"Manifold kit for 4 valves with back supply\",\"Kit manifold alimentación inferior para 5 válvulas\":\"Manifold kit for 5 valves with back supply\",\"Kit manifold alimentación inferior para 6 válvulas\":\"Manifold kit for 6 valves with back supply\",\"Kit manifold alimentación inferior para 7 válvulas\":\"Manifold kit for 7 valves with back supply\",\"Kit manifold alimentación inferior para 8 válvulas\":\"Manifold kit for 8 valves with back supply\",\"Kit manifold alimentación inferior para 9 válvulas\":\"Manifold kit for 9 valves with back supply\",\"Kit manifold alimentación inferior para 10 válvulas\":\"Manifold kit for 10 valves with back supply\",\"Kit manifold alimentación lateral para 2 válvulas\":\"Manifold kit for 2 valves with side supply\",\"Kit manifold alimentación lateral para 3 válvulas\":\"Manifold kit for 3 valves with side supply\",\"Kit manifold alimentación lateral para 4 válvulas\":\"Manifold kit for 4 valves with side supply\",\"Kit manifold alimentación lateral para 5 válvulas\":\"Manifold kit for 5 valves with side supply\",\"Kit manifold alimentación lateral para 6 válvulas\":\"Manifold kit for 6 valves with side supply\",\"Kit manifold alimentación lateral para 7 válvulas\":\"Manifold kit for 7 valves with side supply\",\"Kit manifold alimentación lateral para 8 válvulas\":\"Manifold kit for 8 valves with side supply\",\"Kit manifold alimentación lateral para 9 válvulas\":\"Manifold kit for 9 valves with side supply\",\"Kit manifold alimentación lateral para 10 válvulas\":\"Manifold kit for 10 valves with side supply\",\"Válvula 5/2 mando neumático, reacción neumática\":\"5/2 Pneumatically operated valve, air return\",\"Válvula 5/2 mando neumático, reacción a resorte\":\"5/2 Pneumatically operated valve, spring return\",\"Válvula 5/2 biestable por impulsos neumáticos\":\"5/2 Pneumatically operated impulse valve\",\"Electroválvula 5/2 reacción neumática\":\"5/2 Solenoid valve air return\",\"Electroválvula 5/2 reacción a resorte\":\"5/2 Solenoid valve spring return\",\"Electroválvula 5/2 biestable por impulsos eléctricos\":\"5/2 Solenoid impulse valve\",\"Distribuidor de alimentación para 2 válvulas\":\"Multiple connection spar for 2 valves\",\"Distribuidor de alimentación para 3 válvulas\":\"Multiple connection spar for 3 valves\",\"Distribuidor de alimentación para 4 válvulas\":\"Multiple connection spar for 4 valves\",\"Distribuidor de alimentación para 5 válvulas\":\"Multiple connection spar for 5 valves\",\"Distribuidor de alimentación para 6 válvulas\":\"Multiple connection spar for 6 valves\",\"Base manifold para 2 válvulas\":\"Multiple subplate for 2 valves\",\"Base manifold para 3 válvulas\":\"Multiple subplate for 3 valves\",\"Base manifold para 4 válvulas\":\"Multiple subplate for 4 valves\",\"Base manifold para 5 válvulas\":\"Multiple subplate for 5 valves\",\"Base manifold para 6 válvulas\":\"Multiple subplate for 6 valves\",\"Base manifold para 7 válvulas\":\"Multiple subplate for 7 valves\",\"Base manifold para 8 válvulas\":\"Multiple subplate for 8 valves\",\"Placa de cierre\":\"Blanking plate\",\"Válvula 5/3 mando neumático, centro cerrado\":\"5/3 Pneumatically operated valve, closed central position\",\"Válvula 5/3 mando neumático, centro abierto\":\"5/3 Pneumatically operated valve, open central position\",\"Electroválvula 5/3 centro cerrado\":\"5/3 Solenoid valve closed central position\",\"Electroválvula 5/3 centro abierto\":\"5/3 Solenoid valve open central position\",\"2 válvulas 3/2 normal cerradas, mando neumático\":\"2x3/2 valve normally closed, pneumatically operated\",\"2 válvulas 3/2 normal cerradas, mando eléctrico\":\"2x3/2 valve normally closed, electrically operated\",\"Placa ciega para válvula\":\"Blanking plate for valve\",\"Base manifold modular (doble)\":\"Modular multiple subplate (double)\",\"Terminales para base manifold modular.\":\"End plates for modular multiple subplate.\",\"Base manifold para 10 válvulas\":\"Multiple subplate for 10 valves\",\"Base manifold para 12 válvulas\":\"Multiple subplate for 12 valves\",\"Soporte fijación plano\":\"Flat mounting bracket\",\"EN1, electroválvula 5/2 reacción a resorte\":\"EN1, 5/2 Solenoid valve, spring return\",\"EN1, electroválvula 3/2 reacción a resorte\":\"EN1, 3/2 Solenoid valve, spring return\",\"SB1, válvula 5/2 mando neumático, reacción neumática\":\"SB1, 5/2 Pneumatically operated valve, air return\",\"SB1, válvula 5/2 mando neumático, reacción a resorte\":\"SB1, 5/2 Pneumatically operated valve, spring return\",\"SB1, válvula 5/2 biestable por impulsos neumáticos\":\"SB1, 5/2 Pneumatically operated impulse valve\",\"SB1, electroválvula 5/2 reacción neumática\":\"SB1, 5/2 Solenoid valve air return\",\"SB1, electroválvula 5/2 biestable por impulsos eléctricos\":\"SB1, 5/2 Solenoid impulse valve\",\"SB1, válvula 3/2 mando neumático, reacción neumática\":\"SB1, 3/2 Pneumatically operated valve, air return\",\"SB1, válvula 3/2 mando neumático, reacción a resorte\":\"SB1, 3/2 Pneumatically operated valve, spring return\",\"SB1, válvula 3/2 biestable por impulsos neumáticos\":\"SB1, 3/2 Pneumatically operated impulse valve\",\"SB1, electroválvula 3/2 reacción neumática\":\"SB1, 3/2 Solenoid valve air return\",\"SB1, electroválvula 3/2 biestable por impulsos eléctricos\":\"SB1, 3/2 Solenoid impulse valve\",\"Placa interfaz para regulación de velocidad\":\"Speed control plate\",\"Válvula 3/2 mando neumático, reacción neumática\":\"3/2 Pneumatically operated valve, air return\",\"Válvula 3/2 mando neumático, reacción a resorte\":\"3/2 Pneumatically operated valve, spring return\",\"Válvula 3/2 biestable por impulsos neumáticos\":\"3/2 Pneumatically operated impulse valve\",\"Electroválvula 3/2 reacción neumática\":\"3/2 Solenoid valve air return\",\"Electroválvula 3/2 reacción a resorte\":\"3/2 Solenoid valve spring return\",\"Electroválvula 3/2 biestable por impulsos eléctricos\":\"3/2 Solenoid impulse valve\",\"Distribuidor de alimentación para 7 válvulas\":\"Multiple connection spar for 7 valves\",\"Distribuidor de alimentación para 8 válvulas\":\"Multiple connection spar for 8 valves\",\"Distribuidor de alimentación para 9 válvulas\":\"Multiple connection spar for 9 valves\",\"Distribuidor de alimentación para 10 válvulas\":\"Multiple connection spar for 10 valves\",\"Placa de cierre para distribuidor\":\"Blanking plate for multiple connection spar\",\"Base manifold para 9 válvulas\":\"Multiple subplate for 9 valves\",\"Placa de cierre para manifold\":\"Blanking plate for multiple subplate\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación\":\"5/2 Solenoid valve spring return with direct switching position sensing\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación y comando redundante\":\"5/2 Solenoid valve spring return with direct switching position sensing and redundant operation\",\"Base de conexionado lateral ISO-VDMA 24345\":\"ISO-VDMA 24345 Side connection subplate\",\"Base de conexionado inferior ISO-VDMA 24345\":\"ISO-VDMA 24345 Back connection subplate\",\"Base de conexionado multiple ISO-VDMA 24345\":\"ISO-VDMA 24345 Multiple subplate\",\"Terminal de alimentación\":\"End plate\",\"Terminal ciego o intermedio\":\"Blank / Intermediate plate\",\"Interfaz adaptación VS-1 / VS-2\":\"Interface VS-1/ VS-2\",\"Válvula con mando a botón plástico Ø22 (Verde)\":\"Ø22 Plastic button valve (Green)\",\"Válvula con mando a botón plástico Ø22 (Rojo)\":\"Ø22 Plastic button valve (Red)\",\"Válvula con mando a botón plástico Ø22 (Negro)\":\"Ø22 Plastic button valve (Black)\",\"Válvula con mando a botón metálico Ø22 (Verde)\":\"Ø22 Metallic button valve (Green)\",\"Válvula con mando a botón metálico Ø22 (Rojo)\":\"Ø22 Metallic button valve (Red)\",\"Válvula con mando a botón metálico Ø22 (Negro)\":\"Ø22 Metallic button valve (Black)\",\"Válvula con mando golpe de puño plástico Ø22\":\"Ø22 Plastic fist button valve\",\"Válvula con mando golpe de puño metálico Ø22\":\"Ø22 Metallic fist button valve\",\"Válvula con mando botón rotante plástico Ø22\":\"Ø22 Plastic turn switch valve\",\"Válvula con mando botón rotante metálico Ø22\":\"Ø22 Metallic turn switch valve\",\"Válvula con mando golpe de puño plástico Ø22 con retorno manual\":\"Ø22 Plastic push button with manual return valve\",\"Válvula con mando golpe de puño metálico Ø22 con retorno manual\":\"Ø22 Metallic push button with manual return valve\",\"Válvula con mando a pulsador manual\":\"Hand lever operated valve\",\"Válvula con mando directo\":\"Direct operated valve\",\"Válvula con mando directo por esfera\":\"Ball operated valve\",\"Válvula con mando por rodillo\":\"Roller operated valve\",\"Válvula con mando por rodillo unidireccional\":\"One way roller operated valve\",\"Válvula con mando por rodillo lateral\":\"Roller arm operated valve\",\"Válvula con mando por rodillo lateral regulable\":\"Adjustable roller arm operated valve\",\"Válvula con mando por varilla elástica universal\":\"Whisker operated valve\",\"Válvula con mando por varilla lateral regulable\":\"Adjustable side wire operated valve\",\"Válvula con mando perilla para tablero\":\"Hand lever operated valve for panel mounting\",\"Válvula con mando PUSH-PULL servicio liviano\":\"Push pull button valve light service\",\"Válvula con mando PUSH\":\"Push button valve\",\"Válvula con mando botón corto para tablero (Rojo)\":\"Short push button valve for panel mounting (Red)\",\"Válvula con mando botón largo para tablero (Rojo)\":\"Long push button valve for panel mounting (Red)\",\"Válvula con mando botón rotante para tablero (Negro)\":\"Turn switch valve for panel mounting (Black)\",\"Válvula con mando golpe de puño chico para tablero (Rojo)\":\"Small fist button valve for panel mounting (Red)\",\"Válvula con mando golpe de puño grande para tablero (Rojo)\":\"Large fist button valve for panel mounting (Red)\",\"Válvula con mando directo - Servicio liviano\":\"Direct operated valve - Light service\",\"Válvula con mando por rodillo - Servicio liviano\":\"Roller operated valve - Light service\",\"Válvula con mando por rodillo unidireccional - Servicio liviano\":\"One way roller operated valve - Light service\",\"Válvula con mando por rodillo metálico - Servicio pesado\":\"Metallic roller operated valve - Heavy service\",\"Válvula con mando por gatillo metálico unidireccional - Servicio pesado\":\"Metallic one way hand lever operated valve - Heavy service\",\"Válvula con mando a botón, reacción a resorte\":\"Push button operated valve, spring return\",\"Válvula con mando a botón, reacción neumática\":\"Push button operated valve, air return\",\"Válvula con mando a botón biestable PUSH-PULL\":\"Push pull button operated valve\",\"Mando a palanca, biestable\":\"Lever operated, bistable\",\"Mando a palanca, monoestable\":\"Lever operated, monostable\",\"Mando a palanca, centro cerrado, triestable\":\"Lever operated, closed central position, with rest in three positions\",\"Mando a palanca, centro abierto, triestable\":\"Lever operated, open central position, with rest in three positions\",\"Mando a palanca, posición central estable, centro cerrado\":\"Lever operated, central position, sprung to closed\",\"Mando a palanca, posición central estable, centro abierto\":\"Lever operated, central position, sprung to open\",\"Colizante de actuación manual\":\"Hand slide valve\",\"Mando a pedal, monoestable\":\"Foot operated, monostable\",\"Mando a pedal, biestable\":\"Foot operated, bistable\",\"Protección\":\"Safety guard\",\"Mando a pedal, biestable con traba\":\"Foot operated, bistable with mech. Detent\",\"Aire comprimido filtrado\":\"Filtered compressed air\",\"Aire comprimido filtrado a 50µ, sin lubricación - Gases inertes\":\"50µ Filtered compressed air, no lubrication - Inert gases\",\"Aire comprimido filtrado a 50µ, con o sin lubricación - Gases inertes\":\"50µ Filtered compressed air, with or without lubrication - Inert gases\",\"Aire comprimido filtrado - Gases inertes\":\"Filtered compressed air - Inert gases\",\"Aire comprimido filtrado (se recomienda lubricación) - Gases inertes\":\"Filtered compressed air (lubrication is recommended) - Inert gases\",\"Cuerpo de Zamac, membrana de NBR\":\"Zamac body, NBR diaphragm\",\"Cuerpo y distribuidor de aluminio, cierre frontal y otros sellos de NBR\":\"Body and spool of aluminium, poppet seal and other seals of NBR\",\"Cuerpo de aluminio, guarniciones de poliuretano\":\"Aluminium body, polyurethane gaskets\",\"Cuerpo de zamac, bobina encapsulada en resina epoxi, tubo guía y tragante de latón y acero inoxidable\":\"Zamac body, epoxy encapsulated coil, brass armature tube and stainless steel plunger core\",\"Cuerpo de Zamac, distribuidor de acero inoxidable, sellos de NBR\":\"Zamac body, stainless steel spool, NBR seals\",\"Cuerpo de aluminio anodizado, distribuidor de aluminio, sellos de NBR\":\"Anodized aluminium body, aluminium spool, NBR seals\",\"Cuerpo de aluminio, distribuidor de acero inoxidable, sellos de NBR\":\"Aluminium body, stainless steel spool, NBR seals\",\"Cuerpo de Zamac, distribuidor de aluminio, sellos de NBR\":\"Zamac body, aluminium spool, NBR seals\",\"Cuerpo de aluminio, distribuidor de aluminio, sellos de NBR\":\"Aluminium body, aluminium spool, NBR seals\",\"Cuerpo de Zamac, mandos metálicos y plásticos de ingeniería.\":\"Zamac body, engineering plastic and metallic commands.\",\"Cuerpo y corredera de aluminio, sellos de NBR\":\"Aluminium body and sleeve, NBR seals\",\"Cuerpo de válvula de aluminio, distribuidor lapidado de resina acetálica\":\"Aluminium valve body, lapped acetal resin spool\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio y sellos de NBR\":\"Zamac valve body and pedal, aluminium spool and NBR seals\",\"Protección de chapa de acero.\":\"Steel sheet safety guard.\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio, sellos de NBR, protección plástica\":\"Zamac valve body and pedal, aluminium spool, NBR seals, plastic safety guard\",\"rojo\":\"red\",\"amarillo\":\"yellow\",\"verde\":\"green\",\"Serie VM15-B \":\"VM15-B Series \",\"4 posiciones de válvulas, simple solenoide\":\"4 valve positions, single solenoid\",\"6 posiciones de válvulas, simple solenoide\":\"6 valve positions, single solenoid\",\"8 posiciones de válvulas, simple solenoide\":\"8 valve positions, single solenoid\",\"10 posiciones de válvulas, simple solenoide\":\"10 valve positions, single solenoid\",\"12 posiciones de válvulas, simple solenoide\":\"12 valve positions, single solenoid\",\"4 posiciones de válvulas, doble solenoide\":\"4 valve positions, double solenoid\",\"6 posiciones de válvulas, doble solenoide\":\"6 valve positions, double solenoid\",\"8 posiciones de válvulas, doble solenoide\":\"8 valve positions, double solenoid\",\"10 posiciones de válvulas, doble solenoide\":\"10 valve positions, double solenoid\",\"Serie VM18-B \":\"VM18-B Series \",\"Accesorio de conexión\":\"Connection accessory\",\"Conector SUB-D 25\":\"SUB-D 25 connector\",\"Conector SUB-D 25 con cable 5m\":\"SUB-D 25 connector with 5m cable\",\"Conector SUB-D 25 con cable 10m\":\"SUB-D 25 connector with 10m cable\",\"Placa ciega eléctrica\":\"Electrical blanking plate\",\"Separador de presión\":\"Pressure divider plug\",\"Soporte para riel DIN\":\"Bracket for DIN rail\",\"Serie VM15-BSL\":\"VM15-BSL Series\",\"Serie VM18-BSL\":\"VM18-BSL Series\",\"Serie VM15-SI\":\"VM15-SI Series\",\"4 posiciones de válvulas, con alim. pilot. interno\":\"4 valve positions, with internal pilot\",\"6 posiciones de válvulas, con alim. pilot. interno\":\"6 valve positions, with internal pilot\",\"8 posiciones de válvulas, con alim. pilot. interno\":\"8 valve positions, with internal pilot\",\"10 posiciones de válvulas, con alim. pilot. interno\":\"10 valve positions, with internal pilot\",\"12 posiciones de válvulas, con alim. pilot. interno\":\"12 valve positions, with internal pilot\",\"4 posiciones de válvulas, con alim. pilot. externo\":\"4 valve positions, with external pilot\",\"6 posiciones de válvulas, con alim. pilot. externo\":\"6 valve positions, with external pilot\",\"8 posiciones de válvulas, con alim. pilot. externo\":\"8 valve positions, with external pilot\",\"10 posiciones de válvulas, con alim. pilot. externo\":\"10 valve positions, with external pilot\",\"12 posiciones de válvulas, con alim. pilot. externo\":\"12 valve positions, with external pilot\",\"Soporte fijación a panel\":\"Mounting bracket for panel\",\"4 posiciones de válvulas, simple solenoide, 4I/4O\":\"4 valve positions, single solenoid, 4I/4O\",\"2 posiciones de válvulas, doble solenoide, 4I/4O\":\"2 valve positions, double solenoid, 4I/4O\",\"4 posiciones de válvulas, simple solenoide, 4I/4O con alim. ext.\":\"4 valve positions, single solenoid, 4I/4O with ext. pilot\",\"2 posiciones de válvulas, doble solenoide, 4I/4O con alim. ext.\":\"2 valve positions, double solenoid, 4I/4O with ext. pilot\",\"4 posiciones de válvulas, simple solenoide, 8I/4O\":\"4 valve positions, single solenoid, 8I/4O\",\"4 posiciones de válvulas, simple solenoide, 8I/4O con alim. ext.\":\"4 valve positions, single solenoid, 8I/4O with ext. pilot\",\"8 posiciones de válvulas, simple solenoide, 8I/8O\":\"8 valve positions, single solenoid, 8I/8O\",\"8 posiciones de válvulas, simple solenoide, 8I/8O con alim. ext.\":\"8 valve positions, single solenoid, 8I/8O with ext. pilot\",\"4 posiciones de válvulas, doble solenoide, 8I/8O\":\"4 valve positions, double solenoid, 8I/8O\",\"4 posiciones de válvulas, doble solenoide, 8I/8O con alim. ext.\":\"4 valve positions, double solenoid, 8I/8O with ext. pilot\",\"8 posiciones de válvulas, simple solenoide, 16I/8O\":\"8 valve positions, single solenoid, 16I/8O\",\"8 posiciones de válvulas, simple solenoide, 16I/8O con alim. ext.\":\"8 valve positions, single solenoid, 16I/8O with ext. pilot\",\"Cable AS-i amarillo\":\"Yellow AS-i Cable\",\"Cable AS-i negro\":\"Black AS-i Cable\",\"Conector M8 para entradas\":\"Input M8 connector\",\"16 posiciones de válvulas, simple solenoide\":\"16 valve positions, single solenoid\",\"12 posiciones de válvulas, doble solenoide\":\"12 valve positions, double solenoid\",\"16 posiciones de válvulas, doble solenoide\":\"16 valve positions, double solenoid\",\"Conector BUS IN\":\"BUS IN Connector\",\"Conector BUS OUT\":\"BUS OUT Connector\",\"Conector Power\":\"Power Connector\",\"Serie VM15-B\":\"VM15-B Series \",\"Serie VM18-B\":\"VM18-B Series \",\"Aire comprimido filtrado, con o sin lubricación\":\"Filtered compressed air, with or without lubrication\",\"Cuerpo de aluminio, tornillo de registro de latón, sellos de NBR\":\"Aluminium body, brass adjustment screw, NBR seals\",\"Serie VA, en linea\":\"VA Series, inline\",\"Regulador de caudal unidireccional\":\"Unidirectional flow control regulator\",\"Cuerpo de Zamac, tornillo de registro de latón, sellos de NBR\":\"Zamac body, brass adjustment screw, NBR seals\",\"Regulador de caudal bidireccional\":\"Bidirectional flow control regulator\",\"Regulador de caudal bidireccional \":\"Bidirectional flow control regulator\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, tornillo de registro de latón, sellos de NBR\":\"HR polymer body with high chemical and impact resistance, brass asjustment screw, NBR seals\",\"Serie RVR e instantánea, tipo banjo orientable\":\"RVR and push in series, swivel banjo\",\"Regulador de velocidad, banjo de precisión con conector instantáneo\":\"Speed control regulator, precision banjo with push in tube connection\",\"Regulador de velocidad, banjo de precisión con conector instantáneo, con regulación en la alimentación\":\"Speed control regulator, precision banjo with push in tube connection, inlet control\",\"Regulador de velocidad, banjo orientable con rosca hembra\":\"Speed control regulator, swivel banjo with female thread\",\"Regulador de velocidad, banjo orientable en 2 ejes con conector instantáneo\":\"Speed control regulator, 2 axis swivel banjo with push in tube connection\",\"Regulador de velocidad, banjo RVI con conector instantáneo\":\"Speed control regulator, RVI banjo with push in tube connection\",\"Regulador de velocidad, banjo RVI con conector instantáneo, con regulación en la alimentación\":\"Speed control regulator, RVI banjo with push in tube connection, inlet control\",\"Serie instantánea, en línea\":\"Push in Series, in line\",\"Regulador de caudal unidireccional de precisión\":\"Precision unidirectional flow control regulator\",\"Regulador de caudal unidireccional RVL\":\"RVL Unidirectional flow control regulator\",\"Cuerpo de Zamac, sellos de NBR, silenciador de bronce sinterizado\":\"Zamac body, NBR seals, sintered bronze silencer\",\"Serie ERS\":\"ERS Series\",\"Con silenciador incorporado\":\"With built-in silencer\",\"Cuerpo de Zamac, sellos de NBR\":\"Zamac body, NBR seals\",\"Serie VA\":\"VA Series\",\"Con boca de escape roscada\":\"With threaded exhaust port\",\"Modelo con rosca hembra\":\"Female thread model\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, sellos de NBR\":\"HR polymer body with high chemical and impact resistance, NBR seals\",\"Serie instantánea\":\"Push in Series\",\"Modelo con conector instantáneo\":\"Push in tube connection model\",\"Válvula función O\":\"OR Valve\",\"Serie para base\":\"Subplate Series\",\"Válvula función Y\":\"AND Valve\",\"Válvula función NO\":\"NO Valve\",\"Base de conexionado modelo simple con conexión trasera\":\"Simple model subplate rear connection.\",\"Base de conexionado unitaria o extremo de manifold\":\"Single or manifold end subplate\",\"Base de conexionado intermedio para manifold\":\"Intermediate subplate for manifold\",\"Serie enchufable instantánea\":\"Plug in Series\",\"Cuerpo de latón y polímero HR, sellos de NBR\":\"Brass and HR polymer body, NBR seals\",\"Sensores por ausencia de presión\":\"Pneumatic sensor fitting\",\"Cuerpo de aluminio, sellos de NBR\":\"Aluminium body, NBR seals\",\"Válvulas de no retorno pilotadas\":\"Pilot operated check valves\",\"Aire comprimido filtrado, sin lubricación\":\"Filtered compressed air, without lubrication\",\"Temporizadores \":\"Timers\",\"Temporizador 0,1...10 seg. \":\"Timer 0,1...10 sec.\",\"Temporizador 0,1...30 seg.\":\"Timer 0,1...30 sec.\",\"Generador de impulso único\":\"Single fixed impulse generator\",\"Generador de impulso único 0,4 seg.\":\"Single fixed impulse generator 0,4 sec.\",\"Accesorios para modulos\":\"Accessories for modules\",\"Comando bimanual\":\"Two hand safety control\",\"Aire comprimido filtrado, con o sin lubricación. Gases o líquidos neutros\":\"Filtered compressed air, without lubrication. Neutral/Inert gases or liquids\",\"Presostatos regulables\":\"Adjustable pressure switches\",\"Presostato regulable para base\":\"Adjustable pressure switch for subplate mounting\",\"Presostato regulable, 0.3...1.2bar\":\"Adjustable pressure switch 0.3...1.2bar\",\"Cuerpo de aleación de zinc inyectado, diafragma de NBR, contacto bimetálico de plata.\":\"Die cast zinc alloy body, NBR diaphragm, bimetallic silver plated contact.\",\"Presostato regulable a diafragma, 1...16bar\":\"Diaphragm adjustable pressure switch, 1...16bar\",\"Aire comprimido filtrado, fluidos no corrosivos y no inflamables\":\"Filtered compressed air, non corrosive and non flammable fluids\",\"Sensor de presión digital, 0…10bar\":\"Digital pressure sensor, 0...10bar\",\"Sensor de presión programable, 0…6bar\":\"Programmable pressure sensor, 0…6bar\",\"Indicadores de presión\":\"Pneumatic indicators\",\"Indicador de presencia de presión neumática. Rojo\":\"Pneumatic indicator, red\",\"Indicador de presencia de presión neumática. Verde\":\"Pneumatic indicator, green\",\"Indicador de presencia de presión neumática. Amarillo\":\"Pneumatic indicator, yellow\",\"Indicador de presión digital\":\"Digital pneumatic indicator\",\"Aire comprimido.\":\"Compressed air\",\"Bronce sinterizado y aluminio.\":\"Sintered bronze and aluminium.\",\"Serie SBR\":\"SBR Series\",\"Resina acetálica azul y granos fonoabsorbentes.\":\"Blue acetalic resin and sound absorbing grains.\",\"Serie SPL\":\"SPL Series\",\"Chapa pintada y fibras de poliéster.\":\"Painted steel sheet and polyester fibers.\",\"Serie pesada\":\"Heavy duty Series\",\"Cuerpo de aluminio, elemento silenciador de bronce sinterizado, tornillo regulador de latón y cubierta de resina acetálica.\":\"Aluminium body, sintered bronze filter element, brass asjustment screw and acetalic resin housing.\",\"Eyectores básicos SBP\":\"SBP Basic ejectors\",\"Con conexión instantanea\":\"With push in connection\",\"Con conexión roscada\":\"With threaded connection\",\"Eyectores compactos SCPS - SCPSi\":\"SCPS - SCPSi Compact ejectors\",\"Normal abierto\":\"Normal open\",\"Normal abierto, con IO Link\":\"Normal open, with IO Link\",\"Cable conector 5 polos M12\":\"M12 5 pole connector cable\",\"Eyectores compactos SCPi\":\"SCPi Compact ejectors\",\"Con válvula piloto NA\":\"With NO pilot valve\",\"Con válvula piloto NC\":\"With NC pilot valve\",\"Con válvula piloto IMP\":\"With IMP pilot valve\",\"Eyectores compactos SXPi\":\"SXPi Compact ejectors\",\"Cable conector 8 polos M12\":\"M12 8 pole connector cable\",\"Eyectores multietapa SEM\":\"SEM Multi-stage ejectors\",\"SEM 25-SDA\":\"SEM 25-SDA\",\"SEM 50-SDA\":\"SEM 50-SDA\",\"SEM 100-SDA\":\"SEM 100-SDA\",\"Vacuómetro Ø40\":\"Vacuum manometer Ø40\",\"Eyectores multietapa SEM-C\":\"SEM-C Multi-stage ejectors\",\"Conector para vacuostato\":\"Socket plug for vacuum switch\",\"Conector para válvula\":\"Socket plug for valve\",\"Ventosas planas PFYN\":\"PFYN Flat suction cups\",\"con boquilla rosca macho\":\"With male thread connection nipple\",\"con boquilla rosca hembra\":\"With female thread connection nipple\",\"Ventosas planas SPU\":\"SPU Flat suction cups\",\"SPU 100 - NBR\":\"SPU 100 - NBR\",\"SPU 125 - NBR\":\"SPU 125 - NBR\",\"SPU 160 - NBR\":\"SPU 160 - NBR\",\"SPU 210 - NBR\":\"SPU 210 - NBR\",\"SPU 250 - NBR\":\"SPU 250 - NBR\",\"SPU 300 - NBR\":\"SPU 300 - NBR\",\"Ventosas planas SPK\":\"SPK Flat suction cups\",\"SPK 55 - EPDM\":\"SPK 55 - EPDM\",\"SPK 80 - EPDM\":\"SPK 80 - EPDM\",\"SPK 110 - EPDM\":\"SPK 110 - EPDM\",\"SPK 160 - EPDM\":\"SPK 160 - EPDM\",\"SPK 200 - EPDM\":\"SPK 200 - EPDM\",\"SPK 250 - EPDM\":\"SPK 250 - EPDM\",\"Ventosas planas ovaladas SGON\":\"SGON Oval flat suction cups\",\"Ventosas de fuelle FSGA (1.5 pliegues)\":\"FSGA Bellows suction cups (1.5 folds)\",\"Ventosas de fuelle FSG (2.5 pliegues)\":\"FSG Bellows suction cups (2.5 folds)\",\"Ventosas para chapa redondas planas SAF\":\"SAF Flat suction cups for metal sheets\",\"Ventosas para chapa redondas tipo campana SAXM\":\"SAXM Bell-shaped suction cups for metal sheets\",\"Ventosas para chapa redondas con fuelle SAB \":\"SAB Bellows suction cups for metal sheets\",\"SAB 22 - Rosca hembra\":\"SAB 22 - Female thread\",\"SAB 30 - Rosca hembra\":\"SAB 30 - Female thread\",\"SAB 30 - Con adaptador rectangular\":\"SAB 30 - With rectangular adapter\",\"SAB 40 - Rosca hembra\":\"SAB 40 - Female thread\",\"SAB 40 - Con adaptador rectangular\":\"SAB 40 - With rectangular adapter\",\"SAB 50 - Rosca hembra\":\"SAB 50 - Female thread\",\"SAB 50 - Con adaptador rectangular\":\"SAB 50 - With rectangular adapter\",\"SAB 60 - Rosca hembra\":\"SAB 60 - Female thread\",\"SAB 60 - Con adaptador rectangular\":\"SAB 60 - With rectangular adapter\",\"SAB 80 - Rosca hembra\":\"SAB 80 - Female thread\",\"SAB 80 - Con adaptador rectangular\":\"SAB 80 - With rectangular adapter\",\"SAB 100 - Rosca hembra\":\"SAB 100 - Female thread\",\"SAB 100 - Con adaptador rectangular\":\"SAB 100 - With rectangular adapter\",\"SAB 125 - Rosca hembra\":\"SAB 125 - Female thread\",\"SAB 125 - Con adaptador rectangular\":\"SAB 125 - With rectangular adapter\",\"Ventosas para chapa ovaladas planas SAOF\":\"SAOF Oval flat suction cups for metal sheets\",\"Ventosas para chapa ovaladas con fuelle SAOB\":\"SAOB Oval bellows suction cups for metal sheets\",\"Ventosas forma campana SAOG\":\"SAOG Bell-shaped suction cups\",\"Ventosas para láminas y papel SGPN\":\"SGPN Suction cups for plastic films and paper\",\"Ventosas para embalaje SPB4\":\"SPB4 Suction cups for packaging\",\"Ventosas para embalaje SPB4-F\":\"SPB4-F Suction cups for packaging\",\"Ventosas para embalaje SPB1\":\"SPB1 Suction cups for packaging\",\"Ventosas magnéticas SGM\":\"SGM Magnetic grippers\",\"Garra magnética\":\"Magnetic gripper\",\"Elementos de fijación para ventosas Flexolink FLK\":\"Flexolink FLK suction cup mounting elements\",\"Unión articulada\":\"Flexible connection thread\",\"Articulaciones esféricas KGL\":\"KGL Ball joints\",\"Articulación esférica\":\"Ball joint\",\"Biela elástica FSTE y FSTE-VG\":\"FSTE and FSTE-VG Level compensator\",\"Estandar\":\"Standard\",\"Antigiro\":\"Anti-rotation\",\"Biela elástica heavy duty FSTE-HD y FSTA-HD\":\"FSTE-HD and FSTA-HD Heavy duty level compensator\",\"Válvulas de flujo SVK y SVKG\":\"SVK and SVKG Flow valve\",\"Rosca H lado ventosa\":\"Female thread, suction cup side\",\"Rosca M lado ventosa\":\"Male thread, suction cup side\",\"Válvulas AZ5 y AZ7 - 3/2\":\"AZ5 and AZ7 - 3/2 Valves\",\" Filtros de vacío tipo taza VFT\":\"VFT Bowl type vacuum filters\",\"Filtro tipo taza, 100 µm.\":\"Bowl type vacuum filter, 100 µm.\",\"Vacuómetros VAM\":\"VAM Vacuum manometers\",\"Vacuómetro Ø40 con conexión trasera\":\"Vacuum manometer Ø40 with back connection\",\"Vacuómetro Ø63 con conexión inferior\":\"Vacuum manometer Ø63 with bottom connection\",\"Vacuómetro Ø67 para montaje en panel\":\"Vacuum manometer Ø67 for panel mounting\",\"Vacuostatos regulables\":\"Adjustable vacuum switches\",\"Vacuostato regulable, -0,3…-0,8bar\":\"Adj. vacuum switch -0,3…-0,8bar\",\"Sensor de vacío programable, -1...0bar\":\"Programmable vacuum sensor, -1...0bar\",\"Vacuostato electrónico digital con display\":\"Digital vacuum switch with display\",\"Ficha con cable 2m\":\"Socket plug with 2m cable\",\"Serie compacto\":\"Compact Series\",\"MCRQ-16, con amortiguador de choque\":\"MCRQ-16, with shock absorber\",\"MCRQ-20, con amortiguador de choque\":\"MCRQ-20, with shock absorber\",\"MCRQ-25, con amortiguador de choque\":\"MCRQ-25, with shock absorber\",\"MCRQ-32, con amortiguador de choque\":\"MCRQ-32, with shock absorber\",\"MCRQ-40, con amortiguador de choque\":\"MCRQ-40, with shock absorber\",\"MCRQ-16, con ajuste fino por tornillo\":\"MCRQ-16, with fine angle adjustment screw\",\"MCRQ-20, con ajuste fino por tornillo\":\"MCRQ-20, with fine angle adjustment screw\",\"MCRQ-25, con ajuste fino por tornillo\":\"MCRQ-25, with fine angle adjustment screw\",\"MCRQ-32, con ajuste fino por tornillo\":\"MCRQ-32, with fine angle adjustment screw\",\"MCRQ-40, con ajuste fino por tornillo\":\"MCRQ-40, with fine angle adjustment screw\",\"Pinzas angulares MCHA \":\"MCHA Angular grippers \",\"MCHA-12\":\"MCHA-12\",\"MCHA-16\":\"MCHA-16\",\"MCHA-20\":\"MCHA-20\",\"MCHA-25\":\"MCHA-25\",\"Pinzas radiales MCHY \":\"MCHY Radial grippers \",\"MCHY-10\":\"MCHY-10\",\"MCHY-16\":\"MCHY-16\",\"MCHY-20\":\"MCHY-20\",\"MCHY-25\":\"MCHY-25\",\"Pinzas paralelas de dos dedos MCHC \":\"MCHC 2-Jaw parallel grippers\",\"MCHC-10\":\"MCHC-10\",\"MCHC-16\":\"MCHC-16\",\"MCHC-20\":\"MCHC-20\",\"MCHC-25\":\"MCHC-25\",\"Pinzas de tres dedos MCHG2 \":\"MCHG2 3-Jaw parallel grippers\",\"MCHG2-16\":\"MCHG2-16\",\"MCHG2-25\":\"MCHG2-25\",\"MCHG2-32\":\"MCHG2-32\",\"Interruptores magnéticos serie RCE\":\"RCE Series magnetic switches\",\"Interruptores magnéticos serie RPE\":\"RPE Series magnetic switches\",\"Efecto Hall PNP, con conector M8x1\":\"Hall effect PNP, with M8x1 connector\",\"Interruptores magnéticos serie RT\":\"RT Series magnetic switches\",\"Interruptores magnéticos serie RTP\":\"RTP Series magnetic switches\",\"Serie TAR\":\"TAR Series\",\"TAR 160 - 8 divisiones\":\"TAR 160 - 8 stations\",\"TAR 270 - 4-6-8-12-24 divisiones\":\"TAR 270 - 4-6-8-12-24 stations\"}}");
+module.exports = JSON.parse("{\"en\":{\"Hello world\":\"Hola Mundo\",\"Next\":\"Next\",\"Resultado\":\"Result\",\"No encontrado\":\"Not found\",\"Productos Encontrados\":\"Products found\",\"Consultar por otros productos\":\"Ask for other products\",\"Consultas adicionales\":\"Additional queries\",\"Categoria\":\"Category\",\"Serie CN10 - Actuadores rotantes\":\"CN10 Series - Rotary actuators\",\"Serie TECH 21\":\"TECH 21 Series\",\"Serie ECO OEM\":\"ECO OEM Series\",\"Serie C16 - Vástago simple\":\"C16 Series - Single rod\",\"Serie C16 - Doble vástago\":\"C16 Series - Double ended\",\"Serie C16 - Montajes y accesorios\":\"C16 Series - Mountings and accessories\",\"Serie CC10 - Vástago simple\":\"CC10 Series - Single rod\",\"Serie CP10 - Vástago simple\":\"CP10 Series - Single rod\",\"Serie CP10 - Doble vástago\":\"CP10 Series - Double ended\",\"Serie CP10 - Con guía antigiro\":\"CP10 Series - Non rotating guide\",\"Serie CP10 - Tándem\":\"CP10 Series - Tandem\",\"Serie CP10 - Vástago reforzado\":\"CP10 Series - Reinforced rod\",\"Serie CP10 - Doble efecto de tres posiciones\":\"Serie CP10 - Double acting with 3 positions\",\"Serie CP10 - Con alimentación trasera\":\"CP10 Series - Rear air supply\",\"Serie CP10 - Montajes y accesorios\":\"CP10 Series - Mountings and accessories\",\"Serie CPL10 - Con entre centros de montaje ISO 21287\":\"CPL10 Series - Mounting dimmensions according to ISO 21287\",\"Serie CADP - Doble pistón y antigiro\":\"CADP Series - Non rotating dual piston\",\"Serie CASP - Simple pistón y antigiro\":\"CASP Series - Non rotating single piston\",\"Serie CN10 - Cilindros de impacto\":\"CN10 Series - Impact cylinders\",\"Serie CN10 - Vástago simple\":\"CN10 Series - Single rod\",\"Serie CN10 - Doble vástago\":\"CN10 Series - Double ended\",\"Serie CN10 - Con doble pistón\":\"CN10 Series - Tandem\",\"Serie CN10 - Acoplados de acción independiente\":\"CN10 Series - Duplex\",\"Serie CN10 - Montajes y accesorios\":\"CN10 Series - Mountings and accessories\",\"Serie CN10 - Bloqueo de vástago\":\"CN10 Series - Piston rod lock\",\"Serie CN10 - Guías H tipo JB\":\"CN10 Series - H guides JB type\",\"Serie Micro Origa OSP-P\":\"Micro Origa OSP-P Series\",\"Serie Micro Origa OSP-P Slideline\":\"Micro Origa OSP-P Slideline Series\",\"Serie Micro Origa OSP-P Proline\":\"Micro Origa OSP-P Proline Series\",\"Serie Micro Origa OSP-P - Accesorios\":\"Micro Origa OSP-P Series - Accessories\",\"Serie ADA\":\"ADA Series\",\"Serie DMR\":\"DMR Series\",\"Serie DSL\":\"DSL Series\",\"Serie RCE\":\"RCE Series\",\"Serie RPE\":\"RPE Series\",\"Serie RT\":\"RT Series\",\"Serie RTP\":\"RTP Series\",\"Serie MD8 SSL - Ejecución S\":\"MD8 SSL Series - S execution\",\"Serie MD8 SSL - Ejecución U (ISO 6432)\":\"MD8 SSL Series - U execution (ISO 6432)\",\"Serie MD8 SSL - Doble vástago\":\"MD8 SSL Series - Double ended\",\"Serie MD8 SSL - Vástago hueco\":\"MD8 SSL Series - Hollow rod\",\"Serie MD8 SL - Tubo aluminio Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution Aluminium tube (ISO 6432)\",\"Serie MD8 SL - Tubo Ac.Inox. Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution Stainless steel tube (ISO 6432)\",\"Serie MD8 SL - Para ambiente corrosivo Ejecución U (ISO 6432)\":\"MD8 SL Series - U execution for corrosive environments (ISO 6432)\",\"Serie MD8 SSL - Full inox para ambiente corrosivo Ejecución U (ISO 6432)\":\"MD8 SSL Series - U execution Full Stainless steel for corrosive environment (ISO 6432)\",\"Serie MD8 - Montajes y accesorios\":\"MD8 Series - Mountings and accessories\",\"Serie MD8 - Guías H tipo JB\":\"MD8 Series - H guides JB type\",\"Serie a cartucho\":\"Cartridge series\",\"TK 21-1M\":\"TK 21-1M\",\"TK 21-2M\":\"TK 21-2M\",\"TK 21-3M\":\"TK 21-3M\",\"ECO OEM 0.25M\":\"ECO OEM 0.25M\",\"ECO OEM 0.5M\":\"ECO OEM 0.5M\",\"ECO OEM 1.0MF\":\"ECO OEM 1.0MF\",\"ECO OEM 1.25Mx1\":\"ECO OEM 1.25Mx1\",\"ECO OEM 1.25Mx2\":\"ECO OEM 1.25Mx2\",\"OEM XT 1.5Mx1\":\"OEM XT 1.5Mx1\",\"OEM XT 1.5Mx2\":\"OEM XT 1.5Mx2\",\"Montaje con pies (par)\":\"Foot mounting (couple)\",\"Horquilla para vástago\":\"Rod clevis with pin\",\"Montaje basculante trasero\":\"Clevis foot mounting\",\"Montaje con placa delantera (o trasera)\":\"Front (or rear) flange mounting\",\"Accesorio para cilindros acoplados\":\"Accessory for duplex cylinders\",\"Montaje basculante trasero macho\":\"Rear male clevis\",\"Montaje basculante trasero hembra\":\"Rear female clevis\",\"Soporte lateral para basculantes\":\"Clevis foot mounting\",\"Soporte basculante trasero macho\":\"Rear male clevis\",\"Perno para basculantes\":\"Pivot pin for clevises\",\"Rótula para vástago\":\"Self aligning rod coupler\",\"Tuerca \":\"Hexagon rod nut\",\"Tuerca\":\"Hexagon rod nut\",\"Acople roscas\":\"Threaded coupler\",\"Montaje con pies externos (par)\":\"External foot mounting (couple)\",\"Montaje con pies internos (par)\":\"Internal foot mounting (couple)\",\"Soporte lateral para basculante hembra\":\"Clevis foot mounting\",\"Montaje basculante intermedio perfilado\":\"Profiled intermediate trunnion\",\"Montaje basculante intermedio\":\"Intermediate trunnion\",\"Montaje basculante frontal (o trasero)\":\"Front or rear trunnion\",\"Soporte para basculantes intermedio, delantero y trasero (par)\":\"Intermediate, front and rear trunnion mounting (couple)\",\"Montaje basculante trasero hembra angosto\":\"Narrow rear female clevis\",\"Montaje basculante macho con rótula angosto\":\"Narrow male clevis with spherical bearing\",\"Soporte lateral con rótula para basculante hembra angosto\":\"Clevis foot mounting with spherical bearing\",\"Perno para basculantes angostos\":\"Narrow pivot pin\",\"Soporte lateral para basculante intermedio\":\"Trunnion mounting\",\"Acople para horquilla\":\"Coupler for rod clevis with pin or rod eye\",\"Horquilla con rótula para vástago\":\"Rod eye\",\"Tuerca para vástago\":\"Hexagon rod nut\",\"Soporte para interruptor magnético serie DMR, tubo perfilado\":\"Bracket for DMR proximity switch, profiled tube\",\"Soporte para interruptor magnético serie DMR, tubo cilíndrico\":\"Bracket for DMR proximity switch, round tube\",\"Guía H con bujes de material sintético tipo JB-I\":\"H guide JB-I type with self lubricating composite bushings\",\"Guía H con rodamientos de bolas recirculantes tipo JB-R\":\"H guide JB-R type with linear ball bearings\",\"Soporte intermedio E-1\":\"E-1 Intermediate mounting\",\"Soporte basculante\":\"Clevis mounting\",\"Soporte para interruptor magnético - DSL (6-7-8-9)\":\"Bracket for proximity switch - DSL (6-7-8-9)\",\"Con regulación de tracción y compresión\":\"Adjustable in tension and compresion directions.\",\"Con regulación solo tracción\":\"Adjustable only in tension direction\",\"Con regulación solo compresión\":\"Adjustable only in compresion direction\",\"DMR\":\"DMR\",\"DMRC\":\"DMRC\",\"Cable de 2m con conector hembra de M8x1\":\"2m cable with M8x1 female connector\",\"DSL1 Reed-Switch\":\"DSL1 Reed-Switch\",\"DSL2 Reed-Switch, con conector M8x1\":\"DSL2 Reed-Switch, with M8x1 connector\",\"DSL4 Efecto Hall PNP\":\"DSL4 Hall effect PNP\",\"DSL3 Efecto Hall PNP, con conector M8x1\":\"DSL3 Hall effect PNP, with M8x1 connector\",\"DSL6 Reed-Switch\":\"DSL6 Reed-Switch\",\"DSL7 Reed-Switch, con conector M8x1\":\"DSL7 Reed-Switch, with M8x1 connector\",\"DSL8 Efecto Hall PNP\":\"DSL8 Hall effect PNP\",\"DSL9 Efecto Hall PNP, con conector M8x1\":\"DSL9 Hall effect PNP, with M8x1 conector\",\"Reed-Switch\":\"Reed-Switch\",\"Reed-Switch, con conector M8x1\":\"Reed-Switch, with M8x1 connector\",\"Efecto Hall PNP\":\"Hall effect PNP\",\"Efecto Hall PNP,con conector M8x1\":\"Hall effect PNP, with M8x1 connector\",\"Montaje pie\":\"Foot mounting\",\"Montaje placa\":\"Flange mounting\",\"Tuerca para tapa\":\"Hexagon cap nut\",\"Soporte para interruptor magnético - DMR\":\"Bracket for proximity switch - DMR\",\"Soporte para interruptor magnético - DSL (1-2-3-4)\":\"Bracket for proximity switch - DSL (1-2-3-4)\",\"Aire comprimido filtrado con o sin lubricación\":\"Filtered compressed air, with or without lubrication\",\"Aire comprimido filtrado y lubricado\":\"Filtered and lubricated compressed air\",\"Tapas y pistón inyectado en aluminio, piñon y cremallera de acero SAE4140 bonificado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and piston, SAE4140 quenched and tempered steel rack and pinion, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero inoxidable AISI304, sellos de NBR\":\"Aluminium caps, stainless steel tube, AISI304 stainless steel rod, NBR seals\",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero cromado, sellos de NBR\":\"Aluminium caps, stainless steel tube, chromed plated steel rod, NBR seals\",\"Tapas de aluminio, tubo de acero SAE1040, vástago de acero cromado, sellos de NBR\":\"Aluminium caps, SAE 1040 steel tube, chromed plated steel rod, NBR seals\",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, stainless steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, stainless steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero cromado duro, sellos de poliuretano. \":\"Die cast aluminium caps, hard chromed plated steel rod, hard anodized profiled aluminium tube, hard chromed plated steel guides, PU seals. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano.\":\"Die cast aluminium caps, stainless steel rod, hard anodized profiled aluminium tube, PU seals.\",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR y poliuretano. \":\"Die cast aluminium caps, hard chromed plated rod, hard anodized profiled aluminium tube, NBR and PU seals. \",\"Aluminio, guías de acero inox. con guarniciones de NBR \":\"Aluminium, stainless steel guides, with NBR seals \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cementado y templado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and pistons, SAE 1040 carburized quenched and tempered steel rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, PU seals\",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, NBR seals.\",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Die cast aluminium caps and piston, SAE 1040 hard chromed plated rod, hard anodized round aluminium tube with tie rods, NBR seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, PU seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized profiled aluminium tube, NBR seals. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Die cast aluminium caps and pistons, SAE 1040 hard chromed plated rod, hard anodized round aluminium tube with tie rods, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de NBR. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, antifriction synthetic plastic guides, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de FKM. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, antifriction synthetic plastic guides, FKM seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de NBR. \":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, hardened and ground steel guides, NBR seals. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de FKM.\":\"Die cast aluminium caps and piston, hard anodized profiled aluminium tube, hardened stainless steel sealing bands, hardened and ground steel guides, FKM seals.\",\"Tapas de aluminio, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Aluminium caps, AISI304 stainless steel tube and rod, PU seals\",\"Tapas de plástico de ingeniería, tubo de aluminio y vástago de acero inoxidable AISI304, sellos de PU\":\"Engineering plastic caps, aluminium tube and AISI304 stainless steel rod, PU seals\",\"Tapas de plástico de ingeniería, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Engineering plastic caps, AISI304 stainless steel tube and rod, PU seals\",\"Tapas de plástico de ingeniería, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Engineering plastic caps, AISI304 stainless steel tube, rod and nut, FKM seals (flurocarbon)\",\"Tapas, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"AISI304 stainless steel caps, tube, rod and nuts, FKM seals (flurocarbon)\",\"Ac. Cincado\":\"Zinc plated steel\",\"Ac. Inox. AISI304\":\"AISI304 stainless steel\",\"Aluminio, guías de acero cromado.\":\"Aluminium, chromed plated steel guides.\",\"Aluminio, guías de acero templado.\":\"Aluminium, hardened steel guides.\",\"Cuerpo de latón niquelado, vástago y resorte de acero inoxidable, sellos de NBR\":\"Nickel plated brass body, stainless steel rod and spring, NBR seals\",\"doble efecto con amortiguación\":\"double acting with cushioning\",\"doble efecto con amortiguación, con ajuste fino\":\"double acting with cushioning, with fine angle adjustment\",\"simple efecto resorte delantero\":\"single acting front spring\",\"simple efecto, doble salida de vástago\":\"single acting, double ended\",\"doble efecto\":\"double acting\",\"doble efecto, doble salida de vástago\":\"double acting, double ended\",\"simple efecto resorte trasero\":\"single acting rear spring\",\"simple efecto, doble salida de vástago hueco\":\"single acting, double ended hollow rod\",\"doble efecto con guías antigiro\":\"double acting with non rotating guides\",\"doble efecto con guías antigiro, con alimentación trasera\":\"double acting with non rotating guides, rear air supply\",\"doble efecto, tándem 2 etapas\":\"double acting, 2 stage tandem execution\",\"doble efecto, tándem 3 etapas\":\"double acting, 3 stage tandem execution\",\"doble efecto, tándem 4 etapas\":\"double acting, 4 stage tandem execution\",\"doble efecto, vástago reforzado\":\"double acting, reinforced rod\",\"doble efecto de tres posiciones\":\"double acting with 3 positions\",\"simple efecto resorte delantero con alimentación trasera\":\"single acting front spring with rear air supply\",\"simple efecto resorte trasero con alimentación trasera\":\"single acting rear spring with rear air supply\",\"doble efecto con alimentación trasera\":\"double acting with rear air supply\",\"doble efecto, doble pistón con guías antigiro\":\"double acting, dual piston with non rotating guides\",\"doble efecto, impacto energía 24Nm\":\"double acting, impact energy 24Nm\",\"doble efecto, impacto energía 78Nm\":\"double acting, impact energy 78Nm\",\"doble efecto, impacto energía 112Nm\":\"double acting, impact energy 112Nm\",\"doble efecto con amortiguación, doble salida de vástago\":\"double acting with cushioning, double ended\",\"doble efecto, doble pistón\":\"double acting, tandem\",\"doble efecto con amortiguación, doble pistón\":\"double acting with cushioning, tandem\",\"accesorio para cilindros acoplados de acción independiente\":\"accessory for independent action duplex cylinders\",\"doble efecto, acoplados de acción independiente\":\"double acting, duplex with independent action\",\"doble efecto con amortiguación, acoplados de acción independiente\":\"double acting with cushioning, duplex with independent action\",\"doble efecto con amortiguación, con sellos de FKM\":\"double acting with cushioning, FKM seals\",\"doble efecto, doble salida de vástago con amortiguación\":\"double acting, double ended with cushioning\",\"doble efecto, doble salida de vástago hueco\":\"double acting, double ended hollow rod\",\"doble efecto, doble salida de vástago hueco con amortiguación\":\"double acting, double ended hollow rod with cushioning\",\"sin imán\":\"without magnetic piston\",\"con imán\":\"with magnetic piston\",\"vástago hembra\":\"female rod end\",\"vástago macho\":\"male rod end\",\"vástago hembra hueco\":\"female hollow rod end\",\"vástago macho hueco\":\"male hollow rod end\",\"Electroválvulas con modo de protección de seguridad intrínseca\":\"Ex-ia Intrinsically safe explosion proof solenoid valves\",\"Electroválvulas con modo de protección encapsulado \\\"m\\\"\":\"Ex-m Encapsulated explosion proof solenoid valves\",\"Serie pesada a membrana 1/2\\\" - Electroválvulas 2/2\":\"1/2\\\" Diaphragm Heavy Series - 2/2 Solenoid valves\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 2/2\":\"AZ Series from 1/2\\\" to 1 1/2\\\" - 2/2 Valves and solenoid valves\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 3/2\":\"AZ Series from 1/2\\\" to 1 1/2\\\" - 3/2 Valves and solenoid valves\",\"Serie 15\":\"15 Series\",\"Serie 22\":\"22 Series\",\"Serie 22 Global Class\":\"22 Global Class Series\",\"Serie 32\":\"32 Series\",\"Serie 15 - Solenoides antiexplosivos\":\"15 Series - Solenoid coil explosion proof\",\"Serie 22 - Solenoides antiexplosivos\":\"22 Series - Solenoid coil explosion proof\",\"Serie MEP-A\":\"MEP-A Series\",\"Serie Minielectroválvulas 15mm - 3/2 \":\"Pilot solenoid valves 15mm Series - 3/2 \",\"Serie Minielectroválvulas 15mm - 3/2\":\"Pilot solenoid valves 15mm Series - 3/2\",\"Serie 211 1/8\\\" - Electroválvulas 3/2\":\"211 Series 1/8\\\" size - 3/2 Solenoid valves\",\"Serie 213 - 1/8\\\" - Electroválvulas 2/2 y 3/2\":\"213 Series - 1/8\\\" size - 2/2 and 3/2 Solenoid valves\",\"Serie SB0 ND -1/8\\\" - Válvulas direccionales 5/2\":\"SB0 ND Series -1/8\\\" Size - 5/2 Directional control valves\",\"Serie VM15 GM -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"VM15 GM Series -1/8\\\" size - 5/2, 5/3 and 2x3/2 Directional control valves\",\"Serie VM15 BSL -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"VM15 BSL Series -1/8\\\" size - 5/2, 5/3 and 2x3/2 Sub-base valves\",\"Serie SB1 -1/4\\\" - Válvulas direccionales 5/2\":\"SB1 Series -1/4\\\" size - 5/2 Directional control valves\",\"Serie EN1 y SB1 NAMUR -1/4\\\" - Válvulas direccionales 3/2 y 5/2\":\"EN1 Series and SB1 NAMUR Series -1/4\\\" size - 3/2 and 5/2 Directional control valves\",\"Serie CH1 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 3/2\":\"CH1 GM Series -1/4\\\" size - 5/2, 5/3 and 3/2 Directional control valves\",\"Serie VM18 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"VM18 GM Series -1/4\\\" size - 5/2, 5/3 and 2x3/2 Directional control valves\",\"Serie VM18-BSL -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"VM18-BSL Series -1/4\\\" size - 5/2, 5/3 and 2x3/2 Sub-base valves\",\"Serie CH3 GM -1/2\\\" - Válvulas direccionales 5/2 y 5/3\":\"CH3 GM Series -1/2\\\" size - 5/2 and 5/3 Directional control valves\",\"Serie VS1 con monitoreo de actuación\":\"VS1 Series with switching position sensing\",\"Serie VS2 con monitoreo de actuación\":\"VS2 Series with switching position sensing\",\"Serie VS3 con monitoreo de actuación\":\"VS3 Series with switching position sensing\",\"Serie VS1 con monitoreo de actuación y comando redundante\":\"VS1 Series with switching position sensing and redundant operation\",\"Serie VS2 con monitoreo de actuación y comando redundante\":\"VS2 Series with switching position sensing and redundant operation\",\"Serie VS3 con monitoreo de actuación y comando redundante\":\"VS3 Series with switching position sensing and redundant operation\",\"Serie VS1 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS1 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Serie VS2 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS2 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Serie VS3 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"VS3 GM Series - 5/2 and 5/3 ISO 5599/1 - VDMA 24345 Directional control valves\",\"Base de conexionado ISO5599/1-VDMA 24345\":\"ISO5599/1-VDMA 24345 Subplate\",\"Terminales ISO-VDMA 24345 (par)\":\"ISO-VDMA 24345 End plates (pair)\",\"Base de conexionado múltiple ISO 5599/1\":\"ISO 5599/1 Multiple subplate\",\"Terminal ISO 5599/1\":\"ISO 5599/1 End plate\",\"Interfaz adaptación ISO 5599/1\":\"ISO 5599/1 Conversion plate\",\"Serie MT-M5 - Válvulas 3/2 para tablero \":\"MT-M5 Series - 3/2 Panel mounting valves\",\"Serie MM-M5 - Válvulas 3/2 manuales y mecánicas\":\"MM-M5 Series - 3/2 Manually and mechanically operated valves\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"MV ND Series -1/8\\\" size - 3/2 and 5/2 Manually operated valves\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos mecánicos\":\"MV ND Series -1/8\\\" size - 3/2 and 5/2 Mechanically operated valves\",\"Serie SB1 servo -1/4\\\" - Válvulas 5/2 manuales y mecánicas\":\"SB1 servo Series-1/4\\\" size - 5/2 Manually and mechanically servoassisted valves\",\"Serie CH1 -1/4\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"CH1 Series -1/4\\\" size - 3/2 and 5/2 Manually operated valves\",\"Serie CH1 GM a palanca -1/4\\\" - Válvulas 3/2, 5/2 y 5/3 mandos manuales\":\"Lever operated CH1 GM Series -1/4\\\" size - 3/2, 5/2 and 5/3 Manually operated valves\",\"Serie CH3 GM a palanca -1/2\\\" - Válvulas 5/2 y 5/3 mandos manuales\":\"Lever operated CH3 GM series -1/2\\\" size - 5/2 and 5/3 Manually operated valves\",\"Válvulas colizantes - Válvulas 3/2 mandos manuales\":\"Hand slide valves - 3/2 Manually operated valves\",\"Válvulas rotantes Serie AR - Válvulas 4/2 mandos manuales\":\"Hand rotating valve AR series - 4/2 Manually operated valves\",\"Válvulas 5/2 a pedal\":\"5/2 Foot operated valves\",\"Electroválvula 2/2 a membrana, normal cerrada\":\"2/2 Diaphragm Solenoid valve, normally closed\",\"AZ5 G1/2\\\", mando neumático\":\"AZ5 G1/2\\\", pneumatically operated\",\"AZ5 G3/4\\\", mando neumático\":\"AZ5 G3/4\\\", pneumatically operated\",\"AZ7 G1\\\", mando neumático\":\"AZ7 G1\\\", pneumatically operated\",\"AZ7 G1 1/4\\\", mando neumático\":\"AZ7 G1 1/4\\\", pneumatically operated\",\"AZ7 G1 1/2\\\", mando neumático\":\"AZ7 G1 1/2\\\", pneumatically operated\",\"AZ5 G1/2\\\", mando eléctrico\":\"AZ5 G1/2\\\", electrically operated\",\"AZ5 G3/4\\\", mando eléctrico\":\"AZ5 G3/4\\\", electrically operated\",\"AZ7 G1\\\", mando eléctrico\":\"AZ7 G1\\\", electrically operated\",\"AZ7 G1 1/4\\\", mando eléctrico\":\"AZ7 G1 1/4\\\", electrically operated\",\"AZ7 G1 1/2\\\", mando eléctrico\":\"AZ7 G1 1/2\\\", electrically operated\",\"AZ5 G1/2\\\", mando eléctrico con alimentación independiente\":\"AZ5 G1/2\\\", electrically operated with external pilot\",\"AZ5 G3/4\\\", mando eléctrico con alimentación independiente\":\"AZ5 G3/4\\\", electrically operated with external pilot\",\"AZ7 G1\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1\\\", electrically operated with external pilot\",\"AZ7 G1 1/4\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/4\\\", electrically operated with external pilot\",\"AZ7 G1 1/2\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/2\\\", electrically operated with external pilot\",\"Cabeza de mando electroneumático 3/2 normal cerrada\":\"3/2 Solenoid coil normally closed\",\"Ficha de conexión 15 con indicador luminoso\":\"15 Socket plug with LED\",\"Placa de adaptación a base norma CNOMO\":\"Adapting plate to CNOMO Standard Base\",\"Solenoide para electroválvulas, ancho 22mm\":\"Coil for solenoid valves, 22mm width\",\"Ficha de conexión 22 con indicador luminoso\":\"22 Socket plug with LED\",\"Ficha de conexión 22 sin indicador - 2 contactos + tierra\":\"22 Socket plug without LED - 2 contacts + earth\",\"Tubo guía completo\":\"Complete armature tube\",\"Conexión de escape\":\"Exhaust connection\",\"Solenoide para electroválvulas, ancho 32mm\":\"Coil for solenoid valves, 32mm width\",\"Ficha de conexión 32 - 2 contactos + tierra\":\"32 Socket plug, 2 contacts + earth\",\"Ficha de conexión 32 - 3 contactos + tierra\":\"32 Socket plug, 3 contacts + earth\",\"Tubo guía completo 3/2NC 10bar\":\"3/2NC 10bar Complete armature tube\",\"Tubo guía completo 3/2NC 2,5bar\":\"3/2NC 2,5bar Complete armature tube\",\"Tubo guía completo 3/2NC 16bar\":\"3/2NC 16bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 2,5bar\":\"2/2 and 3/2NO 2,5bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 10bar\":\"2/2 and 3/2NO 10bar Complete armature tube\",\"Tubo guía completo 2/2 y 3/2NA 16bar\":\"2/2 and 3/2NO 16bar Complete armature tube\",\"Tubo guía completo 2/2NC\":\"2/2NC Complete armature tube\",\"Tubo guía completo 2/2NC HP\":\"2/2NC HP Complete armature tube\",\"Tubo guía completo 2/2NC HD\":\"2/2NC HD Complete armature tube\",\"Conexión de escape G1/8\\\"\":\"G1/8\\\" Exhaust connection\",\"Ficha de conexión 15 - 2 contactos + tierra\":\"15 Socket plug - 2 contacts + earth\",\"Solenoide antiexplosivo encapsulado según Directiva ATEX94/9/CE\":\"Ex-m encapsulated explosion proof solenoid coil according to ATEX 94/9/CE directive\",\"314 MEP-A\":\"314 MEP-A\",\"316 MEP-A\":\"316 MEP-A\",\"Minielectroválvula unitaria\":\"Pilot solenoid valve single mounting\",\"Minielectroválvulas en manifold 2 posiciones\":\"2 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 3 posiciones\":\"3 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 4 posiciones\":\"4 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 5 posiciones\":\"5 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 6 posiciones\":\"6 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 7 posiciones\":\"7 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 8 posiciones\":\"8 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 9 posiciones\":\"9 valve manifold pilot solenoid valve\",\"Minielectroválvulas en manifold 10 posiciones\":\"10 valve manifold pilot solenoid valve\",\"Electroválvula para montaje unitario\":\"Solenoid valve for single mounting\",\"Electroválvula para manifold\":\"Solenoid valve for manifold mounting\",\"Kit manifold para 2 válvulas\":\"Manifold kit for 2 valves \",\"Kit manifold para 3 válvulas\":\"Manifold kit for 3 valves \",\"Kit manifold para 4 válvulas\":\"Manifold kit for 4 valves \",\"Kit manifold para 5 válvulas\":\"Manifold kit for 5 valves \",\"Kit manifold para 6 válvulas\":\"Manifold kit for 6 valves \",\"Kit manifold para 7 válvulas\":\"Manifold kit for 7 valves \",\"Kit manifold para 8 válvulas\":\"Manifold kit for 8 valves \",\"Kit manifold para 9 válvulas\":\"Manifold kit for 9 valves \",\"Kit manifold para 10 válvulas\":\"Manifold kit for 10 valves \",\"Electroválvula 2/2 normal cerrada, conexión lateral\":\"2/2 Solenoid valve, normally closed, side connection body\",\"Electroválvula 2/2 normal cerrada, conexión inferior\":\"2/2 Solenoid valve, normally closed, back connection body\",\"Electroválvula 2/2 normal cerrada, conexión múltiple\":\"2/2 Solenoid valve, normally closed, multiple connection body\",\"Electroválvula 2/2 normal abierta, conexión lateral\":\"2/2 Solenoid valve, normally open, side connection body\",\"Electroválvula 2/2 normal abierta, conexión inferior\":\"2/2 Solenoid valve, normally open, back connection body\",\"Electroválvula 3/2 normal cerrada, conexión lateral\":\"3/2 Solenoid valve, normally closed, side connection body\",\"Electroválvula 3/2 normal cerrada, conexión inferior\":\"3/2 Solenoid valve, normally closed, back connection body\",\"Electroválvula 3/2 normal cerrada, conexión múltiple\":\"2/2 Solenoid valve, normally closed, multiple connection body\",\"Electroválvula 3/2 normal abierta, conexión lateral\":\"3/2 Solenoid valve, normally open, side connection body\",\"Electroválvula 3/2 normal abierta, conexión inferior\":\"3/2 Solenoid valve, normally open, back connection body\",\"Kit manifold alimentación inferior para 2 válvulas\":\"Manifold kit for 2 valves with back supply\",\"Kit manifold alimentación inferior para 3 válvulas\":\"Manifold kit for 3 valves with back supply\",\"Kit manifold alimentación inferior para 4 válvulas\":\"Manifold kit for 4 valves with back supply\",\"Kit manifold alimentación inferior para 5 válvulas\":\"Manifold kit for 5 valves with back supply\",\"Kit manifold alimentación inferior para 6 válvulas\":\"Manifold kit for 6 valves with back supply\",\"Kit manifold alimentación inferior para 7 válvulas\":\"Manifold kit for 7 valves with back supply\",\"Kit manifold alimentación inferior para 8 válvulas\":\"Manifold kit for 8 valves with back supply\",\"Kit manifold alimentación inferior para 9 válvulas\":\"Manifold kit for 9 valves with back supply\",\"Kit manifold alimentación inferior para 10 válvulas\":\"Manifold kit for 10 valves with back supply\",\"Kit manifold alimentación lateral para 2 válvulas\":\"Manifold kit for 2 valves with side supply\",\"Kit manifold alimentación lateral para 3 válvulas\":\"Manifold kit for 3 valves with side supply\",\"Kit manifold alimentación lateral para 4 válvulas\":\"Manifold kit for 4 valves with side supply\",\"Kit manifold alimentación lateral para 5 válvulas\":\"Manifold kit for 5 valves with side supply\",\"Kit manifold alimentación lateral para 6 válvulas\":\"Manifold kit for 6 valves with side supply\",\"Kit manifold alimentación lateral para 7 válvulas\":\"Manifold kit for 7 valves with side supply\",\"Kit manifold alimentación lateral para 8 válvulas\":\"Manifold kit for 8 valves with side supply\",\"Kit manifold alimentación lateral para 9 válvulas\":\"Manifold kit for 9 valves with side supply\",\"Kit manifold alimentación lateral para 10 válvulas\":\"Manifold kit for 10 valves with side supply\",\"Válvula 5/2 mando neumático, reacción neumática\":\"5/2 Pneumatically operated valve, air return\",\"Válvula 5/2 mando neumático, reacción a resorte\":\"5/2 Pneumatically operated valve, spring return\",\"Válvula 5/2 biestable por impulsos neumáticos\":\"5/2 Pneumatically operated impulse valve\",\"Electroválvula 5/2 reacción neumática\":\"5/2 Solenoid valve air return\",\"Electroválvula 5/2 reacción a resorte\":\"5/2 Solenoid valve spring return\",\"Electroválvula 5/2 biestable por impulsos eléctricos\":\"5/2 Solenoid impulse valve\",\"Distribuidor de alimentación para 2 válvulas\":\"Multiple connection spar for 2 valves\",\"Distribuidor de alimentación para 3 válvulas\":\"Multiple connection spar for 3 valves\",\"Distribuidor de alimentación para 4 válvulas\":\"Multiple connection spar for 4 valves\",\"Distribuidor de alimentación para 5 válvulas\":\"Multiple connection spar for 5 valves\",\"Distribuidor de alimentación para 6 válvulas\":\"Multiple connection spar for 6 valves\",\"Base manifold para 2 válvulas\":\"Multiple subplate for 2 valves\",\"Base manifold para 3 válvulas\":\"Multiple subplate for 3 valves\",\"Base manifold para 4 válvulas\":\"Multiple subplate for 4 valves\",\"Base manifold para 5 válvulas\":\"Multiple subplate for 5 valves\",\"Base manifold para 6 válvulas\":\"Multiple subplate for 6 valves\",\"Base manifold para 7 válvulas\":\"Multiple subplate for 7 valves\",\"Base manifold para 8 válvulas\":\"Multiple subplate for 8 valves\",\"Placa de cierre\":\"Blanking plate\",\"Válvula 5/3 mando neumático, centro cerrado\":\"5/3 Pneumatically operated valve, closed central position\",\"Válvula 5/3 mando neumático, centro abierto\":\"5/3 Pneumatically operated valve, open central position\",\"Electroválvula 5/3 centro cerrado\":\"5/3 Solenoid valve closed central position\",\"Electroválvula 5/3 centro abierto\":\"5/3 Solenoid valve open central position\",\"2 válvulas 3/2 normal cerradas, mando neumático\":\"2x3/2 valve normally closed, pneumatically operated\",\"2 válvulas 3/2 normal cerradas, mando eléctrico\":\"2x3/2 valve normally closed, electrically operated\",\"Placa ciega para válvula\":\"Blanking plate for valve\",\"Base manifold modular (doble)\":\"Modular multiple subplate (double)\",\"Terminales para base manifold modular.\":\"End plates for modular multiple subplate.\",\"Base manifold para 10 válvulas\":\"Multiple subplate for 10 valves\",\"Base manifold para 12 válvulas\":\"Multiple subplate for 12 valves\",\"Soporte fijación plano\":\"Flat mounting bracket\",\"EN1, electroválvula 5/2 reacción a resorte\":\"EN1, 5/2 Solenoid valve, spring return\",\"EN1, electroválvula 3/2 reacción a resorte\":\"EN1, 3/2 Solenoid valve, spring return\",\"SB1, válvula 5/2 mando neumático, reacción neumática\":\"SB1, 5/2 Pneumatically operated valve, air return\",\"SB1, válvula 5/2 mando neumático, reacción a resorte\":\"SB1, 5/2 Pneumatically operated valve, spring return\",\"SB1, válvula 5/2 biestable por impulsos neumáticos\":\"SB1, 5/2 Pneumatically operated impulse valve\",\"SB1, electroválvula 5/2 reacción neumática\":\"SB1, 5/2 Solenoid valve air return\",\"SB1, electroválvula 5/2 biestable por impulsos eléctricos\":\"SB1, 5/2 Solenoid impulse valve\",\"SB1, válvula 3/2 mando neumático, reacción neumática\":\"SB1, 3/2 Pneumatically operated valve, air return\",\"SB1, válvula 3/2 mando neumático, reacción a resorte\":\"SB1, 3/2 Pneumatically operated valve, spring return\",\"SB1, válvula 3/2 biestable por impulsos neumáticos\":\"SB1, 3/2 Pneumatically operated impulse valve\",\"SB1, electroválvula 3/2 reacción neumática\":\"SB1, 3/2 Solenoid valve air return\",\"SB1, electroválvula 3/2 biestable por impulsos eléctricos\":\"SB1, 3/2 Solenoid impulse valve\",\"Placa interfaz para regulación de velocidad\":\"Speed control plate\",\"Válvula 3/2 mando neumático, reacción neumática\":\"3/2 Pneumatically operated valve, air return\",\"Válvula 3/2 mando neumático, reacción a resorte\":\"3/2 Pneumatically operated valve, spring return\",\"Válvula 3/2 biestable por impulsos neumáticos\":\"3/2 Pneumatically operated impulse valve\",\"Electroválvula 3/2 reacción neumática\":\"3/2 Solenoid valve air return\",\"Electroválvula 3/2 reacción a resorte\":\"3/2 Solenoid valve spring return\",\"Electroválvula 3/2 biestable por impulsos eléctricos\":\"3/2 Solenoid impulse valve\",\"Distribuidor de alimentación para 7 válvulas\":\"Multiple connection spar for 7 valves\",\"Distribuidor de alimentación para 8 válvulas\":\"Multiple connection spar for 8 valves\",\"Distribuidor de alimentación para 9 válvulas\":\"Multiple connection spar for 9 valves\",\"Distribuidor de alimentación para 10 válvulas\":\"Multiple connection spar for 10 valves\",\"Placa de cierre para distribuidor\":\"Blanking plate for multiple connection spar\",\"Base manifold para 9 válvulas\":\"Multiple subplate for 9 valves\",\"Placa de cierre para manifold\":\"Blanking plate for multiple subplate\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación\":\"5/2 Solenoid valve spring return with direct switching position sensing\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación y comando redundante\":\"5/2 Solenoid valve spring return with direct switching position sensing and redundant operation\",\"Base de conexionado lateral ISO-VDMA 24345\":\"ISO-VDMA 24345 Side connection subplate\",\"Base de conexionado inferior ISO-VDMA 24345\":\"ISO-VDMA 24345 Back connection subplate\",\"Base de conexionado multiple ISO-VDMA 24345\":\"ISO-VDMA 24345 Multiple subplate\",\"Terminal de alimentación\":\"End plate\",\"Terminal ciego o intermedio\":\"Blank / Intermediate plate\",\"Interfaz adaptación VS-1 / VS-2\":\"Interface VS-1/ VS-2\",\"Válvula con mando a botón plástico Ø22 (Verde)\":\"Ø22 Plastic button valve (Green)\",\"Válvula con mando a botón plástico Ø22 (Rojo)\":\"Ø22 Plastic button valve (Red)\",\"Válvula con mando a botón plástico Ø22 (Negro)\":\"Ø22 Plastic button valve (Black)\",\"Válvula con mando a botón metálico Ø22 (Verde)\":\"Ø22 Metallic button valve (Green)\",\"Válvula con mando a botón metálico Ø22 (Rojo)\":\"Ø22 Metallic button valve (Red)\",\"Válvula con mando a botón metálico Ø22 (Negro)\":\"Ø22 Metallic button valve (Black)\",\"Válvula con mando golpe de puño plástico Ø22\":\"Ø22 Plastic fist button valve\",\"Válvula con mando golpe de puño metálico Ø22\":\"Ø22 Metallic fist button valve\",\"Válvula con mando botón rotante plástico Ø22\":\"Ø22 Plastic turn switch valve\",\"Válvula con mando botón rotante metálico Ø22\":\"Ø22 Metallic turn switch valve\",\"Válvula con mando golpe de puño plástico Ø22 con retorno manual\":\"Ø22 Plastic push button with manual return valve\",\"Válvula con mando golpe de puño metálico Ø22 con retorno manual\":\"Ø22 Metallic push button with manual return valve\",\"Válvula con mando a pulsador manual\":\"Hand lever operated valve\",\"Válvula con mando directo\":\"Direct operated valve\",\"Válvula con mando directo por esfera\":\"Ball operated valve\",\"Válvula con mando por rodillo\":\"Roller operated valve\",\"Válvula con mando por rodillo unidireccional\":\"One way roller operated valve\",\"Válvula con mando por rodillo lateral\":\"Roller arm operated valve\",\"Válvula con mando por rodillo lateral regulable\":\"Adjustable roller arm operated valve\",\"Válvula con mando por varilla elástica universal\":\"Whisker operated valve\",\"Válvula con mando por varilla lateral regulable\":\"Adjustable side wire operated valve\",\"Válvula con mando perilla para tablero\":\"Hand lever operated valve for panel mounting\",\"Válvula con mando PUSH-PULL servicio liviano\":\"Push pull button valve light service\",\"Válvula con mando PUSH\":\"Push button valve\",\"Válvula con mando botón corto para tablero (Rojo)\":\"Short push button valve for panel mounting (Red)\",\"Válvula con mando botón largo para tablero (Rojo)\":\"Long push button valve for panel mounting (Red)\",\"Válvula con mando botón rotante para tablero (Negro)\":\"Turn switch valve for panel mounting (Black)\",\"Válvula con mando golpe de puño chico para tablero (Rojo)\":\"Small fist button valve for panel mounting (Red)\",\"Válvula con mando golpe de puño grande para tablero (Rojo)\":\"Large fist button valve for panel mounting (Red)\",\"Válvula con mando directo - Servicio liviano\":\"Direct operated valve - Light service\",\"Válvula con mando por rodillo - Servicio liviano\":\"Roller operated valve - Light service\",\"Válvula con mando por rodillo unidireccional - Servicio liviano\":\"One way roller operated valve - Light service\",\"Válvula con mando por rodillo metálico - Servicio pesado\":\"Metallic roller operated valve - Heavy service\",\"Válvula con mando por gatillo metálico unidireccional - Servicio pesado\":\"Metallic one way hand lever operated valve - Heavy service\",\"Válvula con mando a botón, reacción a resorte\":\"Push button operated valve, spring return\",\"Válvula con mando a botón, reacción neumática\":\"Push button operated valve, air return\",\"Válvula con mando a botón biestable PUSH-PULL\":\"Push pull button operated valve\",\"Mando a palanca, biestable\":\"Lever operated, bistable\",\"Mando a palanca, monoestable\":\"Lever operated, monostable\",\"Mando a palanca, centro cerrado, triestable\":\"Lever operated, closed central position, with rest in three positions\",\"Mando a palanca, centro abierto, triestable\":\"Lever operated, open central position, with rest in three positions\",\"Mando a palanca, posición central estable, centro cerrado\":\"Lever operated, central position, sprung to closed\",\"Mando a palanca, posición central estable, centro abierto\":\"Lever operated, central position, sprung to open\",\"Colizante de actuación manual\":\"Hand slide valve\",\"Mando a pedal, monoestable\":\"Foot operated, monostable\",\"Mando a pedal, biestable\":\"Foot operated, bistable\",\"Protección\":\"Safety guard\",\"Mando a pedal, biestable con traba\":\"Foot operated, bistable with mech. Detent\",\"Aire comprimido filtrado\":\"Filtered compressed air\",\"Aire comprimido filtrado a 50µ, sin lubricación - Gases inertes\":\"50µ Filtered compressed air, no lubrication - Inert gases\",\"Aire comprimido filtrado a 50µ, con o sin lubricación - Gases inertes\":\"50µ Filtered compressed air, with or without lubrication - Inert gases\",\"Aire comprimido filtrado - Gases inertes\":\"Filtered compressed air - Inert gases\",\"Aire comprimido filtrado (se recomienda lubricación) - Gases inertes\":\"Filtered compressed air (lubrication is recommended) - Inert gases\",\"Cuerpo de Zamac, membrana de NBR\":\"Zamac body, NBR diaphragm\",\"Cuerpo y distribuidor de aluminio, cierre frontal y otros sellos de NBR\":\"Body and spool of aluminium, poppet seal and other seals of NBR\",\"Cuerpo de aluminio, guarniciones de poliuretano\":\"Aluminium body, polyurethane gaskets\",\"Cuerpo de zamac, bobina encapsulada en resina epoxi, tubo guía y tragante de latón y acero inoxidable\":\"Zamac body, epoxy encapsulated coil, brass armature tube and stainless steel plunger core\",\"Cuerpo de Zamac, distribuidor de acero inoxidable, sellos de NBR\":\"Zamac body, stainless steel spool, NBR seals\",\"Cuerpo de aluminio anodizado, distribuidor de aluminio, sellos de NBR\":\"Anodized aluminium body, aluminium spool, NBR seals\",\"Cuerpo de aluminio, distribuidor de acero inoxidable, sellos de NBR\":\"Aluminium body, stainless steel spool, NBR seals\",\"Cuerpo de Zamac, distribuidor de aluminio, sellos de NBR\":\"Zamac body, aluminium spool, NBR seals\",\"Cuerpo de aluminio, distribuidor de aluminio, sellos de NBR\":\"Aluminium body, aluminium spool, NBR seals\",\"Cuerpo de Zamac, mandos metálicos y plásticos de ingeniería.\":\"Zamac body, engineering plastic and metallic commands.\",\"Cuerpo y corredera de aluminio, sellos de NBR\":\"Aluminium body and sleeve, NBR seals\",\"Cuerpo de válvula de aluminio, distribuidor lapidado de resina acetálica\":\"Aluminium valve body, lapped acetal resin spool\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio y sellos de NBR\":\"Zamac valve body and pedal, aluminium spool and NBR seals\",\"Protección de chapa de acero.\":\"Steel sheet safety guard.\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio, sellos de NBR, protección plástica\":\"Zamac valve body and pedal, aluminium spool, NBR seals, plastic safety guard\",\"rojo\":\"red\",\"amarillo\":\"yellow\",\"verde\":\"green\",\"Serie VM15-B \":\"VM15-B Series \",\"4 posiciones de válvulas, simple solenoide\":\"4 valve positions, single solenoid\",\"6 posiciones de válvulas, simple solenoide\":\"6 valve positions, single solenoid\",\"8 posiciones de válvulas, simple solenoide\":\"8 valve positions, single solenoid\",\"10 posiciones de válvulas, simple solenoide\":\"10 valve positions, single solenoid\",\"12 posiciones de válvulas, simple solenoide\":\"12 valve positions, single solenoid\",\"4 posiciones de válvulas, doble solenoide\":\"4 valve positions, double solenoid\",\"6 posiciones de válvulas, doble solenoide\":\"6 valve positions, double solenoid\",\"8 posiciones de válvulas, doble solenoide\":\"8 valve positions, double solenoid\",\"10 posiciones de válvulas, doble solenoide\":\"10 valve positions, double solenoid\",\"Serie VM18-B \":\"VM18-B Series \",\"Accesorio de conexión\":\"Connection accessory\",\"Conector SUB-D 25\":\"SUB-D 25 connector\",\"Conector SUB-D 25 con cable 5m\":\"SUB-D 25 connector with 5m cable\",\"Conector SUB-D 25 con cable 10m\":\"SUB-D 25 connector with 10m cable\",\"Placa ciega eléctrica\":\"Electrical blanking plate\",\"Separador de presión\":\"Pressure divider plug\",\"Soporte para riel DIN\":\"Bracket for DIN rail\",\"Serie VM15-BSL\":\"VM15-BSL Series\",\"Serie VM18-BSL\":\"VM18-BSL Series\",\"Serie VM15-SI\":\"VM15-SI Series\",\"4 posiciones de válvulas, con alim. pilot. interno\":\"4 valve positions, with internal pilot\",\"6 posiciones de válvulas, con alim. pilot. interno\":\"6 valve positions, with internal pilot\",\"8 posiciones de válvulas, con alim. pilot. interno\":\"8 valve positions, with internal pilot\",\"10 posiciones de válvulas, con alim. pilot. interno\":\"10 valve positions, with internal pilot\",\"12 posiciones de válvulas, con alim. pilot. interno\":\"12 valve positions, with internal pilot\",\"4 posiciones de válvulas, con alim. pilot. externo\":\"4 valve positions, with external pilot\",\"6 posiciones de válvulas, con alim. pilot. externo\":\"6 valve positions, with external pilot\",\"8 posiciones de válvulas, con alim. pilot. externo\":\"8 valve positions, with external pilot\",\"10 posiciones de válvulas, con alim. pilot. externo\":\"10 valve positions, with external pilot\",\"12 posiciones de válvulas, con alim. pilot. externo\":\"12 valve positions, with external pilot\",\"Soporte fijación a panel\":\"Mounting bracket for panel\",\"4 posiciones de válvulas, simple solenoide, 4I/4O\":\"4 valve positions, single solenoid, 4I/4O\",\"2 posiciones de válvulas, doble solenoide, 4I/4O\":\"2 valve positions, double solenoid, 4I/4O\",\"4 posiciones de válvulas, simple solenoide, 4I/4O con alim. ext.\":\"4 valve positions, single solenoid, 4I/4O with ext. pilot\",\"2 posiciones de válvulas, doble solenoide, 4I/4O con alim. ext.\":\"2 valve positions, double solenoid, 4I/4O with ext. pilot\",\"4 posiciones de válvulas, simple solenoide, 8I/4O\":\"4 valve positions, single solenoid, 8I/4O\",\"4 posiciones de válvulas, simple solenoide, 8I/4O con alim. ext.\":\"4 valve positions, single solenoid, 8I/4O with ext. pilot\",\"8 posiciones de válvulas, simple solenoide, 8I/8O\":\"8 valve positions, single solenoid, 8I/8O\",\"8 posiciones de válvulas, simple solenoide, 8I/8O con alim. ext.\":\"8 valve positions, single solenoid, 8I/8O with ext. pilot\",\"4 posiciones de válvulas, doble solenoide, 8I/8O\":\"4 valve positions, double solenoid, 8I/8O\",\"4 posiciones de válvulas, doble solenoide, 8I/8O con alim. ext.\":\"4 valve positions, double solenoid, 8I/8O with ext. pilot\",\"8 posiciones de válvulas, simple solenoide, 16I/8O\":\"8 valve positions, single solenoid, 16I/8O\",\"8 posiciones de válvulas, simple solenoide, 16I/8O con alim. ext.\":\"8 valve positions, single solenoid, 16I/8O with ext. pilot\",\"Cable AS-i amarillo\":\"Yellow AS-i Cable\",\"Cable AS-i negro\":\"Black AS-i Cable\",\"Conector M8 para entradas\":\"Input M8 connector\",\"16 posiciones de válvulas, simple solenoide\":\"16 valve positions, single solenoid\",\"12 posiciones de válvulas, doble solenoide\":\"12 valve positions, double solenoid\",\"16 posiciones de válvulas, doble solenoide\":\"16 valve positions, double solenoid\",\"Conector BUS IN\":\"BUS IN Connector\",\"Conector BUS OUT\":\"BUS OUT Connector\",\"Conector Power\":\"Power Connector\",\"Serie VM15-B\":\"VM15-B Series \",\"Serie VM18-B\":\"VM18-B Series \",\"Aire comprimido filtrado, con o sin lubricación\":\"Filtered compressed air, with or without lubrication\",\"Cuerpo de aluminio, tornillo de registro de latón, sellos de NBR\":\"Aluminium body, brass adjustment screw, NBR seals\",\"Serie VA, en linea\":\"VA Series, inline\",\"Regulador de caudal unidireccional\":\"Unidirectional flow control regulator\",\"Cuerpo de Zamac, tornillo de registro de latón, sellos de NBR\":\"Zamac body, brass adjustment screw, NBR seals\",\"Regulador de caudal bidireccional\":\"Bidirectional flow control regulator\",\"Regulador de caudal bidireccional \":\"Bidirectional flow control regulator\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, tornillo de registro de latón, sellos de NBR\":\"HR polymer body with high chemical and impact resistance, brass asjustment screw, NBR seals\",\"Serie RVR e instantánea, tipo banjo orientable\":\"RVR and push in series, swivel banjo\",\"Regulador de velocidad, banjo de precisión con conector instantáneo\":\"Speed control regulator, precision banjo with push in tube connection\",\"Regulador de velocidad, banjo de precisión con conector instantáneo, con regulación en la alimentación\":\"Speed control regulator, precision banjo with push in tube connection, inlet control\",\"Regulador de velocidad, banjo orientable con rosca hembra\":\"Speed control regulator, swivel banjo with female thread\",\"Regulador de velocidad, banjo orientable en 2 ejes con conector instantáneo\":\"Speed control regulator, 2 axis swivel banjo with push in tube connection\",\"Regulador de velocidad, banjo RVI con conector instantáneo\":\"Speed control regulator, RVI banjo with push in tube connection\",\"Regulador de velocidad, banjo RVI con conector instantáneo, con regulación en la alimentación\":\"Speed control regulator, RVI banjo with push in tube connection, inlet control\",\"Serie instantánea, en línea\":\"Push in Series, in line\",\"Regulador de caudal unidireccional de precisión\":\"Precision unidirectional flow control regulator\",\"Regulador de caudal unidireccional RVL\":\"RVL Unidirectional flow control regulator\",\"Cuerpo de Zamac, sellos de NBR, silenciador de bronce sinterizado\":\"Zamac body, NBR seals, sintered bronze silencer\",\"Serie ERS\":\"ERS Series\",\"Con silenciador incorporado\":\"With built-in silencer\",\"Cuerpo de Zamac, sellos de NBR\":\"Zamac body, NBR seals\",\"Serie VA\":\"VA Series\",\"Con boca de escape roscada\":\"With threaded exhaust port\",\"Modelo con rosca hembra\":\"Female thread model\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, sellos de NBR\":\"HR polymer body with high chemical and impact resistance, NBR seals\",\"Serie instantánea\":\"Push in Series\",\"Modelo con conector instantáneo\":\"Push in tube connection model\",\"Válvula función O\":\"OR Valve\",\"Serie para base\":\"Subplate Series\",\"Válvula función Y\":\"AND Valve\",\"Válvula función NO\":\"NO Valve\",\"Base de conexionado modelo simple con conexión trasera\":\"Simple model subplate rear connection.\",\"Base de conexionado unitaria o extremo de manifold\":\"Single or manifold end subplate\",\"Base de conexionado intermedio para manifold\":\"Intermediate subplate for manifold\",\"Serie enchufable instantánea\":\"Plug in Series\",\"Cuerpo de latón y polímero HR, sellos de NBR\":\"Brass and HR polymer body, NBR seals\",\"Sensores por ausencia de presión\":\"Pneumatic sensor fitting\",\"Cuerpo de aluminio, sellos de NBR\":\"Aluminium body, NBR seals\",\"Válvulas de no retorno pilotadas\":\"Pilot operated check valves\",\"Aire comprimido filtrado, sin lubricación\":\"Filtered compressed air, without lubrication\",\"Temporizadores \":\"Timers\",\"Temporizador 0,1...10 seg. \":\"Timer 0,1...10 sec.\",\"Temporizador 0,1...30 seg.\":\"Timer 0,1...30 sec.\",\"Generador de impulso único\":\"Single fixed impulse generator\",\"Generador de impulso único 0,4 seg.\":\"Single fixed impulse generator 0,4 sec.\",\"Accesorios para modulos\":\"Accessories for modules\",\"Comando bimanual\":\"Two hand safety control\",\"Aire comprimido filtrado, con o sin lubricación. Gases o líquidos neutros\":\"Filtered compressed air, without lubrication. Neutral/Inert gases or liquids\",\"Presostatos regulables\":\"Adjustable pressure switches\",\"Presostato regulable para base\":\"Adjustable pressure switch for subplate mounting\",\"Presostato regulable, 0.3...1.2bar\":\"Adjustable pressure switch 0.3...1.2bar\",\"Cuerpo de aleación de zinc inyectado, diafragma de NBR, contacto bimetálico de plata.\":\"Die cast zinc alloy body, NBR diaphragm, bimetallic silver plated contact.\",\"Presostato regulable a diafragma, 1...16bar\":\"Diaphragm adjustable pressure switch, 1...16bar\",\"Aire comprimido filtrado, fluidos no corrosivos y no inflamables\":\"Filtered compressed air, non corrosive and non flammable fluids\",\"Sensor de presión digital, 0…10bar\":\"Digital pressure sensor, 0...10bar\",\"Sensor de presión programable, 0…6bar\":\"Programmable pressure sensor, 0…6bar\",\"Indicadores de presión\":\"Pneumatic indicators\",\"Indicador de presencia de presión neumática. Rojo\":\"Pneumatic indicator, red\",\"Indicador de presencia de presión neumática. Verde\":\"Pneumatic indicator, green\",\"Indicador de presencia de presión neumática. Amarillo\":\"Pneumatic indicator, yellow\",\"Indicador de presión digital\":\"Digital pneumatic indicator\",\"Aire comprimido.\":\"Compressed air\",\"Bronce sinterizado y aluminio.\":\"Sintered bronze and aluminium.\",\"Serie SBR\":\"SBR Series\",\"Resina acetálica azul y granos fonoabsorbentes.\":\"Blue acetalic resin and sound absorbing grains.\",\"Serie SPL\":\"SPL Series\",\"Chapa pintada y fibras de poliéster.\":\"Painted steel sheet and polyester fibers.\",\"Serie pesada\":\"Heavy duty Series\",\"Cuerpo de aluminio, elemento silenciador de bronce sinterizado, tornillo regulador de latón y cubierta de resina acetálica.\":\"Aluminium body, sintered bronze filter element, brass asjustment screw and acetalic resin housing.\",\"Eyectores básicos SBP\":\"SBP Basic ejectors\",\"Con conexión instantanea\":\"With push in connection\",\"Con conexión roscada\":\"With threaded connection\",\"Eyectores compactos SCPS - SCPSi\":\"SCPS - SCPSi Compact ejectors\",\"Normal abierto\":\"Normal open\",\"Normal abierto, con IO Link\":\"Normal open, with IO Link\",\"Cable conector 5 polos M12\":\"M12 5 pole connector cable\",\"Eyectores compactos SCPi\":\"SCPi Compact ejectors\",\"Con válvula piloto NA\":\"With NO pilot valve\",\"Con válvula piloto NC\":\"With NC pilot valve\",\"Con válvula piloto IMP\":\"With IMP pilot valve\",\"Eyectores compactos SXPi\":\"SXPi Compact ejectors\",\"Cable conector 8 polos M12\":\"M12 8 pole connector cable\",\"Eyectores multietapa SEM\":\"SEM Multi-stage ejectors\",\"SEM 25-SDA\":\"SEM 25-SDA\",\"SEM 50-SDA\":\"SEM 50-SDA\",\"SEM 100-SDA\":\"SEM 100-SDA\",\"Vacuómetro Ø40\":\"Vacuum manometer Ø40\",\"Eyectores multietapa SEM-C\":\"SEM-C Multi-stage ejectors\",\"Conector para vacuostato\":\"Socket plug for vacuum switch\",\"Conector para válvula\":\"Socket plug for valve\",\"Ventosas planas PFYN\":\"PFYN Flat suction cups\",\"con boquilla rosca macho\":\"With male thread connection nipple\",\"con boquilla rosca hembra\":\"With female thread connection nipple\",\"Ventosas planas SPU\":\"SPU Flat suction cups\",\"SPU 100 - NBR\":\"SPU 100 - NBR\",\"SPU 125 - NBR\":\"SPU 125 - NBR\",\"SPU 160 - NBR\":\"SPU 160 - NBR\",\"SPU 210 - NBR\":\"SPU 210 - NBR\",\"SPU 250 - NBR\":\"SPU 250 - NBR\",\"SPU 300 - NBR\":\"SPU 300 - NBR\",\"Ventosas planas SPK\":\"SPK Flat suction cups\",\"SPK 55 - EPDM\":\"SPK 55 - EPDM\",\"SPK 80 - EPDM\":\"SPK 80 - EPDM\",\"SPK 110 - EPDM\":\"SPK 110 - EPDM\",\"SPK 160 - EPDM\":\"SPK 160 - EPDM\",\"SPK 200 - EPDM\":\"SPK 200 - EPDM\",\"SPK 250 - EPDM\":\"SPK 250 - EPDM\",\"Ventosas planas ovaladas SGON\":\"SGON Oval flat suction cups\",\"Ventosas de fuelle FSGA (1.5 pliegues)\":\"FSGA Bellows suction cups (1.5 folds)\",\"Ventosas de fuelle FSG (2.5 pliegues)\":\"FSG Bellows suction cups (2.5 folds)\",\"Ventosas para chapa redondas planas SAF\":\"SAF Flat suction cups for metal sheets\",\"Ventosas para chapa redondas tipo campana SAXM\":\"SAXM Bell-shaped suction cups for metal sheets\",\"Ventosas para chapa redondas con fuelle SAB \":\"SAB Bellows suction cups for metal sheets\",\"SAB 22 - Rosca hembra\":\"SAB 22 - Female thread\",\"SAB 30 - Rosca hembra\":\"SAB 30 - Female thread\",\"SAB 30 - Con adaptador rectangular\":\"SAB 30 - With rectangular adapter\",\"SAB 40 - Rosca hembra\":\"SAB 40 - Female thread\",\"SAB 40 - Con adaptador rectangular\":\"SAB 40 - With rectangular adapter\",\"SAB 50 - Rosca hembra\":\"SAB 50 - Female thread\",\"SAB 50 - Con adaptador rectangular\":\"SAB 50 - With rectangular adapter\",\"SAB 60 - Rosca hembra\":\"SAB 60 - Female thread\",\"SAB 60 - Con adaptador rectangular\":\"SAB 60 - With rectangular adapter\",\"SAB 80 - Rosca hembra\":\"SAB 80 - Female thread\",\"SAB 80 - Con adaptador rectangular\":\"SAB 80 - With rectangular adapter\",\"SAB 100 - Rosca hembra\":\"SAB 100 - Female thread\",\"SAB 100 - Con adaptador rectangular\":\"SAB 100 - With rectangular adapter\",\"SAB 125 - Rosca hembra\":\"SAB 125 - Female thread\",\"SAB 125 - Con adaptador rectangular\":\"SAB 125 - With rectangular adapter\",\"Ventosas para chapa ovaladas planas SAOF\":\"SAOF Oval flat suction cups for metal sheets\",\"Ventosas para chapa ovaladas con fuelle SAOB\":\"SAOB Oval bellows suction cups for metal sheets\",\"Ventosas forma campana SAOG\":\"SAOG Bell-shaped suction cups\",\"Ventosas para láminas y papel SGPN\":\"SGPN Suction cups for plastic films and paper\",\"Ventosas para embalaje SPB4\":\"SPB4 Suction cups for packaging\",\"Ventosas para embalaje SPB4-F\":\"SPB4-F Suction cups for packaging\",\"Ventosas para embalaje SPB1\":\"SPB1 Suction cups for packaging\",\"Ventosas magnéticas SGM\":\"SGM Magnetic grippers\",\"Garra magnética\":\"Magnetic gripper\",\"Elementos de fijación para ventosas Flexolink FLK\":\"Flexolink FLK suction cup mounting elements\",\"Unión articulada\":\"Flexible connection thread\",\"Articulaciones esféricas KGL\":\"KGL Ball joints\",\"Articulación esférica\":\"Ball joint\",\"Biela elástica FSTE y FSTE-VG\":\"FSTE and FSTE-VG Level compensator\",\"Estandar\":\"Standard\",\"Antigiro\":\"Anti-rotation\",\"Biela elástica heavy duty FSTE-HD y FSTA-HD\":\"FSTE-HD and FSTA-HD Heavy duty level compensator\",\"Válvulas de flujo SVK y SVKG\":\"SVK and SVKG Flow valve\",\"Rosca H lado ventosa\":\"Female thread, suction cup side\",\"Rosca M lado ventosa\":\"Male thread, suction cup side\",\"Válvulas AZ5 y AZ7 - 3/2\":\"AZ5 and AZ7 - 3/2 Valves\",\" Filtros de vacío tipo taza VFT\":\"VFT Bowl type vacuum filters\",\"Filtro tipo taza, 100 µm.\":\"Bowl type vacuum filter, 100 µm.\",\"Vacuómetros VAM\":\"VAM Vacuum manometers\",\"Vacuómetro Ø40 con conexión trasera\":\"Vacuum manometer Ø40 with back connection\",\"Vacuómetro Ø63 con conexión inferior\":\"Vacuum manometer Ø63 with bottom connection\",\"Vacuómetro Ø67 para montaje en panel\":\"Vacuum manometer Ø67 for panel mounting\",\"Vacuostatos regulables\":\"Adjustable vacuum switches\",\"Vacuostato regulable, -0,3…-0,8bar\":\"Adj. vacuum switch -0,3…-0,8bar\",\"Sensor de vacío programable, -1...0bar\":\"Programmable vacuum sensor, -1...0bar\",\"Vacuostato electrónico digital con display\":\"Digital vacuum switch with display\",\"Ficha con cable 2m\":\"Socket plug with 2m cable\",\"Serie compacto\":\"Compact Series\",\"MCRQ-16, con amortiguador de choque\":\"MCRQ-16, with shock absorber\",\"MCRQ-20, con amortiguador de choque\":\"MCRQ-20, with shock absorber\",\"MCRQ-25, con amortiguador de choque\":\"MCRQ-25, with shock absorber\",\"MCRQ-32, con amortiguador de choque\":\"MCRQ-32, with shock absorber\",\"MCRQ-40, con amortiguador de choque\":\"MCRQ-40, with shock absorber\",\"MCRQ-16, con ajuste fino por tornillo\":\"MCRQ-16, with fine angle adjustment screw\",\"MCRQ-20, con ajuste fino por tornillo\":\"MCRQ-20, with fine angle adjustment screw\",\"MCRQ-25, con ajuste fino por tornillo\":\"MCRQ-25, with fine angle adjustment screw\",\"MCRQ-32, con ajuste fino por tornillo\":\"MCRQ-32, with fine angle adjustment screw\",\"MCRQ-40, con ajuste fino por tornillo\":\"MCRQ-40, with fine angle adjustment screw\",\"Pinzas angulares MCHA \":\"MCHA Angular grippers \",\"MCHA-12\":\"MCHA-12\",\"MCHA-16\":\"MCHA-16\",\"MCHA-20\":\"MCHA-20\",\"MCHA-25\":\"MCHA-25\",\"Pinzas radiales MCHY \":\"MCHY Radial grippers \",\"MCHY-10\":\"MCHY-10\",\"MCHY-16\":\"MCHY-16\",\"MCHY-20\":\"MCHY-20\",\"MCHY-25\":\"MCHY-25\",\"Pinzas paralelas de dos dedos MCHC \":\"MCHC 2-Jaw parallel grippers\",\"MCHC-10\":\"MCHC-10\",\"MCHC-16\":\"MCHC-16\",\"MCHC-20\":\"MCHC-20\",\"MCHC-25\":\"MCHC-25\",\"Pinzas de tres dedos MCHG2 \":\"MCHG2 3-Jaw parallel grippers\",\"MCHG2-16\":\"MCHG2-16\",\"MCHG2-25\":\"MCHG2-25\",\"MCHG2-32\":\"MCHG2-32\",\"Interruptores magnéticos serie RCE\":\"RCE Series magnetic switches\",\"Interruptores magnéticos serie RPE\":\"RPE Series magnetic switches\",\"Efecto Hall PNP, con conector M8x1\":\"Hall effect PNP, with M8x1 connector\",\"Interruptores magnéticos serie RT\":\"RT Series magnetic switches\",\"Interruptores magnéticos serie RTP\":\"RTP Series magnetic switches\",\"Serie TAR\":\"TAR Series\",\"TAR 160 - 8 divisiones\":\"TAR 160 - 8 stations\",\"TAR 270 - 4-6-8-12-24 divisiones\":\"TAR 270 - 4-6-8-12-24 stations\",\"Serie QBM0\":\"QBM0 Series\",\"Soporte de fijacion para R o FR\":\"Mounting bracket for R or FR\",\"Soporte de fijacion para F o L\":\"Mounting bracket for F or L\",\"Kit para unión de 2 unidades\":\"Joining elements for 2 units\",\"Manómetro Ø 25mm R\":\"Pressure gauge Ø 25mm R\",\"Serie QBM0, QBM1, QBM4\":\"QBM0, QBM1, QBM4 Series\",\"Manómetro Ø 40mm R\":\"Pressure gauge Ø 40mm R\",\"Manómetro Ø 50mm para tablero\":\"Pressure gauge Ø 50mm for panel mounting\",\"Serie QBM0, QBM1, QBM4, QBS6\":\"QBM0, QBM1, QBM4, QBS6 Series\",\"Serie QBM1\":\"QBM1 Series\",\"Brida de conexionado (par).\":\"End plate (pair).\",\"Elementos de unión de módulos \":\"Joining elements for modules\",\"Elementos de unión de módulos c/ soporte trasero plastico\":\"Joining elements for modules with rear plastic mounting bracket\",\"Soporte trasero metálico\":\"Rear metal mounting bracket\",\"Bloqueo de regulador para candado\":\"Regulator blocking\",\"Serie QBM1, QBM4\":\"QBM1, QBM4 Series\",\"Manómetro cuadrado\":\"Square pressure gauge\",\"Sensor de presión\":\"Pressure gauge\",\"Acople para sensor de presión y mascarilla\":\"Coupling and mask for digital pressure gauge\",\"Cable 2m para sensor con conector M8 - 3 pines\":\"2m cable for sensor with M8 3 pin female connector\",\"Acople roscado para manómetro\":\"Threaded coupling for pressure gauge\",\"Serie QBM4\":\"QBM4 Series\",\"Elementos de unión de módulos c/ soporte trasero plástico\":\"Joining elements for modules with rear plastic mounting bracket\",\"Cable c/conector M12 - 5 pines\":\"Cable with M12 - 5 pin connector\",\"Serie QBS6\":\"QBS6 Series\",\"Manómetro Ø 50mm R\":\"Pressure gauge Ø 50mm R\",\"Conexión roscada G 1/8\\\" para vasos\":\"Threaded connection G 1/8\\\" for bowls\",\"Serie QBS6, QBS9\":\"QBS6, QBS9 Series\",\"Serie QBS9\":\"QBS9 Series\",\"Soporte de fijación F o R\":\"Mounting bracket for F or R\",\"Serie CN\":\"CN Series\",\"Amplificador neumático de presión.\":\"Pneumatic pressure booster.\",\"Unidad brida intermedia\":\"Intermediate plate unit\",\"Serie QBM1 G1/4\\\"\":\"QBM1 Series G1/4\\\"\",\"Unidad brida intermedia con no retorno incorporado\":\"Intermediate plate unit with built-in non-return valve\",\"Serie QBM4 G1/2\\\"\":\"QBM4 Series G1/2\\\"\",\"Serie QBS6 G1\\\"\":\"QBS6 Series G1\\\"\",\"Manual, con vaso incluido\":\"Manual, bowl included\",\"Semiautomático, con vaso incluido\":\"Semi-automatic, bowl included\",\"Automático por flotador MINI, con vaso incluido\":\"Automatic by MINI float, bowl included\",\"Automático por flotador de montaje externo, con vaso incluido\":\"Automatic by external float, bowl included\",\"Serie QBM0, QBM1, QBM4, QBS6, QBS9\":\"QBM0, QBM1, QBM4, QBS6, QBS9 Series\",\"Automático temporizado, solo el drenaje\":\"Timed automatic, only the drain is included\",\"Bloque temporizador digital de repuesto\":\"Spare digital timer\",\"Manual / semiautomático, solo el drenaje\":\"Manual / semi-automatic, only the drain is included\",\"Automático por flotador de montaje externo, solo el drenaje\":\"Automatic by external float, only the drain is included\",\"Adaptador para drenaje automático temporizado\":\"Threaded adapter for timed automatic drain\",\"Automático por flotador MAXI, solo el drenaje\":\"Automatic by MAXI float, only the drain is included\",\"Unidad filtro submicrónico\":\"Submicronic filter unit\",\"Unidad filtro de carbón activado\":\"Activated carbon filter unit\",\"P entrada: 6bar; Δp= 1bar\":\"Inlet pressure: 6bar; Δp= 1bar\",\"Módulo presostato regulable\":\"Adjustable pressure switch module\",\"Módulo sensor de presión digital\":\"Digital pressure gauge module\",\"Cable de 2m c/conector hembra M8 - 3 pines\":\"2m cable with M8 3 pin female connector\",\"Unidad filtro de sustancias higroscopicas o depuradoras\":\"Hygroscopic or purifying substances filter unit\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN, presostato\":\"Exhaust valve for padlock, FR unit , electrically operated exhaust valve, pneumatically operated safety start-up valve, pressure switch\",\"Válvula corte para candado, unidad FR+L, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN\":\"Exhaust valve for padlock, FR+L unit , electrically operated exhaust valve, pneumatically operated safety start-up valve\",\"Válvula corte para candado, unidad FR, brida intermedia con no retorno, presostato, unidad  L\":\"Exhaust valve for padlock, FR unit , intermediate plate with non-return valve, pressure switch, lubricator unit\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN\":\"Exhaust valve for padlock, FR unit , electrically operated exhaust valve, pneumatically operated safety start-up valve\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, sensor de presión digital\":\"Exhaust valve for padlock, FR unit , electrically operated exhaust valve, digital pressure gauge\",\"Válvula corte para candado, unidad FR, unidad L\":\"Exhaust valve for padlock, FR unit , lubricator unit\",\"P entrada: 6,3bar; Δp= 1bar\":\"Inlet pressure: 6,3bar; Δp= 1bar\",\"Unidad filtro de tratamiento del aire\":\"Filter unit for compressed air service\",\"Serie QBS9 G2\\\"\":\"QBS9 Series G2\\\"\",\"Unidad filtro, regulador más lubricador\":\"Filter, regulator and lubricator unit\",\"Unidad filtro-regulador\":\"Filter-regulator unit\",\"P entrada: 8bar; P regulada: 6,3bar; Δp= 1bar\":\"Inlet pressure: 8bar; Outlet pressure: 6,3bar; Δp= 1bar\",\"Unidad filtro-regulador más lubricador\":\"Filter-regulator and lubricator unit\",\"Unidad lubricador\":\"Lubricator unit\",\"Unidad regulador, para linea\":\"Regulator unit, for wall mounting\",\"Unidad regulador, para tablero\":\"Regulator unit, for panel mounting\",\"Unidad regulador, cuerpo metálico\":\"Regulator unit, metal body\",\"Unidad regulador, comando a distancia\":\"Regulator unit, remotely operated\",\"P entrada: 6bar; P regulada: 1,5bar; Δp= 0,2bar\":\"Inlet pressure: 6bar; Outlet pressure: 1,5bar; Δp= 0,2bar\",\"Serie QBM4 G1/4\\\"\":\"QBM4 Series G1/4\\\"\",\"Unidad regulador, de instrumentación \":\"Regulator unit, for instrumentation\",\"Válvula de corte para candado\":\"Exhaust valve for padlock\",\"Válvulas de corte y descarga\":\"Exhaust valve\",\"Válvulas de presurización progresiva, mando neumático\":\"Safety start-up valve, pneumatically operated\",\"Válvulas de presurización progresiva, mando eléctrico\":\"Safety start-up valve, electrically operated\",\"mando neumático\":\"pneumatically operated\",\"mando eléctrico\":\"electrically operated\",\" mando eléctrico\":\"electrically operated\",\"Válvula de presurización y descarga mando eléctrico\":\"Electrically operated exhaust valve\",\"Válvula de presurización y descarga mando neumático\":\"Pneumatically operated exhaust valve\",\"Válvula de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión\":\"Electrically operated exhaust valve with switching monitoring by pressure sensor\",\"Válvula de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión + válvula de presurización progresiva MN\":\"Electrically operated exhaust valve with switching monitoring by pressure sensor + pneumatically operated safety start-up valve\",\"Válvulas de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión y comando redundante\":\"Electrically operated exhaust valve with switching monitoring by pressure sensor and redundant operation\",\"Válvulas de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión y comando redundante + válvula de presurización progresiva MN\":\"Electrically operated exhaust valve with switching monitoring by pressure sensor and redundant operation + pneumatically operated safety start-up valve\",\"Accesorios\":\"Accessories\",\"Buje de reducción\":\"Reducer male to female\",\"Niple\":\"Straight male adaptor\",\"Cupla\":\"Double female sleeve\",\"Tapón roscado con hexágono interno\":\"Threaded plug with internal exagon\",\"Distribuidor de 4 caras (cruz)\":\"4-Way cross connector.\",\"Bloque distribuidor múltiple\":\"Multiple connector block\",\"Series 458\":\"458 Series\",\"Tapón roscado\":\"Threaded plug\",\"Pasachapa\":\"Bulkhead connector\",\"Cuerpo roscado macho\":\"Quick fitting body with male thread\",\"Cuerpo para manguera\":\"Quick fitting body for hose\",\"Espiga roscada macho\":\"Quick fitting coupler with male thread\",\"Espiga roscada macho, con obturación\":\"Quick fitting coupler with male thread, with shut-off\",\"Espiga para manguera\":\"Quick fitting coupler for hose\",\"Cuerpo de latón niquelado, polímero HR (alta resistencia química y al impacto), arandela de retención de acero inoxidable, juntas de NBR.\":\"Nickel-plated brass body, HR polymer (high chemical and impact resistance), stainless steel retention ring, NBR seals.\",\"Series 431\":\"431 Series\",\"Aire comprimido\":\"Compressed air\",\"Conector recto rosca G\":\"Straight male fitting G thread\",\"Conector orientable a 90° rosca G\":\"90° Swivel elbow G thread\",\"Conector codo oscilante (0-270°) rosca G\":\"Oscillating elbow (0-270°) G thread\",\"Cuerpo de polímero HR (alta resistencia química y al impacto), arandela de retención de acero inoxidable, juntas de NBR.\":\"HR polymer body (high chemical and impact resistance), stainless steel retention ring, NBR seals.\",\"Codo igual\":\"Equal elbow\",\"Conector T orientable rosca G\":\"Swivel branch tee G thread\",\"Conector T igual\":\"Equal tee\",\"Unión doble hembra\":\"Straight connector\",\"Reductor para tubo\":\"Reducer for tube\",\"Agrandador para tubo\":\"Increaser for tube\",\"Cuerpo de latón niquelado y resina PBT, arandela de retención de acero inoxidable, juntas de NBR.\":\"Nickel-plated brass body and PBT resin, stainless steel retention ring, NBR seals.\",\"Series 441 y 451\":\"441 and 451 Series\",\"Cuerpo de resina PBT, arandela de retención de acero inoxidable, juntas de NBR.\":\"PBT resin body, stainless steel retention ring, NBR seals.\",\"Conector orientable a 45° rosca G\":\"45° Swivel elbow G thread\",\"Codo hembra universal rosca G\":\"Universal single banjo with female top port G thread\",\"Conector cruz igual\":\"Cross connector\",\"Cuerpo de latón niquelado.\":\"Nickel-plated brass body.\",\"Cupla doble macho\":\"Double male joint\",\"Conector Y (3 bocas hembra)\":\"Equal \\\"Y\\\" (3 female connections)\",\"Conector Y (2 bocas hembra, 1 macho)\":\"Plug-in single \\\"Y\\\" piece (2 female connections, 1 male connection)\",\"Conector multi-T\":\"Multiple tee\",\"Resina PBT\":\"PBT resin\",\"Tapón enchufable\":\"Blanking plug\",\"Cuerpo de latón niquelado y resina PBT, arandela de retención de acero inoxidable, juntas de NBR, capa de PTFE (en rosca cónica).\":\"Nickel-plated brass body and PBT resin, stainless steel retention ring, NBR seals, PTFE coating (in tapered thread)\",\"Series 451\":\"451 Series\",\"Conector recto rosca R\":\"Straight male fitting R thread\",\"Conector orientable a 90° rosca R\":\"90° Swivel elbow R thread\",\"Conector T orientable rosca R\":\"Swivel branch tee R thread\",\"Cuerpo y pinza de acero inoxidable 316L, sellos de FKM.\":\"Body and collet in 316L stainless steel, FKM seals.\",\"Series 439\":\"439 Series\",\"Cuerpo de acero inoxidable 316L, pinza de acero inoxidable 303, sellos de FKM.\":\"316L stainless steel body, 303 stainless steel collet, FKM seals.\",\"Cuerpo, arandela y pinza de latón con niquelado químico, sellos de NBR.\":\"Body, retention ring and collet in chemical nickel-plated brass, NBR seals.\",\"Series 446\":\"446 Series\",\"Cuerpo, tuerca y virola de latón.\":\"Body, nut and ferrule in brass material.\",\"Series 401\":\"401 Series\",\"Aire comprimido, fluidos industriales no corrosivos.\":\"Compressed air, non-corrosive industrial fluids.\",\"Conector orientable a 90° (banjo) rosca G\":\"90° Swivel elbow (banjo) G thread\",\"Conector codo rosca R\":\"Elbow R thread\",\"Conector T lateral rosca R\":\"Run tee R thread\",\"Conector T central rosca R\":\"Branch tee R thread\",\"Unión en T\":\"Universal equal tee\",\"Unión en codo\":\"Universal equal elbow\",\"Unión doble\":\"Universal straight connector\",\"Tuerca de latón.\":\"Brass nut.\",\"Tuerca para conector\":\"Nut for universal fitting\",\"Virola de latón.\":\"Brass ferrule.\",\"Virola\":\"Ferrule\",\"Boquilla de latón.\":\"Brass connector.\",\"Boquilla acanalada para manguera\":\"Hose barb connector\",\"Cuerpo de latón.\":\"Brass body.\",\"Conector recto para manguera rosca R\":\"Hose barb connector with male R thread\",\"Arandela de polímero técnico.\":\"Technical polymer washer.\",\"Arandela de estanqueidad (para rosca)\":\"Sealing washer (for thread)\",\"Arandela de estanqueidad (para banjo)\":\"Sealing washer (for banjo)\",\"Sistema autoretractil\":\"Self-retracting system\",\"Conector de espiga recto\":\"Self fastening hose barb connector\",\"Espiga para conector universal\":\"Hose barb connector for universal fitting\",\"Manguera autoretráctil - color rojo\":\"Self-retracting hose - red colour\",\"Manguera autoretráctil - color verde\":\"Self-retracting hose - green colour\",\"Manguera autoretráctil - color celeste\":\"Self-retracting hose - blue colour\",\"Manguera de goma con malla sintética\":\"Rubber hose with synthetic braid\",\"Pistola con boquillas intercambiables\":\"Blowgun with interchangeable nozzles\",\"Boquilla standard\":\"Standard nozzle\",\"Boquilla con tubo recto\":\"Straight tube nozzle\",\"Boquilla con tubo curvo\":\"Angled tube nozzle\",\"Boquilla de seguridad con pantalla de aire\":\"Air screen safety nozzle\",\"Boquilla con efecto COANDA\":\"COANDA nozzle\",\"Boquilla con efecto VENTURI\":\"VENTURI nozzle\",\"Pistola para aire con pico curvo\":\"Air blowgun with angled nozzle\",\"Tubos especiales\":\"Special tubing\",\"Tubo de poliuretano poliéter (PUR)\":\"Polyurethane ether tubing (PUR)\",\"Tubo de polietileno (PE)\":\"Polyethylene tubing (PE)\",\"Tubo de fluoropolímero (FEP)\":\"Fluoropolymer tubing (FEP)\",\"Tubo de poliuretano antiestático (PUA)\":\"Antistatic polyurethane tubing (PUA)\",\"Tubo antichispa bicapa (PAB)\":\"Double-layer anti-spark tubing (PAB)\",\"Tubo antichispa monocapa (PUM)\":\"Single-layer anti-spark tubing (PUM)\",\"Tubo espiral de poliuretano (PUH)\":\"Polyurethane recoil tubing (PUH)\",\"Tubos standard\":\"Standard tubing\",\"Tubo de poliuretano (PU) - color azul\":\"Polyurethane tubing (PU) - blue colour\",\"Tubo de poliuretano (PU) - color rojo\":\"Polyurethane tubing (PU) - red colour\",\"Tubo de poliuretano (PU) - color verde\":\"Polyurethane tubing (PU) - green colour\",\"Tubo de poliuretano (PU) - color amarillo\":\"Polyurethane tubing (PU) - yellow colour\",\"Tubo de poliuretano (PU) - color negro\":\"Polyurethane tubing (PU) - black colour\",\"Tubo de poliamida 12 (PA12)\":\"Polyamide 12 tubing (PA12)\",\"Cuerpo de aluminio extruido con protección interna y externa contra la corrosión.\":\"Extruded aluminium body with internal and external corrosion resistant treatment.\",\"Actuadores rotantes a 90°\":\"90° Rotary actuators\",\"Simple efecto\":\"Single acting\",\"Doble efecto\":\"Double acting\",\"Aluminio\":\"Aluminium.\",\"Boosters\":\"Boosters\",\"YT/300\":\"YT/300\",\"YT/320\":\"YT/320\",\"YT/310\":\"YT/310\",\"Caja de aluminio.\":\"Aluminium box.\",\"Caja limit switch para actuadores \":\"Limit switch box for actuators\",\"Para actuadores Ø40 a Ø125\":\"For actuators from Ø40 to Ø125\",\"Para actuadores Ø140 a Ø270\":\"For actuators from Ø140 to Ø270\",\"Para actuadores Ø300 a Ø400\":\"For actuators from Ø300 to Ø400\",\"Aire comprimido filtrado.\":\"Filtered compressed air.\",\"Cuerpo aluminio, sellos NBR.\":\"Aluminium body, NBR seals.\",\"Electroválvulas 2/2 a membrana NC, para filtro de manga\":\"2/2 NC Pulse solenoid valve, for bag filters\",\"Aire, agua, gas, agua caliente, liquidos en general.\":\"Air, water, gas, hot water, liquids in general.\",\"Cuerpo de latón, diafragma en NBR.\":\"Brass body, NBR diaphragm.\",\"Electroválvulas 2/2 a membrana NC, para fluidos serie UG\":\"2/2 NC Pulse solenoid valve, for fluids UG Series\",\"Cuerpo de Bronce - Sellos NBR\":\"Bronze body - NBR seals\",\"Cuerpo de acero inoxidable AISI304, diafragma en FKM.\":\"AISI304 Stainless steel body, FKM diaphragm.\",\"Cuerpo Inox. 304 - Sellos FKM\":\"Stainless steel 304 body - FKM seals\",\"Posicionadores\":\"Positioners\",\"Electroneumático, rotativo\":\"Electro-Pneumatic, rotary\",\"Electroneumático, lineal\":\"Electro-Pneumatic, linear\",\"Neumático, rotativo\":\"Pneumatic, rotary\",\"Neumático, lineal\":\"Pneumatic, linear\",\"Inteligente, rotativo\":\"Smart, rotary\",\"Inteligente, lineal\":\"Smart, linear\",\"Cuerpo de aluminio, diafragma de NBR y Dracon.\":\"Aluminium body, NBR and Dracon diaphragm.\",\"Reguladores neumáticos de presión\":\"Pressure regulators\",\"Regulador\":\"Regulator\",\"Filtro-Regulador\":\"Filter-Regulator\",\"Aire, agua, alcohol, aceite, combustible, solventes orgánicos u otros fluidos industriales - Pilotaje: Aire comprimido filtrado.\":\"Air, water, alcohol, oil,  fuel, organic solvents or other industrial fluids - Pilot: Filtered compressed air\",\"Cuerpo de acero inoxidable AISI316, actuador plástico, asiento PTFE, sellos FKM.\":\"AISI316 Stainless steel body, plastic actuator, PTFE seat, FKM seals.\",\"Válvulas 2/2 de asiento inclinado NC\":\"2/2 NC Angle seat valve\",\"Agua, aire, aceites, grasas, hidrocarburos - Pilotaje: Aire comprimido filtrado.\":\"Water, air, oils, greases, hydrocarbons - Pilot: Filtered compressed air\",\"Cuerpo de acero inoxidable AISI316, asiento de teflón y sellos de FKM.\":\"AISI316 Stainless steel body, PTFE seat and FKM seals.\",\"Válvulas 2/2 Serie axiales 1/4\\\" a 2\\\"\":\"2/2 Axial valves series 1/4\\\" to 2\\\"\",\"Simple efecto NC - Sellos de FKM\":\"Single acting NC - FKM seals\",\"Agua caliente, aire, vapor - Pilotaje: Aire comprimido filtrado.\":\"Hot water, air, steam - Pilot: Filtered compressed air\",\"Cuerpo de acero inoxidable AISI316, asiento de teflón y sellos de EPDM.\":\"AISI316 Stainless steel body, PTFE seat and EPDM seals.\",\"Simple efecto NC - Sellos de EPDM\":\"Single acting NC - EPDM seals\",\"Simple efecto NA - Sellos de FKM\":\"Single acting NO - FKM seals\",\"Simple efecto NA - Sellos de EPDM\":\"Single acting NO - EPDM seals\",\"Doble efecto - Sellos de FKM\":\"Double acting - FKM seals\",\"Doble efecto - Sellos de EPDM\":\"Double acting - EPDM seals\",\"Aire, agua, gas, agua caliente, líquidos en general\":\"Air, water, gas, hot water, liquids in general\",\"Cuerpo, tapa, esfera y vástago de AISI316, sellos y asiento de PTFE, tornillería AISI304.\":\"AISI316 Body, cap, ball and stem, PTFE seals and seat, AISI 304 bolts.\",\"Válvulas esféricas inox de 2 vías ISO 5211\":\"2-way stainless steel ball valves ISO 5211\",\"Válvula 1/4\\\"\":\"1/4\\\" Valve\",\"Válvula 3/8\\\"\":\"3/8\\\" Valve\",\"Válvula 1/2\\\"\":\"1/2\\\" Valve\",\"Válvula 3/4\\\"\":\"3/4\\\" Valve\",\"Válvula 1\\\"\":\"1\\\" Valve\",\"Válvula 1 1/4\\\"\":\"1 1/4\\\" Valve\",\"Válvula 1 1/2\\\"\":\"1 1/2\\\" Valve\",\"Válvula 2\\\"\":\"2\\\" Valve\",\"Válvula 2 1/2\\\"\":\"2 1/2\\\" Valve\",\"Válvula 3\\\"\":\"3\\\" Valve\",\"Válvula 4\\\"\":\"4\\\" Valve\",\"Válvulas esféricas inox de 3 vías ISO 5211\":\"3-way stainless steel ball valves ISO 5211\"}}");
 
 /***/ }),
 
@@ -92254,7 +95522,7 @@ module.exports = JSON.parse("{\"en\":{\"Hello world\":\"Hola Mundo\",\"Next\":\"
 /*! exports provided: pt, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"pt\":{\"Hello world\":\"Bonjour le monde\",\"Next\":\"suivante\",\"Resultado\":\"Résultat\",\"No encontrado\":\"Nao encontrado\",\"Productos Encontrados\":\"Produtos encontrados\",\"Consultar por otros productos\":\"Pedir outros produtos\",\"Consultas adicionales\":\"Consultas adicionais\",\"Serie CN10 - Actuadores rotantes\":\"Série CN10 - Atuadores rotativos\",\"Serie TECH 21\":\"Série TECH 21\",\"Serie ECO OEM\":\"Série ECO OEM\",\"Serie C16 - Vástago simple\":\"Série C16 - Haste simples\",\"Serie C16 - Doble vástago\":\"Série C16 - Haste passante\",\"Serie C16 - Montajes y accesorios\":\"Série C16 - Montagens e acessórios\",\"Serie CC10 - Vástago simple\":\"Série CC10 - Haste simples\",\"Serie CP10 - Vástago simple\":\"Série CP10 - Haste simples\",\"Serie CP10 - Doble vástago\":\"Série CP10 - Haste passante\",\"Serie CP10 - Con guía antigiro\":\"Série CP10 - Com guia anti-giro\",\"Serie CP10 - Tándem\":\"Série CP10 - Tandem\",\"Serie CP10 - Vástago reforzado\":\"Série CP10 - Haste reforçado\",\"Serie CP10 - Doble efecto de tres posiciones\":\"Série CP10 - Duplo efeito de tres posições\",\"Serie CP10 - Con alimentación trasera\":\"Série CP10 - Com alimentação traseira\",\"Serie CP10 - Montajes y accesorios\":\"Série CP10 - Montagens e acessórios\",\"Serie CPL10 - Con entre centros de montaje ISO 21287\":\"Série CPL10 - Com entre centros de montagem ISO 21287\",\"Serie CADP - Doble pistón y antigiro\":\"Série CADP - Haste Dupla e anti-giro\",\"Serie CASP - Simple pistón y antigiro\":\"Serie CASP - Haste Simples com anti-giro\",\"Serie CN10 - Cilindros de impacto\":\"Série CN10 - Cilindros de impacto\",\"Serie CN10 - Vástago simple\":\"Série CN10 - Haste simples\",\"Serie CN10 - Doble vástago\":\"Série CN10 - Haste passante\",\"Serie CN10 - Con doble pistón\":\"Série CN10 - duplex continuo (Tandem)\",\"Serie CN10 - Acoplados de acción independiente\":\"Série CN10 - Acoplados de ação independiente (Duplex Geminado)\",\"Serie CN10 - Montajes y accesorios\":\"Série CN10 - Montagens e acessórios\",\"Serie CN10 - Bloqueo de vástago\":\"Série CN10 - Bloqueio de haste\",\"Serie CN10 - Guías H tipo JB\":\"Série CN10 - Guias H tipo JB\",\"Serie Micro Origa OSP-P\":\"Série Micro Origa OSP-P modelo standard\",\"Serie Micro Origa OSP-P Slideline\":\"Série Micro Origa OSP-P com guias Slideline\",\"Serie Micro Origa OSP-P Proline\":\"Série Micro Origa OSP-P com guias Proline\",\"Serie Micro Origa OSP-P - Accesorios\":\"Série Micro Origa OSP-P - Acessórios\",\"Serie ADA\":\"Série ADA\",\"Serie DMR\":\"Série DMR\",\"Serie DSL\":\"Série DSL\",\"Serie RCE\":\"Série RCE\",\"Serie RPE\":\"Série RPE\",\"Serie RT\":\"Série RT\",\"Serie RTP\":\"Série RTP\",\"Serie MD8 SSL - Ejecución S\":\"Série MD8 SSL - Execução S\",\"Serie MD8 SSL - Ejecución U (ISO 6432)\":\"Série MD8 SSL - Execução U (ISO 6432)\",\"Serie MD8 SSL - Doble vástago\":\"Série MD8 SSL - Haste passante\",\"Serie MD8 SSL - Vástago hueco\":\"Série MD8 SSL - Haste vazada\",\"Serie MD8 SL - Tubo aluminio Ejecución U (ISO 6432)\":\"Série MD8 SL - Tubo aluminio Execução U (ISO 6432)\",\"Serie MD8 SL - Tubo Ac.Inox. Ejecución U (ISO 6432)\":\"Série MD8 SL - Tubo Aço Inox. Execução U (ISO 6432)\",\"Serie MD8 SL - Para ambiente corrosivo Ejecución U (ISO 6432)\":\"Série MD8 SL - Para ambiente corrosivo Execução U (ISO 6432)\",\"Serie MD8 SSL - Full inox para ambiente corrosivo Ejecución U (ISO 6432)\":\"Série MD8 SSL - Total inox para ambiente corrosivo Execução U (ISO 6432)\",\"Serie MD8 - Montajes y accesorios\":\"Série MD8 - Montagens e acessórios\",\"Serie MD8 - Guías H tipo JB\":\"Série MD8 - Guias H tipo JB\",\"Serie a cartucho\":\"Série a cartucho\",\"TK 21-1M\":\"TK 21-1M\",\"TK 21-2M\":\"TK 21-2M\",\"TK 21-3M\":\"TK 21-3M\",\"ECO OEM 0.25M\":\"ECO OEM 0.25M\",\"ECO OEM 0.5M\":\"ECO OEM 0.5M\",\"ECO OEM 1.0MF\":\"ECO OEM 1.0MF\",\"ECO OEM 1.25Mx1\":\"ECO OEM 1.25Mx1\",\"ECO OEM 1.25Mx2\":\"ECO OEM 1.25Mx2\",\"OEM XT 1.5Mx1\":\"OEM XT 1.5Mx1\",\"OEM XT 1.5Mx2\":\"OEM XT 1.5Mx2\",\"Montaje con pies (par)\":\"Montagem pés (par)\",\"Horquilla para vástago\":\"Garfo para haste\",\"Montaje basculante trasero\":\"Montagem basculante traseira\",\"Montaje con placa delantera (o trasera)\":\"Montagem flange dianteira (ou traseira)\",\"Accesorio para cilindros acoplados\":\"Acessório para cilindros duplex geminados\",\"Montaje basculante trasero macho\":\"Montagem basculante traseira macho\",\"Montaje basculante trasero hembra\":\"Montagem basculante traseira fêmea\",\"Soporte lateral para basculantes\":\"Suporte lateral para basculantes\",\"Soporte basculante trasero macho\":\"Suporte basculante traseiro macho\",\"Perno para basculantes\":\"Pino para basculantes\",\"Rótula para vástago\":\"Rótula para haste\",\"Tuerca \":\"Porca \",\"Tuerca\":\"Porca \",\"Acople roscas\":\"Acoplamento roscas\",\"Montaje con pies externos (par)\":\"Montagem por pés externos (par)\",\"Montaje con pies internos (par)\":\"Montagem por pés internos (par)\",\"Soporte lateral para basculante hembra\":\"Suporte lateral para basculante fêmea\",\"Montaje basculante intermedio perfilado\":\"Montagem basculante intermediária perfilada\",\"Montaje basculante intermedio\":\"Montagem basculante intermediária (tubo com tirantes)\",\"Montaje basculante frontal (o trasero)\":\"Montagem basculante frontal (ou traseira)\",\"Soporte para basculantes intermedio, delantero y trasero (par)\":\"Suporte para basculantes intermediário, dianteiro e traseiro (par)\",\"Montaje basculante trasero hembra angosto\":\"Montagem basculante traseira fêmea estreita\",\"Montaje basculante macho con rótula angosto\":\"Montagem basculante macho estreita com rótula\",\"Soporte lateral con rótula para basculante hembra angosto\":\"Suporte lateral com rótula para basculante fêma estreita\",\"Perno para basculantes angostos\":\"Pino para basculantes estreitas\",\"Soporte lateral para basculante intermedio\":\"Suporte lateral para basculante intermediário\",\"Acople para horquilla\":\"Acoplamento para garfo\",\"Horquilla con rótula para vástago\":\"Garfo com rótula para haste\",\"Tuerca para vástago\":\"Porca para haste\",\"Soporte para interruptor magnético serie DMR, tubo perfilado\":\"Suporte para interruptor magnético serie DMR, tubo perfilado\",\"Soporte para interruptor magnético serie DMR, tubo cilíndrico\":\"Suporte para interruptor magnético serie DMR, tubo cilíndrico\",\"Guía H con bujes de material sintético tipo JB-I\":\"Guía H com buchas de material sintético tipo JB-I\",\"Guía H con rodamientos de bolas recirculantes tipo JB-R\":\"Guía H com buchas de esferas recirculantes tipo JB-R\",\"Soporte intermedio E-1\":\"Suporte intermediário E-1\",\"Soporte basculante\":\"Suporte basculante\",\"Soporte para interruptor magnético - DSL (6-7-8-9)\":\"Suporte para interruptor magnético - DSL (6-7-8-9)\",\"Con regulación de tracción y compresión\":\"Com regulagem na tração e compressão\",\"Con regulación solo tracción\":\"Com regulagem somente na tração\",\"Con regulación solo compresión\":\"Com regulagem somente na compressão\",\"DMR\":\"DMR\",\"DMRC\":\"DMRC\",\"Cable de 2m con conector hembra de M8x1\":\"Cabo de 2m com conector fêmea de M8x1\",\"DSL1 Reed-Switch\":\"DSL1 Reed-Switch\",\"DSL2 Reed-Switch, con conector M8x1\":\"DSL2 Reed-Switch, com conector M8x1\",\"DSL4 Efecto Hall PNP\":\"DSL4 Efecto Hall PNP\",\"DSL3 Efecto Hall PNP, con conector M8x1\":\"DSL3 Efecto Hall PNP, com conector M8x1\",\"DSL6 Reed-Switch\":\"DSL6 Reed-Switch\",\"DSL7 Reed-Switch, con conector M8x1\":\"DSL7 Reed-Switch, com conector M8x1\",\"DSL8 Efecto Hall PNP\":\"DSL8 Efecto Hall PNP\",\"DSL9 Efecto Hall PNP, con conector M8x1\":\"DSL9 Efecto Hall PNP, com conector M8x1\",\"Reed-Switch\":\"Reed-Switch\",\"Reed-Switch, con conector M8x1\":\"Reed-Switch, com conector M8x1\",\"Efecto Hall PNP\":\"Efeito Hall PNP\",\"Efecto Hall PNP,con conector M8x1\":\"Efecto Hall PNP, com conector M8x1\",\"Montaje pie\":\"Montagem pé\",\"Montaje placa\":\"Montagem flange\",\"Tuerca para tapa\":\"Porca para cabeçote\",\"Soporte para interruptor magnético - DMR\":\"Suporte para interruptor magnético - DMR\",\"Soporte para interruptor magnético - DSL (1-2-3-4)\":\"Suporte para interruptor magnético - DSL (1-2-3-4)\",\"Aire comprimido filtrado con o sin lubricación\":\"Ar comprimido filtrado com ou sem lubrificação\",\"Aire comprimido filtrado y lubricado\":\"Ar comprimido filtrado e lubrificado\",\"Tapas y pistón inyectado en aluminio, piñon y cremallera de acero SAE4140 bonificado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetado em aluminio, pinhâo e cremalheira de aço SAE4140 beneficiado, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero inoxidable AISI304, sellos de NBR\":\"Tampas de aluminio, tubo de aço inoxidável, haste de aço inoxidável AISI304, vedações de NBR\",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero cromado, sellos de NBR\":\"Tampas de aluminio, tubo de aço inoxidável, haste de aço cromado, vedações de NBR\",\"Tapas de aluminio, tubo de acero SAE1040, vástago de acero cromado, sellos de NBR\":\"Tampas de aluminio, tubo de aço SAE 1040, haste de aço cromado, vedações de NBR\",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço inoxidável, tubo aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço inoxidável, tubo aluminio perfilado anodizado duro, guias de aço inox. vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, guias de aço inox. vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero cromado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, guias de aço cromado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano.\":\"Tampas de aluminio injetado, haste de aço inoxidável, tubo de aluminio perfilado anodizado duro, vedações de poliuretano\",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR y poliuretano. \":\"Tampas de aluminio injetado, haste de aço cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR e poliuretano\",\"Aluminio, guías de acero inox. con guarniciones de NBR \":\"Aluminio, guias de aço inox. com guarnições de NBR \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cementado y templado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cementado e temperado, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro com tensores, vedações de NBR.\",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro com tensores, vedações de NBR. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de NBR. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de materiais sintéticos antifricção, vedações de NBR. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de FKM. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de materiais sintéticos antifricção, vedações de FKM. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de NBR. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de aço temperado retificado, vedações de NBR \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de FKM.\":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de aço temperado retificado, vedações de FKM\",\"Tapas de aluminio, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de aluminio, tubo e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo de aluminio y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de plástico de engenharía, tubo de aluminio e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de plástico de engenharía, tubo e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Tampas de plástico de engenharía, tubo, haste e porcas de aço inoxidável AISI304, vedações de FKM (flurocarbono)\",\"Tapas, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Tampas, tubo, haste e porcas de aço inoxidável AISI304, vedações de FKM (flurocarbono)\",\"Ac. Cincado\":\"Aço zincado\",\"Ac. Inox. AISI304\":\"Aço Inox. AISI304\",\"Aluminio, guías de acero cromado.\":\"Aluminio, guias de aço cromado.\",\"Aluminio, guías de acero templado.\":\"Aluminio, guias de aço temperado.\",\"Cuerpo de latón niquelado, vástago y resorte de acero inoxidable, sellos de NBR\":\"Corpo de latão niquelado, haste e mola de aço inoxidável, vedações de NBR\",\"doble efecto con amortiguación\":\"dupla ação com amortecimento\",\"doble efecto con amortiguación, con ajuste fino\":\"dupla ação com amortecimento e ajuste fino\",\"simple efecto resorte delantero\":\"simples ação mola dianteira\",\"simple efecto, doble salida de vástago\":\"simples ação, haste passante\",\"doble efecto\":\"dupla ação \",\"doble efecto, doble salida de vástago\":\"dupla ação, haste passante\",\"simple efecto resorte trasero\":\"simples ação mola traseira\",\"simple efecto, doble salida de vástago hueco\":\"simples ação, haste passante vazada\",\"doble efecto con guías antigiro\":\"dupla ação com guias antigiro\",\"doble efecto con guías antigiro, con alimentación trasera\":\"dupla ação com guias antigiro, com alimentação traseira\",\"doble efecto, tándem 2 etapas\":\"dupla ação, tandem 2 etapas\",\"doble efecto, tándem 3 etapas\":\"dupla ação, tandem 3 etapas\",\"doble efecto, tándem 4 etapas\":\"dupla ação, tandem 4 etapas\",\"doble efecto, vástago reforzado\":\"dupla ação, haste reforçada\",\"doble efecto de tres posiciones\":\"dupla ação com tres posições\",\"simple efecto resorte delantero con alimentación trasera\":\"simples ação mola dianteira com alimentação traseira\",\"simple efecto resorte trasero con alimentación trasera\":\"simples ação mola traseira com alimentação traseira\",\"doble efecto con alimentación trasera\":\"dupla ação com alimentação traseira\",\"doble efecto, doble pistón con guías antigiro\":\"dupla ação, duplo pistão com guias antigiro\",\"doble efecto, impacto energía 24Nm\":\"dupla ação, impacto energía 24Nm\",\"doble efecto, impacto energía 78Nm\":\"dupla ação, impacto energía 78Nm\",\"doble efecto, impacto energía 112Nm\":\"dupla ação, impacto energía 112Nm\",\"doble efecto con amortiguación, doble salida de vástago\":\"dupla ação com amortecimento, haste passante\",\"doble efecto, doble pistón\":\"dupla ação, duplo embolo (tandem)\",\"doble efecto con amortiguación, doble pistón\":\"dupla ação com amortecimento, duplo embolo (tandem)\",\"accesorio para cilindros acoplados de acción independiente\":\"acessório para cilindros duplex geminados\",\"doble efecto, acoplados de acción independiente\":\"dupla ação, duplex geminados\",\"doble efecto con amortiguación, acoplados de acción independiente\":\"dupla ação com amortecimento, duplex geminados\",\"doble efecto con amortiguación, con sellos de FKM\":\"dupla ação com amortecimento, com vedações de FKM\",\"doble efecto, doble salida de vástago con amortiguación\":\"dupla ação, haste passante com amortecimento\",\"doble efecto, doble salida de vástago hueco\":\"dupla ação, haste passante vazada\",\"doble efecto, doble salida de vástago hueco con amortiguación\":\"dupla ação, haste passante vazada com amortecimento\",\"sin imán\":\"sem ímã\",\"con imán\":\"com ímã\",\"vástago hembra\":\"haste rosca fêmea\",\"vástago macho\":\"haste rosca macho\",\"vástago hembra hueco\":\"haste rosca fêmea vazada\",\"vástago macho hueco\":\"haste rosca macho vazada\",\"Electroválvulas con modo de protección de seguridad intrínseca\":\"Eletroválvulas com modo de proteção de segurança intrínseca\",\"Electroválvulas con modo de protección encapsulado \\\"m\\\"\":\"Eletroválvulas com modo de proteção encapsulado \\\"m\\\"\",\"Serie pesada a membrana 1/2\\\" - Electroválvulas 2/2\":\"Serie pesada com membrana 1/2\\\" - Eletroválvulas 2/2\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 2/2\":\"Serie AZ 1/2\\\" até 1 1/2\\\" - Válvulas e eletroválvulas 2/2\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 3/2\":\"Série AZ 1/2\\\" até 1 1/2\\\" - Válvulas e eletroválvulas 3/2\",\"Serie 15\":\"Série 15\",\"Serie 22\":\"Série 22\",\"Serie 22 Global Class\":\"Série 22 Global Class\",\"Serie 32\":\"Série 32\",\"Serie 15 - Solenoides antiexplosivos\":\"Série 15 - Solenóides antiexplosivos\",\"Serie 22 - Solenoides antiexplosivos\":\"Série 22 - Solenóides antiexplosivos\",\"Serie MEP-A\":\"Série MEP-A\",\"Serie Minielectroválvulas 15mm - 3/2 \":\"Série Minieletroválvulas 15mm - 3/2 \",\"Serie Minielectroválvulas 15mm - 3/2\":\"Série Minieletroválvulas 15mm - 3/2\",\"Serie 211 1/8\\\" - Electroválvulas 3/2\":\"Série 211 1/8\\\" - Eletroválvulas 3/2\",\"Serie 213 - 1/8\\\" - Electroválvulas 2/2 y 3/2\":\"Série 213 - 1/8\\\" - Eletroválvulas 2/2 e 3/2\",\"Serie SB0 ND -1/8\\\" - Válvulas direccionales 5/2\":\"Série SB0 ND -1/8\\\" - Válvulas direcionais 5/2\",\"Serie VM15 GM -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"Série VM15 GM -1/8\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2\",\"Serie VM15 BSL -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"Série VM15 BSL -1/8\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2 para base com saída lateral\",\"Serie SB1 -1/4\\\" - Válvulas direccionales 5/2\":\"Série SB1 -1/4\\\" - Válvulas direcionais 5/2\",\"Serie EN1 y SB1 NAMUR -1/4\\\" - Válvulas direccionales 3/2 y 5/2\":\"Série EN1 e SB1 NAMUR -1/4\\\" - Válvulas direcionais 3/2 e 5/2\",\"Serie CH1 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 3/2\":\"Série CH1 GM -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 3/2\",\"Serie VM18 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"Série VM18 GM -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2\",\"Serie VM18-BSL -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"Série VM18-BSL -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2 para base com saída lateral\",\"Serie CH3 GM -1/2\\\" - Válvulas direccionales 5/2 y 5/3\":\"Série CH3 GM -1/2\\\" - Válvulas direcionais 5/2 e 5/3\",\"Serie VS1 con monitoreo de actuación\":\"Série VS1 com monitoramento de atuação\",\"Serie VS2 con monitoreo de actuación\":\"Série VS2 com monitoramento de atuação\",\"Serie VS3 con monitoreo de actuación\":\"Série VS3 com monitoramento de atuação\",\"Serie VS1 con monitoreo de actuación y comando redundante\":\"Série VS1 com monitoramento de atuação e comando redundante\",\"Serie VS2 con monitoreo de actuación y comando redundante\":\"Série VS2 com monitoramento de atuação e comando redundante\",\"Serie VS3 con monitoreo de actuación y comando redundante\":\"Série VS3 com monitoramento de atuação e comando redundante\",\"Serie VS1 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS1 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Serie VS2 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS2 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Serie VS3 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS3 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Base de conexionado ISO5599/1-VDMA 24345\":\"Base de montagem ISO5599/1-VDMA 24345\",\"Terminales ISO-VDMA 24345 (par)\":\"Terminais ISO-VDMA 24345 (par)\",\"Base de conexionado múltiple ISO 5599/1\":\"Base de montagem para manifold ISO 5599/1\",\"Terminal ISO 5599/1\":\"Terminal ISO 5599/1\",\"Interfaz adaptación ISO 5599/1\":\"Interface de adaptação ISO 5599/1\",\"Serie MT-M5 - Válvulas 3/2 para tablero \":\"Série MT-M5 - Válvulas 3/2 para painel\",\"Serie MM-M5 - Válvulas 3/2 manuales y mecánicas\":\"Serie MM-M5 - Válvulas 3/2 comandos manuais e mecânicas\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"Série MV ND-1/8\\\" - Válvulas 3/2 e 5/2 comandos manuais\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos mecánicos\":\"Série MV ND-1/8\\\" - Válvulas 3/2 e 5/2 comandos mecânicos\",\"Serie SB1 servo -1/4\\\" - Válvulas 5/2 manuales y mecánicas\":\"Série SB1 servo -1/4\\\" - Válvulas 5/2 comandos manuais e mecânicos\",\"Serie CH1 -1/4\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"Série CH1 -1/4\\\" - Válvulas 3/2 e 5/2 comandos manuais\",\"Serie CH1 GM a palanca -1/4\\\" - Válvulas 3/2, 5/2 y 5/3 mandos manuales\":\"Série CH1 GM com alavanca -1/4\\\" - Válvulas 3/2, 5/2 e 5/3 comandos manuais\",\"Serie CH3 GM a palanca -1/2\\\" - Válvulas 5/2 y 5/3 mandos manuales\":\"Serie CH3 GM com alavanca -1/2\\\" - Válvulas 5/2 e 5/3 comandos manuais\",\"Válvulas colizantes - Válvulas 3/2 mandos manuales\":\"Válvulas deslizantes - Válvulas 3/2 comandos manuaís\",\"Válvulas rotantes Serie AR - Válvulas 4/2 mandos manuales\":\"Válvulas rotativas Série AR - Válvulas 4/2 comandos manuais\",\"Válvulas 5/2 a pedal\":\"Válvulas 5/2 comando por pedal\",\"Electroválvula 2/2 a membrana, normal cerrada\":\"Eletroválvula 2/2 com membrana, normal fechada\",\"AZ5 G1/2\\\", mando neumático\":\"AZ5 G1/2\\\", comando pneumático\",\"AZ5 G3/4\\\", mando neumático\":\"AZ5 G3/4\\\", comando pneumático\",\"AZ7 G1\\\", mando neumático\":\"AZ7 G1\\\", comando pneumático\",\"AZ7 G1 1/4\\\", mando neumático\":\"AZ7 G1 1/4\\\", comando pneumático\",\"AZ7 G1 1/2\\\", mando neumático\":\"AZ7 G1 1/2\\\", comando pneumático\",\"AZ5 G1/2\\\", mando eléctrico\":\"AZ5 G1/2\\\", comando elétrico\",\"AZ5 G3/4\\\", mando eléctrico\":\"AZ5 G3/4\\\", comando elétrico\",\"AZ7 G1\\\", mando eléctrico\":\"AZ7 G1\\\", comando elétrico\",\"AZ7 G1 1/4\\\", mando eléctrico\":\"AZ7 G1 1/4\\\", comando elétrico\",\"AZ7 G1 1/2\\\", mando eléctrico\":\"AZ7 G1 1/2\\\", comando elétrico\",\"AZ5 G1/2\\\", mando eléctrico con alimentación independiente\":\"AZ5 G1/2\\\", comando eletropneumático com suprimento externo\",\"AZ5 G3/4\\\", mando eléctrico con alimentación independiente\":\"AZ5 G3/4\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1 1/4\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/4\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1 1/2\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/2\\\", comando eletropneumático com suprimento externo\",\"Cabeza de mando electroneumático 3/2 normal cerrada\":\"Cabeçote de comando eletropneumático 3/2 normal fechada\",\"Ficha de conexión 15 con indicador luminoso\":\"Tomada elétrica 15 com indicador luminoso\",\"Placa de adaptación a base norma CNOMO\":\"Placa de adaptação para base norma CNOMO\",\"Solenoide para electroválvulas, ancho 22mm\":\"Solenóide para eletroválvulas, largura 22mm\",\"Ficha de conexión 22 con indicador luminoso\":\"Tomada elétrica 22 com indicador luminoso\",\"Ficha de conexión 22 sin indicador - 2 contactos + tierra\":\"Tomada elétrica 22 sem indicador - 2 contatos + terra\",\"Tubo guía completo\":\"Tubo guía completo\",\"Conexión de escape\":\"Conexão de escape\",\"Solenoide para electroválvulas, ancho 32mm\":\"Solenóide para eletroválvulas, largura 32mm\",\"Ficha de conexión 32 - 2 contactos + tierra\":\"Tomada elétrica 32 - 2 contatos + terra\",\"Ficha de conexión 32 - 3 contactos + tierra\":\"Tomada elétrica 32 - 3 contatos + terra\",\"Tubo guía completo 3/2NC 10bar\":\"Tubo guía completo 3/2NF 10bar\",\"Tubo guía completo 3/2NC 2,5bar\":\"Tubo guía completo 3/2NF 2,5bar\",\"Tubo guía completo 3/2NC 16bar\":\"Tubo guía completo 3/2NF 16bar\",\"Tubo guía completo 2/2 y 3/2NA 2,5bar\":\"Tubo guía completo 2/2 e 3/2NA 2,5bar\",\"Tubo guía completo 2/2 y 3/2NA 10bar\":\"Tubo guía completo 2/2 e 3/2NA 10bar\",\"Tubo guía completo 2/2 y 3/2NA 16bar\":\"Tubo guía completo 2/2 e 3/2NA 16bar\",\"Tubo guía completo 2/2NC\":\"Tubo guía completo 2/2NF\",\"Tubo guía completo 2/2NC HP\":\"Tubo guía completo 2/2NF HP\",\"Tubo guía completo 2/2NC HD\":\"Tubo guía completo 2/2NF HD\",\"Conexión de escape G1/8\\\"\":\"Conexão de escape G1/8\\\"\",\"Ficha de conexión 15 - 2 contactos + tierra\":\"Tomada elétrica 15 - 2 contatos + terra\",\"Solenoide antiexplosivo encapsulado según Directiva ATEX94/9/CE\":\"Solenóide antiexplosivo encapsulado segundo Directiva ATEX94/9/CE\",\"314 MEP-A\":\"314 MEP-A\",\"316 MEP-A\":\"316 MEP-A\",\"Minielectroválvula unitaria\":\"Minieletroválvula unitaria\",\"Minielectroválvulas en manifold 2 posiciones\":\"Minieletroválvulas em manifold 2 posições\",\"Minielectroválvulas en manifold 3 posiciones\":\"Minieletroválvulas em manifold 3 posições\",\"Minielectroválvulas en manifold 4 posiciones\":\"Minieletroválvulas em manifold 4 posições\",\"Minielectroválvulas en manifold 5 posiciones\":\"Minieletroválvulas em manifold 5 posições\",\"Minielectroválvulas en manifold 6 posiciones\":\"Minieletroválvulas em manifold 6 posições\",\"Minielectroválvulas en manifold 7 posiciones\":\"Minieletroválvulas em manifold 7 posições\",\"Minielectroválvulas en manifold 8 posiciones\":\"Minieletroválvulas em manifold 8 posições\",\"Minielectroválvulas en manifold 9 posiciones\":\"Minieletroválvulas em manifold 9 posições\",\"Minielectroválvulas en manifold 10 posiciones\":\"Minieletroválvulas em manifold 10 posições\",\"Electroválvula para montaje unitario\":\"Eletroválvula para montagem unitária\",\"Electroválvula para manifold\":\"Eletroválvula para manifold\",\"Kit manifold para 2 válvulas\":\"Kit manifold para 2 válvulas\",\"Kit manifold para 3 válvulas\":\"Kit manifold para 3 válvulas\",\"Kit manifold para 4 válvulas\":\"Kit manifold para 4 válvulas\",\"Kit manifold para 5 válvulas\":\"Kit manifold para 5 válvulas\",\"Kit manifold para 6 válvulas\":\"Kit manifold para 6 válvulas\",\"Kit manifold para 7 válvulas\":\"Kit manifold para 7 válvulas\",\"Kit manifold para 8 válvulas\":\"Kit manifold para 8 válvulas\",\"Kit manifold para 9 válvulas\":\"Kit manifold para 9 válvulas\",\"Kit manifold para 10 válvulas\":\"Kit manifold para 10 válvulas\",\"Electroválvula 2/2 normal cerrada, conexión lateral\":\"Eletroválvula 2/2 normal fechada, conexão lateral\",\"Electroválvula 2/2 normal cerrada, conexión inferior\":\"Eletroválvula 2/2 normal fechada, conexão inferior\",\"Electroválvula 2/2 normal cerrada, conexión múltiple\":\"Eletroválvula 2/2 normal fechada, conexão múltipla\",\"Electroválvula 2/2 normal abierta, conexión lateral\":\"Eletroválvula 2/2 normal aberta, conexão lateral\",\"Electroválvula 2/2 normal abierta, conexión inferior\":\"Eletroválvula 2/2 normal aberta, conexão inferior\",\"Electroválvula 3/2 normal cerrada, conexión lateral\":\"Eletroválvula 3/2 normal fechada, conexão lateral\",\"Electroválvula 3/2 normal cerrada, conexión inferior\":\"Eletroválvula 3/2 normal fechada, conexão inferior\",\"Electroválvula 3/2 normal cerrada, conexión múltiple\":\"Eletroválvula 3/2 normal fechada, conexão multipla\",\"Electroválvula 3/2 normal abierta, conexión lateral\":\"Eletroválvula 3/2 normal aberta, conexão lateral\",\"Electroválvula 3/2 normal abierta, conexión inferior\":\"Eletroválvula 3/2 normal aberta, conexão inferior\",\"Kit manifold alimentación inferior para 2 válvulas\":\"Kit manifold com alimentação inferior para 2 válvulas\",\"Kit manifold alimentación inferior para 3 válvulas\":\"Kit manifold com alimentação inferior para 3 válvulas\",\"Kit manifold alimentación inferior para 4 válvulas\":\"Kit manifold com alimentação inferior para 4 válvulas\",\"Kit manifold alimentación inferior para 5 válvulas\":\"Kit manifold com alimentação inferior para 5 válvulas\",\"Kit manifold alimentación inferior para 6 válvulas\":\"Kit manifold com alimentação inferior para 6 válvulas\",\"Kit manifold alimentación inferior para 7 válvulas\":\"Kit manifold com alimentação inferior para 7 válvulas\",\"Kit manifold alimentación inferior para 8 válvulas\":\"Kit manifold com alimentação inferior para 8 válvulas\",\"Kit manifold alimentación inferior para 9 válvulas\":\"Kit manifold com alimentação inferior para 9 válvulas\",\"Kit manifold alimentación inferior para 10 válvulas\":\"Kit manifold com alimentação inferior para 10 válvulas\",\"Kit manifold alimentación lateral para 2 válvulas\":\"Kit manifold com alimentação lateral para 2 válvulas\",\"Kit manifold alimentación lateral para 3 válvulas\":\"Kit manifold com alimentação lateral para 3 válvulas\",\"Kit manifold alimentación lateral para 4 válvulas\":\"Kit manifold com alimentação lateral para 4 válvulas\",\"Kit manifold alimentación lateral para 5 válvulas\":\"Kit manifold com alimentação lateral para 5 válvulas\",\"Kit manifold alimentación lateral para 6 válvulas\":\"Kit manifold com alimentação lateral para 6 válvulas\",\"Kit manifold alimentación lateral para 7 válvulas\":\"Kit manifold com alimentação lateral para 7 válvulas\",\"Kit manifold alimentación lateral para 8 válvulas\":\"Kit manifold com alimentação lateral para 8 válvulas\",\"Kit manifold alimentación lateral para 9 válvulas\":\"Kit manifold com alimentação lateral para 9 válvulas\",\"Kit manifold alimentación lateral para 10 válvulas\":\"Kit manifold com alimentação lateral para 10 válvulas\",\"Válvula 5/2 mando neumático, reacción neumática\":\"Válvula 5/2 comando pneumático, retorno pneumático\",\"Válvula 5/2 mando neumático, reacción a resorte\":\"Válvula 5/2 comando pneumático, retorno por mola\",\"Válvula 5/2 biestable por impulsos neumáticos\":\"Válvula 5/2 biestável por impulsos pneumáticos\",\"Electroválvula 5/2 reacción neumática\":\"Eletroválvula 5/2 retorno pneumático\",\"Electroválvula 5/2 reacción a resorte\":\"Eletroválvula 5/2 retorno por mola\",\"Electroválvula 5/2 biestable por impulsos eléctricos\":\"Eletroválvula 5/2 biestável por impulsos elétricos\",\"Distribuidor de alimentación para 2 válvulas\":\"Distribuidor de alimentação para 2 válvulas\",\"Distribuidor de alimentación para 3 válvulas\":\"Distribuidor de alimentação para 3 válvulas\",\"Distribuidor de alimentación para 4 válvulas\":\"Distribuidor de alimentação para 4 válvulas\",\"Distribuidor de alimentación para 5 válvulas\":\"Distribuidor de alimentação para 5 válvulas\",\"Distribuidor de alimentación para 6 válvulas\":\"Distribuidor de alimentação para 6 válvulas\",\"Base manifold para 2 válvulas\":\"Base manifold para 2 válvulas\",\"Base manifold para 3 válvulas\":\"Base manifold para 3 válvulas\",\"Base manifold para 4 válvulas\":\"Base manifold para 4 válvulas\",\"Base manifold para 5 válvulas\":\"Base manifold para 5 válvulas\",\"Base manifold para 6 válvulas\":\"Base manifold para 6 válvulas\",\"Base manifold para 7 válvulas\":\"Base manifold para 7 válvulas\",\"Base manifold para 8 válvulas\":\"Base manifold para 8 válvulas\",\"Placa de cierre\":\"Placa de fechamento\",\"Válvula 5/3 mando neumático, centro cerrado\":\"Válvula 5/3 comando pneumático, centro fechado\",\"Válvula 5/3 mando neumático, centro abierto\":\"Válvula 5/3 comando pneumático, centro aberto\",\"Electroválvula 5/3 centro cerrado\":\"Eletroválvula 5/3 centro fechado\",\"Electroválvula 5/3 centro abierto\":\"Eletroválvula 5/3 centro aberto\",\"2 válvulas 3/2 normal cerradas, mando neumático\":\"2 válvulas 3/2 normal fechadas, comando pneumático\",\"2 válvulas 3/2 normal cerradas, mando eléctrico\":\"2 válvulas 3/2 normal fechadas, comando elétrico\",\"Placa ciega para válvula\":\"Placa cega para válvula\",\"Base manifold modular (doble)\":\"Base manifold modular (dupla)\",\"Terminales para base manifold modular.\":\"Terminais para base manifold modular\",\"Base manifold para 10 válvulas\":\"Base manifold para 10 válvulas\",\"Base manifold para 12 válvulas\":\"Base manifold para 12 válvulas\",\"Soporte fijación plano\":\"Suporte fixação plano\",\"EN1, electroválvula 5/2 reacción a resorte\":\"EN1, eletroválvula 5/2 retorno por mola\",\"EN1, electroválvula 3/2 reacción a resorte\":\"EN1, eletroválvula 3/2 retorno por mola\",\"SB1, válvula 5/2 mando neumático, reacción neumática\":\"SB1, válvula 5/2 comando pneumático, retorno pneumático\",\"SB1, válvula 5/2 mando neumático, reacción a resorte\":\"SB1, válvula 5/2 comando pneumático, retorno por mola\",\"SB1, válvula 5/2 biestable por impulsos neumáticos\":\"SB1, válvula 5/2 biestável por impulsos pneumáticos\",\"SB1, electroválvula 5/2 reacción neumática\":\"SB1, eletroválvula 5/2 retorno pneumático\",\"SB1, electroválvula 5/2 biestable por impulsos eléctricos\":\"SB1, eletroválvula 5/2 biestável por impulsos elétricos\",\"SB1, válvula 3/2 mando neumático, reacción neumática\":\"SB1, válvula 3/2 comando pneumático, retorno pneumático\",\"SB1, válvula 3/2 mando neumático, reacción a resorte\":\"SB1, válvula 3/2 comando pneumático, retorno por mola\",\"SB1, válvula 3/2 biestable por impulsos neumáticos\":\"SB1, válvula 3/2 biestável por impulsos pneumáticos\",\"SB1, electroválvula 3/2 reacción neumática\":\"SB1, eletroválvula 3/2  retorno pneumático\",\"SB1, electroválvula 3/2 biestable por impulsos eléctricos\":\"SB1, eletroválvula 3/2 biestável por impulsos elétricos\",\"Placa interfaz para regulación de velocidad\":\"Placa interface para regulagem de velocidade\",\"Válvula 3/2 mando neumático, reacción neumática\":\"Válvula 3/2 comando pneumático, retorno pneumático\",\"Válvula 3/2 mando neumático, reacción a resorte\":\"Válvula 3/2 comando pneumático, retorno por mola\",\"Válvula 3/2 biestable por impulsos neumáticos\":\"Válvula 3/2 biestável por impulsos pneumáticos\",\"Electroválvula 3/2 reacción neumática\":\"Eletroválvula 3/2 retorno pneumático\",\"Electroválvula 3/2 reacción a resorte\":\"Eletroválvula 3/2 retorno por mola\",\"Electroválvula 3/2 biestable por impulsos eléctricos\":\"Eletroválvula 3/2 biestável por impulsos elétricos\",\"Distribuidor de alimentación para 7 válvulas\":\"Distribuidor de alimentação para 7 válvulas\",\"Distribuidor de alimentación para 8 válvulas\":\"Distribuidor de alimentação para 8 válvulas\",\"Distribuidor de alimentación para 9 válvulas\":\"Distribuidor de alimentação para 9 válvulas\",\"Distribuidor de alimentación para 10 válvulas\":\"Distribuidor de alimentação para 10 válvulas\",\"Placa de cierre para distribuidor\":\"Placa de fechamento para distribuidor\",\"Base manifold para 9 válvulas\":\"Base manifold para 9 válvulas\",\"Placa de cierre para manifold\":\"Placa de fechamento para base manifold\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación\":\"Eletroválvula 5/2 retorno por mola com monitoramento direto de atuação\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación y comando redundante\":\"Eletroválvula 5/2 retorno por mola com monitoramento direto de atuação e comando redundante\",\"Base de conexionado lateral ISO-VDMA 24345\":\"Base de montagem com conexão lateral ISO-VDMA 24345\",\"Base de conexionado inferior ISO-VDMA 24345\":\"Base de montagem com conexão inferior ISO-VDMA 24345\",\"Base de conexionado multiple ISO-VDMA 24345\":\"Base para montagem em manifold ISO-VDMA 24345\",\"Terminal de alimentación\":\"Terminal de alimentação\",\"Terminal ciego o intermedio\":\"Terminal cego ou intermediário\",\"Interfaz adaptación VS-1 / VS-2\":\"Interface de adaptação VS-1 / VS-2\",\"Válvula con mando a botón plástico Ø22 (Verde)\":\"Válvula comando por botão plástico Ø22 (Verde)\",\"Válvula con mando a botón plástico Ø22 (Rojo)\":\"Válvula comando por botão plástico Ø22 (Vermelho)\",\"Válvula con mando a botón plástico Ø22 (Negro)\":\"Válvula comando por botão plástico Ø22 (Preto)\",\"Válvula con mando a botón metálico Ø22 (Verde)\":\"Válvula comando por botão metálico Ø22 (Verde)\",\"Válvula con mando a botón metálico Ø22 (Rojo)\":\"Válvula comando por botão metálico Ø22 (Vermelho)\",\"Válvula con mando a botón metálico Ø22 (Negro)\":\"Válvula comando por botão metálico Ø22 (Preto)\",\"Válvula con mando golpe de puño plástico Ø22\":\"Válvula comando por botão cogumelo plástico Ø22\",\"Válvula con mando golpe de puño metálico Ø22\":\"Válvula comando por botão cogumelo metálico Ø22\",\"Válvula con mando botón rotante plástico Ø22\":\"Válvula comando por botão rotativo plástico Ø22\",\"Válvula con mando botón rotante metálico Ø22\":\"Válvula comando por botão rotativo metálico Ø22\",\"Válvula con mando golpe de puño plástico Ø22 con retorno manual\":\"Válvula comando por botão cogumelo plástico Ø22 com retorno manual\",\"Válvula con mando golpe de puño metálico Ø22 con retorno manual\":\"Válvula comando por botão cogumelo metálico Ø22 com retorno manual\",\"Válvula con mando a pulsador manual\":\"Válvula comando direto por pulsador manual\",\"Válvula con mando directo\":\"Válvula comando direto por pino\",\"Válvula con mando directo por esfera\":\"Válvula comando direto por esfera\",\"Válvula con mando por rodillo\":\"Válvula comando direto por rolete\",\"Válvula con mando por rodillo unidireccional\":\"Válvula comando direto por rolete unidirecional (gatilho)\",\"Válvula con mando por rodillo lateral\":\"Válvula comando direto por rolete lateral\",\"Válvula con mando por rodillo lateral regulable\":\"Válvula comando direto por rolete lateral regulável\",\"Válvula con mando por varilla elástica universal\":\"Válvula comando direto por vareta elástica universal\",\"Válvula con mando por varilla lateral regulable\":\"Válvula comando direto por vareta lateral regulável\",\"Válvula con mando perilla para tablero\":\"Válvula comando alavanca para painel\",\"Válvula con mando PUSH-PULL servicio liviano\":\"Válvula comando PUSH-PULL serviço leve\",\"Válvula con mando PUSH\":\"Válvula comando PUSH\",\"Válvula con mando botón corto para tablero (Rojo)\":\"Válvula comando botão curto para painel (Vermelho)\",\"Válvula con mando botón largo para tablero (Rojo)\":\"Válvula comando botão longo para painel (Vermelho)\",\"Válvula con mando botón rotante para tablero (Negro)\":\"Válvula comando botão rotativo para painel (Preto)\",\"Válvula con mando golpe de puño chico para tablero (Rojo)\":\"Válvula comando cogumelo pequeno para painel (Vermelho)\",\"Válvula con mando golpe de puño grande para tablero (Rojo)\":\"Válvula comando cogumelo grande para painel (Vermelho)\",\"Válvula con mando directo - Servicio liviano\":\"Válvula comando direto - Serviço leve\",\"Válvula con mando por rodillo - Servicio liviano\":\"Válvula comando por rolete - Serviço leve\",\"Válvula con mando por rodillo unidireccional - Servicio liviano\":\"Válvula comando por rolete unidirecional - Serviço leve\",\"Válvula con mando por rodillo metálico - Servicio pesado\":\"Válvula comando por rolete metálico - Serviço pesado\",\"Válvula con mando por gatillo metálico unidireccional - Servicio pesado\":\"Válvula comando por gatilho metálico unidirecional - Serviço pesado\",\"Válvula con mando a botón, reacción a resorte\":\"Válvula comando por botão, retorno por mola\",\"Válvula con mando a botón, reacción neumática\":\"Válvula comando por botão, retorno pneumático\",\"Válvula con mando a botón biestable PUSH-PULL\":\"Válvula comando por botão biestável PUSH-PULL\",\"Mando a palanca, biestable\":\"Comando por alavanca, biestável\",\"Mando a palanca, monoestable\":\"Comando por alavanca, monoestável\",\"Mando a palanca, centro cerrado, triestable\":\"Comando por alavanca, centro fechado, triestável\",\"Mando a palanca, centro abierto, triestable\":\"Comando por alavanca, centro aberto, triestável\",\"Mando a palanca, posición central estable, centro cerrado\":\"Comando por alavanca, centro fechado, posição central estável\",\"Mando a palanca, posición central estable, centro abierto\":\"Comando por alavanca, centro aberto, posição central estável\",\"Colizante de actuación manual\":\"Deslizante de atuação manual\",\"Mando a pedal, monoestable\":\"Comando por pedal, monoestável\",\"Mando a pedal, biestable\":\"Comando por peda, biestável\",\"Protección\":\"Proteção\",\"Mando a pedal, biestable con traba\":\"Comando por pedal biestável com trava\",\"Aire comprimido filtrado\":\"Ar comprimido filtrado\",\"Aire comprimido filtrado a 50µ, sin lubricación - Gases inertes\":\"Ar comprimido filtrado a 50µ, sem lubrificação - Gases inertes\",\"Aire comprimido filtrado a 50µ, con o sin lubricación - Gases inertes\":\"Ar comprimido filtrado a 50µ, com ou sem lubrificação - Gases inertes\",\"Aire comprimido filtrado - Gases inertes\":\"Ar comprimido filtrado - Gases inertes\",\"Aire comprimido filtrado (se recomienda lubricación) - Gases inertes\":\"Ar comprimido filtrado (recomenda-se lubrificação) - Gases inertes\",\"Cuerpo de Zamac, membrana de NBR\":\"Corpo em Zamac, membrana em NBR\",\"Cuerpo y distribuidor de aluminio, cierre frontal y otros sellos de NBR\":\"Corpo e distribuidor em aluminio, fechamento frontal e outras vedações em NBR\",\"Cuerpo de aluminio, guarniciones de poliuretano\":\"Corpo em aluminio, vedaçõs em poliuretano\",\"Cuerpo de zamac, bobina encapsulada en resina epoxi, tubo guía y tragante de latón y acero inoxidable\":\"Corpo em zamac, bobina encapsulada em resina epoxi, tubo guía e tragante em latão e aço inoxidável\",\"Cuerpo de Zamac, distribuidor de acero inoxidable, sellos de NBR\":\"Corpo em Zamac, distribuidor em aço inoxidável, vedações de NBR\",\"Cuerpo de aluminio anodizado, distribuidor de aluminio, sellos de NBR\":\"Corpo de aluminio anodizado, distribuidor de aluminio, vedações de NBR\",\"Cuerpo de aluminio, distribuidor de acero inoxidable, sellos de NBR\":\"Corpo em aluminio, distribuidor em aço inoxidável, vedações de NBR\",\"Cuerpo de Zamac, distribuidor de aluminio, sellos de NBR\":\"Corpo em Zamac, distribuidor em aluminio, vedações de NBR\",\"Cuerpo de aluminio, distribuidor de aluminio, sellos de NBR\":\"Corpo em aluminio, distribuidor em aluminio, vedações de NBR\",\"Cuerpo de Zamac, mandos metálicos y plásticos de ingeniería.\":\"Corpo de Zamac, comandos metálicos e plásticos de engenharia\",\"Cuerpo y corredera de aluminio, sellos de NBR\":\"Corpo e capa deslizante de aluminio, vedações de NBR\",\"Cuerpo de válvula de aluminio, distribuidor lapidado de resina acetálica\":\"Corpo da válvula em aluminio, distribuidor lapidado de resina acetálica\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio y sellos de NBR\":\"Corpo da válvula e pedal em zamac, distribuidor de aluminio e vedações de NBR\",\"Protección de chapa de acero.\":\"Proteção em chapa de aço.\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio, sellos de NBR, protección plástica\":\"Corpo de válvula e pedal em zamac, distribuidor de aluminio, vedações de NBR, proteção plástica\",\"rojo\":\"vermelho\",\"amarillo\":\"amarelo\",\"verde\":\"verde\",\"Serie VM15-B \":\"Série VM15-B \",\"4 posiciones de válvulas, simple solenoide\":\"4 posições de válvulas, simples solenóide\",\"6 posiciones de válvulas, simple solenoide\":\"6 posições de válvulas, simples solenóide\",\"8 posiciones de válvulas, simple solenoide\":\"8 posições de válvulas, simples solenóide\",\"10 posiciones de válvulas, simple solenoide\":\"10 posições de válvulas, simples solenóide\",\"12 posiciones de válvulas, simple solenoide\":\"12 posições de válvulas, simples solenóide\",\"4 posiciones de válvulas, doble solenoide\":\"4 posições de válvulas, duplo solenóide\",\"6 posiciones de válvulas, doble solenoide\":\"6 posições de válvulas, duplo solenóide\",\"8 posiciones de válvulas, doble solenoide\":\"8 posições de válvulas, duplo solenóide\",\"10 posiciones de válvulas, doble solenoide\":\"10 posições de válvulas, duplo solenóide\",\"Serie VM18-B \":\"Série VM18-B \",\"Accesorio de conexión\":\"Acessório de conexão\",\"Conector SUB-D 25\":\"Conector SUB-D 25\",\"Conector SUB-D 25 con cable 5m\":\"Conector SUB-D 25 com cabo de 5m\",\"Conector SUB-D 25 con cable 10m\":\"Conector SUB-D 25 com cabo de 10m\",\"Placa ciega eléctrica\":\"Placa cega elétrica\",\"Separador de presión\":\"Separador de pressão\",\"Soporte para riel DIN\":\"Suporte para trilho DIN\",\"Serie VM15-BSL\":\"Série VM15-BSL\",\"Serie VM18-BSL\":\"Série VM18-BSL\",\"Serie VM15-SI\":\"Série VM15-SI\",\"4 posiciones de válvulas, con alim. pilot. interno\":\"4 posições de válvulas, com alim. pilot. interna\",\"6 posiciones de válvulas, con alim. pilot. interno\":\"6 posições de válvulas, com alim. pilot. interna\",\"8 posiciones de válvulas, con alim. pilot. interno\":\"8 posições de válvulas, com alim. pilot. interna\",\"10 posiciones de válvulas, con alim. pilot. interno\":\"10 posições de válvulas, com alim. pilot. interna\",\"12 posiciones de válvulas, con alim. pilot. interno\":\"12 posições de válvulas, com alim. pilot. interna\",\"4 posiciones de válvulas, con alim. pilot. externo\":\"4 posições de válvulas, com alim. pilot. externa\",\"6 posiciones de válvulas, con alim. pilot. externo\":\"6 posições de válvulas, com alim. pilot. externa\",\"8 posiciones de válvulas, con alim. pilot. externo\":\"8 posições de válvulas, com alim. pilot. externa\",\"10 posiciones de válvulas, con alim. pilot. externo\":\"10 posições de válvulas, com alim. pilot. externa\",\"12 posiciones de válvulas, con alim. pilot. externo\":\"12 posições de válvulas, com alim. pilot. externa\",\"Soporte fijación a panel\":\"Suporte de fixação para painel\",\"4 posiciones de válvulas, simple solenoide, 4I/4O\":\"4 posições de válvulas, simples solenóide, 4I/4O\",\"2 posiciones de válvulas, doble solenoide, 4I/4O\":\"2 posições de válvulas, duplo solenóide, 4I/4O\",\"4 posiciones de válvulas, simple solenoide, 4I/4O con alim. ext.\":\"4 posições de válvulas, simples solenóide, 4I/4O com alim. ext.\",\"2 posiciones de válvulas, doble solenoide, 4I/4O con alim. ext.\":\"2 posições de válvulas, duplo solenóide, 4I/4O com alim. ext.\",\"4 posiciones de válvulas, simple solenoide, 8I/4O\":\"4 posições de válvulas, simples solenóide, 8I/4O\",\"4 posiciones de válvulas, simple solenoide, 8I/4O con alim. ext.\":\"4 posições de válvulas, simples solenóide, 8I/4O com alim. ext.\",\"8 posiciones de válvulas, simple solenoide, 8I/8O\":\"8 posições de válvulas, simples solenóide, 8I/8O\",\"8 posiciones de válvulas, simple solenoide, 8I/8O con alim. ext.\":\"8 posições de válvulas, simples solenóide, 8I/8O com alim. ext.\",\"4 posiciones de válvulas, doble solenoide, 8I/8O\":\"4 posições de válvulas, duplo solenóide, 8I/8O\",\"4 posiciones de válvulas, doble solenoide, 8I/8O con alim. ext.\":\"4 posições de válvulas, duplo solenóide, 8I/8O com alim. ext.\",\"8 posiciones de válvulas, simple solenoide, 16I/8O\":\"8 posições de válvulas, simples solenóide, 16I/8O\",\"8 posiciones de válvulas, simple solenoide, 16I/8O con alim. ext.\":\"8 posições de válvulas, simples solenóide, 16I/8O com alim. ext.\",\"Cable AS-i amarillo\":\"Cabo AS-i amarelo\",\"Cable AS-i negro\":\"Cabo AS-i preto\",\"Conector M8 para entradas\":\"Conector M8 para entradas\",\"16 posiciones de válvulas, simple solenoide\":\"16 posições de válvulas, simples solenóide\",\"12 posiciones de válvulas, doble solenoide\":\"12 posições de válvulas, duplo solenóide\",\"16 posiciones de válvulas, doble solenoide\":\"16 posições de válvulas, duplo solenóide\",\"Conector BUS IN\":\"Conector BUS IN\",\"Conector BUS OUT\":\"Conector BUS OUT\",\"Conector Power\":\"Conector Power\",\"Serie VM15-B\":\"Série VM15-B\",\"Serie VM18-B\":\"Série VM18-B\",\"Aire comprimido filtrado, con o sin lubricación\":\"Ar comprimido filtrado, com ou sem lubrificação\",\"Cuerpo de aluminio, tornillo de registro de latón, sellos de NBR\":\"Corpo de aluminio, parafuso de ajuste de latão, vedações de NBR\",\"Serie VA, en linea\":\"Série VA, em linha\",\"Regulador de caudal unidireccional\":\"Regulador de vazão unidirecional\",\"Cuerpo de Zamac, tornillo de registro de latón, sellos de NBR\":\"Corpo de Zamac, parafuso de ajuste de latão, vedações de NBR\",\"Regulador de caudal bidireccional\":\"Regulador de vazão bidirecional\",\"Regulador de caudal bidireccional \":\"Regulador de vazão bidirecional\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, tornillo de registro de latón, sellos de NBR\":\"Corpo de polímero HR com alta resistência química e ao impacto, parafuso de ajuste de latão, vedações de NBR\",\"Serie RVR e instantánea, tipo banjo orientable\":\"Série RVR e instantãnea, tipo cotovelo orientável\",\"Regulador de velocidad, banjo de precisión con conector instantáneo\":\"Regulador de velocidade de precisão, tipo cotovelo, com conexão instantânea\",\"Regulador de velocidad, banjo de precisión con conector instantáneo, con regulación en la alimentación\":\"Regulador de velocidade de precisão, tipo cotovelo, com conexão instantânea, com regulagem na alimentação.\",\"Regulador de velocidad, banjo orientable con rosca hembra\":\"Regulador de velocidade, tipo cotovelo orientável com rosca fêmea.\",\"Regulador de velocidad, banjo orientable en 2 ejes con conector instantáneo\":\"Regulador de velocidade,  tipo cotovelo orientável em 2 eixos, com conexão instantânea.\",\"Regulador de velocidad, banjo RVI con conector instantáneo\":\"Regulador de velocidade, tipo cotovelo  modelo RVI, com conexão instantânea.\",\"Regulador de velocidad, banjo RVI con conector instantáneo, con regulación en la alimentación\":\"Regulador de velocidade, tipo cotovelo  modelo RVI, com conexão instantânea, com regulagem na alimentação.\",\"Serie instantánea, en línea\":\"Série instantãnea, em línha\",\"Regulador de caudal unidireccional de precisión\":\"Regulador de vazão unidirecional de precisão\",\"Regulador de caudal unidireccional RVL\":\"Regulador de vazão unidirecional RVL\",\"Cuerpo de Zamac, sellos de NBR, silenciador de bronce sinterizado\":\"Corpo de Zamac, vedações de NBR, silenciador de bronze sinterizado\",\"Serie ERS\":\"Série ERS\",\"Con silenciador incorporado\":\"Com silenciador incorporado\",\"Cuerpo de Zamac, sellos de NBR\":\"Corpo de Zamac, vedações de NBR\",\"Serie VA\":\"Série VA\",\"Con boca de escape roscada\":\"Com conexões roscada na entrada, saída e escape.\",\"Modelo con rosca hembra\":\"Modelo com rosca fêmea\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, sellos de NBR\":\"Corpo de polímero HR com alta resistência química e ao impacto, vedações de NBR\",\"Serie instantánea\":\"Série instantânea\",\"Modelo con conector instantáneo\":\"Modelo com conexão instantânea\",\"Válvula función O\":\"Válvula função OU\",\"Serie para base\":\"Série para base\",\"Válvula función Y\":\"Válvula função E\",\"Válvula función NO\":\"Válvula função NÃO\",\"Base de conexionado modelo simple con conexión trasera\":\"Base de montagem modelo simples com conexão traseira\",\"Base de conexionado unitaria o extremo de manifold\":\"Base de montagem unitária ou extremo de manifold\",\"Base de conexionado intermedio para manifold\":\"Base de montagem intermediária para manifold\",\"Serie enchufable instantánea\":\"Série plugável instantánea\",\"Cuerpo de latón y polímero HR, sellos de NBR\":\"Corpo de latão e polímero HR, vedações de NBR\",\"Sensores por ausencia de presión\":\"Sensores por ausência de pressão\",\"Cuerpo de aluminio, sellos de NBR\":\"Corpo de aluminio, vedações de NBR\",\"Válvulas de no retorno pilotadas\":\"Válvulas de retenção pilotadas\",\"Aire comprimido filtrado, sin lubricación\":\"Ar comprimido filtrado sem lubrificação\",\"Temporizadores \":\"Temporizadores \",\"Temporizador 0,1...10 seg. \":\"Temporizador 0,1...10 seg. \",\"Temporizador 0,1...30 seg.\":\"Temporizador 0,1...30 seg.\",\"Generador de impulso único\":\"Gerador de pulso único\",\"Generador de impulso único 0,4 seg.\":\"Gerador de pulso único 0,4 seg.\",\"Accesorios para modulos\":\"Acessórios para módulos\",\"Comando bimanual\":\"Comando bimanual\",\"Aire comprimido filtrado, con o sin lubricación. Gases o líquidos neutros\":\"Ar comprimido filtrado, com ou sem lubrificação. Gases ou líquidos neutros\",\"Presostatos regulables\":\"Pressostatos reguléveis\",\"Presostato regulable para base\":\"Pressostato regulável para base\",\"Presostato regulable, 0.3...1.2bar\":\"Pressostato regulável, 0.3...1.2bar\",\"Cuerpo de aleación de zinc inyectado, diafragma de NBR, contacto bimetálico de plata.\":\"Corpo em liga de zinco injetado, diafragma de NBR, contacto bimetálico de prata.\",\"Presostato regulable a diafragma, 1...16bar\":\"Pressostato regulável com diafragma, 1...16bar\",\"Aire comprimido filtrado, fluidos no corrosivos y no inflamables\":\"Ar comprimido filtrado, fluidos não corrosivos e não inflamáveis\",\"Sensor de presión digital, 0…10bar\":\"Sensor de pressão digital, 0…10bar\",\"Sensor de presión programable, 0…6bar\":\"Sensor de pressão programável, 0…6bar\",\"Indicadores de presión\":\"Indicadores de pressão\",\"Indicador de presencia de presión neumática. Rojo\":\"Indicador de presença de pressão pneumática. Vermelho\",\"Indicador de presencia de presión neumática. Verde\":\"Indicador de presença de pressão pneumática. Verde\",\"Indicador de presencia de presión neumática. Amarillo\":\"Indicador de presença de pressão pneumática. Amarelo\",\"Indicador de presión digital\":\"Indicador de pressão digital\",\"Aire comprimido.\":\"Ar comprimido\",\"Bronce sinterizado y aluminio.\":\"Bronze sinterizado e aluminio.\",\"Serie SBR\":\"Série SBR\",\"Resina acetálica azul y granos fonoabsorbentes.\":\"Resina acetálica azul e grãos fonoabsorventes.\",\"Serie SPL\":\"Série SPL\",\"Chapa pintada y fibras de poliéster.\":\"Chapa pintada e fibras de poliéster.\",\"Serie pesada\":\"Série pesada\",\"Cuerpo de aluminio, elemento silenciador de bronce sinterizado, tornillo regulador de latón y cubierta de resina acetálica.\":\"Corpo de aluminio, elemento silenciador de bronze sinterizado, parafuso de regulagem de latão e capa de resina acetálica.\",\"Eyectores básicos SBP\":\"Ejetores básicos SBP\",\"Con conexión instantanea\":\"Com conexão instantânea\",\"Con conexión roscada\":\"Com conexão roscada\",\"Eyectores compactos SCPS - SCPSi\":\"Ejetores compactos SCPS - SCPSi\",\"Normal abierto\":\"Normal aberto\",\"Normal abierto, con IO Link\":\"Normal aberto, com IO Link\",\"Cable conector 5 polos M12\":\"Cabo conector 5 polos M12\",\"Eyectores compactos SCPi\":\"Ejetores compactos SCPi\",\"Con válvula piloto NA\":\"Com válvula piloto NA\",\"Con válvula piloto NC\":\"Com válvula piloto NF\",\"Con válvula piloto IMP\":\"Com válvula piloto IMP\",\"Eyectores compactos SXPi\":\"Ejetores compactos SXPi\",\"Cable conector 8 polos M12\":\"Cabo conector 8 polos M12\",\"Eyectores multietapa SEM\":\"Ejetores multietapa SEM\",\"SEM 25-SDA\":\"SEM 25-SDA\",\"SEM 50-SDA\":\"SEM 50-SDA\",\"SEM 100-SDA\":\"SEM 100-SDA\",\"Vacuómetro Ø40\":\"Vacuômetro Ø40\",\"Eyectores multietapa SEM-C\":\"Ejetores multietapa SEM-C\",\"Conector para vacuostato\":\"Conector para vacuostato\",\"Conector para válvula\":\"Conector para válvula\",\"Ventosas planas PFYN\":\"Ventosas planas PFYN\",\"con boquilla rosca macho\":\"com conexão rosca macho\",\"con boquilla rosca hembra\":\"com conexão rosca fêmea\",\"Ventosas planas SPU\":\"Ventosas planas SPU\",\"SPU 100 - NBR\":\"SPU 100 - NBR\",\"SPU 125 - NBR\":\"SPU 125 - NBR\",\"SPU 160 - NBR\":\"SPU 160 - NBR\",\"SPU 210 - NBR\":\"SPU 210 - NBR\",\"SPU 250 - NBR\":\"SPU 250 - NBR\",\"SPU 300 - NBR\":\"SPU 300 - NBR\",\"Ventosas planas SPK\":\"Ventosas planas SPK\",\"SPK 55 - EPDM\":\"SPK 55 - EPDM\",\"SPK 80 - EPDM\":\"SPK 80 - EPDM\",\"SPK 110 - EPDM\":\"SPK 110 - EPDM\",\"SPK 160 - EPDM\":\"SPK 160 - EPDM\",\"SPK 200 - EPDM\":\"SPK 200 - EPDM\",\"SPK 250 - EPDM\":\"SPK 250 - EPDM\",\"Ventosas planas ovaladas SGON\":\"Ventosas planas ovais SGON\",\"Ventosas de fuelle FSGA (1.5 pliegues)\":\"Ventosas tipo fole FSGA (1.5 vincos)\",\"Ventosas de fuelle FSG (2.5 pliegues)\":\"Ventosas tipo fole FSG (2.5 vincos)\",\"Ventosas para chapa redondas planas SAF\":\"Ventosas planas SAF\",\"Ventosas para chapa redondas tipo campana SAXM\":\"Ventosas para chapa SAXM\",\"Ventosas para chapa redondas con fuelle SAB \":\"Ventosas tipo fole SAB (1,5 vincos)\",\"SAB 22 - Rosca hembra\":\"SAB 22 - Rosca fêmea\",\"SAB 30 - Rosca hembra\":\"SAB 30 - Rosca fêmea\",\"SAB 30 - Con adaptador rectangular\":\"SAB 30 - Com adaptador retangular\",\"SAB 40 - Rosca hembra\":\"SAB 40 - Rosca fêmea\",\"SAB 40 - Con adaptador rectangular\":\"SAB 40 - Com adaptador retangular\",\"SAB 50 - Rosca hembra\":\"SAB 50 - Rosca fêmea\",\"SAB 50 - Con adaptador rectangular\":\"SAB 50 - Com adaptador retangular\",\"SAB 60 - Rosca hembra\":\"SAB 60 - Rosca fêmea\",\"SAB 60 - Con adaptador rectangular\":\"SAB 60 - Com adaptador retangular\",\"SAB 80 - Rosca hembra\":\"SAB 80 - Rosca fêmea\",\"SAB 80 - Con adaptador rectangular\":\"SAB 80 - Com adaptador retangular\",\"SAB 100 - Rosca hembra\":\"SAB 100 - Rosca fêmea\",\"SAB 100 - Con adaptador rectangular\":\"SAB 100 - Com adaptador retangular\",\"SAB 125 - Rosca hembra\":\"SAB 125 - Rosca fêmea\",\"SAB 125 - Con adaptador rectangular\":\"SAB 125 - Com adaptador retangular\",\"Ventosas para chapa ovaladas planas SAOF\":\"Ventosas ovais planas SAOF\",\"Ventosas para chapa ovaladas con fuelle SAOB\":\"Ventosas ovais tipo fole SAOB\",\"Ventosas forma campana SAOG\":\"Ventosas tipo oval SAOG\",\"Ventosas para láminas y papel SGPN\":\"Ventosas para lâminas e papel SGPN\",\"Ventosas para embalaje SPB4\":\"Ventosas tipo fole SPB4 (4,5 vincos)\",\"Ventosas para embalaje SPB4-F\":\"Ventosas tipo fole SPB4-F (4,5 vincos)\",\"Ventosas para embalaje SPB1\":\"Ventosas tipo fole SPB1 (1,5 vincos)\",\"Ventosas magnéticas SGM\":\"Ventosas magnéticas SGM\",\"Garra magnética\":\"Garra magnética\",\"Elementos de fijación para ventosas Flexolink FLK\":\"Elementos de fixação para ventosas Flexolink FLK\",\"Unión articulada\":\"União articulada\",\"Articulaciones esféricas KGL\":\"Articulações esféricas KGL\",\"Articulación esférica\":\"Articulação esférica\",\"Biela elástica FSTE y FSTE-VG\":\"Compensador de nível FSTE e FSTE-VG\",\"Estandar\":\"Padrão\",\"Antigiro\":\"Antigiro\",\"Biela elástica heavy duty FSTE-HD y FSTA-HD\":\"Compensador de nível heavy duty FSTE-HD e FSTA-HD\",\"Válvulas de flujo SVK y SVKG\":\"Válvulas de fluxo SVK e SVKG\",\"Rosca H lado ventosa\":\"Rosca fêmea lado ventosa\",\"Rosca M lado ventosa\":\"Rosca macho lado ventosa\",\"Válvulas AZ5 y AZ7 - 3/2\":\"Válvulas AZ5 e AZ7 - 3/2\",\" Filtros de vacío tipo taza VFT\":\"Filtros de vácuo tipo taça VFT\",\"Filtro tipo taza, 100 µm.\":\"Filtro tipo copo, 100 µm.\",\"Vacuómetros VAM\":\"Vacuômetros VAM\",\"Vacuómetro Ø40 con conexión trasera\":\"Vacuômetro Ø40 com conexão traseira\",\"Vacuómetro Ø63 con conexión inferior\":\"Vacuômetro Ø63 com conexão inferior\",\"Vacuómetro Ø67 para montaje en panel\":\"Vacuômetro Ø67 para montagem em painel\",\"Vacuostatos regulables\":\"Vacuostatos reguláveis\",\"Vacuostato regulable, -0,3…-0,8bar\":\"Vacuostato regulável, -0,3…-0,8bar\",\"Sensor de vacío programable, -1...0bar\":\"Sensor de vácuo programável, -1...0bar\",\"Vacuostato electrónico digital con display\":\"Vacuostato electrônico digital com display\",\"Ficha con cable 2m\":\"Conector com cabo 2m\",\"Serie compacto\":\"Série compacto\",\"MCRQ-16, con amortiguador de choque\":\"MCRQ-16, com amortecedor de choque\",\"MCRQ-20, con amortiguador de choque\":\"MCRQ-20, com amortecedor de choque\",\"MCRQ-25, con amortiguador de choque\":\"MCRQ-25, com amortecedor de choque\",\"MCRQ-32, con amortiguador de choque\":\"MCRQ-32, com amortecedor de choque\",\"MCRQ-40, con amortiguador de choque\":\"MCRQ-40, com amortecedor de choque\",\"MCRQ-16, con ajuste fino por tornillo\":\"MCRQ-16, com ajuste fino por parafuso\",\"MCRQ-20, con ajuste fino por tornillo\":\"MCRQ-20, com ajuste fino por parafuso\",\"MCRQ-25, con ajuste fino por tornillo\":\"MCRQ-25, com ajuste fino por parafuso\",\"MCRQ-32, con ajuste fino por tornillo\":\"MCRQ-32, com ajuste fino por parafuso\",\"MCRQ-40, con ajuste fino por tornillo\":\"MCRQ-40, com ajuste fino por parafuso\",\"Pinzas angulares MCHA \":\"Garras angulares MCHA \",\"MCHA-12\":\"MCHA-12\",\"MCHA-16\":\"MCHA-16\",\"MCHA-20\":\"MCHA-20\",\"MCHA-25\":\"MCHA-25\",\"Pinzas radiales MCHY \":\"Garras radiais MCHY \",\"MCHY-10\":\"MCHY-10\",\"MCHY-16\":\"MCHY-16\",\"MCHY-20\":\"MCHY-20\",\"MCHY-25\":\"MCHY-25\",\"Pinzas paralelas de dos dedos MCHC \":\"Garras paralelas de dois dedos MCHC \",\"MCHC-10\":\"MCHC-10\",\"MCHC-16\":\"MCHC-16\",\"MCHC-20\":\"MCHC-20\",\"MCHC-25\":\"MCHC-25\",\"Pinzas de tres dedos MCHG2 \":\"Garras de tres dedos MCHG4\",\"MCHG2-16\":\"MCHG2-16\",\"MCHG2-25\":\"MCHG2-25\",\"MCHG2-32\":\"MCHG2-32\",\"Interruptores magnéticos serie RCE\":\"Interruptores magnéticos série RCE\",\"Interruptores magnéticos serie RPE\":\"Interruptores magnéticos série RPE\",\"Efecto Hall PNP, con conector M8x1\":\"Efeito Hall PNP, com conector M8x1\",\"Interruptores magnéticos serie RT\":\"Interruptores magnéticos série RT\",\"Interruptores magnéticos serie RTP\":\"Interruptores magnéticos série  RTP\",\"Serie TAR\":\"Série TAR\",\"TAR 160 - 8 divisiones\":\"TAR 160 - 8 divisões\",\"TAR 270 - 4-6-8-12-24 divisiones\":\"TAR 270 - 4-6-8-12-24 divisões\"}}");
+module.exports = JSON.parse("{\"pt\":{\"Hello world\":\"Bonjour le monde\",\"Next\":\"suivante\",\"Resultado\":\"Résultat\",\"No encontrado\":\"Nao encontrado\",\"Productos Encontrados\":\"Produtos encontrados\",\"Consultar por otros productos\":\"Pedir outros produtos\",\"Consultas adicionales\":\"Consultas adicionais\",\"Categoria\":\"Categoria\",\"Serie CN10 - Actuadores rotantes\":\"Série CN10 - Atuadores rotativos\",\"Serie TECH 21\":\"Série TECH 21\",\"Serie ECO OEM\":\"Série ECO OEM\",\"Serie C16 - Vástago simple\":\"Série C16 - Haste simples\",\"Serie C16 - Doble vástago\":\"Série C16 - Haste passante\",\"Serie C16 - Montajes y accesorios\":\"Série C16 - Montagens e acessórios\",\"Serie CC10 - Vástago simple\":\"Série CC10 - Haste simples\",\"Serie CP10 - Vástago simple\":\"Série CP10 - Haste simples\",\"Serie CP10 - Doble vástago\":\"Série CP10 - Haste passante\",\"Serie CP10 - Con guía antigiro\":\"Série CP10 - Com guia anti-giro\",\"Serie CP10 - Tándem\":\"Série CP10 - Tandem\",\"Serie CP10 - Vástago reforzado\":\"Série CP10 - Haste reforçado\",\"Serie CP10 - Doble efecto de tres posiciones\":\"Série CP10 - Duplo efeito de tres posições\",\"Serie CP10 - Con alimentación trasera\":\"Série CP10 - Com alimentação traseira\",\"Serie CP10 - Montajes y accesorios\":\"Série CP10 - Montagens e acessórios\",\"Serie CPL10 - Con entre centros de montaje ISO 21287\":\"Série CPL10 - Com entre centros de montagem ISO 21287\",\"Serie CADP - Doble pistón y antigiro\":\"Série CADP - Haste Dupla e anti-giro\",\"Serie CASP - Simple pistón y antigiro\":\"Serie CASP - Haste Simples com anti-giro\",\"Serie CN10 - Cilindros de impacto\":\"Série CN10 - Cilindros de impacto\",\"Serie CN10 - Vástago simple\":\"Série CN10 - Haste simples\",\"Serie CN10 - Doble vástago\":\"Série CN10 - Haste passante\",\"Serie CN10 - Con doble pistón\":\"Série CN10 - duplex continuo (Tandem)\",\"Serie CN10 - Acoplados de acción independiente\":\"Série CN10 - Acoplados de ação independiente (Duplex Geminado)\",\"Serie CN10 - Montajes y accesorios\":\"Série CN10 - Montagens e acessórios\",\"Serie CN10 - Bloqueo de vástago\":\"Série CN10 - Bloqueio de haste\",\"Serie CN10 - Guías H tipo JB\":\"Série CN10 - Guias H tipo JB\",\"Serie Micro Origa OSP-P\":\"Série Micro Origa OSP-P modelo standard\",\"Serie Micro Origa OSP-P Slideline\":\"Série Micro Origa OSP-P com guias Slideline\",\"Serie Micro Origa OSP-P Proline\":\"Série Micro Origa OSP-P com guias Proline\",\"Serie Micro Origa OSP-P - Accesorios\":\"Série Micro Origa OSP-P - Acessórios\",\"Serie ADA\":\"Série ADA\",\"Serie DMR\":\"Série DMR\",\"Serie DSL\":\"Série DSL\",\"Serie RCE\":\"Série RCE\",\"Serie RPE\":\"Série RPE\",\"Serie RT\":\"Série RT\",\"Serie RTP\":\"Série RTP\",\"Serie MD8 SSL - Ejecución S\":\"Série MD8 SSL - Execução S\",\"Serie MD8 SSL - Ejecución U (ISO 6432)\":\"Série MD8 SSL - Execução U (ISO 6432)\",\"Serie MD8 SSL - Doble vástago\":\"Série MD8 SSL - Haste passante\",\"Serie MD8 SSL - Vástago hueco\":\"Série MD8 SSL - Haste vazada\",\"Serie MD8 SL - Tubo aluminio Ejecución U (ISO 6432)\":\"Série MD8 SL - Tubo aluminio Execução U (ISO 6432)\",\"Serie MD8 SL - Tubo Ac.Inox. Ejecución U (ISO 6432)\":\"Série MD8 SL - Tubo Aço Inox. Execução U (ISO 6432)\",\"Serie MD8 SL - Para ambiente corrosivo Ejecución U (ISO 6432)\":\"Série MD8 SL - Para ambiente corrosivo Execução U (ISO 6432)\",\"Serie MD8 SSL - Full inox para ambiente corrosivo Ejecución U (ISO 6432)\":\"Série MD8 SSL - Total inox para ambiente corrosivo Execução U (ISO 6432)\",\"Serie MD8 - Montajes y accesorios\":\"Série MD8 - Montagens e acessórios\",\"Serie MD8 - Guías H tipo JB\":\"Série MD8 - Guias H tipo JB\",\"Serie a cartucho\":\"Série a cartucho\",\"TK 21-1M\":\"TK 21-1M\",\"TK 21-2M\":\"TK 21-2M\",\"TK 21-3M\":\"TK 21-3M\",\"ECO OEM 0.25M\":\"ECO OEM 0.25M\",\"ECO OEM 0.5M\":\"ECO OEM 0.5M\",\"ECO OEM 1.0MF\":\"ECO OEM 1.0MF\",\"ECO OEM 1.25Mx1\":\"ECO OEM 1.25Mx1\",\"ECO OEM 1.25Mx2\":\"ECO OEM 1.25Mx2\",\"OEM XT 1.5Mx1\":\"OEM XT 1.5Mx1\",\"OEM XT 1.5Mx2\":\"OEM XT 1.5Mx2\",\"Montaje con pies (par)\":\"Montagem pés (par)\",\"Horquilla para vástago\":\"Garfo para haste\",\"Montaje basculante trasero\":\"Montagem basculante traseira\",\"Montaje con placa delantera (o trasera)\":\"Montagem flange dianteira (ou traseira)\",\"Accesorio para cilindros acoplados\":\"Acessório para cilindros duplex geminados\",\"Montaje basculante trasero macho\":\"Montagem basculante traseira macho\",\"Montaje basculante trasero hembra\":\"Montagem basculante traseira fêmea\",\"Soporte lateral para basculantes\":\"Suporte lateral para basculantes\",\"Soporte basculante trasero macho\":\"Suporte basculante traseiro macho\",\"Perno para basculantes\":\"Pino para basculantes\",\"Rótula para vástago\":\"Rótula para haste\",\"Tuerca \":\"Porca \",\"Tuerca\":\"Porca \",\"Acople roscas\":\"Acoplamento roscas\",\"Montaje con pies externos (par)\":\"Montagem por pés externos (par)\",\"Montaje con pies internos (par)\":\"Montagem por pés internos (par)\",\"Soporte lateral para basculante hembra\":\"Suporte lateral para basculante fêmea\",\"Montaje basculante intermedio perfilado\":\"Montagem basculante intermediária perfilada\",\"Montaje basculante intermedio\":\"Montagem basculante intermediária (tubo com tirantes)\",\"Montaje basculante frontal (o trasero)\":\"Montagem basculante frontal (ou traseira)\",\"Soporte para basculantes intermedio, delantero y trasero (par)\":\"Suporte para basculantes intermediário, dianteiro e traseiro (par)\",\"Montaje basculante trasero hembra angosto\":\"Montagem basculante traseira fêmea estreita\",\"Montaje basculante macho con rótula angosto\":\"Montagem basculante macho estreita com rótula\",\"Soporte lateral con rótula para basculante hembra angosto\":\"Suporte lateral com rótula para basculante fêma estreita\",\"Perno para basculantes angostos\":\"Pino para basculantes estreitas\",\"Soporte lateral para basculante intermedio\":\"Suporte lateral para basculante intermediário\",\"Acople para horquilla\":\"Acoplamento para garfo\",\"Horquilla con rótula para vástago\":\"Garfo com rótula para haste\",\"Tuerca para vástago\":\"Porca para haste\",\"Soporte para interruptor magnético serie DMR, tubo perfilado\":\"Suporte para interruptor magnético serie DMR, tubo perfilado\",\"Soporte para interruptor magnético serie DMR, tubo cilíndrico\":\"Suporte para interruptor magnético serie DMR, tubo cilíndrico\",\"Guía H con bujes de material sintético tipo JB-I\":\"Guía H com buchas de material sintético tipo JB-I\",\"Guía H con rodamientos de bolas recirculantes tipo JB-R\":\"Guía H com buchas de esferas recirculantes tipo JB-R\",\"Soporte intermedio E-1\":\"Suporte intermediário E-1\",\"Soporte basculante\":\"Suporte basculante\",\"Soporte para interruptor magnético - DSL (6-7-8-9)\":\"Suporte para interruptor magnético - DSL (6-7-8-9)\",\"Con regulación de tracción y compresión\":\"Com regulagem na tração e compressão\",\"Con regulación solo tracción\":\"Com regulagem somente na tração\",\"Con regulación solo compresión\":\"Com regulagem somente na compressão\",\"DMR\":\"DMR\",\"DMRC\":\"DMRC\",\"Cable de 2m con conector hembra de M8x1\":\"Cabo de 2m com conector fêmea de M8x1\",\"DSL1 Reed-Switch\":\"DSL1 Reed-Switch\",\"DSL2 Reed-Switch, con conector M8x1\":\"DSL2 Reed-Switch, com conector M8x1\",\"DSL4 Efecto Hall PNP\":\"DSL4 Efecto Hall PNP\",\"DSL3 Efecto Hall PNP, con conector M8x1\":\"DSL3 Efecto Hall PNP, com conector M8x1\",\"DSL6 Reed-Switch\":\"DSL6 Reed-Switch\",\"DSL7 Reed-Switch, con conector M8x1\":\"DSL7 Reed-Switch, com conector M8x1\",\"DSL8 Efecto Hall PNP\":\"DSL8 Efecto Hall PNP\",\"DSL9 Efecto Hall PNP, con conector M8x1\":\"DSL9 Efecto Hall PNP, com conector M8x1\",\"Reed-Switch\":\"Reed-Switch\",\"Reed-Switch, con conector M8x1\":\"Reed-Switch, com conector M8x1\",\"Efecto Hall PNP\":\"Efeito Hall PNP\",\"Efecto Hall PNP,con conector M8x1\":\"Efecto Hall PNP, com conector M8x1\",\"Montaje pie\":\"Montagem pé\",\"Montaje placa\":\"Montagem flange\",\"Tuerca para tapa\":\"Porca para cabeçote\",\"Soporte para interruptor magnético - DMR\":\"Suporte para interruptor magnético - DMR\",\"Soporte para interruptor magnético - DSL (1-2-3-4)\":\"Suporte para interruptor magnético - DSL (1-2-3-4)\",\"Aire comprimido filtrado con o sin lubricación\":\"Ar comprimido filtrado com ou sem lubrificação\",\"Aire comprimido filtrado y lubricado\":\"Ar comprimido filtrado e lubrificado\",\"Tapas y pistón inyectado en aluminio, piñon y cremallera de acero SAE4140 bonificado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetado em aluminio, pinhâo e cremalheira de aço SAE4140 beneficiado, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero inoxidable AISI304, sellos de NBR\":\"Tampas de aluminio, tubo de aço inoxidável, haste de aço inoxidável AISI304, vedações de NBR\",\"Tapas de aluminio, tubo de acero inoxidable, vástago de acero cromado, sellos de NBR\":\"Tampas de aluminio, tubo de aço inoxidável, haste de aço cromado, vedações de NBR\",\"Tapas de aluminio, tubo de acero SAE1040, vástago de acero cromado, sellos de NBR\":\"Tampas de aluminio, tubo de aço SAE 1040, haste de aço cromado, vedações de NBR\",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço inoxidável, tubo aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço inoxidável, tubo aluminio perfilado anodizado duro, guias de aço inox. vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero inox., sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, guias de aço inox. vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, guías de acero cromado duro, sellos de poliuretano. \":\"Tampas de aluminio injetado, haste aço cromado duro, tubo aluminio perfilado anodizado duro, guias de aço cromado duro, vedações de poliuretano. \",\"Tapas de aluminio inyectado, vástago de acero inoxidable, tubo de aluminio perfilado anodizado duro, sellos de poliuretano.\":\"Tampas de aluminio injetado, haste de aço inoxidável, tubo de aluminio perfilado anodizado duro, vedações de poliuretano\",\"Tapas de aluminio inyectado, vástago de acero cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR y poliuretano. \":\"Tampas de aluminio injetado, haste de aço cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR e poliuretano\",\"Aluminio, guías de acero inox. con guarniciones de NBR \":\"Aluminio, guias de aço inox. com guarnições de NBR \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cementado y templado, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cementado e temperado, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR. \",\"Tapas y pistón inyectado en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro com tensores, vedações de NBR.\",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de poliuretano. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de poliuretano. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, sellos de NBR.\":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio perfilado anodizado duro, vedações de NBR. \",\"Tapas y pistones inyectados en aluminio, vástago de acero SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro con tensores, sellos de NBR. \":\"Tampas e embolo injetados em aluminio, haste de aço SAE1040 cromado duro, tubo de aluminio cilíndrico anodizado duro com tensores, vedações de NBR. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de NBR. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de materiais sintéticos antifricção, vedações de NBR. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de materiales sintéticos antifricción, sellos de FKM. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de materiais sintéticos antifricção, vedações de FKM. \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de NBR. \":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de aço temperado retificado, vedações de NBR \",\"Tapas y pistón de aluminio, tubo perfilado de aluminio anodizado duro, bandas de acero inoxidable templado, guías de acero templado rectificado, sellos de FKM.\":\"Tampas e embolo de aluminio, tubo perfilado de aluminio anodizado duro, fitas de aço inoxidável temperado, guias de aço temperado retificado, vedações de FKM\",\"Tapas de aluminio, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de aluminio, tubo e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo de aluminio y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de plástico de engenharía, tubo de aluminio e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo y vástago de acero inoxidable AISI304, sellos de PU\":\"Tampas de plástico de engenharía, tubo e haste de aço inoxidável AISI304, vedações de PU\",\"Tapas de plástico de ingeniería, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Tampas de plástico de engenharía, tubo, haste e porcas de aço inoxidável AISI304, vedações de FKM (flurocarbono)\",\"Tapas, tubo, vástago y tuercas de acero inoxidable AISI304, sellos de FKM (flurocarbono)\":\"Tampas, tubo, haste e porcas de aço inoxidável AISI304, vedações de FKM (flurocarbono)\",\"Ac. Cincado\":\"Aço zincado\",\"Ac. Inox. AISI304\":\"Aço Inox. AISI304\",\"Aluminio, guías de acero cromado.\":\"Aluminio, guias de aço cromado.\",\"Aluminio, guías de acero templado.\":\"Aluminio, guias de aço temperado.\",\"Cuerpo de latón niquelado, vástago y resorte de acero inoxidable, sellos de NBR\":\"Corpo de latão niquelado, haste e mola de aço inoxidável, vedações de NBR\",\"doble efecto con amortiguación\":\"dupla ação com amortecimento\",\"doble efecto con amortiguación, con ajuste fino\":\"dupla ação com amortecimento e ajuste fino\",\"simple efecto resorte delantero\":\"simples ação mola dianteira\",\"simple efecto, doble salida de vástago\":\"simples ação, haste passante\",\"doble efecto\":\"dupla ação \",\"doble efecto, doble salida de vástago\":\"dupla ação, haste passante\",\"simple efecto resorte trasero\":\"simples ação mola traseira\",\"simple efecto, doble salida de vástago hueco\":\"simples ação, haste passante vazada\",\"doble efecto con guías antigiro\":\"dupla ação com guias antigiro\",\"doble efecto con guías antigiro, con alimentación trasera\":\"dupla ação com guias antigiro, com alimentação traseira\",\"doble efecto, tándem 2 etapas\":\"dupla ação, tandem 2 etapas\",\"doble efecto, tándem 3 etapas\":\"dupla ação, tandem 3 etapas\",\"doble efecto, tándem 4 etapas\":\"dupla ação, tandem 4 etapas\",\"doble efecto, vástago reforzado\":\"dupla ação, haste reforçada\",\"doble efecto de tres posiciones\":\"dupla ação com tres posições\",\"simple efecto resorte delantero con alimentación trasera\":\"simples ação mola dianteira com alimentação traseira\",\"simple efecto resorte trasero con alimentación trasera\":\"simples ação mola traseira com alimentação traseira\",\"doble efecto con alimentación trasera\":\"dupla ação com alimentação traseira\",\"doble efecto, doble pistón con guías antigiro\":\"dupla ação, duplo pistão com guias antigiro\",\"doble efecto, impacto energía 24Nm\":\"dupla ação, impacto energía 24Nm\",\"doble efecto, impacto energía 78Nm\":\"dupla ação, impacto energía 78Nm\",\"doble efecto, impacto energía 112Nm\":\"dupla ação, impacto energía 112Nm\",\"doble efecto con amortiguación, doble salida de vástago\":\"dupla ação com amortecimento, haste passante\",\"doble efecto, doble pistón\":\"dupla ação, duplo embolo (tandem)\",\"doble efecto con amortiguación, doble pistón\":\"dupla ação com amortecimento, duplo embolo (tandem)\",\"accesorio para cilindros acoplados de acción independiente\":\"acessório para cilindros duplex geminados\",\"doble efecto, acoplados de acción independiente\":\"dupla ação, duplex geminados\",\"doble efecto con amortiguación, acoplados de acción independiente\":\"dupla ação com amortecimento, duplex geminados\",\"doble efecto con amortiguación, con sellos de FKM\":\"dupla ação com amortecimento, com vedações de FKM\",\"doble efecto, doble salida de vástago con amortiguación\":\"dupla ação, haste passante com amortecimento\",\"doble efecto, doble salida de vástago hueco\":\"dupla ação, haste passante vazada\",\"doble efecto, doble salida de vástago hueco con amortiguación\":\"dupla ação, haste passante vazada com amortecimento\",\"sin imán\":\"sem ímã\",\"con imán\":\"com ímã\",\"vástago hembra\":\"haste rosca fêmea\",\"vástago macho\":\"haste rosca macho\",\"vástago hembra hueco\":\"haste rosca fêmea vazada\",\"vástago macho hueco\":\"haste rosca macho vazada\",\"Electroválvulas con modo de protección de seguridad intrínseca\":\"Eletroválvulas com modo de proteção de segurança intrínseca\",\"Electroválvulas con modo de protección encapsulado \\\"m\\\"\":\"Eletroválvulas com modo de proteção encapsulado \\\"m\\\"\",\"Serie pesada a membrana 1/2\\\" - Electroválvulas 2/2\":\"Serie pesada com membrana 1/2\\\" - Eletroválvulas 2/2\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 2/2\":\"Serie AZ 1/2\\\" até 1 1/2\\\" - Válvulas e eletroválvulas 2/2\",\"Serie AZ 1/2\\\" hasta 1 1/2\\\" - Válvulas y electroválvulas 3/2\":\"Série AZ 1/2\\\" até 1 1/2\\\" - Válvulas e eletroválvulas 3/2\",\"Serie 15\":\"Série 15\",\"Serie 22\":\"Série 22\",\"Serie 22 Global Class\":\"Série 22 Global Class\",\"Serie 32\":\"Série 32\",\"Serie 15 - Solenoides antiexplosivos\":\"Série 15 - Solenóides antiexplosivos\",\"Serie 22 - Solenoides antiexplosivos\":\"Série 22 - Solenóides antiexplosivos\",\"Serie MEP-A\":\"Série MEP-A\",\"Serie Minielectroválvulas 15mm - 3/2 \":\"Série Minieletroválvulas 15mm - 3/2 \",\"Serie Minielectroválvulas 15mm - 3/2\":\"Série Minieletroválvulas 15mm - 3/2\",\"Serie 211 1/8\\\" - Electroválvulas 3/2\":\"Série 211 1/8\\\" - Eletroválvulas 3/2\",\"Serie 213 - 1/8\\\" - Electroválvulas 2/2 y 3/2\":\"Série 213 - 1/8\\\" - Eletroválvulas 2/2 e 3/2\",\"Serie SB0 ND -1/8\\\" - Válvulas direccionales 5/2\":\"Série SB0 ND -1/8\\\" - Válvulas direcionais 5/2\",\"Serie VM15 GM -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"Série VM15 GM -1/8\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2\",\"Serie VM15 BSL -1/8\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"Série VM15 BSL -1/8\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2 para base com saída lateral\",\"Serie SB1 -1/4\\\" - Válvulas direccionales 5/2\":\"Série SB1 -1/4\\\" - Válvulas direcionais 5/2\",\"Serie EN1 y SB1 NAMUR -1/4\\\" - Válvulas direccionales 3/2 y 5/2\":\"Série EN1 e SB1 NAMUR -1/4\\\" - Válvulas direcionais 3/2 e 5/2\",\"Serie CH1 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 3/2\":\"Série CH1 GM -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 3/2\",\"Serie VM18 GM -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2\":\"Série VM18 GM -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2\",\"Serie VM18-BSL -1/4\\\" - Válvulas direccionales 5/2, 5/3 y 2x3/2 para base salida lateral\":\"Série VM18-BSL -1/4\\\" - Válvulas direcionais 5/2, 5/3 e 2x3/2 para base com saída lateral\",\"Serie CH3 GM -1/2\\\" - Válvulas direccionales 5/2 y 5/3\":\"Série CH3 GM -1/2\\\" - Válvulas direcionais 5/2 e 5/3\",\"Serie VS1 con monitoreo de actuación\":\"Série VS1 com monitoramento de atuação\",\"Serie VS2 con monitoreo de actuación\":\"Série VS2 com monitoramento de atuação\",\"Serie VS3 con monitoreo de actuación\":\"Série VS3 com monitoramento de atuação\",\"Serie VS1 con monitoreo de actuación y comando redundante\":\"Série VS1 com monitoramento de atuação e comando redundante\",\"Serie VS2 con monitoreo de actuación y comando redundante\":\"Série VS2 com monitoramento de atuação e comando redundante\",\"Serie VS3 con monitoreo de actuación y comando redundante\":\"Série VS3 com monitoramento de atuação e comando redundante\",\"Serie VS1 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS1 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Serie VS2 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS2 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Serie VS3 GM - Válvula direccionales 5/2 y 5/3 para base ISO y VDMA\":\"Série VS3 GM - Válvula direcionais 5/2 e 5/3 para base ISO e VDMA\",\"Base de conexionado ISO5599/1-VDMA 24345\":\"Base de montagem ISO5599/1-VDMA 24345\",\"Terminales ISO-VDMA 24345 (par)\":\"Terminais ISO-VDMA 24345 (par)\",\"Base de conexionado múltiple ISO 5599/1\":\"Base de montagem para manifold ISO 5599/1\",\"Terminal ISO 5599/1\":\"Terminal ISO 5599/1\",\"Interfaz adaptación ISO 5599/1\":\"Interface de adaptação ISO 5599/1\",\"Serie MT-M5 - Válvulas 3/2 para tablero \":\"Série MT-M5 - Válvulas 3/2 para painel\",\"Serie MM-M5 - Válvulas 3/2 manuales y mecánicas\":\"Serie MM-M5 - Válvulas 3/2 comandos manuais e mecânicas\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"Série MV ND-1/8\\\" - Válvulas 3/2 e 5/2 comandos manuais\",\"Serie MV ND-1/8\\\" - Válvulas 3/2 y 5/2 mandos mecánicos\":\"Série MV ND-1/8\\\" - Válvulas 3/2 e 5/2 comandos mecânicos\",\"Serie SB1 servo -1/4\\\" - Válvulas 5/2 manuales y mecánicas\":\"Série SB1 servo -1/4\\\" - Válvulas 5/2 comandos manuais e mecânicos\",\"Serie CH1 -1/4\\\" - Válvulas 3/2 y 5/2 mandos manuales\":\"Série CH1 -1/4\\\" - Válvulas 3/2 e 5/2 comandos manuais\",\"Serie CH1 GM a palanca -1/4\\\" - Válvulas 3/2, 5/2 y 5/3 mandos manuales\":\"Série CH1 GM com alavanca -1/4\\\" - Válvulas 3/2, 5/2 e 5/3 comandos manuais\",\"Serie CH3 GM a palanca -1/2\\\" - Válvulas 5/2 y 5/3 mandos manuales\":\"Serie CH3 GM com alavanca -1/2\\\" - Válvulas 5/2 e 5/3 comandos manuais\",\"Válvulas colizantes - Válvulas 3/2 mandos manuales\":\"Válvulas deslizantes - Válvulas 3/2 comandos manuaís\",\"Válvulas rotantes Serie AR - Válvulas 4/2 mandos manuales\":\"Válvulas rotativas Série AR - Válvulas 4/2 comandos manuais\",\"Válvulas 5/2 a pedal\":\"Válvulas 5/2 comando por pedal\",\"Electroválvula 2/2 a membrana, normal cerrada\":\"Eletroválvula 2/2 com membrana, normal fechada\",\"AZ5 G1/2\\\", mando neumático\":\"AZ5 G1/2\\\", comando pneumático\",\"AZ5 G3/4\\\", mando neumático\":\"AZ5 G3/4\\\", comando pneumático\",\"AZ7 G1\\\", mando neumático\":\"AZ7 G1\\\", comando pneumático\",\"AZ7 G1 1/4\\\", mando neumático\":\"AZ7 G1 1/4\\\", comando pneumático\",\"AZ7 G1 1/2\\\", mando neumático\":\"AZ7 G1 1/2\\\", comando pneumático\",\"AZ5 G1/2\\\", mando eléctrico\":\"AZ5 G1/2\\\", comando elétrico\",\"AZ5 G3/4\\\", mando eléctrico\":\"AZ5 G3/4\\\", comando elétrico\",\"AZ7 G1\\\", mando eléctrico\":\"AZ7 G1\\\", comando elétrico\",\"AZ7 G1 1/4\\\", mando eléctrico\":\"AZ7 G1 1/4\\\", comando elétrico\",\"AZ7 G1 1/2\\\", mando eléctrico\":\"AZ7 G1 1/2\\\", comando elétrico\",\"AZ5 G1/2\\\", mando eléctrico con alimentación independiente\":\"AZ5 G1/2\\\", comando eletropneumático com suprimento externo\",\"AZ5 G3/4\\\", mando eléctrico con alimentación independiente\":\"AZ5 G3/4\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1 1/4\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/4\\\", comando eletropneumático com suprimento externo\",\"AZ7 G1 1/2\\\", mando eléctrico con alimentación independiente\":\"AZ7 G1 1/2\\\", comando eletropneumático com suprimento externo\",\"Cabeza de mando electroneumático 3/2 normal cerrada\":\"Cabeçote de comando eletropneumático 3/2 normal fechada\",\"Ficha de conexión 15 con indicador luminoso\":\"Tomada elétrica 15 com indicador luminoso\",\"Placa de adaptación a base norma CNOMO\":\"Placa de adaptação para base norma CNOMO\",\"Solenoide para electroválvulas, ancho 22mm\":\"Solenóide para eletroválvulas, largura 22mm\",\"Ficha de conexión 22 con indicador luminoso\":\"Tomada elétrica 22 com indicador luminoso\",\"Ficha de conexión 22 sin indicador - 2 contactos + tierra\":\"Tomada elétrica 22 sem indicador - 2 contatos + terra\",\"Tubo guía completo\":\"Tubo guía completo\",\"Conexión de escape\":\"Conexão de escape\",\"Solenoide para electroválvulas, ancho 32mm\":\"Solenóide para eletroválvulas, largura 32mm\",\"Ficha de conexión 32 - 2 contactos + tierra\":\"Tomada elétrica 32 - 2 contatos + terra\",\"Ficha de conexión 32 - 3 contactos + tierra\":\"Tomada elétrica 32 - 3 contatos + terra\",\"Tubo guía completo 3/2NC 10bar\":\"Tubo guía completo 3/2NF 10bar\",\"Tubo guía completo 3/2NC 2,5bar\":\"Tubo guía completo 3/2NF 2,5bar\",\"Tubo guía completo 3/2NC 16bar\":\"Tubo guía completo 3/2NF 16bar\",\"Tubo guía completo 2/2 y 3/2NA 2,5bar\":\"Tubo guía completo 2/2 e 3/2NA 2,5bar\",\"Tubo guía completo 2/2 y 3/2NA 10bar\":\"Tubo guía completo 2/2 e 3/2NA 10bar\",\"Tubo guía completo 2/2 y 3/2NA 16bar\":\"Tubo guía completo 2/2 e 3/2NA 16bar\",\"Tubo guía completo 2/2NC\":\"Tubo guía completo 2/2NF\",\"Tubo guía completo 2/2NC HP\":\"Tubo guía completo 2/2NF HP\",\"Tubo guía completo 2/2NC HD\":\"Tubo guía completo 2/2NF HD\",\"Conexión de escape G1/8\\\"\":\"Conexão de escape G1/8\\\"\",\"Ficha de conexión 15 - 2 contactos + tierra\":\"Tomada elétrica 15 - 2 contatos + terra\",\"Solenoide antiexplosivo encapsulado según Directiva ATEX94/9/CE\":\"Solenóide antiexplosivo encapsulado segundo Directiva ATEX94/9/CE\",\"314 MEP-A\":\"314 MEP-A\",\"316 MEP-A\":\"316 MEP-A\",\"Minielectroválvula unitaria\":\"Minieletroválvula unitaria\",\"Minielectroválvulas en manifold 2 posiciones\":\"Minieletroválvulas em manifold 2 posições\",\"Minielectroválvulas en manifold 3 posiciones\":\"Minieletroválvulas em manifold 3 posições\",\"Minielectroválvulas en manifold 4 posiciones\":\"Minieletroválvulas em manifold 4 posições\",\"Minielectroválvulas en manifold 5 posiciones\":\"Minieletroválvulas em manifold 5 posições\",\"Minielectroválvulas en manifold 6 posiciones\":\"Minieletroválvulas em manifold 6 posições\",\"Minielectroválvulas en manifold 7 posiciones\":\"Minieletroválvulas em manifold 7 posições\",\"Minielectroválvulas en manifold 8 posiciones\":\"Minieletroválvulas em manifold 8 posições\",\"Minielectroválvulas en manifold 9 posiciones\":\"Minieletroválvulas em manifold 9 posições\",\"Minielectroválvulas en manifold 10 posiciones\":\"Minieletroválvulas em manifold 10 posições\",\"Electroválvula para montaje unitario\":\"Eletroválvula para montagem unitária\",\"Electroválvula para manifold\":\"Eletroválvula para manifold\",\"Kit manifold para 2 válvulas\":\"Kit manifold para 2 válvulas\",\"Kit manifold para 3 válvulas\":\"Kit manifold para 3 válvulas\",\"Kit manifold para 4 válvulas\":\"Kit manifold para 4 válvulas\",\"Kit manifold para 5 válvulas\":\"Kit manifold para 5 válvulas\",\"Kit manifold para 6 válvulas\":\"Kit manifold para 6 válvulas\",\"Kit manifold para 7 válvulas\":\"Kit manifold para 7 válvulas\",\"Kit manifold para 8 válvulas\":\"Kit manifold para 8 válvulas\",\"Kit manifold para 9 válvulas\":\"Kit manifold para 9 válvulas\",\"Kit manifold para 10 válvulas\":\"Kit manifold para 10 válvulas\",\"Electroválvula 2/2 normal cerrada, conexión lateral\":\"Eletroválvula 2/2 normal fechada, conexão lateral\",\"Electroválvula 2/2 normal cerrada, conexión inferior\":\"Eletroválvula 2/2 normal fechada, conexão inferior\",\"Electroválvula 2/2 normal cerrada, conexión múltiple\":\"Eletroválvula 2/2 normal fechada, conexão múltipla\",\"Electroválvula 2/2 normal abierta, conexión lateral\":\"Eletroválvula 2/2 normal aberta, conexão lateral\",\"Electroválvula 2/2 normal abierta, conexión inferior\":\"Eletroválvula 2/2 normal aberta, conexão inferior\",\"Electroválvula 3/2 normal cerrada, conexión lateral\":\"Eletroválvula 3/2 normal fechada, conexão lateral\",\"Electroválvula 3/2 normal cerrada, conexión inferior\":\"Eletroválvula 3/2 normal fechada, conexão inferior\",\"Electroválvula 3/2 normal cerrada, conexión múltiple\":\"Eletroválvula 3/2 normal fechada, conexão multipla\",\"Electroválvula 3/2 normal abierta, conexión lateral\":\"Eletroválvula 3/2 normal aberta, conexão lateral\",\"Electroválvula 3/2 normal abierta, conexión inferior\":\"Eletroválvula 3/2 normal aberta, conexão inferior\",\"Kit manifold alimentación inferior para 2 válvulas\":\"Kit manifold com alimentação inferior para 2 válvulas\",\"Kit manifold alimentación inferior para 3 válvulas\":\"Kit manifold com alimentação inferior para 3 válvulas\",\"Kit manifold alimentación inferior para 4 válvulas\":\"Kit manifold com alimentação inferior para 4 válvulas\",\"Kit manifold alimentación inferior para 5 válvulas\":\"Kit manifold com alimentação inferior para 5 válvulas\",\"Kit manifold alimentación inferior para 6 válvulas\":\"Kit manifold com alimentação inferior para 6 válvulas\",\"Kit manifold alimentación inferior para 7 válvulas\":\"Kit manifold com alimentação inferior para 7 válvulas\",\"Kit manifold alimentación inferior para 8 válvulas\":\"Kit manifold com alimentação inferior para 8 válvulas\",\"Kit manifold alimentación inferior para 9 válvulas\":\"Kit manifold com alimentação inferior para 9 válvulas\",\"Kit manifold alimentación inferior para 10 válvulas\":\"Kit manifold com alimentação inferior para 10 válvulas\",\"Kit manifold alimentación lateral para 2 válvulas\":\"Kit manifold com alimentação lateral para 2 válvulas\",\"Kit manifold alimentación lateral para 3 válvulas\":\"Kit manifold com alimentação lateral para 3 válvulas\",\"Kit manifold alimentación lateral para 4 válvulas\":\"Kit manifold com alimentação lateral para 4 válvulas\",\"Kit manifold alimentación lateral para 5 válvulas\":\"Kit manifold com alimentação lateral para 5 válvulas\",\"Kit manifold alimentación lateral para 6 válvulas\":\"Kit manifold com alimentação lateral para 6 válvulas\",\"Kit manifold alimentación lateral para 7 válvulas\":\"Kit manifold com alimentação lateral para 7 válvulas\",\"Kit manifold alimentación lateral para 8 válvulas\":\"Kit manifold com alimentação lateral para 8 válvulas\",\"Kit manifold alimentación lateral para 9 válvulas\":\"Kit manifold com alimentação lateral para 9 válvulas\",\"Kit manifold alimentación lateral para 10 válvulas\":\"Kit manifold com alimentação lateral para 10 válvulas\",\"Válvula 5/2 mando neumático, reacción neumática\":\"Válvula 5/2 comando pneumático, retorno pneumático\",\"Válvula 5/2 mando neumático, reacción a resorte\":\"Válvula 5/2 comando pneumático, retorno por mola\",\"Válvula 5/2 biestable por impulsos neumáticos\":\"Válvula 5/2 biestável por impulsos pneumáticos\",\"Electroválvula 5/2 reacción neumática\":\"Eletroválvula 5/2 retorno pneumático\",\"Electroválvula 5/2 reacción a resorte\":\"Eletroválvula 5/2 retorno por mola\",\"Electroválvula 5/2 biestable por impulsos eléctricos\":\"Eletroválvula 5/2 biestável por impulsos elétricos\",\"Distribuidor de alimentación para 2 válvulas\":\"Distribuidor de alimentação para 2 válvulas\",\"Distribuidor de alimentación para 3 válvulas\":\"Distribuidor de alimentação para 3 válvulas\",\"Distribuidor de alimentación para 4 válvulas\":\"Distribuidor de alimentação para 4 válvulas\",\"Distribuidor de alimentación para 5 válvulas\":\"Distribuidor de alimentação para 5 válvulas\",\"Distribuidor de alimentación para 6 válvulas\":\"Distribuidor de alimentação para 6 válvulas\",\"Base manifold para 2 válvulas\":\"Base manifold para 2 válvulas\",\"Base manifold para 3 válvulas\":\"Base manifold para 3 válvulas\",\"Base manifold para 4 válvulas\":\"Base manifold para 4 válvulas\",\"Base manifold para 5 válvulas\":\"Base manifold para 5 válvulas\",\"Base manifold para 6 válvulas\":\"Base manifold para 6 válvulas\",\"Base manifold para 7 válvulas\":\"Base manifold para 7 válvulas\",\"Base manifold para 8 válvulas\":\"Base manifold para 8 válvulas\",\"Placa de cierre\":\"Placa de fechamento\",\"Válvula 5/3 mando neumático, centro cerrado\":\"Válvula 5/3 comando pneumático, centro fechado\",\"Válvula 5/3 mando neumático, centro abierto\":\"Válvula 5/3 comando pneumático, centro aberto\",\"Electroválvula 5/3 centro cerrado\":\"Eletroválvula 5/3 centro fechado\",\"Electroválvula 5/3 centro abierto\":\"Eletroválvula 5/3 centro aberto\",\"2 válvulas 3/2 normal cerradas, mando neumático\":\"2 válvulas 3/2 normal fechadas, comando pneumático\",\"2 válvulas 3/2 normal cerradas, mando eléctrico\":\"2 válvulas 3/2 normal fechadas, comando elétrico\",\"Placa ciega para válvula\":\"Placa cega para válvula\",\"Base manifold modular (doble)\":\"Base manifold modular (dupla)\",\"Terminales para base manifold modular.\":\"Terminais para base manifold modular\",\"Base manifold para 10 válvulas\":\"Base manifold para 10 válvulas\",\"Base manifold para 12 válvulas\":\"Base manifold para 12 válvulas\",\"Soporte fijación plano\":\"Suporte fixação plano\",\"EN1, electroválvula 5/2 reacción a resorte\":\"EN1, eletroválvula 5/2 retorno por mola\",\"EN1, electroválvula 3/2 reacción a resorte\":\"EN1, eletroválvula 3/2 retorno por mola\",\"SB1, válvula 5/2 mando neumático, reacción neumática\":\"SB1, válvula 5/2 comando pneumático, retorno pneumático\",\"SB1, válvula 5/2 mando neumático, reacción a resorte\":\"SB1, válvula 5/2 comando pneumático, retorno por mola\",\"SB1, válvula 5/2 biestable por impulsos neumáticos\":\"SB1, válvula 5/2 biestável por impulsos pneumáticos\",\"SB1, electroválvula 5/2 reacción neumática\":\"SB1, eletroválvula 5/2 retorno pneumático\",\"SB1, electroválvula 5/2 biestable por impulsos eléctricos\":\"SB1, eletroválvula 5/2 biestável por impulsos elétricos\",\"SB1, válvula 3/2 mando neumático, reacción neumática\":\"SB1, válvula 3/2 comando pneumático, retorno pneumático\",\"SB1, válvula 3/2 mando neumático, reacción a resorte\":\"SB1, válvula 3/2 comando pneumático, retorno por mola\",\"SB1, válvula 3/2 biestable por impulsos neumáticos\":\"SB1, válvula 3/2 biestável por impulsos pneumáticos\",\"SB1, electroválvula 3/2 reacción neumática\":\"SB1, eletroválvula 3/2  retorno pneumático\",\"SB1, electroválvula 3/2 biestable por impulsos eléctricos\":\"SB1, eletroválvula 3/2 biestável por impulsos elétricos\",\"Placa interfaz para regulación de velocidad\":\"Placa interface para regulagem de velocidade\",\"Válvula 3/2 mando neumático, reacción neumática\":\"Válvula 3/2 comando pneumático, retorno pneumático\",\"Válvula 3/2 mando neumático, reacción a resorte\":\"Válvula 3/2 comando pneumático, retorno por mola\",\"Válvula 3/2 biestable por impulsos neumáticos\":\"Válvula 3/2 biestável por impulsos pneumáticos\",\"Electroválvula 3/2 reacción neumática\":\"Eletroválvula 3/2 retorno pneumático\",\"Electroválvula 3/2 reacción a resorte\":\"Eletroválvula 3/2 retorno por mola\",\"Electroválvula 3/2 biestable por impulsos eléctricos\":\"Eletroválvula 3/2 biestável por impulsos elétricos\",\"Distribuidor de alimentación para 7 válvulas\":\"Distribuidor de alimentação para 7 válvulas\",\"Distribuidor de alimentación para 8 válvulas\":\"Distribuidor de alimentação para 8 válvulas\",\"Distribuidor de alimentación para 9 válvulas\":\"Distribuidor de alimentação para 9 válvulas\",\"Distribuidor de alimentación para 10 válvulas\":\"Distribuidor de alimentação para 10 válvulas\",\"Placa de cierre para distribuidor\":\"Placa de fechamento para distribuidor\",\"Base manifold para 9 válvulas\":\"Base manifold para 9 válvulas\",\"Placa de cierre para manifold\":\"Placa de fechamento para base manifold\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación\":\"Eletroválvula 5/2 retorno por mola com monitoramento direto de atuação\",\"Electroválvula 5/2 reacción a resorte con monitoreo directo de actuación y comando redundante\":\"Eletroválvula 5/2 retorno por mola com monitoramento direto de atuação e comando redundante\",\"Base de conexionado lateral ISO-VDMA 24345\":\"Base de montagem com conexão lateral ISO-VDMA 24345\",\"Base de conexionado inferior ISO-VDMA 24345\":\"Base de montagem com conexão inferior ISO-VDMA 24345\",\"Base de conexionado multiple ISO-VDMA 24345\":\"Base para montagem em manifold ISO-VDMA 24345\",\"Terminal de alimentación\":\"Terminal de alimentação\",\"Terminal ciego o intermedio\":\"Terminal cego ou intermediário\",\"Interfaz adaptación VS-1 / VS-2\":\"Interface de adaptação VS-1 / VS-2\",\"Válvula con mando a botón plástico Ø22 (Verde)\":\"Válvula comando por botão plástico Ø22 (Verde)\",\"Válvula con mando a botón plástico Ø22 (Rojo)\":\"Válvula comando por botão plástico Ø22 (Vermelho)\",\"Válvula con mando a botón plástico Ø22 (Negro)\":\"Válvula comando por botão plástico Ø22 (Preto)\",\"Válvula con mando a botón metálico Ø22 (Verde)\":\"Válvula comando por botão metálico Ø22 (Verde)\",\"Válvula con mando a botón metálico Ø22 (Rojo)\":\"Válvula comando por botão metálico Ø22 (Vermelho)\",\"Válvula con mando a botón metálico Ø22 (Negro)\":\"Válvula comando por botão metálico Ø22 (Preto)\",\"Válvula con mando golpe de puño plástico Ø22\":\"Válvula comando por botão cogumelo plástico Ø22\",\"Válvula con mando golpe de puño metálico Ø22\":\"Válvula comando por botão cogumelo metálico Ø22\",\"Válvula con mando botón rotante plástico Ø22\":\"Válvula comando por botão rotativo plástico Ø22\",\"Válvula con mando botón rotante metálico Ø22\":\"Válvula comando por botão rotativo metálico Ø22\",\"Válvula con mando golpe de puño plástico Ø22 con retorno manual\":\"Válvula comando por botão cogumelo plástico Ø22 com retorno manual\",\"Válvula con mando golpe de puño metálico Ø22 con retorno manual\":\"Válvula comando por botão cogumelo metálico Ø22 com retorno manual\",\"Válvula con mando a pulsador manual\":\"Válvula comando direto por pulsador manual\",\"Válvula con mando directo\":\"Válvula comando direto por pino\",\"Válvula con mando directo por esfera\":\"Válvula comando direto por esfera\",\"Válvula con mando por rodillo\":\"Válvula comando direto por rolete\",\"Válvula con mando por rodillo unidireccional\":\"Válvula comando direto por rolete unidirecional (gatilho)\",\"Válvula con mando por rodillo lateral\":\"Válvula comando direto por rolete lateral\",\"Válvula con mando por rodillo lateral regulable\":\"Válvula comando direto por rolete lateral regulável\",\"Válvula con mando por varilla elástica universal\":\"Válvula comando direto por vareta elástica universal\",\"Válvula con mando por varilla lateral regulable\":\"Válvula comando direto por vareta lateral regulável\",\"Válvula con mando perilla para tablero\":\"Válvula comando alavanca para painel\",\"Válvula con mando PUSH-PULL servicio liviano\":\"Válvula comando PUSH-PULL serviço leve\",\"Válvula con mando PUSH\":\"Válvula comando PUSH\",\"Válvula con mando botón corto para tablero (Rojo)\":\"Válvula comando botão curto para painel (Vermelho)\",\"Válvula con mando botón largo para tablero (Rojo)\":\"Válvula comando botão longo para painel (Vermelho)\",\"Válvula con mando botón rotante para tablero (Negro)\":\"Válvula comando botão rotativo para painel (Preto)\",\"Válvula con mando golpe de puño chico para tablero (Rojo)\":\"Válvula comando cogumelo pequeno para painel (Vermelho)\",\"Válvula con mando golpe de puño grande para tablero (Rojo)\":\"Válvula comando cogumelo grande para painel (Vermelho)\",\"Válvula con mando directo - Servicio liviano\":\"Válvula comando direto - Serviço leve\",\"Válvula con mando por rodillo - Servicio liviano\":\"Válvula comando por rolete - Serviço leve\",\"Válvula con mando por rodillo unidireccional - Servicio liviano\":\"Válvula comando por rolete unidirecional - Serviço leve\",\"Válvula con mando por rodillo metálico - Servicio pesado\":\"Válvula comando por rolete metálico - Serviço pesado\",\"Válvula con mando por gatillo metálico unidireccional - Servicio pesado\":\"Válvula comando por gatilho metálico unidirecional - Serviço pesado\",\"Válvula con mando a botón, reacción a resorte\":\"Válvula comando por botão, retorno por mola\",\"Válvula con mando a botón, reacción neumática\":\"Válvula comando por botão, retorno pneumático\",\"Válvula con mando a botón biestable PUSH-PULL\":\"Válvula comando por botão biestável PUSH-PULL\",\"Mando a palanca, biestable\":\"Comando por alavanca, biestável\",\"Mando a palanca, monoestable\":\"Comando por alavanca, monoestável\",\"Mando a palanca, centro cerrado, triestable\":\"Comando por alavanca, centro fechado, triestável\",\"Mando a palanca, centro abierto, triestable\":\"Comando por alavanca, centro aberto, triestável\",\"Mando a palanca, posición central estable, centro cerrado\":\"Comando por alavanca, centro fechado, posição central estável\",\"Mando a palanca, posición central estable, centro abierto\":\"Comando por alavanca, centro aberto, posição central estável\",\"Colizante de actuación manual\":\"Deslizante de atuação manual\",\"Mando a pedal, monoestable\":\"Comando por pedal, monoestável\",\"Mando a pedal, biestable\":\"Comando por peda, biestável\",\"Protección\":\"Proteção\",\"Mando a pedal, biestable con traba\":\"Comando por pedal biestável com trava\",\"Aire comprimido filtrado\":\"Ar comprimido filtrado\",\"Aire comprimido filtrado a 50µ, sin lubricación - Gases inertes\":\"Ar comprimido filtrado a 50µ, sem lubrificação - Gases inertes\",\"Aire comprimido filtrado a 50µ, con o sin lubricación - Gases inertes\":\"Ar comprimido filtrado a 50µ, com ou sem lubrificação - Gases inertes\",\"Aire comprimido filtrado - Gases inertes\":\"Ar comprimido filtrado - Gases inertes\",\"Aire comprimido filtrado (se recomienda lubricación) - Gases inertes\":\"Ar comprimido filtrado (recomenda-se lubrificação) - Gases inertes\",\"Cuerpo de Zamac, membrana de NBR\":\"Corpo em Zamac, membrana em NBR\",\"Cuerpo y distribuidor de aluminio, cierre frontal y otros sellos de NBR\":\"Corpo e distribuidor em aluminio, fechamento frontal e outras vedações em NBR\",\"Cuerpo de aluminio, guarniciones de poliuretano\":\"Corpo em aluminio, vedaçõs em poliuretano\",\"Cuerpo de zamac, bobina encapsulada en resina epoxi, tubo guía y tragante de latón y acero inoxidable\":\"Corpo em zamac, bobina encapsulada em resina epoxi, tubo guía e tragante em latão e aço inoxidável\",\"Cuerpo de Zamac, distribuidor de acero inoxidable, sellos de NBR\":\"Corpo em Zamac, distribuidor em aço inoxidável, vedações de NBR\",\"Cuerpo de aluminio anodizado, distribuidor de aluminio, sellos de NBR\":\"Corpo de aluminio anodizado, distribuidor de aluminio, vedações de NBR\",\"Cuerpo de aluminio, distribuidor de acero inoxidable, sellos de NBR\":\"Corpo em aluminio, distribuidor em aço inoxidável, vedações de NBR\",\"Cuerpo de Zamac, distribuidor de aluminio, sellos de NBR\":\"Corpo em Zamac, distribuidor em aluminio, vedações de NBR\",\"Cuerpo de aluminio, distribuidor de aluminio, sellos de NBR\":\"Corpo em aluminio, distribuidor em aluminio, vedações de NBR\",\"Cuerpo de Zamac, mandos metálicos y plásticos de ingeniería.\":\"Corpo de Zamac, comandos metálicos e plásticos de engenharia\",\"Cuerpo y corredera de aluminio, sellos de NBR\":\"Corpo e capa deslizante de aluminio, vedações de NBR\",\"Cuerpo de válvula de aluminio, distribuidor lapidado de resina acetálica\":\"Corpo da válvula em aluminio, distribuidor lapidado de resina acetálica\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio y sellos de NBR\":\"Corpo da válvula e pedal em zamac, distribuidor de aluminio e vedações de NBR\",\"Protección de chapa de acero.\":\"Proteção em chapa de aço.\",\"Cuerpo de válvula y pedal de zamac, distribuidor de aluminio, sellos de NBR, protección plástica\":\"Corpo de válvula e pedal em zamac, distribuidor de aluminio, vedações de NBR, proteção plástica\",\"rojo\":\"vermelho\",\"amarillo\":\"amarelo\",\"verde\":\"verde\",\"Serie VM15-B \":\"Série VM15-B \",\"4 posiciones de válvulas, simple solenoide\":\"4 posições de válvulas, simples solenóide\",\"6 posiciones de válvulas, simple solenoide\":\"6 posições de válvulas, simples solenóide\",\"8 posiciones de válvulas, simple solenoide\":\"8 posições de válvulas, simples solenóide\",\"10 posiciones de válvulas, simple solenoide\":\"10 posições de válvulas, simples solenóide\",\"12 posiciones de válvulas, simple solenoide\":\"12 posições de válvulas, simples solenóide\",\"4 posiciones de válvulas, doble solenoide\":\"4 posições de válvulas, duplo solenóide\",\"6 posiciones de válvulas, doble solenoide\":\"6 posições de válvulas, duplo solenóide\",\"8 posiciones de válvulas, doble solenoide\":\"8 posições de válvulas, duplo solenóide\",\"10 posiciones de válvulas, doble solenoide\":\"10 posições de válvulas, duplo solenóide\",\"Serie VM18-B \":\"Série VM18-B \",\"Accesorio de conexión\":\"Acessório de conexão\",\"Conector SUB-D 25\":\"Conector SUB-D 25\",\"Conector SUB-D 25 con cable 5m\":\"Conector SUB-D 25 com cabo de 5m\",\"Conector SUB-D 25 con cable 10m\":\"Conector SUB-D 25 com cabo de 10m\",\"Placa ciega eléctrica\":\"Placa cega elétrica\",\"Separador de presión\":\"Separador de pressão\",\"Soporte para riel DIN\":\"Suporte para trilho DIN\",\"Serie VM15-BSL\":\"Série VM15-BSL\",\"Serie VM18-BSL\":\"Série VM18-BSL\",\"Serie VM15-SI\":\"Série VM15-SI\",\"4 posiciones de válvulas, con alim. pilot. interno\":\"4 posições de válvulas, com alim. pilot. interna\",\"6 posiciones de válvulas, con alim. pilot. interno\":\"6 posições de válvulas, com alim. pilot. interna\",\"8 posiciones de válvulas, con alim. pilot. interno\":\"8 posições de válvulas, com alim. pilot. interna\",\"10 posiciones de válvulas, con alim. pilot. interno\":\"10 posições de válvulas, com alim. pilot. interna\",\"12 posiciones de válvulas, con alim. pilot. interno\":\"12 posições de válvulas, com alim. pilot. interna\",\"4 posiciones de válvulas, con alim. pilot. externo\":\"4 posições de válvulas, com alim. pilot. externa\",\"6 posiciones de válvulas, con alim. pilot. externo\":\"6 posições de válvulas, com alim. pilot. externa\",\"8 posiciones de válvulas, con alim. pilot. externo\":\"8 posições de válvulas, com alim. pilot. externa\",\"10 posiciones de válvulas, con alim. pilot. externo\":\"10 posições de válvulas, com alim. pilot. externa\",\"12 posiciones de válvulas, con alim. pilot. externo\":\"12 posições de válvulas, com alim. pilot. externa\",\"Soporte fijación a panel\":\"Suporte de fixação para painel\",\"4 posiciones de válvulas, simple solenoide, 4I/4O\":\"4 posições de válvulas, simples solenóide, 4I/4O\",\"2 posiciones de válvulas, doble solenoide, 4I/4O\":\"2 posições de válvulas, duplo solenóide, 4I/4O\",\"4 posiciones de válvulas, simple solenoide, 4I/4O con alim. ext.\":\"4 posições de válvulas, simples solenóide, 4I/4O com alim. ext.\",\"2 posiciones de válvulas, doble solenoide, 4I/4O con alim. ext.\":\"2 posições de válvulas, duplo solenóide, 4I/4O com alim. ext.\",\"4 posiciones de válvulas, simple solenoide, 8I/4O\":\"4 posições de válvulas, simples solenóide, 8I/4O\",\"4 posiciones de válvulas, simple solenoide, 8I/4O con alim. ext.\":\"4 posições de válvulas, simples solenóide, 8I/4O com alim. ext.\",\"8 posiciones de válvulas, simple solenoide, 8I/8O\":\"8 posições de válvulas, simples solenóide, 8I/8O\",\"8 posiciones de válvulas, simple solenoide, 8I/8O con alim. ext.\":\"8 posições de válvulas, simples solenóide, 8I/8O com alim. ext.\",\"4 posiciones de válvulas, doble solenoide, 8I/8O\":\"4 posições de válvulas, duplo solenóide, 8I/8O\",\"4 posiciones de válvulas, doble solenoide, 8I/8O con alim. ext.\":\"4 posições de válvulas, duplo solenóide, 8I/8O com alim. ext.\",\"8 posiciones de válvulas, simple solenoide, 16I/8O\":\"8 posições de válvulas, simples solenóide, 16I/8O\",\"8 posiciones de válvulas, simple solenoide, 16I/8O con alim. ext.\":\"8 posições de válvulas, simples solenóide, 16I/8O com alim. ext.\",\"Cable AS-i amarillo\":\"Cabo AS-i amarelo\",\"Cable AS-i negro\":\"Cabo AS-i preto\",\"Conector M8 para entradas\":\"Conector M8 para entradas\",\"16 posiciones de válvulas, simple solenoide\":\"16 posições de válvulas, simples solenóide\",\"12 posiciones de válvulas, doble solenoide\":\"12 posições de válvulas, duplo solenóide\",\"16 posiciones de válvulas, doble solenoide\":\"16 posições de válvulas, duplo solenóide\",\"Conector BUS IN\":\"Conector BUS IN\",\"Conector BUS OUT\":\"Conector BUS OUT\",\"Conector Power\":\"Conector Power\",\"Serie VM15-B\":\"Série VM15-B\",\"Serie VM18-B\":\"Série VM18-B\",\"Aire comprimido filtrado, con o sin lubricación\":\"Ar comprimido filtrado, com ou sem lubrificação\",\"Cuerpo de aluminio, tornillo de registro de latón, sellos de NBR\":\"Corpo de aluminio, parafuso de ajuste de latão, vedações de NBR\",\"Serie VA, en linea\":\"Série VA, em linha\",\"Regulador de caudal unidireccional\":\"Regulador de vazão unidirecional\",\"Cuerpo de Zamac, tornillo de registro de latón, sellos de NBR\":\"Corpo de Zamac, parafuso de ajuste de latão, vedações de NBR\",\"Regulador de caudal bidireccional\":\"Regulador de vazão bidirecional\",\"Regulador de caudal bidireccional \":\"Regulador de vazão bidirecional\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, tornillo de registro de latón, sellos de NBR\":\"Corpo de polímero HR com alta resistência química e ao impacto, parafuso de ajuste de latão, vedações de NBR\",\"Serie RVR e instantánea, tipo banjo orientable\":\"Série RVR e instantãnea, tipo cotovelo orientável\",\"Regulador de velocidad, banjo de precisión con conector instantáneo\":\"Regulador de velocidade de precisão, tipo cotovelo, com conexão instantânea\",\"Regulador de velocidad, banjo de precisión con conector instantáneo, con regulación en la alimentación\":\"Regulador de velocidade de precisão, tipo cotovelo, com conexão instantânea, com regulagem na alimentação.\",\"Regulador de velocidad, banjo orientable con rosca hembra\":\"Regulador de velocidade, tipo cotovelo orientável com rosca fêmea.\",\"Regulador de velocidad, banjo orientable en 2 ejes con conector instantáneo\":\"Regulador de velocidade,  tipo cotovelo orientável em 2 eixos, com conexão instantânea.\",\"Regulador de velocidad, banjo RVI con conector instantáneo\":\"Regulador de velocidade, tipo cotovelo  modelo RVI, com conexão instantânea.\",\"Regulador de velocidad, banjo RVI con conector instantáneo, con regulación en la alimentación\":\"Regulador de velocidade, tipo cotovelo  modelo RVI, com conexão instantânea, com regulagem na alimentação.\",\"Serie instantánea, en línea\":\"Série instantãnea, em línha\",\"Regulador de caudal unidireccional de precisión\":\"Regulador de vazão unidirecional de precisão\",\"Regulador de caudal unidireccional RVL\":\"Regulador de vazão unidirecional RVL\",\"Cuerpo de Zamac, sellos de NBR, silenciador de bronce sinterizado\":\"Corpo de Zamac, vedações de NBR, silenciador de bronze sinterizado\",\"Serie ERS\":\"Série ERS\",\"Con silenciador incorporado\":\"Com silenciador incorporado\",\"Cuerpo de Zamac, sellos de NBR\":\"Corpo de Zamac, vedações de NBR\",\"Serie VA\":\"Série VA\",\"Con boca de escape roscada\":\"Com conexões roscada na entrada, saída e escape.\",\"Modelo con rosca hembra\":\"Modelo com rosca fêmea\",\"Cuerpo de polímero HR con alta resistencia química y al impacto, sellos de NBR\":\"Corpo de polímero HR com alta resistência química e ao impacto, vedações de NBR\",\"Serie instantánea\":\"Série instantânea\",\"Modelo con conector instantáneo\":\"Modelo com conexão instantânea\",\"Válvula función O\":\"Válvula função OU\",\"Serie para base\":\"Série para base\",\"Válvula función Y\":\"Válvula função E\",\"Válvula función NO\":\"Válvula função NÃO\",\"Base de conexionado modelo simple con conexión trasera\":\"Base de montagem modelo simples com conexão traseira\",\"Base de conexionado unitaria o extremo de manifold\":\"Base de montagem unitária ou extremo de manifold\",\"Base de conexionado intermedio para manifold\":\"Base de montagem intermediária para manifold\",\"Serie enchufable instantánea\":\"Série plugável instantánea\",\"Cuerpo de latón y polímero HR, sellos de NBR\":\"Corpo de latão e polímero HR, vedações de NBR\",\"Sensores por ausencia de presión\":\"Sensores por ausência de pressão\",\"Cuerpo de aluminio, sellos de NBR\":\"Corpo de aluminio, vedações de NBR\",\"Válvulas de no retorno pilotadas\":\"Válvulas de retenção pilotadas\",\"Aire comprimido filtrado, sin lubricación\":\"Ar comprimido filtrado sem lubrificação\",\"Temporizadores \":\"Temporizadores \",\"Temporizador 0,1...10 seg. \":\"Temporizador 0,1...10 seg. \",\"Temporizador 0,1...30 seg.\":\"Temporizador 0,1...30 seg.\",\"Generador de impulso único\":\"Gerador de pulso único\",\"Generador de impulso único 0,4 seg.\":\"Gerador de pulso único 0,4 seg.\",\"Accesorios para modulos\":\"Acessórios para módulos\",\"Comando bimanual\":\"Comando bimanual\",\"Aire comprimido filtrado, con o sin lubricación. Gases o líquidos neutros\":\"Ar comprimido filtrado, com ou sem lubrificação. Gases ou líquidos neutros\",\"Presostatos regulables\":\"Pressostatos reguléveis\",\"Presostato regulable para base\":\"Pressostato regulável para base\",\"Presostato regulable, 0.3...1.2bar\":\"Pressostato regulável, 0.3...1.2bar\",\"Cuerpo de aleación de zinc inyectado, diafragma de NBR, contacto bimetálico de plata.\":\"Corpo em liga de zinco injetado, diafragma de NBR, contacto bimetálico de prata.\",\"Presostato regulable a diafragma, 1...16bar\":\"Pressostato regulável com diafragma, 1...16bar\",\"Aire comprimido filtrado, fluidos no corrosivos y no inflamables\":\"Ar comprimido filtrado, fluidos não corrosivos e não inflamáveis\",\"Sensor de presión digital, 0…10bar\":\"Sensor de pressão digital, 0…10bar\",\"Sensor de presión programable, 0…6bar\":\"Sensor de pressão programável, 0…6bar\",\"Indicadores de presión\":\"Indicadores de pressão\",\"Indicador de presencia de presión neumática. Rojo\":\"Indicador de presença de pressão pneumática. Vermelho\",\"Indicador de presencia de presión neumática. Verde\":\"Indicador de presença de pressão pneumática. Verde\",\"Indicador de presencia de presión neumática. Amarillo\":\"Indicador de presença de pressão pneumática. Amarelo\",\"Indicador de presión digital\":\"Indicador de pressão digital\",\"Aire comprimido.\":\"Ar comprimido\",\"Bronce sinterizado y aluminio.\":\"Bronze sinterizado e aluminio.\",\"Serie SBR\":\"Série SBR\",\"Resina acetálica azul y granos fonoabsorbentes.\":\"Resina acetálica azul e grãos fonoabsorventes.\",\"Serie SPL\":\"Série SPL\",\"Chapa pintada y fibras de poliéster.\":\"Chapa pintada e fibras de poliéster.\",\"Serie pesada\":\"Série pesada\",\"Cuerpo de aluminio, elemento silenciador de bronce sinterizado, tornillo regulador de latón y cubierta de resina acetálica.\":\"Corpo de aluminio, elemento silenciador de bronze sinterizado, parafuso de regulagem de latão e capa de resina acetálica.\",\"Eyectores básicos SBP\":\"Ejetores básicos SBP\",\"Con conexión instantanea\":\"Com conexão instantânea\",\"Con conexión roscada\":\"Com conexão roscada\",\"Eyectores compactos SCPS - SCPSi\":\"Ejetores compactos SCPS - SCPSi\",\"Normal abierto\":\"Normal aberto\",\"Normal abierto, con IO Link\":\"Normal aberto, com IO Link\",\"Cable conector 5 polos M12\":\"Cabo conector 5 polos M12\",\"Eyectores compactos SCPi\":\"Ejetores compactos SCPi\",\"Con válvula piloto NA\":\"Com válvula piloto NA\",\"Con válvula piloto NC\":\"Com válvula piloto NF\",\"Con válvula piloto IMP\":\"Com válvula piloto IMP\",\"Eyectores compactos SXPi\":\"Ejetores compactos SXPi\",\"Cable conector 8 polos M12\":\"Cabo conector 8 polos M12\",\"Eyectores multietapa SEM\":\"Ejetores multietapa SEM\",\"SEM 25-SDA\":\"SEM 25-SDA\",\"SEM 50-SDA\":\"SEM 50-SDA\",\"SEM 100-SDA\":\"SEM 100-SDA\",\"Vacuómetro Ø40\":\"Vacuômetro Ø40\",\"Eyectores multietapa SEM-C\":\"Ejetores multietapa SEM-C\",\"Conector para vacuostato\":\"Conector para vacuostato\",\"Conector para válvula\":\"Conector para válvula\",\"Ventosas planas PFYN\":\"Ventosas planas PFYN\",\"con boquilla rosca macho\":\"com conexão rosca macho\",\"con boquilla rosca hembra\":\"com conexão rosca fêmea\",\"Ventosas planas SPU\":\"Ventosas planas SPU\",\"SPU 100 - NBR\":\"SPU 100 - NBR\",\"SPU 125 - NBR\":\"SPU 125 - NBR\",\"SPU 160 - NBR\":\"SPU 160 - NBR\",\"SPU 210 - NBR\":\"SPU 210 - NBR\",\"SPU 250 - NBR\":\"SPU 250 - NBR\",\"SPU 300 - NBR\":\"SPU 300 - NBR\",\"Ventosas planas SPK\":\"Ventosas planas SPK\",\"SPK 55 - EPDM\":\"SPK 55 - EPDM\",\"SPK 80 - EPDM\":\"SPK 80 - EPDM\",\"SPK 110 - EPDM\":\"SPK 110 - EPDM\",\"SPK 160 - EPDM\":\"SPK 160 - EPDM\",\"SPK 200 - EPDM\":\"SPK 200 - EPDM\",\"SPK 250 - EPDM\":\"SPK 250 - EPDM\",\"Ventosas planas ovaladas SGON\":\"Ventosas planas ovais SGON\",\"Ventosas de fuelle FSGA (1.5 pliegues)\":\"Ventosas tipo fole FSGA (1.5 vincos)\",\"Ventosas de fuelle FSG (2.5 pliegues)\":\"Ventosas tipo fole FSG (2.5 vincos)\",\"Ventosas para chapa redondas planas SAF\":\"Ventosas planas SAF\",\"Ventosas para chapa redondas tipo campana SAXM\":\"Ventosas para chapa SAXM\",\"Ventosas para chapa redondas con fuelle SAB \":\"Ventosas tipo fole SAB (1,5 vincos)\",\"SAB 22 - Rosca hembra\":\"SAB 22 - Rosca fêmea\",\"SAB 30 - Rosca hembra\":\"SAB 30 - Rosca fêmea\",\"SAB 30 - Con adaptador rectangular\":\"SAB 30 - Com adaptador retangular\",\"SAB 40 - Rosca hembra\":\"SAB 40 - Rosca fêmea\",\"SAB 40 - Con adaptador rectangular\":\"SAB 40 - Com adaptador retangular\",\"SAB 50 - Rosca hembra\":\"SAB 50 - Rosca fêmea\",\"SAB 50 - Con adaptador rectangular\":\"SAB 50 - Com adaptador retangular\",\"SAB 60 - Rosca hembra\":\"SAB 60 - Rosca fêmea\",\"SAB 60 - Con adaptador rectangular\":\"SAB 60 - Com adaptador retangular\",\"SAB 80 - Rosca hembra\":\"SAB 80 - Rosca fêmea\",\"SAB 80 - Con adaptador rectangular\":\"SAB 80 - Com adaptador retangular\",\"SAB 100 - Rosca hembra\":\"SAB 100 - Rosca fêmea\",\"SAB 100 - Con adaptador rectangular\":\"SAB 100 - Com adaptador retangular\",\"SAB 125 - Rosca hembra\":\"SAB 125 - Rosca fêmea\",\"SAB 125 - Con adaptador rectangular\":\"SAB 125 - Com adaptador retangular\",\"Ventosas para chapa ovaladas planas SAOF\":\"Ventosas ovais planas SAOF\",\"Ventosas para chapa ovaladas con fuelle SAOB\":\"Ventosas ovais tipo fole SAOB\",\"Ventosas forma campana SAOG\":\"Ventosas tipo oval SAOG\",\"Ventosas para láminas y papel SGPN\":\"Ventosas para lâminas e papel SGPN\",\"Ventosas para embalaje SPB4\":\"Ventosas tipo fole SPB4 (4,5 vincos)\",\"Ventosas para embalaje SPB4-F\":\"Ventosas tipo fole SPB4-F (4,5 vincos)\",\"Ventosas para embalaje SPB1\":\"Ventosas tipo fole SPB1 (1,5 vincos)\",\"Ventosas magnéticas SGM\":\"Ventosas magnéticas SGM\",\"Garra magnética\":\"Garra magnética\",\"Elementos de fijación para ventosas Flexolink FLK\":\"Elementos de fixação para ventosas Flexolink FLK\",\"Unión articulada\":\"União articulada\",\"Articulaciones esféricas KGL\":\"Articulações esféricas KGL\",\"Articulación esférica\":\"Articulação esférica\",\"Biela elástica FSTE y FSTE-VG\":\"Compensador de nível FSTE e FSTE-VG\",\"Estandar\":\"Padrão\",\"Antigiro\":\"Antigiro\",\"Biela elástica heavy duty FSTE-HD y FSTA-HD\":\"Compensador de nível heavy duty FSTE-HD e FSTA-HD\",\"Válvulas de flujo SVK y SVKG\":\"Válvulas de fluxo SVK e SVKG\",\"Rosca H lado ventosa\":\"Rosca fêmea lado ventosa\",\"Rosca M lado ventosa\":\"Rosca macho lado ventosa\",\"Válvulas AZ5 y AZ7 - 3/2\":\"Válvulas AZ5 e AZ7 - 3/2\",\" Filtros de vacío tipo taza VFT\":\"Filtros de vácuo tipo taça VFT\",\"Filtro tipo taza, 100 µm.\":\"Filtro tipo copo, 100 µm.\",\"Vacuómetros VAM\":\"Vacuômetros VAM\",\"Vacuómetro Ø40 con conexión trasera\":\"Vacuômetro Ø40 com conexão traseira\",\"Vacuómetro Ø63 con conexión inferior\":\"Vacuômetro Ø63 com conexão inferior\",\"Vacuómetro Ø67 para montaje en panel\":\"Vacuômetro Ø67 para montagem em painel\",\"Vacuostatos regulables\":\"Vacuostatos reguláveis\",\"Vacuostato regulable, -0,3…-0,8bar\":\"Vacuostato regulável, -0,3…-0,8bar\",\"Sensor de vacío programable, -1...0bar\":\"Sensor de vácuo programável, -1...0bar\",\"Vacuostato electrónico digital con display\":\"Vacuostato electrônico digital com display\",\"Ficha con cable 2m\":\"Conector com cabo 2m\",\"Serie compacto\":\"Série compacto\",\"MCRQ-16, con amortiguador de choque\":\"MCRQ-16, com amortecedor de choque\",\"MCRQ-20, con amortiguador de choque\":\"MCRQ-20, com amortecedor de choque\",\"MCRQ-25, con amortiguador de choque\":\"MCRQ-25, com amortecedor de choque\",\"MCRQ-32, con amortiguador de choque\":\"MCRQ-32, com amortecedor de choque\",\"MCRQ-40, con amortiguador de choque\":\"MCRQ-40, com amortecedor de choque\",\"MCRQ-16, con ajuste fino por tornillo\":\"MCRQ-16, com ajuste fino por parafuso\",\"MCRQ-20, con ajuste fino por tornillo\":\"MCRQ-20, com ajuste fino por parafuso\",\"MCRQ-25, con ajuste fino por tornillo\":\"MCRQ-25, com ajuste fino por parafuso\",\"MCRQ-32, con ajuste fino por tornillo\":\"MCRQ-32, com ajuste fino por parafuso\",\"MCRQ-40, con ajuste fino por tornillo\":\"MCRQ-40, com ajuste fino por parafuso\",\"Pinzas angulares MCHA \":\"Garras angulares MCHA \",\"MCHA-12\":\"MCHA-12\",\"MCHA-16\":\"MCHA-16\",\"MCHA-20\":\"MCHA-20\",\"MCHA-25\":\"MCHA-25\",\"Pinzas radiales MCHY \":\"Garras radiais MCHY \",\"MCHY-10\":\"MCHY-10\",\"MCHY-16\":\"MCHY-16\",\"MCHY-20\":\"MCHY-20\",\"MCHY-25\":\"MCHY-25\",\"Pinzas paralelas de dos dedos MCHC \":\"Garras paralelas de dois dedos MCHC \",\"MCHC-10\":\"MCHC-10\",\"MCHC-16\":\"MCHC-16\",\"MCHC-20\":\"MCHC-20\",\"MCHC-25\":\"MCHC-25\",\"Pinzas de tres dedos MCHG2 \":\"Garras de tres dedos MCHG4\",\"MCHG2-16\":\"MCHG2-16\",\"MCHG2-25\":\"MCHG2-25\",\"MCHG2-32\":\"MCHG2-32\",\"Interruptores magnéticos serie RCE\":\"Interruptores magnéticos série RCE\",\"Interruptores magnéticos serie RPE\":\"Interruptores magnéticos série RPE\",\"Efecto Hall PNP, con conector M8x1\":\"Efeito Hall PNP, com conector M8x1\",\"Interruptores magnéticos serie RT\":\"Interruptores magnéticos série RT\",\"Interruptores magnéticos serie RTP\":\"Interruptores magnéticos série  RTP\",\"Serie TAR\":\"Série TAR\",\"TAR 160 - 8 divisiones\":\"TAR 160 - 8 divisões\",\"TAR 270 - 4-6-8-12-24 divisiones\":\"TAR 270 - 4-6-8-12-24 divisões\",\"Serie QBM0\":\"Série QBM0\",\"Soporte de fijacion para R o FR\":\"Suporte de fixação para unidade R ou FR\",\"Soporte de fijacion para F o L\":\"Suporte de fixação para unidade F ou L\",\"Kit para unión de 2 unidades\":\"Kit para união de 2 unidades\",\"Manómetro Ø 25mm R\":\"Manômetro Ø 25mm R\",\"Serie QBM0, QBM1, QBM4\":\"Série QBM0, QBM1, QBM4\",\"Manómetro Ø 40mm R\":\"Manômetro Ø 40mm R\",\"Manómetro Ø 50mm para tablero\":\"Manômetro Ø 50mm para tablero\",\"Serie QBM0, QBM1, QBM4, QBS6\":\"Série QBM0, QBM1, QBM4, QBS6\",\"Serie QBM1\":\"Série QBM1\",\"Brida de conexionado (par).\":\"Kit adaptador de conexão (par).\",\"Elementos de unión de módulos \":\"Elementos para união de módulos \",\"Elementos de unión de módulos c/ soporte trasero plastico\":\"Elementos de união de módulos c/ suporte plástico traseiro\",\"Soporte trasero metálico\":\"Suporte traseiro metálico\",\"Bloqueo de regulador para candado\":\"Bloqueio com cadeado para regulador \",\"Serie QBM1, QBM4\":\"Série QBM1, QBM4\",\"Manómetro cuadrado\":\"Manômetro quadrado\",\"Sensor de presión\":\"Sensor de pressão\",\"Acople para sensor de presión y mascarilla\":\"Acoplamento para sensor de pressão e mascarilha\",\"Cable 2m para sensor con conector M8 - 3 pines\":\"Cabo 2m para sensor com conector M8 - 3 pinos\",\"Acople roscado para manómetro\":\"Acoplamento roscado para manômetro\",\"Serie QBM4\":\"Série QBM4\",\"Elementos de unión de módulos c/ soporte trasero plástico\":\"Elementos de união de módulos c/ suporte plástico traseiro\",\"Cable c/conector M12 - 5 pines\":\"Cabo c/conector M12 - 5 pinos\",\"Serie QBS6\":\"Série QBS6\",\"Manómetro Ø 50mm R\":\"Manômetro Ø 50mm R\",\"Conexión roscada G 1/8\\\" para vasos\":\"Conexão roscada G 1/8\\\" para copos\",\"Serie QBS6, QBS9\":\"Série QBS6, QBS9\",\"Serie QBS9\":\"Série QBS9\",\"Soporte de fijación F o R\":\"Suporte de fixação para unidade  F ou R\",\"Serie CN\":\"Série CN\",\"Amplificador neumático de presión.\":\"Amplificador pneumático de pressão.\",\"Unidad brida intermedia\":\"Unidade derivação intermediária\",\"Serie QBM1 G1/4\\\"\":\"Série QBM1 G1/4\\\"\",\"Unidad brida intermedia con no retorno incorporado\":\"Unidade derivação intermediária com retenção\",\"Serie QBM4 G1/2\\\"\":\"Série QBM4 G1/2\\\"\",\"Serie QBS6 G1\\\"\":\"Série QBS6 G1\\\"\",\"Manual, con vaso incluido\":\"Manual, com copo incluso\",\"Semiautomático, con vaso incluido\":\"Semiautomático, com copo incluso\",\"Automático por flotador MINI, con vaso incluido\":\"Automático por boia MINI, com copo incluso\",\"Automático por flotador de montaje externo, con vaso incluido\":\"Automático por boia de montagem externa, com copo incluso\",\"Serie QBM0, QBM1, QBM4, QBS6, QBS9\":\"Série QBM0, QBM1, QBM4, QBS6, QBS9\",\"Automático temporizado, solo el drenaje\":\"Automático temporizado, somente a drenagem\",\"Bloque temporizador digital de repuesto\":\"Bloco temporizador digital de reposição\",\"Manual / semiautomático, solo el drenaje\":\"Manual / semiautomático, somente a drenagem\",\"Automático por flotador de montaje externo, solo el drenaje\":\"Automático por boia de montagem externa, somente a drenagem\",\"Adaptador para drenaje automático temporizado\":\"Adaptador para drenagem automático temporizado\",\"Automático por flotador MAXI, solo el drenaje\":\"Automático por boia MAXI, somente a drenagem\",\"Unidad filtro submicrónico\":\"Unidade filtro submicrônico\",\"Unidad filtro de carbón activado\":\"Unidade filtro de carvão ativado\",\"P entrada: 6bar; Δp= 1bar\":\"P entrada: 6bar; Δp= 1bar\",\"Módulo presostato regulable\":\"Módulo pressostato regulável\",\"Módulo sensor de presión digital\":\"Módulo sensor de pressão digital\",\"Cable de 2m c/conector hembra M8 - 3 pines\":\"Cabo de 2m c/conector fêmea M8 - 3 pinos\",\"Unidad filtro de sustancias higroscopicas o depuradoras\":\"Unidade filtro de sustâncias higroscopicas ou depuradoras\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN, presostato\":\"Válvula corte com cadeado, unidade FR, válvula presurização e descarga de comando eletropneumático, válvula presurização progressiva comando pneumático, pressostato\",\"Válvula corte para candado, unidad FR+L, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN\":\"Válvula corte com cadeado, unidade FR+L, válvula presurização e descarga de comando eletropneumático, válvula presurização progressiva comando pneumático\",\"Válvula corte para candado, unidad FR, brida intermedia con no retorno, presostato, unidad  L\":\"Válvula corte com cadeado, unidade FR, derivação intermediária com retenção, pressostato, unidade  L\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, válvula presurización progresiva MN\":\"Válvula corte com cadeado, unidade FR, válvula presurização e descarga de comando eletropneumático, válvula presurização progressiva comando pneumático\",\"Válvula corte para candado, unidad FR, válvula presurización y descarga de mando eléctrico, sensor de presión digital\":\"Válvula corte com cadeado, unidade FR, válvula presurização e descarga de comando eletropneumático, sensor de pressão digital\",\"Válvula corte para candado, unidad FR, unidad L\":\"Válvula corte com cadeado, unidade FR, unidade L\",\"P entrada: 6,3bar; Δp= 1bar\":\"P entrada: 6,3bar; Δp= 1bar\",\"Unidad filtro de tratamiento del aire\":\"Unidade filtro para tratamento de ar\",\"Serie QBS9 G2\\\"\":\"Série QBS9 G2\\\"\",\"Unidad filtro, regulador más lubricador\":\"Unidade filtro + regulador + lubricador\",\"Unidad filtro-regulador\":\"Unidade filtro-regulador\",\"P entrada: 8bar; P regulada: 6,3bar; Δp= 1bar\":\"P entrada: 8bar; P regulada: 6,3bar; Δp= 1bar\",\"Unidad filtro-regulador más lubricador\":\"Unidade filtro-regulador + lubrificador\",\"Unidad lubricador\":\"Unidade lubrificador\",\"Unidad regulador, para linea\":\"Unidade regulador, para montagem em linha\",\"Unidad regulador, para tablero\":\"Unidade regulador, para montagem em painel\",\"Unidad regulador, cuerpo metálico\":\"Unidade regulador, com corpo metálico\",\"Unidad regulador, comando a distancia\":\"Unidade regulador, comando a distância\",\"P entrada: 6bar; P regulada: 1,5bar; Δp= 0,2bar\":\"P entrada: 6bar; P regulada: 1,5bar; Δp= 0,2bar\",\"Serie QBM4 G1/4\\\"\":\"Série QBM4 G1/4\\\"\",\"Unidad regulador, de instrumentación \":\"Unidade regulador, de instrumentação\",\"Válvula de corte para candado\":\"Válvula de corte com cadeado\",\"Válvulas de corte y descarga\":\"Válvulas de corte e descarga\",\"Válvulas de presurización progresiva, mando neumático\":\"Válvulas de presurização progressiva, comando pneumático\",\"Válvulas de presurización progresiva, mando eléctrico\":\"Válvulas de presurização progressiva, comando eletropneumático\",\"mando neumático\":\"comando pneumático\",\"mando eléctrico\":\"comando eletropneumático\",\" mando eléctrico\":\"comando eletropneumático\",\"Válvula de presurización y descarga mando eléctrico\":\"Válvula de presurização e descarga comando eletropneumático\",\"Válvula de presurización y descarga mando neumático\":\"Válvula de presurização e descarga comando pneumático\",\"Válvula de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión\":\"Válvula de presurização e descarga comando eletropneumático com monitoramento de atuação por sensor de pressão\",\"Válvula de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión + válvula de presurización progresiva MN\":\"Válvula de presurização e descarga comando eletropneumático com monitoramento de atuação por sensor de pressão + válvula de presurização progressiva comando pneumático\",\"Válvulas de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión y comando redundante\":\"Válvulas de presurização e descarga comando eletropneumático com monitoramento de atuação por sensor de pressão e comando redundante\",\"Válvulas de presurización y descarga mando eléctrico con monitoreo de actuación por sensor de presión y comando redundante + válvula de presurización progresiva MN\":\"Válvulas de presurização e descarga comando eletropneumático com monitoramento de atuação por sensor de pressão e comando redundante + válvula de presurização progressiva comando pneumático\",\"Accesorios\":\"Acessórios\",\"Buje de reducción\":\"Bucha de redução\",\"Niple\":\"Niple\",\"Cupla\":\"Luva\",\"Tapón roscado con hexágono interno\":\"Tapão roscado com sextavado interno\",\"Distribuidor de 4 caras (cruz)\":\"Distribuidor de 4 saídas (cruz)\",\"Bloque distribuidor múltiple\":\"Bloco distribuidor múltiplo\",\"Series 458\":\"Séries 458\",\"Tapón roscado\":\"Tampão roscado\",\"Pasachapa\":\"Passachapa\",\"Cuerpo roscado macho\":\"Engate rápido com rosca macho\",\"Cuerpo para manguera\":\"Engate rápido com espeigão para mangueira\",\"Espiga roscada macho\":\"Espiga com rosca macho\",\"Espiga roscada macho, con obturación\":\"Espiga com rosca macho, com retenção\",\"Espiga para manguera\":\"Espiga para mangueira\",\"Cuerpo de latón niquelado, polímero HR (alta resistencia química y al impacto), arandela de retención de acero inoxidable, juntas de NBR.\":\"Corpo de latão niquelado, polímero HR (alta resistência química e ao impacto), pinça retenção de aço inoxidável, vedações de NBR.\",\"Series 431\":\"Séries 431\",\"Aire comprimido\":\"Ar comprimido\",\"Conector recto rosca G\":\"Conexão reta rosca G\",\"Conector orientable a 90° rosca G\":\"Conexão orientável a 90° rosca G\",\"Conector codo oscilante (0-270°) rosca G\":\"Conexão cotovelo oscilante (0-270°) rosca G\",\"Cuerpo de polímero HR (alta resistencia química y al impacto), arandela de retención de acero inoxidable, juntas de NBR.\":\"Corpo de polímero HR (alta resistência química e ao impacto), pinça retenção de aço inoxidável, vedações de NBR.\",\"Codo igual\":\"Cotovelo igual\",\"Conector T orientable rosca G\":\"Conexão T orientável rosca G\",\"Conector T igual\":\"Conexão T igual\",\"Unión doble hembra\":\"União dupla fêmea \",\"Reductor para tubo\":\"Redutor para tubo\",\"Agrandador para tubo\":\"Ampliador para tubo\",\"Cuerpo de latón niquelado y resina PBT, arandela de retención de acero inoxidable, juntas de NBR.\":\"Corpo de latão niquelado e resina PBT, pinça de retenção de aço inoxidável, vedações de NBR.\",\"Series 441 y 451\":\"Séries 441 e 451\",\"Cuerpo de resina PBT, arandela de retención de acero inoxidable, juntas de NBR.\":\"Corpo de resina PBT, pinça de retenção de aço inoxidável, vedações de NBR.\",\"Conector orientable a 45° rosca G\":\"Conexão orientável a 45° rosca G\",\"Codo hembra universal rosca G\":\"Cotovelo fêmea universal rosca G\",\"Conector cruz igual\":\"Conexão cruz igual\",\"Cuerpo de latón niquelado.\":\"Corpo de latão niquelado.\",\"Cupla doble macho\":\"União duplo macho\",\"Conector Y (3 bocas hembra)\":\"Conexão Y (3 bocas fêmea)\",\"Conector Y (2 bocas hembra, 1 macho)\":\"Conexão Y (2 bocas fêmea, 1 macho)\",\"Conector multi-T\":\"Distribuidor multi-T\",\"Resina PBT\":\"Resina PBT\",\"Tapón enchufable\":\"Tampão plugável\",\"Cuerpo de latón niquelado y resina PBT, arandela de retención de acero inoxidable, juntas de NBR, capa de PTFE (en rosca cónica).\":\"Corpo de latão niquelado e resina PBT, pinça de retenção de aço inoxidável, vedante da rosca em PTFE (rosca cônica).\",\"Series 451\":\"Séries 451\",\"Conector recto rosca R\":\"Conexão reta rosca R\",\"Conector orientable a 90° rosca R\":\"Conexão orientável a 90° rosca R\",\"Conector T orientable rosca R\":\"Conexão T orientável rosca R\",\"Cuerpo y pinza de acero inoxidable 316L, sellos de FKM.\":\"Corpo e pinça de aço inoxidável 316L, vedações de FKM.\",\"Series 439\":\"Séries 439\",\"Cuerpo de acero inoxidable 316L, pinza de acero inoxidable 303, sellos de FKM.\":\"Corpo de aço inoxidável 316L, pinça de aço inoxidável 303, vedações de FKM.\",\"Cuerpo, arandela y pinza de latón con niquelado químico, sellos de NBR.\":\"Corpo, arruela e pinça de latão com niquelado químico, vedações de NBR.\",\"Series 446\":\"Séries 446\",\"Cuerpo, tuerca y virola de latón.\":\"Corpo, porca e virola de latão.\",\"Series 401\":\"Séries 401\",\"Aire comprimido, fluidos industriales no corrosivos.\":\"Ar comprimido, fluídos industriais não corrosivos.\",\"Conector orientable a 90° (banjo) rosca G\":\"Conexão orientável a 90° (cotovelo) rosca G\",\"Conector codo rosca R\":\"Conexão cotovelo rosca R\",\"Conector T lateral rosca R\":\"Conexão T lateral rosca R\",\"Conector T central rosca R\":\"Conexão T central rosca R\",\"Unión en T\":\"União em T\",\"Unión en codo\":\"União em cotovelo\",\"Unión doble\":\"União dupla\",\"Tuerca de latón.\":\"Porca de latão.\",\"Tuerca para conector\":\"Porca para conexão\",\"Virola de latón.\":\"Virola de latão.\",\"Virola\":\"Virola\",\"Boquilla de latón.\":\"Corpo de latão.\",\"Boquilla acanalada para manguera\":\"Espiga nervurada para manguera\",\"Cuerpo de latón.\":\"Corpo de latão.\",\"Conector recto para manguera rosca R\":\"Espiga reta para manguera rosca R\",\"Arandela de polímero técnico.\":\"Arruela de polímero técnico.\",\"Arandela de estanqueidad (para rosca)\":\"Arruela de vedação (para rosca)\",\"Arandela de estanqueidad (para banjo)\":\"Arruela de vedação (para banjo)\",\"Sistema autoretractil\":\"Sistema autorretrátil\",\"Conector de espiga recto\":\"Conexão de espiga reta (espigão)\",\"Espiga para conector universal\":\"Espigão para conexão universal\",\"Manguera autoretráctil - color rojo\":\"Mangueira autorretráctil - cor vermelha\",\"Manguera autoretráctil - color verde\":\"Mangueira autorretráctil - cor verde\",\"Manguera autoretráctil - color celeste\":\"Mangueira autorretráctil - cor azul\",\"Manguera de goma con malla sintética\":\"Mangueira de borracha com malha sintética\",\"Pistola con boquillas intercambiables\":\"Pistola com bicos intercambiáveis\",\"Boquilla standard\":\"Bico standard\",\"Boquilla con tubo recto\":\"Bico com tubo reto\",\"Boquilla con tubo curvo\":\"Bico com tubo curvo\",\"Boquilla de seguridad con pantalla de aire\":\"Bico de segurança com leque de ar\",\"Boquilla con efecto COANDA\":\"Bico com efeito de COANDA\",\"Boquilla con efecto VENTURI\":\"Bico com efeito de VENTURI\",\"Pistola para aire con pico curvo\":\"Pistola para ar com bico curvo\",\"Tubos especiales\":\"Tubos especiais\",\"Tubo de poliuretano poliéter (PUR)\":\"Tubo de poliuretano poliéter (PUR)\",\"Tubo de polietileno (PE)\":\"Tubo de polietileno (PE)\",\"Tubo de fluoropolímero (FEP)\":\"Tubo de fluoropolímero (FEP)\",\"Tubo de poliuretano antiestático (PUA)\":\"Tubo de poliuretano antiestático (PUA)\",\"Tubo antichispa bicapa (PAB)\":\"Tubo anti-chispa bicapa (PAB)\",\"Tubo antichispa monocapa (PUM)\":\"Tubo anti-chispa monocapa (PUM)\",\"Tubo espiral de poliuretano (PUH)\":\"Tubo espiral de poliuretano (PUH)\",\"Tubos standard\":\"Tubos standard\",\"Tubo de poliuretano (PU) - color azul\":\"Tubo de poliuretano (PU) - cor azul\",\"Tubo de poliuretano (PU) - color rojo\":\"Tubo de poliuretano (PU) - cor vermelho\",\"Tubo de poliuretano (PU) - color verde\":\"Tubo de poliuretano (PU) - cor verde\",\"Tubo de poliuretano (PU) - color amarillo\":\"Tubo de poliuretano (PU) - cor amarelo\",\"Tubo de poliuretano (PU) - color negro\":\"Tubo de poliuretano (PU) - cor preto\",\"Tubo de poliamida 12 (PA12)\":\"Tubo de poliamida 12 (PA12)\",\"Cuerpo de aluminio extruido con protección interna y externa contra la corrosión.\":\"Corpo de aluminio extrudado com proteção interna e externa contra a corrosão.\",\"Actuadores rotantes a 90°\":\"Atuadores rotativos a 90°\",\"Simple efecto\":\"Simples ação\",\"Doble efecto\":\"Dupla ação\",\"Aluminio\":\"Aluminio.\",\"Boosters\":\"Boosters\",\"YT/300\":\"YT/300\",\"YT/320\":\"YT/320\",\"YT/310\":\"YT/310\",\"Caja de aluminio.\":\"Caixa de aluminio.\",\"Caja limit switch para actuadores \":\"Caixa limit switch para atuadores \",\"Para actuadores Ø40 a Ø125\":\"Para atuadores Ø40 a Ø125\",\"Para actuadores Ø140 a Ø270\":\"Para atuadores Ø140 a Ø270\",\"Para actuadores Ø300 a Ø400\":\"Para atuadores Ø300 a Ø400\",\"Aire comprimido filtrado.\":\"Ar comprimido filtrado.\",\"Cuerpo aluminio, sellos NBR.\":\"Corpo aluminio, vedações NBR.\",\"Electroválvulas 2/2 a membrana NC, para filtro de manga\":\"Eletroválvulas 2/2 a membrana NF, para filtro de manga\",\"Aire, agua, gas, agua caliente, liquidos en general.\":\"Ar, água, gas, água quente, liquidos em geral.\",\"Cuerpo de latón, diafragma en NBR.\":\"Corpo de latão, diafragma em NBR.\",\"Electroválvulas 2/2 a membrana NC, para fluidos serie UG\":\"Eletroválvulas 2/2 a membrana NF, para fluidos série uso geral\",\"Cuerpo de Bronce - Sellos NBR\":\"Corpo de Bronze - Vedações NBR\",\"Cuerpo de acero inoxidable AISI304, diafragma en FKM.\":\"Corpo de aço inoxidável AISI304, diafragma em FKM.\",\"Cuerpo Inox. 304 - Sellos FKM\":\"Cuerpo Inox. 304 - Sellos FKM\",\"Posicionadores\":\"Posicionadores\",\"Electroneumático, rotativo\":\"Eletropneumático, rotativo\",\"Electroneumático, lineal\":\"Eletropneumático, linear\",\"Neumático, rotativo\":\"Pneumático, rotativo\",\"Neumático, lineal\":\"Pneumático, linear\",\"Inteligente, rotativo\":\"Inteligente, rotativo\",\"Inteligente, lineal\":\"Inteligente, linear\",\"Cuerpo de aluminio, diafragma de NBR y Dracon.\":\"Corpo de aluminio, diafragma de NBR e Dracon.\",\"Reguladores neumáticos de presión\":\"Reguladores pneumáticos de pressão\",\"Regulador\":\"Regulador\",\"Filtro-Regulador\":\"Filtro Regulador\",\"Aire, agua, alcohol, aceite, combustible, solventes orgánicos u otros fluidos industriales - Pilotaje: Aire comprimido filtrado.\":\"Ar, água, alcool, óleo, combustível, solventes orgánicos e outros fluidos industriais - Pilotagem: Ar comprimido filtrado.\",\"Cuerpo de acero inoxidable AISI316, actuador plástico, asiento PTFE, sellos FKM.\":\"Corpo de aço inoxidável AISI316, atuador plástico, assento PTFE, vedações FKM.\",\"Válvulas 2/2 de asiento inclinado NC\":\"Válvulas 2/2 de assento inclinado NF\",\"Agua, aire, aceites, grasas, hidrocarburos - Pilotaje: Aire comprimido filtrado.\":\"Água, ar, óleos, graxas, hidrocarbonetos - Pilotagem: Ar comprimido filtrado.\",\"Cuerpo de acero inoxidable AISI316, asiento de teflón y sellos de FKM.\":\"Corpo de aço inoxidável AISI316, assento de teflon e vedações de FKM.\",\"Válvulas 2/2 Serie axiales 1/4\\\" a 2\\\"\":\"Válvulas 2/2 Série axiais 1/4\\\" a 2\\\"\",\"Simple efecto NC - Sellos de FKM\":\"Simples ação NF - Vedações de FKM\",\"Agua caliente, aire, vapor - Pilotaje: Aire comprimido filtrado.\":\"Água quente, ar, vapor - Pilotagem: Ar comprimido filtrado.\",\"Cuerpo de acero inoxidable AISI316, asiento de teflón y sellos de EPDM.\":\"Corpo de aço inoxidável AISI316, assento de teflon e vedações de EPDM.\",\"Simple efecto NC - Sellos de EPDM\":\"Simples ação NF - Vedações de EPDM\",\"Simple efecto NA - Sellos de FKM\":\"Simples ação NA - Vedações de FKM\",\"Simple efecto NA - Sellos de EPDM\":\"Simples ação NA - Vedações de EPDM\",\"Doble efecto - Sellos de FKM\":\"Dupla ação - Vedações de FKM\",\"Doble efecto - Sellos de EPDM\":\"Dupla ação - Vedações de EPDM\",\"Aire, agua, gas, agua caliente, líquidos en general\":\"Ar, água, gas, água quente, líquidos em geral\",\"Cuerpo, tapa, esfera y vástago de AISI316, sellos y asiento de PTFE, tornillería AISI304.\":\"Corpo, tampa, esfera e haste de AISI316, vedações e assento de PTFE, parafusos AISI304.\",\"Válvulas esféricas inox de 2 vías ISO 5211\":\"Válvulas esferas inox de 2 vías ISO 5211\",\"Válvula 1/4\\\"\":\"Válvula 1/4\\\"\",\"Válvula 3/8\\\"\":\"Válvula 3/8\\\"\",\"Válvula 1/2\\\"\":\"Válvula 1/2\\\"\",\"Válvula 3/4\\\"\":\"Válvula 3/4\\\"\",\"Válvula 1\\\"\":\"Válvula 1\\\"\",\"Válvula 1 1/4\\\"\":\"Válvula 1 1/4\\\"\",\"Válvula 1 1/2\\\"\":\"Válvula 1 1/2\\\"\",\"Válvula 2\\\"\":\"Válvula 2\\\"\",\"Válvula 2 1/2\\\"\":\"Válvula 2 1/2\\\"\",\"Válvula 3\\\"\":\"Válvula 3\\\"\",\"Válvula 4\\\"\":\"Válvula 4\\\"\",\"Válvulas esféricas inox de 3 vías ISO 5211\":\"Válvulas esferas inox de 3 vías ISO 5211\"}}");
 
 /***/ }),
 
@@ -92306,6 +95574,13 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return files;
+    },
+    $fileExists: function $fileExists(file_url) {
+      var http = new XMLHttpRequest();
+      http.open('HEAD', file_url, false);
+      http.send();
+      console.log(http.status);
+      return http.status != 404;
     }
   }
 });

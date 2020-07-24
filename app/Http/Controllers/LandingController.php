@@ -19,7 +19,7 @@ class LandingController extends Controller
 
   public function __construct()
   {
-    // $this->middleware('CountryMiddleware');
+    // $this->middleware('localize');
     $this->data['categories'] = Category::where('parent_id', null)->get();
   }
 
@@ -35,8 +35,13 @@ class LandingController extends Controller
     session([
       'country' => $country,
     ]);
-    // dd(session('country'));
-    return redirect(route('countryLanding'));
+
+    $lang = $country->locale_key;
+    if ($lang == 'Pt-BR') {
+      $lang ='pt';
+    }
+    return redirect($lang.'/'.'cats');//arreglar! pasar el prefijo al route de alguna manera
+    // return redirect(route('countryLanding'));
   }
 
 

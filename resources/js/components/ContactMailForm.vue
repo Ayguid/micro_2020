@@ -109,7 +109,7 @@ export default {
             text: JSON.stringify(response.data.errors)
           });
         }
-        if (response.data.status == "ok") {
+        if (response.statusText == "OK") {
           this.$swal(response.data.message);
           this.$bvModal.hide(this.modal);
         }

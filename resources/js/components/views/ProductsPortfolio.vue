@@ -82,7 +82,7 @@ export default {
       isLoading: true,
       fullPage: true,
       currentProduct:'',
-      product_route_view:this.$root.baseUrl + '/prod/',
+      product_route_view:this.$root.baseUrl + '/'+this.$root.local+'/prod/',
     }
   },
   components: {

@@ -12,11 +12,12 @@
 
           <div class="row">
             <div class="col-12 col-md-4 col-lg-4">
-              <div v-if="files.images.length>0" class="">
-                <img v-for="img in files.images" width="100%" :src="$root.baseUrl+'/storage/product_images/'+img.file_path" alt="">
-              </div>
-              <div v-else class="">
-                <img  class="productPic" width="100%" :src="$root.baseUrl+'/images/default.jpeg'" alt="">
+              <!-- <div v-if="files.images.length > 0" class="">
+              </div> -->
+              <div  class="">
+                <!-- <img v-if="$fileExists($root.baseUrl+'/storage/product_images/'+img.file_path)" v-for="img in files.images" width="100%" :src="$root.baseUrl+'/storage/product_images/'+img.file_path" alt=""> -->
+                <img v-if="files.images.length>0" v-for="img in files.images" width="100%" :src="$root.baseUrl+'/storage/product_images/'+img.file_path" alt="">
+                <img v-else class="productPic" width="100%" :src="$root.baseUrl+'/images/default.jpeg'" alt="">
               </div>
             </div>
 
@@ -69,13 +70,13 @@
 
 
       <b-tab title="Visualizador">
-        <div v-if="product.has_cad_3d" class="">
+        <div v-if="product.has_cad_3d && files.stls[0]" class="">
           <iframe class="mb-3" id="viewers" :src="$root.baseUrl+'/Online3DViewer-master/website/index.html'"  width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
         </div>
         <div v-else class="alert alert-info mt-3" role="alert">
           <p>Visualizador 3D no disponible.</p>
         </div>
-        <div v-if="product.has_cad_2d" id="d_container">
+        <div v-if="product.has_cad_2d && files.dxfs[0]" id="d_container">
           <div id="tapador">MICRO SA</div>
           <!-- {{files.dxfs[0]}} -->
           <iframe onload="" id="cadView" :src="'https://sharecad.org/cadframe/load?url=micro.plankwebdev.com/storage/dxfs/'+files.dxfs[0].file_path" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>

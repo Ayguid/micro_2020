@@ -15,8 +15,8 @@
 //   return view('welcome');
 // });
 
-Route::get('/', 'LandingController@index')->name('landing');
 
+Route::get('/', 'LandingController@index')->name('landing');
 
 Auth::routes();
 
@@ -28,6 +28,7 @@ Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail
 
 
 /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+// Route::group(['prefix' => session('country.locale_key')], function()
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
   //user

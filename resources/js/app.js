@@ -20,6 +20,13 @@ Vue.mixin(fileTypeReader);
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import VueSweetalert2 from 'vue-sweetalert2';
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674'
+};
+Vue.use(VueSweetalert2, options);
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('drop-zone', require('./components/DropZone.vue').default);

@@ -11,7 +11,9 @@ $files = $product->files;
 
 
 $lang=App::getLocale();
-
+if ($lang == 'Pt-BR') {
+  $lang='pt';
+}
 @endphp
 
 @section('content')
