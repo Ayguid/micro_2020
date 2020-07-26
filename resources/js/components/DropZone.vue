@@ -4,9 +4,13 @@
 
 
       <form id="dropZone" action="/file-upload" class="dropzone" method="post">
-        <input v-if="data !=null" type="text" name="product_id" :value="data.product.id" hidden>
+        <!-- <input v-if="data !=null" type="text" name="product_id" :value="data.product.id" hidden> -->
+
+        <input v-if="data.product !=null" type="text" name="product_id" :value="data.product.id" hidden>
+        <input v-if="data.category !=null" type="text" name="category_id" :value="data.category.id" hidden>
         <div class="fallback">
           <input name="file" type="file" multiple />
+          <!-- <input name="file" type="file" multiple /> -->
         </div>
       </form>
 
@@ -52,9 +56,12 @@ export default {
       init: function() {
         this.on("removedfile", function(file) {
           var formData=null;
-          if (data) {
-            formData = new FormData();
+          formData = new FormData();
+          if (data.product) {
             formData.append('product_id',data.product.id);
+          }
+          if (data.category) {
+            formData.append('category_id',data.category.id);
           }
           axios.post(urlMain+'/api/files/destroy/'+file.name, formData).then((response) => {
             console.log(response);
@@ -69,8 +76,7 @@ export default {
         //   });
         // });
 
-
-        if (data) {
+        if (data.product) {
           for (var i = 0; i < data.productFiles.length; i++) {
             var extension = data.productFiles[i].file_path.split('.').pop();
             var mockFile = {
@@ -93,6 +99,30 @@ export default {
           //
           // });
         }
+
+        // this.on("success", function(file, response) { console.log(response); });
+        if (data.category) {
+          if (!!data.categoryFiles[0]) {
+            for (var i = 0; i < data.categoryFiles.length; i++) {
+              var extension = data.categoryFiles[i].split('.').pop();
+              var mockFile = {
+                name: data.categoryFiles[i],
+              };
+              this.emit("addedfile", mockFile);
+              switch (extension) {
+                case 'png':
+                case 'jpg':
+                this.emit("thumbnail", mockFile, urlMain+'/storage/categories/'+data.categoryFiles[i]);
+                break;
+                default:
+              }
+              this.emit("complete", mockFile);
+            }
+          }
+        }
+
+
+
       }
     };
 

@@ -13,7 +13,8 @@
         <div class="input-group" >
           <div class="input-group-prepend">
             <label class="input-group-text " for="">
-              {{(catAtt['name_'+$root.local])?catAtt['name_'+$root.local]:catAtt['name_es']}}
+              <!-- {{(catAtt['name_'+$root.local])?catAtt['name_'+$root.local]:catAtt['name_es']}} -->
+              {{$t(catAtt.name_es)}} <!-- sacar de edit del attribute _en y _pt -->
             </label>
           </div>
           <select class="custom-select" :name="catAtt.id" >

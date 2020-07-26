@@ -253,7 +253,7 @@ class ProductController extends Controller
       $save = $prod->delete();
       if ($save){
         \Session::flash('alert-success', 'Borraste con exito!');
-        return redirect()->route('showCategory', $prod->category_id);
+        return redirect()->route('admin.cats.show', $prod->category_id);
       }else{
         \Session::flash('alert-danger', 'Oops there was a problem!');
         return redirect()->back();
@@ -262,27 +262,6 @@ class ProductController extends Controller
   }
 
 
-
-
-  public function find($query)
-  {
-    $products = Product::where('product_code', 'LIKE', '%'.$query.'%')
-    ->orWhere('title_es', 'LIKE', '%'.$query.'%')
-    ->orWhere('desc_es', 'LIKE', '%'.$query.'%')
-    ->orWhere('title_en', 'LIKE', '%'.$query.'%')
-    ->orWhere('desc_en', 'LIKE', '%'.$query.'%')
-    ->orWhere('title_pt', 'LIKE', '%'.$query.'%')
-    ->orWhere('desc_pt', 'LIKE', '%'.$query.'%')
-    ->with('files', 'category.getTopCategories', 'attributes.attribute')
-    ->paginate(5);
-    $data=[
-      'products'=>$products
-    ];
-    if ($products->total()==0) {
-      return response('Not found', 200);
-    }
-    return view('admin.products-view')->with('data', $data);
-  }
 
 
 }

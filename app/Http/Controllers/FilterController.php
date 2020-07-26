@@ -18,14 +18,16 @@ class FilterController extends Controller
     //   'mandaste'=>$request->filterAtts
     // ]);
     //Info principal - Products en country y category
-    $cat=Category::find($request->category);
+    $cat = Category::find($request->category);
     $prods = $cat->productsInCountry($request->country);
     // return response()->json([
     //   'products'=>$prods->with('files', 'attributes.attribute')->get()
     // ]);
 
     //Arma data para menu builder ORIGINAL
+    // $productAtts = Product_Attribute::where('attribute_id', '123123123123')->get();
     $productAtts=$this->plucker($prods);
+
     // Hace el query para buscar productos que cumplan con attributes
     if ($request->filterAtts) {
       foreach (json_decode($request->filterAtts, TRUE) as $key => $value) {
@@ -77,13 +79,14 @@ class FilterController extends Controller
       'products'=>$prods->with('files', 'attributes.attribute')->paginate(16),
       'menuData'=>$menuObj
     ]);
+
   }
 
 
 
 
 
-  public function plucker($collection)
+  public function plucker(&$collection)
   {
     return $collection
     ->with('attributes')
@@ -95,6 +98,15 @@ class FilterController extends Controller
       return collect($array)->unique('value_es')->sortBy('value_es')->all();
     });
   }
+
+
+
+
+
+
+
+
+
 
 
 }

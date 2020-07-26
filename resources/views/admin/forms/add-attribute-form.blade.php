@@ -11,8 +11,8 @@
 
   <label for="Atributo">Atributo</label>
   <input autofocus class="form-control" type="text" name="name_es" value="" placeholder="name_es">
-  <input  class="form-control" type="text" name="name_en" value="" placeholder="name_en">
-  <input  class="form-control" type="text" name="name_pt" value="" placeholder="name_pt">
+  {{-- <input  class="form-control" type="text" name="name_en" value="" placeholder="name_en">
+  <input  class="form-control" type="text" name="name_pt" value="" placeholder="name_pt"> --}}
   <label for="">Filterable</label>
   <input  class="form-control" type="checkbox" value="1" name="filterable">
 

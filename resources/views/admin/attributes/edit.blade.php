@@ -45,10 +45,10 @@
               <div class="form-group row">
 
                 <div class="col-md-6">
-                  <label for="Atributo">Atributo</label>
+                  <label for="Atributo">Nombre del Atributo</label>
                   <input autofocus class="form-control" type="text" name="name_es" value="{{$data['attribute']->name_es}}" placeholder="name_es">
-                  <input  class="form-control" type="text" name="name_en" value="{{$data['attribute']->name_en}}" placeholder="name_en">
-                  <input  class="form-control" type="text" name="name_pt" value="{{$data['attribute']->name_pt}}" placeholder="name_pt">
+                  {{-- <input  class="form-control" type="text" name="name_en" value="{{$data['attribute']->name_en}}" placeholder="name_en">
+                  <input  class="form-control" type="text" name="name_pt" value="{{$data['attribute']->name_pt}}" placeholder="name_pt"> --}}
                   <label for="">Filterable</label>
                   <input  hidden value="" name="filterable">
                   <input  class="form-control" type="checkbox" {{($data['attribute']->filterable)? 'checked':''}} value="1" name="filterable">

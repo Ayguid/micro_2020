@@ -148,7 +148,12 @@
         </form>
 
 
-
+          <hr>
+        <form id="deleteProductForm" class="" action="{{route('admin.prods.destroy', $data['product'])}}" method="post">
+          @csrf
+          <input name="_method" type="hidden" value="DELETE">
+          <button class="btn btn-danger" type="submit" name="button">ELIMINAR PRODUCTO</button>
+        </form>
 
 
 

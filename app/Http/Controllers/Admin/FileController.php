@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models440\File;
+use App\Models440\Category;
 use App\Models440\Product;
 use App\Http\Controllers\Controller;
 
@@ -21,12 +22,10 @@ class FileController extends Controller
   // }
 
 
-
   public function upload(Request $request)
   {
 
-
-
+    // return response($request, 200);
 
     $input = $request->file('file');
 
@@ -69,13 +68,11 @@ class FileController extends Controller
         break;
       }
 
-      $save = $input->move($directory, $name);
+      //return response($request, 200);
+
       if ($request->product_id) {
+        $save = $input->move($directory, $name);
         $pd=Product::find($request->product_id);
-
-
-
-
         if ($extension=='png' || $extension =='jpg' || $extension =='jpeg') {
           $pd->has_image=true;
         }
@@ -116,13 +113,28 @@ class FileController extends Controller
           return response('Archivo ya existente', 404);
         }
       }
-      if ($save) {
-        return response('Todo bien'.$save, 200);
-      }else {
-        return response('No se que pacho', 404);
+
+      if ($request->category_id) {
+        $directory='storage/categories/';
+        $save = $input->move($directory, $name);
+        $cat=Category::find($request->category_id);
+        $cat->image_path = $name;
+        $cat->update();
+        // return response('123', 200);
       }
+
+
+      //return response(['response'=>$save], 200);
+
+      if ($save) {
+        return response(['Todo bien'], 200);
+      }else {
+        return response(['No se que pacho'], 404);
+      }
+
     }
   }
+
 
 
   //
@@ -151,18 +163,25 @@ class FileController extends Controller
         $pd->has_zip=null;
       }
       $pd->update();
-
-
-
-
       $msg = 'Deleted from table';
-    }else {
-      $msg = 'Deleted from disk';
-      $destroy =Storage::delete('public/product_images/'.$string);
     }
+    if ($request->category_id) {
+      $cat=Category::find($request->category_id);
+      $cat->image_path = null;
+      $cat->update();
+      $destroy = Storage::delete('public/categories/'.$string);
+      $msg = 'Deleted from disk';
+    }
+    // else {
+    //   $msg = 'Deleted from disk';
+    //   $destroy =Storage::delete('public/product_images/'.$string);
+    // }
     if ($destroy) {
       return response($msg, 200);
+    }else {
+      return response(['No se que pacho'], 404);
     }
+
   }
 
 

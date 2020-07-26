@@ -5,7 +5,7 @@
 <!-- {{data}} -->
     <form class="" action="index.html" method="post" @submit="sendMail">
     <!-- <form class="" action="./send-mail" method="get"> -->
-      <p>{{$t(this.title)}}</p>
+      <p>{{this.title}}</p>
 
     <div class="row">
         <div class="col-6">

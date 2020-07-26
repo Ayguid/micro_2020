@@ -23,7 +23,18 @@
             @endif
 
 
-
+            @if (!$category->parent_id)
+              @php
+              $data = json_encode(
+                [
+                'product'=>null,
+                'category'=>$category,
+                'categoryFiles'=>[$category->image_path]
+              ]
+              );
+              @endphp
+              <drop-zone :data="{{$data}}"></drop-zone>
+            @endif
 
 
             <form class="" action="{{route('admin.cats.update', $category->id)}}" method="post">

@@ -53,7 +53,7 @@
 <b-modal id="modal-1" title="Micro" :hide-footer="true" >
   <contact-mail-form
   :modal="'modal-1'"
-  :title="'Consultar por otros productos'"
+  :title="$t('Consultar por otros productos')"
   :images="''"
   :to="'Ingenieria'"
   :product="''"

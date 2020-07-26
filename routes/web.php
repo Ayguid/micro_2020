@@ -62,6 +62,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::post('/prods/store', 'Admin\ProductController@store')->name('admin.prods.store');
     Route::get('/prods/edit/{id}', 'Admin\ProductController@edit')->name('admin.prods.edit');
     Route::post('/prods/update/', 'Admin\ProductController@update')->name('admin.prods.update');
+    Route::delete('/deleteProduct/{id}','Admin\ProductController@destroy')->name('admin.prods.destroy');
 
 
     Route::get('/cats/edit/{id}', 'Admin\CategoryController@edit')->name('admin.cats.edit');
@@ -98,3 +99,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 });
+
+
+
+
+
+
+//borrar
+Route::get('/getProducts/{params?}', 'Tester@findProducts');

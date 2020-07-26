@@ -22,7 +22,7 @@
             </div>
             @if (!isset($data['category']) && !isset($data['products']))
               <div class="col-12">
-                <img src="{{asset('images/covers/'.$cat->image_path)}}" alt="" width="100%">
+                <img src="{{asset('storage/categories/'.$cat->image_path)}}" alt="" width="100%">
               </div>
             @endif
           </div>
