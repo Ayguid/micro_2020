@@ -2358,6 +2358,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product', 'product_route_view', 'admin_route_view', 'cat_route'],
   data: function data() {
@@ -81834,7 +81835,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "p-2" }, [
-              _c("h6", [_vm._v("Code:   " + _vm._s(_vm.product.product_code))]),
+              _c("h6", [
+                _vm._v(
+                  _vm._s(_vm.$t("Código")) +
+                    " :" +
+                    _vm._s(_vm.product.product_code)
+                )
+              ]),
               _vm._v(" "),
               _c("div", {}, [
                 _vm.files["pdfs"].length > 0
@@ -81877,12 +81884,7 @@ var render = function() {
                         _c("h6", [
                           _c("strong", [
                             _vm._v(
-                              " " +
-                                _vm._s(
-                                  att.attribute["name_" + _vm.$root.local]
-                                    ? att.attribute["name_" + _vm.$root.local]
-                                    : att.attribute["name_es"]
-                                )
+                              " " + _vm._s(_vm.$t(att.attribute.name_es)) + " "
                             )
                           ])
                         ]),
