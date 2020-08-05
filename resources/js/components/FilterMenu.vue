@@ -7,27 +7,25 @@
 
 <template>
   <div class="row">
-
+    <!-- {{menudata.attributes}} -->
+    <!-- {{menudata.attributes}} -->
     <form id="filterForm" class="form-inline col-12 m-0 p-0" @change="emitFilterForm">
-      <div v-for="catAtt in menudata.attributes" class="mb-3 col-12 col-md-4 col-lg-3" v-show="isAllDisabled(catAtt.uniqueValues)" >
+      <div v-for="catAtt in menudata.attributes" class="mb-3 col-12 col-md-4 col-lg-3" v-if="catAtt" v-show="isAllDisabled(catAtt.uniqueValues)" >
         <div class="input-group" >
           <div class="input-group-prepend">
             <label class="input-group-text " for="">
-              <!-- {{(catAtt['name_'+$root.local])?catAtt['name_'+$root.local]:catAtt['name_es']}} -->
-              {{$t(catAtt.name_es)}} <!-- sacar de edit del attribute _en y _pt -->
+              {{$t(catAtt.name_es)}}
             </label>
           </div>
           <select class="custom-select" :name="catAtt.id" >
             <option value="null" class="" >--</option>
             <option v-for="catVal in catAtt.uniqueValues"  :value="catVal.value_es" class="" :disabled="catVal.disabled">
 
-              <!-- {{catVal.value}} -->
 
               {{ $t(catVal.value_es) }}
 
 
 
-              <!-- {{(catVal['value_'+$root.local])?catVal['value_'+$root.local]:catVal['value_es']}} -->
             </option>
           </select>
         </div>

@@ -27,6 +27,7 @@ class FilterController extends Controller
     //Arma data para menu builder ORIGINAL
     // $productAtts = Product_Attribute::where('attribute_id', '123123123123')->get();
     $productAtts=$this->plucker($prods);
+    // return response()->json(['mandaste'=>$productAtts]);
 
     // Hace el query para buscar productos que cumplan con attributes
     if ($request->filterAtts) {
@@ -97,6 +98,7 @@ class FilterController extends Controller
     ->map(function ($array) {
       return collect($array)->unique('value_es')->sortBy('value_es')->all();
     });
+
   }
 
 

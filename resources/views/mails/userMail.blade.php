@@ -1,7 +1,13 @@
 @component('mail::message')
-Gracias por comunicarte con **{{$fromMail}}**,
+
+<img src="http://plankwebdev.com/micro/images/logos/logo%20micro%20sin%20placa.jpg" alt="" width="200px">
+
+{{ __('messages.greeting') }} ** Micro **.
+
+
+{{ __('messages.will_reply') }} .
  {{-- use double space for line break --}}
-Para : **{{$toMail}}**
+{{ __('messages.from') }} : **{{$toMail}}**
 
 {{-- **{{$product}}** --}}
 @isset($product)
@@ -9,18 +15,17 @@ Para : **{{$toMail}}**
   $prod = json_decode($product);
 @endphp
 
-**Titulo : {{$prod->title_es}}**
+**{{ __('messages.title') }} : {{$prod->title_es}}**
 
-**Descripcion :{{$prod->desc_es}}**
+**{{ __('messages.description') }} :{{$prod->desc_es}}**
 
-
-**Codigo : {{$prod->product_code}}**
+**{{ __('messages.code') }}o : {{$prod->product_code}}**
 @endisset
 
 
 
 **<p>
-  Comentarios:
+  {{ __('messages.comments') }}:
   {{$textArea}}
 </p>**
 

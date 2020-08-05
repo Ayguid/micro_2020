@@ -22,6 +22,7 @@ class CreateAttributesTable extends Migration
             $table->boolean('filterable')->nullable();
             $table->boolean('translatable')->nullable();
             $table->string('type')->nullable();
+            $table->bigInteger('order')->unsigned()->nullable();
             $table->timestamps();
         });
 

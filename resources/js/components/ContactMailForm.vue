@@ -22,7 +22,7 @@
         </div>
           <div class="form-group">
             <label for="email">User Email</label><br>
-            <input id="user_email" type="email" name="from" :value="user?user.email:''">
+            <input id="user_email" type="email" name="from" :value="user ? user.email : ''">
           </div>
         </div>
         <div v-if="this.product" class="col-6">
@@ -35,6 +35,7 @@
         </div>
 
       </div>
+      <input type="text" name="locale" :value="$root.local" hidden>
 
       <div class="form-group">
         <label for="email">{{$t('Consultas adicionales')}}</label><br>
@@ -85,7 +86,8 @@ export default {
   props: ['product', 'to', 'images', 'title', 'modal'],
   data(){
     return  {
-      contactUrl:'/send-mail',
+      email: '',
+      contactUrl:this.$root.local+'/send-mail',
       isLoading: false,
       fullPage: true,
       user:this.$root.authuser

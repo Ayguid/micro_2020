@@ -76,7 +76,7 @@
           <iframe class="mb-3" id="viewers" :src="$root.baseUrl+'/Online3DViewer-master/website/index.html'"  width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
         </div>
         <div v-else class="alert alert-info mt-3" role="alert">
-          <p>Visualizador 3D no disponible.</p>
+          <p>{{$t('Visualizador 3D no disponible.')}}</p>
         </div>
         <div v-if="product.has_cad_2d && files.dxfs[0]" id="d_container">
           <div id="tapador">MICRO SA</div>
@@ -85,7 +85,7 @@
           <div id="tapadorBottom"></div>
         </div>
         <div v-else class="alert alert-info" role="alert">
-          <p>Visualizador 2D no disponible.</p>
+          <p>{{$t('Visualizador 2D no disponible.')}}</p>
         </div>
       </b-tab>
 
@@ -97,7 +97,7 @@
 
 
       <b-tab :title=" $t('Descargas') ">
-        <h4>Pdf's</h4>
+        <h4>{{$t('Hoja técnica')}}</h4>
         <div v-if="product.has_pdf" class="">
           <div v-for="pdf in files.pdfs" class="">
             <a target="_blank" class="btn" role="button" :href="$root.baseUrl+'/storage/pdfs/'+pdf.file_path" >
@@ -106,10 +106,11 @@
           </div>
           <div v-else class="">
             <p>
-              No Contiene archivos Pdf.
+              {{$t('No contiene hoja técnica.')}}
+
             </p>
           </div>
-          <h4 class="pt-3">Zips's</h4>
+          <h4 class="pt-3">{{$t('Archivos CAD 2D y 3D.')}}</h4>
           <div v-if="product.has_zip" class="">
             <div v-if="$root.authuser" class="">
               <div v-for="zip in files.zips" class="">
@@ -118,11 +119,11 @@
                 </div>
               </div>
               <div v-else class="">
-                Por Favor Login/Registrate para poder descargar los archivos.
+                {{$t('Por Favor Login/Registrate para poder descargar los archivos.')}}
               </div>
             </div>
             <div v-else class="">
-              <p>  No Contiene archivos Zip.</p>
+              <p>{{$t('Archivos CAD 2D y 3D.')}}</p>
             </div>
             <p>
               <b-button v-b-modal.modal-2>{{$t('Solicitar Planos')}}</b-button>

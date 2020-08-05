@@ -21,7 +21,6 @@ Route::get('/', 'LandingController@index')->name('landing');
 Auth::routes();
 
 //grl stuff
-Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
 // Route::get('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
 
 
@@ -31,6 +30,7 @@ Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail
 // Route::group(['prefix' => session('country.locale_key')], function()
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+  Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
   //user
   Route::get('/country/{country_shortcode}', 'LandingController@setCountry')->name('setCountry');
   Route::get('/cats', 'LandingController@countryLanding')->name('countryLanding');
@@ -106,4 +106,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 //borrar
-Route::get('/getProducts/{params?}', 'Tester@findProducts');
+// Route::get('/getProducts/{params?}', 'Tester@findProducts');

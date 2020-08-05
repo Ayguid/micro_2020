@@ -17,6 +17,13 @@
     "Código": "Code",
     "Codigo": "Code",
     "Descripción":"Description",
+    "Hoja técnica":"Technical sheet",
+    "Por Favor Login/Registrate para poder descargar los archivos.":"Please Login / Register to download the files.",
+    "Archivos CAD 2D y 3D.":"2D and 3D CAD files.",
+    "Hoja técnica no disponible.":"Data sheet not available.",
+    "Visualizador 3D no disponible.":"3D viewer not available.",
+    "Visualizador 2D no disponible.":"2D viewer not available.",
+
 
     "Basado en la norma": "Based on the standard",
     "Capacidad max. de asp. (Nl/min)": "Max capacity from asp. (Nl / min)",

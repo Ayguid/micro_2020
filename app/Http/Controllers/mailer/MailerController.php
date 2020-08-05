@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Models440\User_Title;
 use DB;
+// use App;
 
 class MailerController extends Controller
 {
@@ -56,9 +57,11 @@ class MailerController extends Controller
       Mail::to($from)
       ->send(new MailConsulta($from, $defaultEmail, $product, $text, 'user'));//para usuario
 
+
+      // $request->locale
       return response()->json([
         'status' => $request,
-        'message'=>\Lang::get('messages.email_sent')
+        'message'=> \Lang::get('messages.email_sent')
       ]);
     }
     else {

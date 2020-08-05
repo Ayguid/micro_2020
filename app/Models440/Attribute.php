@@ -16,7 +16,9 @@ class Attribute extends Model
     'name_en',
     'name_pt',
     'filterable',
-    'type'
+    'type',
+    'order'
+
 ];
 
 

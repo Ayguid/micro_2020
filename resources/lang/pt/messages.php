@@ -14,6 +14,20 @@ return [
   'reset_filters'=> 'Repor filtros',
 
   'email_sent'=> 'Email Enviado',
+
+  'greeting'=> 'Obrigado por entrar em contato',
+
+  'from'=> 'De',
+
+  'title'=> 'Título',
+
+  'description'=> 'Descrição',
+
+  'code'=> 'Código',
+
+  'comments'=> 'Comentários',
+
+  'will_reply'=> 'Entraremos em contato em breve',
 ];
 
 

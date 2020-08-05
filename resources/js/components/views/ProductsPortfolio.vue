@@ -57,6 +57,7 @@
   :images="''"
   :to="'Ingenieria'"
   :product="''"
+
   ></contact-mail-form>
 </b-modal>
 
@@ -98,8 +99,12 @@ export default {
           filterAtts: this.filterAtts
         }
       }).then((response) => {
-        // console.log(response);
-        this.menuData=response.data.menuData;
+        const menu = {attributes:[]}
+        for (const property in response.data.menuData.attributes) {
+          menu.attributes[response.data.menuData.attributes[property].order ] =  response.data.menuData.attributes[property]
+        }
+        this.menuData = menu;
+        // this.menuData = response.data.menuData;
         this.products = response.data.products.data;
         this.perPage = response.data.products.per_page;
         this.totalRows = response.data.products.total;

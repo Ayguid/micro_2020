@@ -17,4 +17,19 @@ return [
 
   'email_sent'=> 'Email Sent',
 
+  'greeting'=> 'Thanks for contacting',
+
+  'from'=> 'From',
+
+  'title'=> 'Title',
+
+  'description'=> 'Description',
+
+  'code'=> 'Product code',
+
+  'comments'=> 'Comments',
+
+  'will_reply'=> 'We will contact you shortly',
+
+
 ];
