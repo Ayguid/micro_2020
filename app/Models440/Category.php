@@ -31,7 +31,7 @@ class Category extends Model
     //
     public function getSubCategories()
     {
-      return $this->children()->with('getSubCategories');
+      return $this->children()->with('getSubCategories')->orderBy('title_es');
     }
 
 

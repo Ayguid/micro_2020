@@ -11786,7 +11786,9 @@ img.logo {
 }
 
 #tapador {
-  height: 17px;
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
   background-color: white;
   position: absolute;
   left: 14px;

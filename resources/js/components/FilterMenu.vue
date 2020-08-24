@@ -8,21 +8,23 @@
 <template>
   <div class="row">
     <!-- {{menudata.attributes}} -->
-    <!-- {{menudata.attributes}} -->
+    <!-- {{menudata}} -->
     <form id="filterForm" class="form-inline col-12 m-0 p-0" @change="emitFilterForm">
-      <div v-for="catAtt in menudata.attributes" class="mb-3 col-12 col-md-4 col-lg-3" v-if="catAtt" v-show="isAllDisabled(catAtt.uniqueValues)" >
+
+      <div v-for="att in menudata" class="mb-3 col-12 col-md-4 col-lg-3"  v-show="isAllDisabled(att.uniqueValues)" >
         <div class="input-group" >
           <div class="input-group-prepend">
             <label class="input-group-text " for="">
-              {{$t(catAtt.name_es)}}
+              {{ $t(att.name_es) }}
             </label>
           </div>
-          <select class="custom-select" :name="catAtt.id" >
+          <select class="custom-select" :name="att.id" >
             <option value="null" class="" >--</option>
-            <option v-for="catVal in catAtt.uniqueValues"  :value="catVal.value_es" class="" :disabled="catVal.disabled">
+            <option v-for="val in att.uniqueValues"  :value="val.value_es" class="" v-show="!val.disabled">
+            <!-- <option v-for="val in att.uniqueValues"  :value="val.value_es" class="" :disabled="val.disabled"> -->
 
 
-              {{ $t(catVal.value_es) }}
+              {{ $t(val.value_es) }}
 
 
 
@@ -65,7 +67,9 @@ export default {
 
   },
   computed:{
-
+    // response.data.menuData.attributes.sort(function (a) {
+    //   return a.disabled // sort by date
+    // })
   },
 
   mounted() {

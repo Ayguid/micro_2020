@@ -76,6 +76,7 @@ export default {
         //   });
         // });
 
+        
         if (data.product) {
           for (var i = 0; i < data.productFiles.length; i++) {
             var extension = data.productFiles[i].file_path.split('.').pop();

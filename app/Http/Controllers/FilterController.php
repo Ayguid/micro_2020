@@ -10,6 +10,9 @@ use App\Models440\Product;
 class FilterController extends Controller
 {
 
+
+  
+
   //de valor siempre se usa value_es!!!!
 
   public function findProducts(Request $request)
@@ -61,6 +64,7 @@ class FilterController extends Controller
     }
     //Arma el menu con la data que le pasamos
     $menuObj = new \stdClass;
+    $menuObj->attributes = [] ;
     //
     foreach ($productAtts as $key => $values) {
       $prAtt= Product_Attribute::where('attribute_id', $key)->first()->attribute;

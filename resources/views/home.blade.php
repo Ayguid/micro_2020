@@ -21,6 +21,10 @@
                     <br>
                     <br>
                     <a class="btn btn-primary" href="{{route('admin.cats')}}">Categories</a>
+                    <br>
+                    <br>
+                    <a class="btn btn-primary" href="{{route('admin.fileManager')}}">Media Manager</a>
+
                     @endrole
 
                     @role('superadmin')

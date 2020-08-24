@@ -79,7 +79,9 @@
           <p>{{$t('Visualizador 3D no disponible.')}}</p>
         </div>
         <div v-if="product.has_cad_2d && files.dxfs[0]" id="d_container">
-          <div id="tapador">MICRO SA</div>
+          <div id="tapador">
+            <img width="130"  class="d-inline-block align-center" :src="$root.baseUrl+'/images/logos/logo-micro-'+$root.local+'.jpg'" alt="">
+          </div>
           <!-- {{files.dxfs[0].file_path}} -->
           <iframe onload="" id="cadView" :src="'https://sharecad.org/cadframe/load?url=micro.plankwebdev.com/storage/dxfs/'+files.dxfs[0].file_path" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
           <div id="tapadorBottom"></div>
@@ -126,7 +128,7 @@
               <p>{{$t('Archivos CAD 2D y 3D.')}}</p>
             </div>
             <p>
-              <b-button v-b-modal.modal-2>{{$t('Solicitar Planos')}}</b-button>
+              <b-button v-b-modal.modal-2>{{$t('Solicitar Archivos')}}</b-button>
               <b-modal id="modal-2" title="Micro" :hide-footer="true" >
                 <contact-mail-form
                 :modal="'modal-2'"

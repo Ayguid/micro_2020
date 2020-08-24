@@ -34,16 +34,8 @@
 
      <a class="navbar-brand" href="{{ route('countryLanding')}}">
         {{-- {{ config('app.name', 'Laravel') }} --}}
-        @switch(config('app.locale'))
-          @case('pt')
-          <img width="130"  class="d-inline-block align-center" src="{{asset('images/logos/logo-micro-pt.jpg')}}" alt="">
-          @break
-          @case('en')
-          <img width="130"  class="d-inline-block align-center" src="{{asset('images/logos/logo-micro-en.jpg')}}" alt="">
-          @break
-          @default
-          <img width="130"  class="d-inline-block align-center" src="{{asset('images/logos/logo-micro-es.jpg')}}" alt="">
-        @endswitch
+
+        <img width="130"  class="d-inline-block align-center" src="{{asset('images/logos/logo-micro-'.config('app.locale').'.jpg')}}" alt="">
 
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -50,6 +50,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   Route::group(['middleware' => ['role_or_permission:superadmin|admin']], function () {
     Route::get('/cats', 'Admin\CategoryController@index')->name('admin.cats');
     Route::get('/cats/show/{id}', 'Admin\CategoryController@show')->name('admin.cats.show');
+    Route::get('/files','Admin\FileController@index')->name('admin.fileManager');
 });
 
 

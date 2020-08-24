@@ -17,8 +17,8 @@
 
   <style>
   html, body {
-    background-color: #fcfeff !important;
-    color: #636b6f;
+    background-color: rgb(0,150,214) !important;
+    color: rgb(233, 233, 233);
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
     height: 100vh;
@@ -54,13 +54,17 @@
   }
 
   .links > a {
-    color: #636b6f;
+    color: #e9e9e9;
     padding: 0 25px;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+  }
+  .links a:hover {
+    color: #c4c4c4;
+    text-decoration: none;
   }
 
   .m-b-md {
@@ -104,7 +108,7 @@
     <div class="content">
       <div class="title m-b-md ">
         {{-- Micro sa --}}
-        <img class="col-9 col-md-7 col-lg-5" src="{{asset('images/logos/logo micro sin placa.jpg')}}" alt="">
+        <img class="col-9 col-md-7 col-lg-5" src="{{asset('images/logo-micro.png')}}" alt="">
       </div>
       {{-- {{}} --}}
 

@@ -16,10 +16,10 @@ class FileController extends Controller
   //
 
 
-  // public function index()
-  // {
-  //   return view('admin.media');
-  // }
+  public function index()
+  {
+    return view('admin.media');
+  }
 
 
   public function upload(Request $request)
@@ -125,6 +125,9 @@ class FileController extends Controller
 
 
       //return response(['response'=>$save], 200);
+      if (!$request->category_id && !$request->product_id) {
+        $save = $input->move($directory, $name);
+      }
 
       if ($save) {
         return response(['Todo bien'], 200);

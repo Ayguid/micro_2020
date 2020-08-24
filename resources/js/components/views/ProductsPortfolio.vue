@@ -49,7 +49,7 @@
 <div class="bottomright bottomrightExtra">
   <b-button v-b-modal.modal-1>{{$t("Consultar por otros productos")}}</b-button>
 </div>
-
+<!-- <img width="130"  class="d-inline-block align-center" :src="$root.baseUrl+'/images/logos/logo-micro-'+$root.local+'.jpg'" alt=""> -->
 <b-modal id="modal-1" title="Micro" :hide-footer="true" >
   <contact-mail-form
   :modal="'modal-1'"
@@ -101,9 +101,12 @@ export default {
       }).then((response) => {
         const menu = {attributes:[]}
         for (const property in response.data.menuData.attributes) {
-          menu.attributes[response.data.menuData.attributes[property].order ] =  response.data.menuData.attributes[property]
+          if (response.data.menuData.attributes[property]) {
+            menu.attributes[response.data.menuData.attributes[property].order ] =  response.data.menuData.attributes[property]
+          }
         }
-        this.menuData = menu;
+        this.menuData = menu.attributes.filter(function (el) {return el != null;})
+        // console.log(this.menuData);
         // this.menuData = response.data.menuData;
         this.products = response.data.products.data;
         this.perPage = response.data.products.per_page;

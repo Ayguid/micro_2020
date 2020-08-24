@@ -447,7 +447,9 @@ img.logo {
 }
 
 #tapador{
-  height: 17px;
+  // height: 17px;
+  display: flex;
+  justify-content: space-around;
   background-color: rgb(255, 255, 255);
   position: absolute;
   left: 14px;
