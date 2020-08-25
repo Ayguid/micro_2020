@@ -12,7 +12,8 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-
+  <link rel="shortcut icon" href="https://ar.microautomacion.com/wp-content/themes/micro-theme/dist/img/favicon/favicon-32x32.png" type="image/x-icon">
+  <link rel="icon" href="https://ar.microautomacion.com/wp-content/themes/micro-theme/dist/img/favicon/favicon-32x32.png" type="image/x-icon">
   <!-- Styles -->
 
   <style>

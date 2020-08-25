@@ -17,7 +17,6 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-
   <!-- Fonts -->
   {{-- <script src="https://kit.fontawesome.com/6a953b9625.js"></script> --}}
   <script src="{{ asset('js/kit-fontAwesome.js') }}"></script>
@@ -26,6 +25,8 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="https://ar.microautomacion.com/wp-content/themes/micro-theme/dist/img/favicon/favicon-32x32.png" type="image/x-icon">
+  <link rel="icon" href="https://ar.microautomacion.com/wp-content/themes/micro-theme/dist/img/favicon/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
   <div id="app">
