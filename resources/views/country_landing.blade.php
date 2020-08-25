@@ -31,6 +31,11 @@
 
 
     @isset($data['products'])
+      @if ($data['products']->count() == 0)
+        <div class="mt-4">
+          <h4>{{__('messages.No se encontraron productos.')}}</h4>
+        </div>
+      @endif
       <div class="row">
         @foreach ($data['products'] as $prod)
           <product-component class="col-12 col-md-4 col-lg-3"

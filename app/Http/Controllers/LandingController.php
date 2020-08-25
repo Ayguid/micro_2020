@@ -68,22 +68,29 @@ class LandingController extends Controller
 
 
 
-  public function findProduct($query=null)
+  public function findProduct(Request $request)
   {
+    // $text = $query;
+    // $replace = str_replace("*","/",$text);
+    // dd($request);
     $ctyId=session('country')->id;
     // return response($ctyId, 200);
     $this->data['products'] = Product::join('products_in_countries', 'products.id', '=', 'products_in_countries.product_id')
-    ->where('product_code', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
-    ->orWhere('title_es', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
-    ->orWhere('desc_es', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
+    ->where('product_code', 'LIKE', '%'.$request->get('query').'%')->where('products_in_countries.country_id', '=', $ctyId)
+    ->orWhere('title_es', 'LIKE', '%'.$request->get('query').'%')->where('products_in_countries.country_id', '=', $ctyId)
+    ->orWhere('desc_es', 'LIKE', '%'.$request->get('query').'%')->where('products_in_countries.country_id', '=', $ctyId)
     ->select('products.*')->with('files', 'category.getTopCategories', 'attributes.attribute')
     ->paginate($this->paginate);
-    if ($this->data['products']->total()==0) {
-      return response('Not found', 200);
-    }
-    else {
+    // if ($this->data['products']->total()==0) {
+    //   return response('Not found', 200);
+    // }
+    // else {
       return view('country_landing')->with('data', $this->data);
-    }
+    // }
+    // ->orWhere('title_en', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
+    // ->orWhere('desc_en', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
+    // ->orWhere('title_pt', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
+    // ->orWhere('desc_pt', 'LIKE', '%'.$query.'%')->where('products_in_countries.country_id', '=', $ctyId)
   }
 
 

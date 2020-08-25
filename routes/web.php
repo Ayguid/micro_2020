@@ -30,6 +30,11 @@ Auth::routes();
 // Route::group(['prefix' => session('country.locale_key')], function()
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+
+  Route::get('/myData', 'MyDataController@indexMyData')->name('indexMyData');
+  Route::post('/updateMyData', 'MyDataController@updateMyData')->name('updateMyData');
+
+
   Route::post('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
   //user
   Route::get('/country/{country_shortcode}', 'LandingController@setCountry')->name('setCountry');
@@ -41,7 +46,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   //search prod
-  Route::get('/find/{q?}','LandingController@findProduct')->name('findProduct');
+  Route::get('/find','LandingController@findProduct')->name('findProduct');
 
   //admin sections
   Route::prefix('admin')->group(function(){

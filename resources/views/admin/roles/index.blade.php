@@ -4,6 +4,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
+        <a href="{{route('home')}}" class="btn btn-primary col-2 mb-2">Home</a>
         <div class="card">
           <div class="card-header">Roles</div>
 
@@ -14,17 +15,17 @@
               </div>
             @endif
 
-
             @foreach ($data['roles'] as $role)
                 @if ($role->name != 'god')
-                  <a href="{{Route('admin.roles.show', $role->id)}}">{{$role->name}}</a>
+                  <div class="mb-2">
+                    <a href="{{Route('admin.roles.show', $role->id)}}" >{{$role->name}}</a>
+                  </div>
                 @endif
-              <br>
+
             @endforeach
 
-
-
           </div>
+
         </div>
       </div>
     </div>

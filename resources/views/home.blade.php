@@ -13,32 +13,33 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in
+                    <h5 class="mb-4">You are logged in</h5>
+                    <div class="mb-2">
+                      <a class="btn btn-primary" href="{{route('indexMyData')}}">Mis datos</a>
+                    </div>
 
 
                     @role('superadmin|admin')
-                    <br>
-                    <br>
-                    <a class="btn btn-primary" href="{{route('admin.cats')}}">Categories</a>
-                    <br>
-                    <br>
-                    <a class="btn btn-primary" href="{{route('admin.fileManager')}}">Media Manager</a>
-
+                    <div class="mb-2">
+                      <a class="btn btn-primary" href="{{route('admin.cats')}}">Categories</a>
+                    </div>
                     @endrole
 
                     @role('superadmin')
-                    <br>
-                    <br>
-                    <a class="btn btn-primary" href="{{route('admin.roles')}}">Roles</a>
+                    <div class="mb-2">
+                      <a class="btn btn-primary" href="{{route('admin.fileManager')}}">Media Manager</a>
+                    </div>
+                    <div class="mb-2">
+                      <a class="btn btn-primary" href="{{route('admin.roles')}}">Roles</a>
+                    </div>
                     @endrole
 
 
 
                     @can('index users')
-                      <br>
-                      <br>
-                      <a class="btn btn-primary" href="{{route('admin.users')}}">Users</a>
+                      <div class="mb-2">
+                        <a class="btn btn-primary" href="{{route('admin.users')}}">Users</a>
+                      </div>
                     @endcan
 
 

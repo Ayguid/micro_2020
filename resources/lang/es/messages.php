@@ -28,4 +28,9 @@ return [
   'comments'=> 'Comentarios',
 
   'will_reply'=> 'Te contactaremos a la brevedad',
+
+  'Guardar cambios'=> 'Guardar cambios',
+
+  'datos'=> 'Mis datos',
+
 ];

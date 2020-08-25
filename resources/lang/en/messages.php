@@ -31,5 +31,11 @@ return [
 
   'will_reply'=> 'We will contact you shortly',
 
+  'No se encontraron productos.'=> 'No products were found.',
+
+  'Guardar cambios'=> 'Save changes',
+
+  'datos'=> 'My data',
+
 
 ];

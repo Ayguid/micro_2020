@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="mb-3 col-3">
-        <div class="btn btn-secondary" @click="resetForm">Reset Filters</div>
+        <div class="btn btn-secondary" @click="resetForm">{{ $t("Restablecer filtros") }}</div>
       </div>
     </form>
 

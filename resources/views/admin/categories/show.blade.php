@@ -10,7 +10,7 @@ $lang=App::getLocale();
       <div class="col-md-8">
 
         @if (!$category->parent_id)
-          <a href="{{route('admin.cats')}}" class="btn btn-primary col-2">Categories</a>
+          <a href="{{route('admin.cats')}}" class="btn btn-primary col-2">Categorias</a>
         @else
           <a class="btn btn-primary col-2" href="{{route('admin.cats.show', $category->parent_id)}}">{{$category->father()->first()->title_es}}</a>
         @endif

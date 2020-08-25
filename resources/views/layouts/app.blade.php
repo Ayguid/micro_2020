@@ -81,7 +81,16 @@
         <!-- Right Side Of Navbar -->
 
         {{--visible en vista con nav completo--}}
-        <search-component class="d-none d-md-block " :consulturl='{{json_encode(route('findProduct'))}}'></search-component>
+        {{-- <search-component class="d-none d-md-block " :consulturl='{{json_encode(route('findProduct'))}}'></search-component> --}}
+
+        <div class="">
+          <form id="searchForm" action="{{route("findProduct")}}" method="get" class="form-inline my-2 my-lg-0">
+            {{-- @csrf --}}
+            <input class="form-control mr-sm-2" type="search" placeholder="0.000.000-XXX" aria-label="search" name="query">
+            <button class="btn btn-outline-success my-2 my-sm-0" name="search" type="submit">Buscar</button>
+          </form>
+
+        </div>
 
         <ul class="navbar-nav ml-auto">
           <!-- Authentication Links -->

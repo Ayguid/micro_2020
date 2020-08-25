@@ -25,8 +25,12 @@
           var qy = form.elements.query.value;
           if (qy) {
             this.query=qy;
-            axios.get(this.consulturl+'/'+ qy)
+            // var str = "Visit Microsoft!";
+            // const res = qy.replace("/", "*");
+            axios.get(this.consulturl+'/'+ qy )
+            // axios.post(this.consulturl, {query: qy})
             .then(function (response) {
+              console.log(response);
               if (response.data=='Not found') {
                 let originalBorder = form.elements.query.style.border;
                 form.elements.query.style.border="1px solid rgb(251, 64, 64)";

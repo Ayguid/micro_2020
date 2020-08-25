@@ -28,6 +28,14 @@ return [
   'comments'=> 'Comentários',
 
   'will_reply'=> 'Entraremos em contato em breve',
+
+  'No se encontraron productos.'=> 'Nenhum produto foi encontrado.',
+
+  'Guardar cambios'=> 'Guardar mudanças',
+
+  'datos'=> 'Mis datos',
+
+
 ];
 
 
