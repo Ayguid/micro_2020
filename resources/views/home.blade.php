@@ -29,9 +29,9 @@
                     <div class="mb-2">
                       <a class="btn btn-primary" href="{{route('admin.fileManager')}}">Media Manager</a>
                     </div>
-                    <div class="mb-2">
+                    {{-- <div class="mb-2">
                       <a class="btn btn-primary" href="{{route('admin.roles')}}">Roles</a>
-                    </div>
+                    </div> --}}
                     @endrole
 
 
