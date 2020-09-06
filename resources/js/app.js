@@ -52,12 +52,14 @@ Vue.use(BootstrapVue);
 var translations;
 const lang = (document.documentElement.lang=='pt-BR')?'pt':document.documentElement.lang;
 import VueInternationalization from 'vue-i18n';
+
+// translations = translations[lang]
 switch (lang) {
   case 'en':
-  translations = require('./lang/translations_en.json')
+  translations =  require('../../storage/app/public/lang/translations_en.json')
   break;
   case 'pt':
-  translations = require('./lang/translations_pt.json')
+  translations = require('../../storage/app/public/lang/translations_pt.json')
   break;
   default:
 }

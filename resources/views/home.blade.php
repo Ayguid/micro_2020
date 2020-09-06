@@ -23,6 +23,10 @@
                     <div class="mb-2">
                       <a class="btn btn-primary" href="{{route('admin.cats')}}">Categories</a>
                     </div>
+
+                    <div class="mb-2">
+                      <a class="btn btn-primary" href="{{route('admin.translations')}}">Translations</a>
+                    </div>
                     @endrole
 
                     @role('superadmin')

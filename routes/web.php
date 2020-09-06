@@ -23,13 +23,14 @@ Auth::routes();
 //grl stuff
 // Route::get('/send-mail', 'mailer\MailerController@sendMail')->name('sendIngMail');
 
-
+// Route::get('/test/files', 'Admin\TestController@indexFiles');
 
 
 /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-// Route::group(['prefix' => session('country.locale_key')], function()
+// Route::group(['prefix' => session('country.locale_key'), 'middleware' => 'country'], function()
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+
 
   Route::get('/myData', 'MyDataController@indexMyData')->name('indexMyData');
   Route::post('/updateMyData', 'MyDataController@updateMyData')->name('updateMyData');
@@ -56,6 +57,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/cats', 'Admin\CategoryController@index')->name('admin.cats');
     Route::get('/cats/show/{id}', 'Admin\CategoryController@show')->name('admin.cats.show');
     Route::get('/files','Admin\FileController@index')->name('admin.fileManager');
+    //translations
+    Route::get('/translations','Admin\TranslationsController@index')->name('admin.translations');
+    Route::post('/translations/save','Admin\TranslationsController@save')->name('admin.translations.save');
+    Route::post('/translations/find/{query?}','Admin\TranslationsController@find')->name('admin.translations.find');
 });
 
 
@@ -102,6 +107,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   });
+
 
 
 });

@@ -28,12 +28,20 @@ if ($lang == 'Pt-BR') {
 
     @isset($data['category'])
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
 
-          <h4 class="m-2">{{$category->father-> {'title_' . $lang} ?? $category->father->title_es}}->
+          {{-- <h4 class="m-2">{{$category->father-> {'title_' . $lang} ?? $category->father->title_es}}->
             <a href="{{route('getCategoryData', $category->id)}}">
               {{$category-> {'title_' . $lang} ?? $category->title_es}}</a>
-            </h4>
+            </h4> --}}
+
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">{{$category->father-> {'title_' . $lang} ?? $category->father->title_es}}</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{route('getCategoryData', $category->id)}}">
+                  {{$category-> {'title_' . $lang} ?? $category->title_es}}</a></li>
+              </ol>
+            </nav>
 
           </div>
 

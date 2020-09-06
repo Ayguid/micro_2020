@@ -7,10 +7,16 @@
   <div class="">
     <!-- <h1>{{ $t('Resultado') }}</h1> -->
 
-    <p class="mt-2 mb-2">
+  <!--  <p class="mt-2 mb-2">
       {{(category.get_top_categories['title_'+$root.local])?category.get_top_categories['title_'+$root.local]:category.get_top_categories['title_es']}}
-    -->
     {{(category['title_'+$root.local])?category['title_'+$root.local]:category['title_es']}}</p>
+  -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">{{(category.get_top_categories['title_'+$root.local])?category.get_top_categories['title_'+$root.local]:category.get_top_categories['title_es']}}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{(category['title_'+$root.local])?category['title_'+$root.local]:category['title_es']}}</li>
+    </ol>
+  </nav>
 
     <p class="">{{ $t("Productos Encontrados") }} : <span v-html="totalRows"></span> </p>
 

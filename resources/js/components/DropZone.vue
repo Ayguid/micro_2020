@@ -53,6 +53,15 @@ export default {
       addRemoveLinks: true,
       dictRemoveFileConfirmation:'Are you sure you want to delete this file?',
       timeout:300000,
+      accept: function(file, done) {
+        var myRe = /[\xD1\xD8\xF1\xF8]/;
+        if (myRe.exec(file.name)) {
+          done('[Ø-ø, Ñ] Caracteres especiales no permitidos');
+        }
+        else {
+          done();
+        }
+      },
       init: function() {
         this.on("removedfile", function(file) {
           var formData=null;
@@ -69,14 +78,15 @@ export default {
         });
 
         // this.on("drop", function(file) {
-        //   var formData = new FormData();
-        //   formData.append('product_id',data.product.id);
-        //   axios.post(urlMain+'/api/files/upload/', formData).then((response) => {
-        //     console.log(response);
-        //   });
+        //
+        //   // var formData = new FormData();
+        //   // formData.append('product_id',data.product.id);
+        //   // axios.post(urlMain+'/api/files/upload/', formData).then((response) => {
+        //   //   console.log(response);
+        //   // });
         // });
 
-        
+
         if (data.product) {
           for (var i = 0; i < data.productFiles.length; i++) {
             var extension = data.productFiles[i].file_path.split('.').pop();

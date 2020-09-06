@@ -11,21 +11,15 @@ class FilterController extends Controller
 {
 
 
-  
 
   //de valor siempre se usa value_es!!!!
-
   public function findProducts(Request $request)
   {
-    // return response()->json([
-    //   'mandaste'=>$request->filterAtts
-    // ]);
+
     //Info principal - Products en country y category
     $cat = Category::find($request->category);
     $prods = $cat->productsInCountry($request->country);
-    // return response()->json([
-    //   'products'=>$prods->with('files', 'attributes.attribute')->get()
-    // ]);
+    
 
     //Arma data para menu builder ORIGINAL
     // $productAtts = Product_Attribute::where('attribute_id', '123123123123')->get();
@@ -43,7 +37,6 @@ class FilterController extends Controller
       }
       //Arma data para menu builder SHOW
       $productAttsShow=$this->plucker($prods);
-
       foreach ($productAtts as $key => $values) {
         foreach ($values as $v) {
           if (isset($productAttsShow[$key])) {

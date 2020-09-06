@@ -40,8 +40,8 @@
 
                 <div v-for="att in product.attributes" v-if="!att.attribute.filterable" class="col-12 col-md-6 col-lg-6">
                   <!-- <h6>  <strong> {{(att.attribute['name_'+$root.local])?att.attribute['name_'+$root.local]:att.attribute['name_es']}} </strong>  </h6> -->
-                  <h6>  <strong> {{$t(att.attribute.name_es)}} </strong>  </h6>
-                  <h6>{{att.value_es}}</h6>
+                  <h6><strong> {{$t(att.attribute.name_es)}} </strong>  </h6>
+                  <h6>{{$t(att.value_es)}}</h6>
                 </div>
 
               </div>
@@ -83,7 +83,7 @@
             <img width="130"  class="d-inline-block align-center" :src="$root.baseUrl+'/images/logos/logo-micro-'+$root.local+'.jpg'" alt="">
           </div>
           <!-- {{files.dxfs[0].file_path}} -->
-          <iframe onload="" id="cadView" :src="'https://sharecad.org/cadframe/load?url=micro.plankwebdev.com/storage/dxfs/'+files.dxfs[0].file_path" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+          <iframe id="cadView" :src="'https://sharecad.org/cadframe/load?url=micro.plankwebdev.com/storage/dxfs/'+files.dxfs[0].file_path" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
           <div id="tapadorBottom"></div>
         </div>
         <div v-else class="alert alert-info" role="alert">

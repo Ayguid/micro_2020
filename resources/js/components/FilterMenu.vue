@@ -16,6 +16,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text " for="">
               {{ $t(att.name_es) }}
+              <!-- {{ att.name_es}} -->
             </label>
           </div>
           <select class="custom-select" :name="att.id" >

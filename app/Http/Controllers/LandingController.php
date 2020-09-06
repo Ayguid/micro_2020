@@ -19,7 +19,7 @@ class LandingController extends Controller
 
   public function __construct()
   {
-    // $this->middleware('localize');
+    $this->middleware('country')->except(['index', 'setCountry']);
     $this->data['categories'] = Category::where('parent_id', null)->get();
   }
 
@@ -29,9 +29,11 @@ class LandingController extends Controller
     return view('welcome');
   }
 
+
   public function setCountry($country_shortcode)
   {
     $country = Country::where('country_shortcode', '=',$country_shortcode)->first();
+
     session([
       'country' => $country,
     ]);
