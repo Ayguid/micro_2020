@@ -6,7 +6,7 @@ use Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Support\Collection;
-
+use Illuminate\Support\Facades\Validator;
 
 class TranslationsController extends Controller
 {
@@ -37,10 +37,27 @@ class TranslationsController extends Controller
   public function save(Request $request)
   {
 
+    $validator =  Validator::make($request->newTranslation, [
+      'word' => ['required'],
+      'en' => ['required'],
+      'pt' => ['required']
+    ]);
+
+    if ($validator->fails()) {
+      $request->session()->flash('alert-danger', $validator->errors());
+      return redirect()->route('admin.translations')->withErrors($validator);
+    }
+
+
     $contentEN = json_decode(file_get_contents($this->path.'_en.json'), true);
     $contentPT = json_decode(file_get_contents($this->path.'_pt.json'), true);
 
+
     if ($request->newTranslation['word']) {
+      if (array_key_exists($request->newTranslation['word'], $contentEN['en']) || array_key_exists($request->newTranslation['word'], $contentPT['pt'])) {
+        $request->session()->flash('alert-danger', 'La palabra ya tiene traducción');
+        return redirect()->route('admin.translations');
+      }
       $contentEN['en'][$request->newTranslation['word']] = $request->newTranslation['en'];
       $contentPT['pt'][$request->newTranslation['word']] = $request->newTranslation['pt'];
     }
@@ -62,7 +79,8 @@ class TranslationsController extends Controller
     // chanchada para remover duplicates
     // file_put_contents($this->path.'_en.json', json_encode(array_unique($contentEN)));
     // file_put_contents($this->path.'_pt.json', json_encode(array_unique($contentPT)));
-
+    $request->session()->flash('alert-success', 'Exito');
+    return redirect()->route('admin.translations');
   }
 
 

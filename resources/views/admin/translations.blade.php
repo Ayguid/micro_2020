@@ -10,13 +10,6 @@
       <div class="alert alert-danger"><i class="fa fa-times" aria-hidden="true"></i> <strong>{!! session('alert-danger') !!}</strong></div>
     @endif
 
-    @if ($errors->count()>0)
-      <div class="alert alert-danger" role="alert">
-        @foreach ($errors->all() as $err)
-          <strong>{{$err}}</strong>
-        @endforeach
-      </div>
-    @endif
 
     {{-- index  --}}
 
