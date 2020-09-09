@@ -113,11 +113,17 @@
             </p>
           </div>
           <h4 class="pt-3">{{$t('Archivos CAD 2D y 3D.')}}</h4>
-          <div v-if="product.has_zip" class="">
+          <div v-if="product.has_zip || product.has_cad_2d" class="">
             <div v-if="$root.authuser" class="">
               <div v-for="zip in files.zips" class="">
                 <a target="_blank" class="btn" role="button" :href="$root.baseUrl+'/storage/zips/'+zip.file_path" >
                   <i class="far fa-file-archive bigIcon"></i>{{zip.file_path}}</a>
+                </div>
+              <div v-for="dxf in files.dxfs" class="">
+                <a target="_blank" class="btn" role="button" :href="$root.baseUrl+'/storage/dxfs/'+dxf.file_path" >
+                  <i class="far fa-file-archive bigIcon"></i>
+                <!-- <img width="5%" :src="$root.baseUrl+'/icons/cad_logo.svg'" alt=""> -->
+                  {{dxf.file_path}}</a>
                 </div>
               </div>
               <div v-else class="">
