@@ -14,7 +14,7 @@ class TranslationsController extends Controller
   public $paginate = 12;
   public $path = 'storage/lang/translations';
 
-  public function index(Request $request)
+  public function index()
   {
 
     $contentEN = json_decode(file_get_contents($this->path.'_en.json'), true);
@@ -87,6 +87,7 @@ class TranslationsController extends Controller
 
   public function find(Request $request)
   {
+    //dd($query);
     $searchword = $request->queryString;
     $contentEN = json_decode(file_get_contents($this->path.'_en.json'), true);
     $contentPT = json_decode(file_get_contents($this->path.'_pt.json'), true);
@@ -108,11 +109,12 @@ class TranslationsController extends Controller
     $collectionPT = new Collection($matchesPT);
 
     $translations = [
-      'en' => $collectionEN->paginate($this->paginate),
-      'pt' => $collectionPT->paginate($this->paginate)
+      'en' => $collectionEN->paginate($this->paginate, null, null, 'page')->appends($request->all()),
+      'pt' => $collectionPT->paginate($this->paginate, null, null, 'page')->appends($request->all())
     ];
     //dd($translations);
     return view('admin.translations')->with('translations', $translations);
+    //return redirect()->route('admin.translations');
 
   }
 

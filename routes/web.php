@@ -59,8 +59,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/files','Admin\FileController@index')->name('admin.fileManager');
     //translations
     Route::get('/translations','Admin\TranslationsController@index')->name('admin.translations');
+    Route::get('/translations/find','Admin\TranslationsController@find')->name('admin.translations.find');
     Route::post('/translations/save','Admin\TranslationsController@save')->name('admin.translations.save');
-    Route::post('/translations/find/{query?}','Admin\TranslationsController@find')->name('admin.translations.find');
 });
 
 

@@ -13,8 +13,8 @@
 
     {{-- index  --}}
 
-    <form class="mb-2" action="{{route('admin.translations.find')}}" method="post">
-      {{ csrf_field() }}
+    <form class="mb-2" action="{{route('admin.translations.find')}}" method="get">
+      {{-- {{ csrf_field() }} --}}
       <input autofocus class="form-control" type="text" name="queryString" value="" placeholder="Buscar Palabra o frase">
       <button type="submit" name="button" class="btn btn-primary">
         Buscar
@@ -61,7 +61,9 @@
       </form>
 
         <div class="">
-          {{$translations['en']}}{{-- al usar un custom paginator los links se muestran asi,,,estamos pagineando un json  --}}
+          {{$translations['en']}}
+          {{-- {{dd($translations)}} --}}
+          {{-- {{$translations['en']->withQueryString()}}{{-- al usar un custom paginator los links se muestran asi,,,estamos pagineando un json  --}}
         </div>
     @endisset
 

@@ -11,9 +11,14 @@ class Collection extends BaseCollection
     {
         $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
 
+        // if($query){
+        //   dd($query);
+        // }
+
         return new LengthAwarePaginator(
             $this->forPage($page, $perPage),
-            // $this->forPage($page, $perPage)->values(),
+            // $this->query = $query || '',
+            //$this->forPage($page, $perPage)->values(),
             $total ?: $this->count(),
             $perPage,
             $page,
