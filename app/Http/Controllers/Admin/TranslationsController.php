@@ -92,21 +92,41 @@ class TranslationsController extends Controller
     $contentEN = json_decode(file_get_contents($this->path.'_en.json'), true);
     $contentPT = json_decode(file_get_contents($this->path.'_pt.json'), true);
 
+
+    // if (condition) {
+    //   $pattern = '/ /i';
+    //   $file->file_path = preg_replace($pattern, '', $str
+    // }
+
+
+
     $matchesEN = array();
     foreach($contentEN['en'] as $k=>$v) {
-      if(preg_match("/\b$searchword\b/i", $k)) {
+      // if(preg_match("/\b$searchword\b/i", $k)) {
+      //   $matchesEN[$k] = $contentEN['en'][$k];
+      // }
+      if (stripos(strtolower($k), $searchword) !== false) {
         $matchesEN[$k] = $contentEN['en'][$k];
       }
     }
 
     $matchesPT = array();
     foreach($contentPT['pt'] as $k=>$v) {
-      if(preg_match("/\b$searchword\b/i", $k)) {
+      // if(preg_match("/\b$searchword\b/i", $k)) {
+      //   $matchesPT[$k] = $contentPT['pt'][$k];
+      // }
+      if (stripos(strtolower($k), $searchword) !== false) {
         $matchesPT[$k] = $contentPT['pt'][$k];
       }
     }
     $collectionEN = new Collection($matchesEN);
     $collectionPT = new Collection($matchesPT);
+    // $contentEN = json_decode(file_get_contents($this->path.'_en.json'), true);
+    // $contentPT = json_decode(file_get_contents($this->path.'_pt.json'), true);
+    //
+    //
+    // $collectionEN = new Collection($contentEN['en']);
+    // $collectionPT = new Collection($contentPT['pt']);
 
     $translations = [
       'en' => $collectionEN->paginate($this->paginate, null, null, 'page')->appends($request->all()),
